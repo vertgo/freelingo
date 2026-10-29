@@ -29,6 +29,9 @@ interface AudioPlayerProps {
 
 export type PlayerState = 'idle' | 'loading' | 'playing' | 'error'
 
+// Only one player sounds at a time: starting one stops whichever was active.
+let stopActivePlayer: (() => void) | null = null
+
 function storedVoice() {
   try {
     return typeof window !== 'undefined'
@@ -62,6 +65,8 @@ export function AudioPlayer({
   const sessionVersion = useAuthStore((s) => s.sessionVersion)
   const t = useTranslations('audioPlayer')
 
+  const stopSelfRef = useRef<() => void>(() => {})
+
   // Resolve voice: explicit prop > user localStorage preference > backend default
   const resolvedVoice = voice ?? storedVoice()
 
@@ -85,6 +90,7 @@ export function AudioPlayer({
   useEffect(() => {
     setState('idle')
     return () => {
+      if (stopActivePlayer === stopSelfRef.current) stopActivePlayer = null
       controllerRef.current?.abort()
       controllerRef.current = null
       if (timeoutRef.current) clearTimeout(timeoutRef.current)
@@ -115,6 +121,18 @@ export function AudioPlayer({
       setState('idle')
       return
     }
+
+    const stopSelf = () => {
+      controllerRef.current?.abort()
+      controllerRef.current = null
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
+      stopAudio()
+      setState('idle')
+    }
+    if (stopActivePlayer && stopActivePlayer !== stopSelfRef.current)
+      stopActivePlayer()
+    stopSelfRef.current = stopSelf
+    stopActivePlayer = stopSelf
 
     setState('loading')
     if (recoveryRef.current) clearTimeout(recoveryRef.current)

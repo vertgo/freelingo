@@ -98,6 +98,7 @@ async def lifespan(app: FastAPI):  # noqa: ANN201
             api_key=settings.GEMINI_API_KEY,
             model=settings.GEMINI_TTS_MODEL,
             voice=settings.GEMINI_TTS_VOICE,
+            fallback_models=settings.GEMINI_TTS_FALLBACK_MODELS,
         )
     else:
         app.state.tts_service = KokoroTTSService(settings.TTS_BASE_URL, settings.TTS_VOICE)

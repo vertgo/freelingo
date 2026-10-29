@@ -390,3 +390,19 @@ def test_gemini_tts_cache_key_depends_on_instructions(monkeypatch):
     spain = service.get_cache_key("Hola", language="es-ES")
     monkeypatch.setattr("app.core.config.settings.SPANISH_VARIANT", "mx")
     assert service.get_cache_key("Hola", language="es-ES") != spain
+
+
+@pytest.mark.asyncio
+async def test_gemini_tts_falls_back_when_model_quota_is_exhausted():
+    from google.genai import errors as genai_errors
+
+    with patch("app.services.tts_service.genai.Client"):
+        service = GeminiTTSService(
+            api_key="k", model="tts-main", voice="Kore", fallback_models=["tts-lite"]
+        )
+    exhausted = genai_errors.ClientError(429, {"error": {"message": "quota"}})
+    generate = AsyncMock(side_effect=[exhausted, _gemini_tts_response(b"RIFFwav", "audio/wav")])
+    service._client.aio.models.generate_content = generate
+    with patch("app.services.tts_service.wav_to_mp3", AsyncMock(return_value=b"ID3")):
+        assert await service.synthesize("Hola", language="es-ES") == b"ID3"
+    assert [c.kwargs["model"] for c in generate.await_args_list] == ["tts-main", "tts-lite"]

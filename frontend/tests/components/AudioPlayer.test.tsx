@@ -586,6 +586,29 @@ describe('AudioPlayer', () => {
     expect(screen.getByText(PLAY)).toBeDefined()
   })
 
+  it('stops the playing example when another one starts', async () => {
+    fetchMock.mockResolvedValue(makeOkResponse())
+    render(
+      <>
+        <AudioPlayer text="Primero" />
+        <AudioPlayer text="Segundo" />
+      </>
+    )
+    const [first, second] = screen.getAllByRole('button')
+    await act(async () => {
+      fireEvent.click(first)
+    })
+    await waitFor(() => expect(first.textContent).toBe(PAUSE))
+    const firstAudio = currentAudioMock!
+
+    await act(async () => {
+      fireEvent.click(second)
+    })
+    await waitFor(() => expect(second.textContent).toBe(PAUSE))
+    expect(firstAudio.pause).toHaveBeenCalled()
+    expect(first.textContent).toBe(PLAY)
+  })
+
   it('releases the kept audio on unmount', async () => {
     fetchMock.mockResolvedValueOnce(makeOkResponse())
     const { unmount } = render(<AudioPlayer text="Hello" />)
@@ -859,50 +882,6 @@ describe('AudioPlayer', () => {
   })
 
   // ───────────── MULTIPLE INSTANCES ─────────────
-
-  it('two instances work independently', async () => {
-    fetchMock.mockResolvedValueOnce(makeOkResponse())
-    fetchMock.mockResolvedValueOnce(makeOkResponse())
-
-    render(
-      <>
-        <AudioPlayer text="Item A" />
-        <AudioPlayer text="Item B" />
-      </>
-    )
-
-    const buttons = screen.getAllByRole('button')
-    expect(buttons).toHaveLength(2)
-
-    // Start A
-    await act(async () => {
-      fireEvent.click(buttons[0])
-    })
-    await waitFor(() => {
-      expect(buttons[0].textContent).toBe(PAUSE)
-    })
-
-    // Start B
-    await act(async () => {
-      fireEvent.click(buttons[1])
-    })
-    await waitFor(() => {
-      expect(buttons[1].textContent).toBe(PAUSE)
-    })
-
-    // Stop A — B should keep playing
-    await act(async () => {
-      fireEvent.click(buttons[0])
-    })
-    // Note: each click creates a fresh Audio(), so after pausing A,
-    // its audioRef is set to null. The next click on A would create a new audio.
-    // currentAudioMock here points to the LAST-created Audio (B's), but
-    // A's pause was called on the previous Audio instance. We can't assert
-    // on currentAudioMock.pause because it got overwritten when B started.
-    // Instead verify via UI state.
-    expect(buttons[0].textContent).toBe(PLAY)
-    expect(buttons[1].textContent).toBe(PAUSE)
-  })
 
   it('two instances send independent requests with correct text', async () => {
     fetchMock.mockResolvedValueOnce(makeOkResponse())

@@ -30,9 +30,9 @@ class Settings(BaseSettings):
     CODEX_BRIDGE_URL: str = "http://host.docker.internal:11535"
     CODEX_MODEL: str = "codex"
     GEMINI_API_KEY: str = ""
-    GEMINI_MODEL: str = "gemini-3.5-flash"
+    GEMINI_MODEL: str = "gemini-3.8-flash"
     # Tried in order when the primary model is overloaded (HTTP 503/429).
-    GEMINI_FALLBACK_MODELS: list[str] = ["gemini-3.5-flash-lite"]
+    GEMINI_FALLBACK_MODELS: list[str] = ["gemini-3.5-flash", "gemini-3.5-flash-lite"]
     GEMINI_REASONING_EFFORT: Literal["", "none", "low", "medium", "high"] = "low"
     SPANISH_VARIANT: Literal["es", "mx"] = "es"
     # pipeline = STT -> LLM -> TTS; gemini_live = one Gemini Live speech-to-speech session
@@ -41,6 +41,10 @@ class Settings(BaseSettings):
     GEMINI_LIVE_VOICE: str = "Kore"
     GEMINI_TTS_MODEL: str = "gemini-3.8-flash-tts"
     GEMINI_TTS_VOICE: str = "Kore"
+    GEMINI_TTS_FALLBACK_MODELS: list[str] = [
+        "gemini-3.8-flash-lite-tts",
+        "gemini-3.1-flash-tts-preview",
+    ]
     GEMINI_STT_MODEL: str = "gemini-3.5-transcribe"
     TTS_PROVIDER: str = "local"  # local | openai | gemini
     TTS_BASE_URL: str = "http://kokoro:8880"

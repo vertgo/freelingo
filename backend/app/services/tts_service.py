@@ -6,6 +6,7 @@ import time
 import httpx
 import openai
 from google import genai
+from google.genai import errors as genai_errors
 from google.genai import types as genai_types
 
 from app.core.app_logger import get_logger
@@ -222,11 +223,20 @@ GEMINI_VOICES = frozenset(
 class GeminiTTSService:
     """Gemini TTS; accent and pronunciation are steered by the speech instructions."""
 
-    def __init__(self, api_key: str, model: str, voice: str, timeout: float = 60.0) -> None:
+    def __init__(
+        self,
+        api_key: str,
+        model: str,
+        voice: str,
+        timeout: float = 60.0,
+        fallback_models: list[str] | None = None,
+    ) -> None:
         self._client = genai.Client(api_key=api_key)
         self.model = model
         self.voice = voice
         self.timeout = timeout
+        # Tried in order when a model is out of quota or overloaded; quotas are per model.
+        self.fallback_models = [m for m in fallback_models or [] if m != model]
 
     async def health(self) -> None:
         """Raise if the Gemini API is unreachable or the key is rejected."""
@@ -260,23 +270,21 @@ class GeminiTTSService:
         req_voice = voice if voice in GEMINI_VOICES else self.voice
         start_t = time.perf_counter()
         prompt = f"{self.get_instructions(language)}\n\nText:\n{text}"
-        response = await asyncio.wait_for(
-            self._client.aio.models.generate_content(
-                model=self.model,
-                contents=prompt,
-                config=genai_types.GenerateContentConfig(
-                    response_modalities=["AUDIO"],
-                    speech_config=genai_types.SpeechConfig(
-                        voice_config=genai_types.VoiceConfig(
-                            prebuilt_voice_config=genai_types.PrebuiltVoiceConfig(
-                                voice_name=req_voice
-                            )
-                        )
-                    ),
-                ),
-            ),
-            timeout=self.timeout,
-        )
+        models = [self.model, *self.fallback_models]
+        for index, model in enumerate(models):
+            try:
+                response = await self._generate(model, prompt, req_voice)
+                break
+            except genai_errors.APIError as exc:
+                if index + 1 < len(models) and exc.code in (429, 503):
+                    logger.warning(
+                        "[tts-gemini] model %s unavailable (%s); falling back to %s",
+                        model,
+                        exc.code,
+                        models[index + 1],
+                    )
+                    continue
+                raise
         audio = b""
         mime_type = ""
         for part in response.candidates[0].content.parts or []:
@@ -294,10 +302,27 @@ class GeminiTTSService:
         mp3 = await wav_to_mp3(audio)
         logger.info(
             "[tts-gemini] request_ok model=%s voice=%s chars=%d bytes=%d ms=%.1f",
-            self.model,
+            model,
             req_voice,
             len(text),
             len(mp3),
             round((time.perf_counter() - start_t) * 1000, 1),
         )
         return mp3
+
+    async def _generate(self, model: str, prompt: str, voice: str):
+        return await asyncio.wait_for(
+            self._client.aio.models.generate_content(
+                model=model,
+                contents=prompt,
+                config=genai_types.GenerateContentConfig(
+                    response_modalities=["AUDIO"],
+                    speech_config=genai_types.SpeechConfig(
+                        voice_config=genai_types.VoiceConfig(
+                            prebuilt_voice_config=genai_types.PrebuiltVoiceConfig(voice_name=voice)
+                        )
+                    ),
+                ),
+            ),
+            timeout=self.timeout,
+        )
