@@ -700,6 +700,11 @@
     "beginnerOptionHint": "Počet ću od A1, kviz nije potreban.",
     "hasExperienceOption": "Da, imam nešto iskustva",
     "hasExperienceOptionHint": "Riješit ću kratak prilagodljiv kviz (oko 12 pitanja).",
+    "chooseLevelOption": "Odaberi svoju razinu",
+    "chooseLevelOptionHint": "Preskoči kviz i sam odaberi A1–C2.",
+    "chooseLevelTitle": "Odaberi početnu razinu",
+    "chooseLevelHint": "Tvoj plan učenja pratit će kurikulum ove razine. Završni test na kraju vodi te na višu razinu.",
+    "changeLevel": "Promijeni razinu",
     "skills": {
       "grammar": "Gramatika",
       "vocabulary": "Rječnik",

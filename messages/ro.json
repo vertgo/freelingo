@@ -700,6 +700,11 @@
     "beginnerOptionHint": "Încep de la A1, fără quiz.",
     "hasExperienceOption": "Da, am ceva experiență",
     "hasExperienceOptionHint": "Voi face un scurt quiz adaptiv (±12 întrebări).",
+    "chooseLevelOption": "Alege nivelul meu",
+    "chooseLevelOptionHint": "Sari peste test și alege singur între A1 și C2.",
+    "chooseLevelTitle": "Alege nivelul de început",
+    "chooseLevelHint": "Planul tău de studiu va urma programa acestui nivel. Un test final te duce la nivelul următor.",
+    "changeLevel": "Schimbă nivelul",
     "skills": {
       "grammar": "Gramatică",
       "vocabulary": "Vocabular",

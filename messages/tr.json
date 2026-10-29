@@ -700,6 +700,11 @@
     "beginnerOptionHint": "A1'den başlayacağım, teste gerek yok.",
     "hasExperienceOption": "Evet, biraz deneyimim var",
     "hasExperienceOptionHint": "Kısa bir uyarlanabilir teste gireceğim (≈12 soru).",
+    "chooseLevelOption": "Seviyemi seç",
+    "chooseLevelOptionHint": "Testi atla ve A1–C2 arasından kendin seç.",
+    "chooseLevelTitle": "Başlangıç seviyeni seç",
+    "chooseLevelHint": "Çalışma planın bu seviyenin müfredatını izleyecek. Sondaki seviye testi seni bir üst seviyeye taşır.",
+    "changeLevel": "Seviyeyi değiştir",
     "skills": {
       "grammar": "Dil Bilgisi",
       "vocabulary": "Kelime Bilgisi",

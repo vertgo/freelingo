@@ -700,6 +700,11 @@
     "beginnerOptionHint": "Aloitan A1-tasolta, en tarvitse kyselyä.",
     "hasExperienceOption": "Kyllä, minulla on jonkin verran kokemusta",
     "hasExperienceOptionHint": "Teen lyhyen mukautuvan kyselyn (noin 12 kysymystä).",
+    "chooseLevelOption": "Valitse tasoni",
+    "chooseLevelOptionHint": "Ohita testi ja valitse itse A1–C2.",
+    "chooseLevelTitle": "Valitse aloitustasosi",
+    "chooseLevelHint": "Opiskelusuunnitelmasi seuraa tämän tason opetussuunnitelmaa. Lopun tasotesti nostaa sinut seuraavalle tasolle.",
+    "changeLevel": "Vaihda tasoa",
     "skills": {
       "grammar": "Kielioppi",
       "vocabulary": "Sanasto",

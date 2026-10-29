@@ -700,6 +700,11 @@
     "beginnerOptionHint": "Jeg starter på A1 og behøver ikke en quiz.",
     "hasExperienceOption": "Ja, jeg har lidt erfaring",
     "hasExperienceOptionHint": "Jeg tager en kort, adaptiv quiz (cirka 12 spørgsmål).",
+    "chooseLevelOption": "Vælg mit niveau",
+    "chooseLevelOptionHint": "Spring quizzen over og vælg selv A1–C2.",
+    "chooseLevelTitle": "Vælg dit startniveau",
+    "chooseLevelHint": "Din studieplan følger dette niveaus pensum. En afsluttende test flytter dig op.",
+    "changeLevel": "Skift niveau",
     "skills": {
       "grammar": "Grammatik",
       "vocabulary": "Ordforråd",

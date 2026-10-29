@@ -700,6 +700,11 @@
     "beginnerOptionHint": "I will start at A1, no quiz needed.",
     "hasExperienceOption": "Yes, I have some experience",
     "hasExperienceOptionHint": "I will take a short adaptive quiz (≈12 questions).",
+    "chooseLevelOption": "Choose my level",
+    "chooseLevelOptionHint": "Skip the quiz and pick A1–C2 yourself.",
+    "chooseLevelTitle": "Choose your starting level",
+    "chooseLevelHint": "Your study plan will follow this level's curriculum. A level test at the end moves you up.",
+    "changeLevel": "Change level",
     "skills": {
       "grammar": "Grammar",
       "vocabulary": "Vocabulary",

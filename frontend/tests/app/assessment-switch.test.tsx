@@ -623,6 +623,66 @@ describe('Assessment start analytics', () => {
   })
 })
 
+describe('Assessment level choice without the quiz', () => {
+  function mockCompletion(existingPlan: unknown = null) {
+    vi.mocked(fetch).mockImplementation(async (url) => {
+      if (url === '/api/study-plan/current') return json(existingPlan)
+      if (String(url).startsWith('/api/assessment/bank'))
+        return json({ questions: bank })
+      if (url === '/api/assessment/complete')
+        return json({ plan_id: 12, cefr_level: 'B1' })
+      return json({}, 404)
+    })
+  }
+  const completions = () =>
+    vi
+      .mocked(fetch)
+      .mock.calls.filter(([url]) => url === '/api/assessment/complete')
+
+  it('creates a plan at the chosen level without starting the quiz', async () => {
+    mockCompletion()
+    render(<AssessmentPage />)
+    fireEvent.click(
+      await screen.findByRole('button', { name: /chooseLevelOption/ })
+    )
+    fireEvent.click(screen.getByRole('button', { name: 'B1' }))
+    fireEvent.click(screen.getByRole('button', { name: /createPlan/ }))
+    fireEvent.click(await screen.findByRole('button', { name: /startMyPlan/ }))
+
+    await waitFor(() => expect(completions()).toHaveLength(1))
+    expect(JSON.parse(String(completions()[0][1]?.body)).cefr_level).toBe('B1')
+    expect(
+      vi
+        .mocked(fetch)
+        .mock.calls.some(([url]) => url === '/api/assessment/started')
+    ).toBe(false)
+    expect(screen.queryByText(/^Placement question /)).not.toBeInTheDocument()
+  })
+
+  it('changes the level of an existing plan and returns to the picker on back', async () => {
+    mockCompletion({ cefr_level: 'B2', created_at: '2026-10-29T00:00:00' })
+    render(<AssessmentPage />)
+    fireEvent.click(await screen.findByRole('button', { name: 'changeLevel' }))
+    expect(screen.getByRole('button', { name: 'B2' })).toHaveAttribute(
+      'aria-pressed',
+      'true'
+    )
+    fireEvent.click(screen.getByRole('button', { name: 'A2' }))
+    fireEvent.click(screen.getByRole('button', { name: /createPlan/ }))
+    await screen.findByRole('button', { name: /startMyPlan/ })
+    fireEvent.click(screen.getByRole('button', { name: /back/ }))
+    expect(screen.getByRole('button', { name: 'A2' })).toHaveAttribute(
+      'aria-pressed',
+      'true'
+    )
+    fireEvent.click(screen.getByRole('button', { name: /back/ }))
+    expect(
+      await screen.findByRole('button', { name: 'changeLevel' })
+    ).toBeInTheDocument()
+    expect(completions()).toHaveLength(0)
+  })
+})
+
 describe('Assessment provisional language switches', () => {
   it.each(['headers', 'body', 'summary'])(
     'does not reconcile a completion into a replacement session during %s',

@@ -700,6 +700,11 @@
     "beginnerOptionHint": "Inizierò da A1, nessun quiz necessario.",
     "hasExperienceOption": "Sì, ho un po' di esperienza",
     "hasExperienceOptionHint": "Farò un breve quiz adattivo (≈12 domande).",
+    "chooseLevelOption": "Scegli il mio livello",
+    "chooseLevelOptionHint": "Salta il quiz e scegli tu tra A1 e C2.",
+    "chooseLevelTitle": "Scegli il tuo livello iniziale",
+    "chooseLevelHint": "Il tuo piano di studio seguirà il programma di questo livello. Un test finale ti fa salire di livello.",
+    "changeLevel": "Cambia livello",
     "skills": {
       "grammar": "Grammatica",
       "vocabulary": "Vocabolario",

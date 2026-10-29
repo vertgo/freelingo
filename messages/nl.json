@@ -700,6 +700,11 @@
     "beginnerOptionHint": "Ik begin bij A1, geen quiz nodig.",
     "hasExperienceOption": "Ja, ik heb enige ervaring",
     "hasExperienceOptionHint": "Ik doe een korte adaptieve quiz (±12 vragen).",
+    "chooseLevelOption": "Mijn niveau kiezen",
+    "chooseLevelOptionHint": "Sla de quiz over en kies zelf A1–C2.",
+    "chooseLevelTitle": "Kies je startniveau",
+    "chooseLevelHint": "Je studieplan volgt het curriculum van dit niveau. Een eindtoets brengt je naar het volgende niveau.",
+    "changeLevel": "Niveau wijzigen",
     "skills": {
       "grammar": "Grammatica",
       "vocabulary": "Woordenschat",

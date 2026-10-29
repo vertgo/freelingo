@@ -700,6 +700,11 @@
     "beginnerOptionHint": "Começarei no A1, sem questionário.",
     "hasExperienceOption": "Sim, tenho alguma experiência",
     "hasExperienceOptionHint": "Farei um breve questionário adaptativo (≈12 perguntas).",
+    "chooseLevelOption": "Escolher o meu nível",
+    "chooseLevelOptionHint": "Saltar o questionário e escolher eu entre A1 e C2.",
+    "chooseLevelTitle": "Escolhe o teu nível inicial",
+    "chooseLevelHint": "O teu plano de estudo seguirá o programa deste nível. Um teste final permite-te subir de nível.",
+    "changeLevel": "Mudar de nível",
     "skills": {
       "grammar": "Gramática",
       "vocabulary": "Vocabulário",
