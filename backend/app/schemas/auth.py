@@ -280,3 +280,23 @@ class ResetPasswordRequest(BaseModel):
     @classmethod
     def check_new_password(cls, v: str) -> str:
         return validate_password_strength(v)
+
+
+class ApiKeyStatus(BaseModel):
+    """Whether the learner can use, and has saved, their own Gemini API key."""
+
+    enabled: bool
+    has_key: bool
+    hint: str | None = None
+    services: list[str] = []
+    # Set when the key was saved but the provider reported quota or overload.
+    warning: str | None = None
+
+
+class ApiKeyUpdateRequest(BaseModel):
+    api_key: str = Field(min_length=10, max_length=200)
+
+    @field_validator("api_key", mode="before")
+    @classmethod
+    def strip_key(cls, v: object) -> object:
+        return v.strip() if isinstance(v, str) else v

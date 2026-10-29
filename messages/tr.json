@@ -2004,6 +2004,45 @@
       "unknown": "Ayrıntılar için backend günlüklerine bakın."
     },
     "detailLabel": "Sağlayıcı mesajı:",
-    "dismiss": "Kapat"
+    "dismiss": "Kapat",
+    "ownKey": {
+      "auth": "Gemini API anahtarınızı reddetti.",
+      "quota": "API anahtarınız Gemini kotasına veya istek sınırına ulaştı.",
+      "hint": "Anahtarınızı Ayarlar → Hesap bölümünden kontrol edin veya değiştirin ya da bu sunucunun anahtarını kullanmak için kaldırın."
+    }
+  },
+  "apiKey": {
+    "title": "Gemini API anahtarınız",
+    "description": "Bu sunucunun ortak anahtarı yerine kendi Google Gemini API anahtarınızı kullanın. Yaptığınız istekler bu durumda sizin anahtarınıza faturalandırılır ve onun limitlerinden düşülür.",
+    "getKey": "Google AI Studio'dan ücretsiz bir anahtar alın",
+    "usedFor": "Kullanım alanı: {services}",
+    "usingOwn": "Sonu {hint} ile biten anahtarınız kullanılıyor.",
+    "usingServer": "Bu sunucunun anahtarı kullanılıyor.",
+    "label": "Gemini API anahtarı",
+    "placeholderReplace": "Değiştirmek için yeni bir anahtar yapıştırın",
+    "save": "Anahtarı kaydet",
+    "checking": "Kontrol ediliyor…",
+    "saved": "Anahtar doğrulandı ve kaydedildi.",
+    "savedWarning": {
+      "quota": "Anahtar kaydedildi, ancak Gemini şu anda kotanın dolduğunu veya istek sınırına ulaşıldığını bildiriyor.",
+      "overloaded": "Anahtar kaydedildi, ancak Gemini şu anda aşırı yüklü olduğundan tam olarak kontrol edilemedi.",
+      "auth": "Anahtar kaydedildi.",
+      "timeout": "Anahtar kaydedildi.",
+      "unreachable": "Anahtar kaydedildi.",
+      "unknown": "Anahtar kaydedildi."
+    },
+    "rejected": {
+      "auth": "Gemini bu anahtarı reddetti. Anahtarı eksiksiz kopyaladığınızdan emin olun.",
+      "quota": "Gemini bu anahtarın kotasının dolduğunu bildiriyor.",
+      "overloaded": "Gemini aşırı yüklü. Bir dakika sonra tekrar deneyin.",
+      "timeout": "Gemini'nin yanıt vermesi çok uzun sürdü. Tekrar deneyin.",
+      "unreachable": "Anahtarı kontrol etmek için Gemini'ye ulaşılamadı. Tekrar deneyin.",
+      "unknown": "Gemini bu anahtarı doğrulayamadı."
+    },
+    "invalidFormat": "Bu bir API anahtarına benzemiyor.",
+    "remove": "Anahtarımı kaldır",
+    "removed": "Anahtar kaldırıldı. Yeniden bu sunucunun anahtarı kullanılıyor.",
+    "removeFailed": "Anahtar kaldırılamadı. Tekrar deneyin.",
+    "privacy": "Anahtarınız şifrelenerek bu sunucuda saklanır, yalnızca sizin isteklerinizde kullanılır ve tarayıcıya asla geri gönderilmez. Anahtarınız çalışmayı bırakırsa, sessizce sunucunun anahtarına geçmek yerine bir hata görürsünüz."
   }
 }

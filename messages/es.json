@@ -2004,6 +2004,45 @@
       "unknown": "Consulta los registros del backend para más detalles."
     },
     "detailLabel": "Mensaje del proveedor:",
-    "dismiss": "Cerrar"
+    "dismiss": "Cerrar",
+    "ownKey": {
+      "auth": "Gemini rechazó tu clave de API.",
+      "quota": "Tu clave de API alcanzó su cuota o límite de solicitudes de Gemini.",
+      "hint": "Revisa o reemplaza tu clave en Ajustes → Cuenta, o elimínala para usar la clave de este servidor."
+    }
+  },
+  "apiKey": {
+    "title": "Tu clave de API de Gemini",
+    "description": "Usa tu propia clave de API de Google Gemini en lugar de la clave compartida de este servidor. Tus solicitudes se facturarán a tu clave y contarán para sus límites.",
+    "getKey": "Consigue una clave gratis en Google AI Studio",
+    "usedFor": "Se usa para: {services}",
+    "usingOwn": "Usando tu clave que termina en {hint}.",
+    "usingServer": "Usando la clave de este servidor.",
+    "label": "Clave de API de Gemini",
+    "placeholderReplace": "Pega una nueva clave para reemplazarla",
+    "save": "Guardar clave",
+    "checking": "Comprobando…",
+    "saved": "Clave verificada y guardada.",
+    "savedWarning": {
+      "quota": "Clave guardada, pero Gemini indica que ahora mismo no tiene cuota o alcanzó el límite de solicitudes.",
+      "overloaded": "Clave guardada, pero Gemini está saturado ahora mismo, así que no se pudo comprobar del todo.",
+      "auth": "Clave guardada.",
+      "timeout": "Clave guardada.",
+      "unreachable": "Clave guardada.",
+      "unknown": "Clave guardada."
+    },
+    "rejected": {
+      "auth": "Gemini rechazó esta clave. Comprueba que la copiaste completa.",
+      "quota": "Gemini indica que esta clave no tiene cuota disponible.",
+      "overloaded": "Gemini está saturado. Inténtalo de nuevo en un minuto.",
+      "timeout": "Gemini tardó demasiado en responder. Inténtalo de nuevo.",
+      "unreachable": "No se pudo conectar con Gemini para comprobar la clave. Inténtalo de nuevo.",
+      "unknown": "Gemini no pudo verificar esta clave."
+    },
+    "invalidFormat": "Eso no parece una clave de API.",
+    "remove": "Eliminar mi clave",
+    "removed": "Clave eliminada. Se vuelve a usar la clave de este servidor.",
+    "removeFailed": "No se pudo eliminar la clave. Inténtalo de nuevo.",
+    "privacy": "Tu clave se cifra y se guarda en este servidor, solo se usa para tus propias solicitudes y nunca se envía de vuelta al navegador. Si tu clave deja de funcionar, verás un error en lugar de un cambio silencioso a la clave del servidor."
   }
 }

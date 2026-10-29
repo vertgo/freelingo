@@ -2004,6 +2004,45 @@
       "unknown": "See the backend logs for details."
     },
     "detailLabel": "Provider message:",
-    "dismiss": "Dismiss"
+    "dismiss": "Dismiss",
+    "ownKey": {
+      "auth": "Gemini rejected your API key.",
+      "quota": "Your API key has reached its Gemini quota or rate limit.",
+      "hint": "Check or replace your key in Settings → Account, or remove it to use this server's key."
+    }
+  },
+  "apiKey": {
+    "title": "Your Gemini API key",
+    "description": "Use your own Google Gemini API key instead of this server's shared one. Requests you make are then billed to your key and count against its limits.",
+    "getKey": "Get a free key from Google AI Studio",
+    "usedFor": "Used for: {services}",
+    "usingOwn": "Using your key ending {hint}.",
+    "usingServer": "Using this server's key.",
+    "label": "Gemini API key",
+    "placeholderReplace": "Paste a new key to replace it",
+    "save": "Save key",
+    "checking": "Checking…",
+    "saved": "Key verified and saved.",
+    "savedWarning": {
+      "quota": "Key saved, but Gemini says it's out of quota or rate-limited right now.",
+      "overloaded": "Key saved, but Gemini is overloaded right now, so it couldn't be fully checked.",
+      "auth": "Key saved.",
+      "timeout": "Key saved.",
+      "unreachable": "Key saved.",
+      "unknown": "Key saved."
+    },
+    "rejected": {
+      "auth": "Gemini rejected this key. Check that you copied it completely.",
+      "quota": "Gemini says this key is out of quota.",
+      "overloaded": "Gemini is overloaded. Try again in a minute.",
+      "timeout": "Gemini took too long to respond. Try again.",
+      "unreachable": "Couldn't reach Gemini to check the key. Try again.",
+      "unknown": "Gemini couldn't verify this key."
+    },
+    "invalidFormat": "That doesn't look like an API key.",
+    "remove": "Remove my key",
+    "removed": "Key removed. This server's key is used again.",
+    "removeFailed": "Couldn't remove the key. Try again.",
+    "privacy": "Your key is encrypted and stored on this server, used only for your own requests, and never sent back to the browser. If your key stops working you'll see an error rather than a silent switch to the server's key."
   }
 }

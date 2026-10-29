@@ -2004,6 +2004,45 @@
       "unknown": "Consulta i log del backend per i dettagli."
     },
     "detailLabel": "Messaggio del fornitore:",
-    "dismiss": "Chiudi"
+    "dismiss": "Chiudi",
+    "ownKey": {
+      "auth": "Gemini ha rifiutato la tua chiave API.",
+      "quota": "La tua chiave API ha raggiunto la quota o il limite di frequenza di Gemini.",
+      "hint": "Controlla o sostituisci la tua chiave in Impostazioni → Account, oppure rimuovila per usare la chiave di questo server."
+    }
+  },
+  "apiKey": {
+    "title": "La tua chiave API Gemini",
+    "description": "Usa la tua chiave API Google Gemini invece di quella condivisa di questo server. Le tue richieste verranno addebitate alla tua chiave e conteranno nei suoi limiti.",
+    "getKey": "Ottieni una chiave gratuita da Google AI Studio",
+    "usedFor": "Usata per: {services}",
+    "usingOwn": "In uso la tua chiave che termina con {hint}.",
+    "usingServer": "In uso la chiave di questo server.",
+    "label": "Chiave API Gemini",
+    "placeholderReplace": "Incolla una nuova chiave per sostituirla",
+    "save": "Salva chiave",
+    "checking": "Verifica in corso…",
+    "saved": "Chiave verificata e salvata.",
+    "savedWarning": {
+      "quota": "Chiave salvata, ma Gemini segnala che al momento la quota è esaurita o il limite di frequenza è stato raggiunto.",
+      "overloaded": "Chiave salvata, ma Gemini è sovraccarico al momento, quindi non è stato possibile verificarla del tutto.",
+      "auth": "Chiave salvata.",
+      "timeout": "Chiave salvata.",
+      "unreachable": "Chiave salvata.",
+      "unknown": "Chiave salvata."
+    },
+    "rejected": {
+      "auth": "Gemini ha rifiutato questa chiave. Controlla di averla copiata per intero.",
+      "quota": "Gemini segnala che la quota di questa chiave è esaurita.",
+      "overloaded": "Gemini è sovraccarico. Riprova tra un minuto.",
+      "timeout": "Gemini ha impiegato troppo tempo a rispondere. Riprova.",
+      "unreachable": "Impossibile contattare Gemini per verificare la chiave. Riprova.",
+      "unknown": "Gemini non è riuscito a verificare questa chiave."
+    },
+    "invalidFormat": "Non sembra una chiave API.",
+    "remove": "Rimuovi la mia chiave",
+    "removed": "Chiave rimossa. Si torna a usare la chiave di questo server.",
+    "removeFailed": "Impossibile rimuovere la chiave. Riprova.",
+    "privacy": "La tua chiave viene cifrata e memorizzata su questo server, usata solo per le tue richieste e mai rinviata al browser. Se la tua chiave smette di funzionare vedrai un errore invece di un passaggio silenzioso alla chiave del server."
   }
 }

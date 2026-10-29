@@ -12,6 +12,7 @@ from google.genai import types as genai_types
 from app.core.app_logger import get_logger
 from app.services.ai_errors import reports_ai_failure
 from app.services.prompts.speech import build_speech_instructions
+from app.services.user_api_keys import client_for_key, current_user_api_key
 
 logger = get_logger(__name__)
 
@@ -234,16 +235,24 @@ class GeminiTTSService:
         timeout: float = 60.0,
         fallback_models: list[str] | None = None,
     ) -> None:
-        self._client = genai.Client(api_key=api_key)
+        self._server_client = genai.Client(api_key=api_key)
         self.model = model
         self.voice = voice
         self.timeout = timeout
         # Tried in order when a model is out of quota or overloaded; quotas are per model.
         self.fallback_models = [m for m in fallback_models or [] if m != model]
 
+    @property
+    def _client(self) -> genai.Client:
+        """The learner's own key when they saved one, otherwise the server's."""
+        api_key = current_user_api_key()
+        if api_key is None:
+            return self._server_client
+        return client_for_key("genai", api_key, lambda key: genai.Client(api_key=key))
+
     async def health(self) -> None:
         """Raise if the Gemini API is unreachable or the key is rejected."""
-        await self._client.aio.models.get(model=self.model)
+        await self._server_client.aio.models.get(model=self.model)
 
     def get_instructions(self, language: str | None = None) -> str:
         return build_speech_instructions(language)

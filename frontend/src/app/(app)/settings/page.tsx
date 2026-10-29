@@ -23,6 +23,7 @@ import { UsageLimitsSection } from '@/components/settings/UsageLimitsSection'
 import { AppearanceSection } from '@/components/settings/AppearanceSection'
 import { BillingSection } from '@/components/settings/BillingSection'
 import { ReviewSection } from '@/components/settings/ReviewSection'
+import { ApiKeySection } from '@/components/settings/ApiKeySection'
 import {
   SettingsActionCard,
   SettingsNav,
@@ -89,6 +90,8 @@ export default function SettingsPage() {
       <div className="space-y-4">
         <SettingsPanel id="account" title={t('sectionAccount')}>
           <ProfileSection title={t('cardProfileAccess')} />
+
+          <ApiKeySection />
 
           <div className="border-fl-border bg-fl-surface border p-6">
             <div className="border-fl-border mb-4 flex items-center gap-2 border-b pb-4">

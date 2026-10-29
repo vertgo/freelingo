@@ -8,6 +8,7 @@ from google.genai import types as genai_types
 
 from app.core.app_logger import get_logger
 from app.services.ai_errors import reports_ai_failure
+from app.services.user_api_keys import client_for_key, current_user_api_key
 
 logger = get_logger(__name__)
 
@@ -97,13 +98,21 @@ class OpenAISTTService:
 
 class GeminiSTTService:
     def __init__(self, api_key: str, model: str, timeout: float = 60.0) -> None:
-        self._client = genai.Client(api_key=api_key)
+        self._server_client = genai.Client(api_key=api_key)
         self.model = model
         self.timeout = timeout
 
+    @property
+    def _client(self) -> genai.Client:
+        """The learner's own key when they saved one, otherwise the server's."""
+        api_key = current_user_api_key()
+        if api_key is None:
+            return self._server_client
+        return client_for_key("genai", api_key, lambda key: genai.Client(api_key=key))
+
     async def health(self) -> None:
         """Raise if the Gemini API is unreachable or the key is rejected."""
-        await self._client.aio.models.get(model=self.model)
+        await self._server_client.aio.models.get(model=self.model)
 
     @reports_ai_failure("stt")
     async def transcribe(

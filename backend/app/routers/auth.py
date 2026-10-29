@@ -16,7 +16,7 @@ from fastapi import (
     UploadFile,
     status,
 )
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, JSONResponse
 from redis.asyncio import Redis
 from sqlalchemy import func, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -36,6 +36,8 @@ from app.core.security import (
 from app.models.user import User
 from app.models.user_language import UserLanguage
 from app.schemas.auth import (
+    ApiKeyStatus,
+    ApiKeyUpdateRequest,
     ForgotPasswordRequest,
     LoginRequest,
     RegisterRequest,
@@ -46,6 +48,16 @@ from app.schemas.auth import (
     UserUpdateRequest,
 )
 from app.services import email_service
+from app.services.ai_errors import classify_ai_error
+from app.services.user_api_keys import (
+    decrypt_api_key,
+    encrypt_api_key,
+    gemini_services,
+    key_hint,
+    use_user_api_key,
+    user_api_keys_enabled,
+    validate_gemini_key,
+)
 
 logger = get_logger(__name__)
 
@@ -523,6 +535,69 @@ async def delete_avatar(
     await db.commit()
     await db.refresh(current_user)
     return current_user
+
+
+def _api_key_status(user: User, warning: str | None = None) -> ApiKeyStatus:
+    api_key = decrypt_api_key(user.encrypted_api_key)
+    return ApiKeyStatus(
+        enabled=user_api_keys_enabled(),
+        has_key=api_key is not None,
+        hint=key_hint(api_key) if api_key else None,
+        services=gemini_services(),
+        warning=warning,
+    )
+
+
+@router.get("/me/api-key", response_model=ApiKeyStatus)
+@limiter.limit("60/minute")
+async def get_api_key(request: Request, current_user: User = Depends(get_current_user)):
+    return _api_key_status(current_user)
+
+
+@router.put("/me/api-key", response_model=ApiKeyStatus)
+@limiter.limit("10/minute")
+async def set_api_key(
+    request: Request,
+    data: ApiKeyUpdateRequest,
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
+):
+    """Check the key against Gemini, then store it encrypted.
+
+    A key that is merely out of quota or hitting an overloaded model still
+    works, so it is saved with a warning; any other failure rejects it.
+    """
+    if not user_api_keys_enabled():
+        raise HTTPException(status_code=403, detail="Personal API keys are disabled")
+    warning = None
+    try:
+        await validate_gemini_key(data.api_key)
+    except Exception as exc:
+        reason = classify_ai_error(exc)
+        if reason not in ("quota", "overloaded"):
+            logger.info("user_api_key_rejected", user_id=current_user.id, reason=reason)
+            return JSONResponse(
+                status_code=400,
+                content={"detail": "The API key could not be verified.", "reason": reason},
+            )
+        warning = reason
+    current_user.encrypted_api_key = encrypt_api_key(data.api_key)
+    await db.commit()
+    use_user_api_key(current_user.encrypted_api_key)
+    return _api_key_status(current_user, warning)
+
+
+@router.delete("/me/api-key", response_model=ApiKeyStatus)
+@limiter.limit("60/minute")
+async def delete_api_key(
+    request: Request,
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
+):
+    current_user.encrypted_api_key = None
+    await db.commit()
+    use_user_api_key(None)
+    return _api_key_status(current_user)
 
 
 @router.delete("/me", status_code=status.HTTP_204_NO_CONTENT)

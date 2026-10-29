@@ -35,6 +35,8 @@ export function AIStatusBanner() {
   const pathname = usePathname()
   const isAdmin = useAuthStore((s) => s.user?.role === 'admin')
   const [failure, setFailure] = useState<AIFailure | null>(null)
+  // Services running on the learner's own API key, per /api/ai-status.
+  const [ownKeyServices, setOwnKeyServices] = useState<string[]>([])
 
   useEffect(() => {
     const show = (next: AIFailure) => {
@@ -56,6 +58,9 @@ export function AIStatusBanner() {
       .then((res) => (res.ok ? res.json() : null))
       .then((body) => {
         if (canceled) return
+        if (Array.isArray(body?.own_key_services)) {
+          setOwnKeyServices(body.own_key_services)
+        }
         const next = parseAIFailure(body?.failure)
         if (next) show(next)
         else if (body) setFailure(null)
@@ -75,6 +80,19 @@ export function AIStatusBanner() {
     setFailure(null)
   }
 
+  // Their own key's quota or rejection is theirs to fix, not the server's.
+  const ownKeyIssue =
+    ownKeyServices.includes(failure.service) &&
+    (failure.code === 'auth' || failure.code === 'quota')
+  const reason = ownKeyIssue
+    ? t(`ownKey.${failure.code}`)
+    : t(`reasons.${failure.code}`)
+  const hint = ownKeyIssue
+    ? t('ownKey.hint')
+    : isAdmin
+      ? t(`adminHints.${failure.code}`)
+      : t('userHint')
+
   return (
     <div
       role="alert"
@@ -82,12 +100,9 @@ export function AIStatusBanner() {
     >
       <div className="min-w-0 flex-1 font-mono text-xs tracking-wide">
         <p className="text-fl-error-fg">
-          ● {t('title', { service: t(`services.${failure.service}`) })}{' '}
-          {t(`reasons.${failure.code}`)}
+          ● {t('title', { service: t(`services.${failure.service}`) })} {reason}
         </p>
-        <p className="text-fl-muted-2 mt-0.5">
-          {isAdmin ? t(`adminHints.${failure.code}`) : t('userHint')}
-        </p>
+        <p className="text-fl-muted-2 mt-0.5">{hint}</p>
         {isAdmin && failure.detail && (
           <p className="text-fl-muted-3 mt-0.5 break-words">
             {t('detailLabel')} {failure.detail}

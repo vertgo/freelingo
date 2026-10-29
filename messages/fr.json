@@ -2004,6 +2004,45 @@
       "unknown": "Consultez les journaux du backend pour plus de détails."
     },
     "detailLabel": "Message du fournisseur :",
-    "dismiss": "Fermer"
+    "dismiss": "Fermer",
+    "ownKey": {
+      "auth": "Gemini a refusé votre clé API.",
+      "quota": "Votre clé API a atteint son quota ou sa limite de débit Gemini.",
+      "hint": "Vérifiez ou remplacez votre clé dans Paramètres → Compte, ou supprimez-la pour utiliser la clé de ce serveur."
+    }
+  },
+  "apiKey": {
+    "title": "Votre clé API Gemini",
+    "description": "Utilisez votre propre clé API Google Gemini au lieu de la clé partagée de ce serveur. Vos requêtes sont alors facturées sur votre clé et comptent dans ses limites.",
+    "getKey": "Obtenir une clé gratuite sur Google AI Studio",
+    "usedFor": "Utilisée pour : {services}",
+    "usingOwn": "Utilisation de votre clé se terminant par {hint}.",
+    "usingServer": "Utilisation de la clé de ce serveur.",
+    "label": "Clé API Gemini",
+    "placeholderReplace": "Collez une nouvelle clé pour la remplacer",
+    "save": "Enregistrer la clé",
+    "checking": "Vérification…",
+    "saved": "Clé vérifiée et enregistrée.",
+    "savedWarning": {
+      "quota": "Clé enregistrée, mais Gemini indique que son quota est épuisé ou que sa limite de débit est atteinte pour le moment.",
+      "overloaded": "Clé enregistrée, mais Gemini est surchargé pour le moment, elle n'a donc pas pu être entièrement vérifiée.",
+      "auth": "Clé enregistrée.",
+      "timeout": "Clé enregistrée.",
+      "unreachable": "Clé enregistrée.",
+      "unknown": "Clé enregistrée."
+    },
+    "rejected": {
+      "auth": "Gemini a refusé cette clé. Vérifiez que vous l'avez copiée en entier.",
+      "quota": "Gemini indique que le quota de cette clé est épuisé.",
+      "overloaded": "Gemini est surchargé. Réessayez dans une minute.",
+      "timeout": "Gemini a mis trop de temps à répondre. Réessayez.",
+      "unreachable": "Impossible de joindre Gemini pour vérifier la clé. Réessayez.",
+      "unknown": "Gemini n'a pas pu vérifier cette clé."
+    },
+    "invalidFormat": "Cela ne ressemble pas à une clé API.",
+    "remove": "Supprimer ma clé",
+    "removed": "Clé supprimée. La clé de ce serveur est de nouveau utilisée.",
+    "removeFailed": "Impossible de supprimer la clé. Réessayez.",
+    "privacy": "Votre clé est chiffrée et stockée sur ce serveur, utilisée uniquement pour vos propres requêtes et jamais renvoyée au navigateur. Si votre clé cesse de fonctionner, vous verrez une erreur plutôt qu'un basculement silencieux vers la clé du serveur."
   }
 }

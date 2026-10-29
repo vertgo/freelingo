@@ -9,6 +9,7 @@ pydantic-settings==2.16.1
 pydantic[email]==2.14.1
 PyJWT==2.15.1
 bcrypt==5.0.0
+cryptography==50.0.2
 redis==8.1.0
 openai==3.31.0
 anthropic==1.15.0

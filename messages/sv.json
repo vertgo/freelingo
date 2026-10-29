@@ -2004,6 +2004,45 @@
       "unknown": "Se backend-loggarna för detaljer."
     },
     "detailLabel": "Meddelande från leverantören:",
-    "dismiss": "Stäng"
+    "dismiss": "Stäng",
+    "ownKey": {
+      "auth": "Gemini avvisade din API-nyckel.",
+      "quota": "Din API-nyckel har nått sin Gemini-kvot eller hastighetsgräns.",
+      "hint": "Kontrollera eller ersätt din nyckel under Inställningar → Konto, eller ta bort den för att använda serverns nyckel."
+    }
+  },
+  "apiKey": {
+    "title": "Din Gemini API-nyckel",
+    "description": "Använd din egen Google Gemini API-nyckel i stället för serverns delade nyckel. Dina förfrågningar debiteras då din nyckel och räknas mot dess gränser.",
+    "getKey": "Skaffa en gratis nyckel från Google AI Studio",
+    "usedFor": "Används för: {services}",
+    "usingOwn": "Använder din nyckel som slutar på {hint}.",
+    "usingServer": "Använder serverns nyckel.",
+    "label": "Gemini API-nyckel",
+    "placeholderReplace": "Klistra in en ny nyckel för att ersätta den",
+    "save": "Spara nyckel",
+    "checking": "Kontrollerar…",
+    "saved": "Nyckeln är verifierad och sparad.",
+    "savedWarning": {
+      "quota": "Nyckeln är sparad, men Gemini säger att kvoten är slut eller att hastighetsgränsen är nådd just nu.",
+      "overloaded": "Nyckeln är sparad, men Gemini är överbelastat just nu, så den kunde inte kontrolleras helt.",
+      "auth": "Nyckeln är sparad.",
+      "timeout": "Nyckeln är sparad.",
+      "unreachable": "Nyckeln är sparad.",
+      "unknown": "Nyckeln är sparad."
+    },
+    "rejected": {
+      "auth": "Gemini avvisade den här nyckeln. Kontrollera att du kopierade hela nyckeln.",
+      "quota": "Gemini säger att den här nyckelns kvot är slut.",
+      "overloaded": "Gemini är överbelastat. Försök igen om en minut.",
+      "timeout": "Gemini tog för lång tid att svara. Försök igen.",
+      "unreachable": "Kunde inte nå Gemini för att kontrollera nyckeln. Försök igen.",
+      "unknown": "Gemini kunde inte verifiera den här nyckeln."
+    },
+    "invalidFormat": "Det där ser inte ut som en API-nyckel.",
+    "remove": "Ta bort min nyckel",
+    "removed": "Nyckeln är borttagen. Serverns nyckel används igen.",
+    "removeFailed": "Kunde inte ta bort nyckeln. Försök igen.",
+    "privacy": "Din nyckel krypteras och lagras på den här servern, används bara för dina egna förfrågningar och skickas aldrig tillbaka till webbläsaren. Om din nyckel slutar fungera ser du ett felmeddelande i stället för ett tyst byte till serverns nyckel."
   }
 }

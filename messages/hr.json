@@ -2004,6 +2004,45 @@
       "unknown": "Pojedinosti potraži u zapisima backenda."
     },
     "detailLabel": "Poruka pružatelja:",
-    "dismiss": "Zatvori"
+    "dismiss": "Zatvori",
+    "ownKey": {
+      "auth": "Gemini je odbio vaš API ključ.",
+      "quota": "Vaš API ključ dosegnuo je svoju Gemini kvotu ili ograničenje broja zahtjeva.",
+      "hint": "Provjerite ili zamijenite svoj ključ u Postavke → Račun ili ga uklonite kako biste koristili ključ ovog poslužitelja."
+    }
+  },
+  "apiKey": {
+    "title": "Vaš Gemini API ključ",
+    "description": "Koristite vlastiti Google Gemini API ključ umjesto zajedničkog ključa ovog poslužitelja. Vaši se zahtjevi tada naplaćuju na vaš ključ i ulaze u njegova ograničenja.",
+    "getKey": "Nabavite besplatan ključ na Google AI Studio",
+    "usedFor": "Koristi se za: {services}",
+    "usingOwn": "Koristi se vaš ključ koji završava na {hint}.",
+    "usingServer": "Koristi se ključ ovog poslužitelja.",
+    "label": "Gemini API ključ",
+    "placeholderReplace": "Zalijepite novi ključ da biste ga zamijenili",
+    "save": "Spremi ključ",
+    "checking": "Provjera…",
+    "saved": "Ključ je provjeren i spremljen.",
+    "savedWarning": {
+      "quota": "Ključ je spremljen, ali Gemini javlja da je kvota trenutačno potrošena ili je dosegnuto ograničenje broja zahtjeva.",
+      "overloaded": "Ključ je spremljen, ali Gemini je trenutačno preopterećen pa ga nije bilo moguće u potpunosti provjeriti.",
+      "auth": "Ključ je spremljen.",
+      "timeout": "Ključ je spremljen.",
+      "unreachable": "Ključ je spremljen.",
+      "unknown": "Ključ je spremljen."
+    },
+    "rejected": {
+      "auth": "Gemini je odbio ovaj ključ. Provjerite jeste li ga kopirali u cijelosti.",
+      "quota": "Gemini javlja da je kvota ovog ključa potrošena.",
+      "overloaded": "Gemini je preopterećen. Pokušajte ponovno za minutu.",
+      "timeout": "Gemini je predugo odgovarao. Pokušajte ponovno.",
+      "unreachable": "Nije moguće povezati se s Geminijem radi provjere ključa. Pokušajte ponovno.",
+      "unknown": "Gemini nije mogao potvrditi ovaj ključ."
+    },
+    "invalidFormat": "To ne izgleda kao API ključ.",
+    "remove": "Ukloni moj ključ",
+    "removed": "Ključ je uklonjen. Ponovno se koristi ključ ovog poslužitelja.",
+    "removeFailed": "Ključ nije moguće ukloniti. Pokušajte ponovno.",
+    "privacy": "Vaš se ključ šifrira i pohranjuje na ovom poslužitelju, koristi se samo za vaše zahtjeve i nikad se ne šalje natrag pregledniku. Ako vaš ključ prestane raditi, vidjet ćete pogrešku umjesto tihog prelaska na ključ poslužitelja."
   }
 }

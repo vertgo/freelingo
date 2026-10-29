@@ -17,7 +17,7 @@ in `rate-limiting.instructions.md`.
 ## Health — `/health`
 
 - **GET `/health`** — Rate limit: 60/min. Public liveness check. Returns `{"status":"ok"}` only and does not expose DB, Redis, TTS, or STT dependency details.
-- **GET `/api/ai-status`** — Rate limit: 60/min. Authenticated. Returns `{"failure": {service, code, at, detail?} | null}`: the most recent AI provider failure from the last 15 minutes, with the raw provider `detail` only for admins. See `llm-error-handling.instructions.md`.
+- **GET `/api/ai-status`** — Rate limit: 60/min. Authenticated. Returns `{"failure": {service, code, at, detail?} | null, "own_key_services": [...]}`: the most recent AI provider failure from the last 15 minutes, with the raw provider `detail` only for admins. `own_key_services` lists the services running on the learner's own API key; server failures in those are omitted. See `llm-error-handling.instructions.md`.
 
 ---
 
@@ -96,6 +96,9 @@ source IDs remain private; failed attempts never reveal the solution.
 - **POST `/me/avatar`** — Rate limit: 60/min. Uploads the authenticated user's profile avatar (JPEG/PNG, max 2 MB). Validates the declared content type, image signature, and minimal image structure, stores the image on disk under `/app/avatars` using a non-predictable UUID filename, and returns the user profile with `avatar` set to a cache-busted internal reference (`/api/avatars/{uuid}.{ext}?v={ms}`). The file reference is not publicly served.
 - **GET `/me/avatar-file`** — Rate limit: 60/min. Authenticated current-user avatar retrieval endpoint. Returns only the authenticated user's own avatar file; this is the supported image retrieval path used by the frontend. Responses are marked `Cache-Control: private, no-store`; client-side avatar reuse is handled by the frontend blob cache keyed by the stored avatar reference.
 - **DELETE `/me/avatar`** — Rate limit: 60/min. Removes profile avatar (sets to null)
+- **GET `/me/api-key`** — Rate limit: 60/min. Returns `ApiKeyStatus` `{enabled, has_key, hint, services, warning}` for the learner's own Gemini API key. `enabled` is false unless `ALLOW_USER_API_KEYS` is on and at least one service runs on Gemini; `services` lists those (`llm`, `tts`, `stt`, `voice`); `hint` is `…` plus the last four characters. The key itself is never returned.
+- **PUT `/me/api-key`** — Rate limit: 10/min. Body `{api_key}` (10–200 chars, trimmed). Checks the key with a Gemini model lookup, then stores it Fernet-encrypted in `users.encrypted_api_key`. Quota or overload errors still save the key and set `warning`; any other failure returns 400 `{detail, reason}` with a reason code from `llm-error-handling.instructions.md`. 403 when disabled.
+- **DELETE `/me/api-key`** — Rate limit: 60/min. Removes the learner's key; the server key is used again.
 - **DELETE `/me`** — Rate limit: 5/min. Deletes own account and all associated data (CASCADE). Forbidden for admin accounts.
 - **GET `/quota`** — Rate limit: 60/min. Returns live conversation quota status for the authenticated user (sessions this week, minutes today, minutes this week)
 - **GET `/verify-email`** — Rate limit: 60/min. Verifies email via one-time token (query param `token`, TTL 24h in Redis)

@@ -11,6 +11,7 @@ from app.core.security import decode_access_token
 from app.models.study_plan import StudyPlan
 from app.models.user import User
 from app.services.subscription_service import is_subscribed
+from app.services.user_api_keys import use_user_api_key
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/auth/login")
 
@@ -37,6 +38,7 @@ async def get_current_user(
     user = await db.get(User, user_id)
     if not user or not user.is_active:
         raise HTTPException(status_code=401, detail="User not found or inactive")
+    use_user_api_key(user.encrypted_api_key)
     return user
 
 

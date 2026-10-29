@@ -77,6 +77,7 @@ Registration, authentication, and user preferences.
 - `assessment_voice_trial_used` — boolean; `true` once the one-time post-assessment voice conversation demo has been consumed. Default: `false`.
 - `freemium_trial_ends_at` — nullable datetime; when the freemium 7-day trial expires. Set on registration when `STRIPE_ENABLED=true` and `FREEMIUM_TRIAL_ENABLED=true`.
 - `freemium_trial_used` — boolean; `true` once the user has ever used a freemium trial, preventing repeated trials. Default: `false`.
+- `encrypted_api_key` — nullable text; the learner's own Gemini API key, Fernet-encrypted with a key derived from `SECRET_KEY` (`app/services/user_api_keys.py`). Unreadable values (e.g. after `SECRET_KEY` changes) are treated as no key.
 - `avatar` — nullable text cache-busted internal avatar reference, for example `/api/avatars/{uuid}.{ext}?v={ms}`. Files are stored under `/app/avatars` and retrieved through authenticated profile endpoints with private no-store responses, not public static serving. Legacy base64 data URLs may still exist until replaced.
 - `bio` — nullable text profile bio.
 - `learning_goals` — nullable text JSON-encoded array of learning goal strings.

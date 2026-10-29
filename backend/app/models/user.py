@@ -82,6 +82,8 @@ class User(Base):
     freemium_trial_used: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
     avatar: Mapped[str | None] = mapped_column(Text, nullable=True)
     bio: Mapped[str | None] = mapped_column(Text, nullable=True)
+    # Learner's own Gemini key, Fernet-encrypted; see app/services/user_api_keys.py.
+    encrypted_api_key: Mapped[str | None] = mapped_column(Text, nullable=True)
     learning_goals: Mapped[str | None] = mapped_column(Text, nullable=True)  # JSON array string
     dismissed_dashboard_banner_revision: Mapped[int | None] = mapped_column(Integer, nullable=True)
     created_at: Mapped[datetime] = mapped_column(

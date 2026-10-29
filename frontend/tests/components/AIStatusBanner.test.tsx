@@ -23,8 +23,11 @@ const baseUser = {
   conversation_inactivity_timeout: 30,
 } satisfies User
 
-function statusResponse(failure: unknown) {
-  return new Response(JSON.stringify({ failure }), { status: 200 })
+function statusResponse(failure: unknown, ownKeyServices: string[] = []) {
+  return new Response(
+    JSON.stringify({ failure, own_key_services: ownKeyServices }),
+    { status: 200 }
+  )
 }
 
 describe('AIStatusBanner', () => {
@@ -91,6 +94,20 @@ describe('AIStatusBanner', () => {
     expect(await screen.findByRole('alert')).toHaveTextContent(
       'reasons.timeout'
     )
+  })
+
+  it("points learners at their own key when it's the one failing", async () => {
+    useAuthStore.setState({ user: { ...baseUser, role: 'admin' } })
+    mockApiFetch.mockResolvedValue(statusResponse(null, ['llm', 'tts']))
+    render(<AIStatusBanner />)
+    await waitFor(() => expect(mockApiFetch).toHaveBeenCalled())
+
+    act(() => reportAIError('auth', 'llm'))
+
+    const alert = await screen.findByRole('alert')
+    expect(alert).toHaveTextContent('ownKey.auth')
+    expect(alert).toHaveTextContent('ownKey.hint')
+    expect(alert).not.toHaveTextContent('adminHints')
   })
 
   it('ignores unknown codes', async () => {

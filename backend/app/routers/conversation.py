@@ -41,6 +41,7 @@ from app.services.memory_service import get_user_memories
 from app.services.quota_service import check_all_quotas
 from app.services.subscription_service import is_subscribed
 from app.services.tts_service import GEMINI_VOICES
+from app.services.user_api_keys import gemini_api_key, use_user_api_key
 from app.utils.db import db_session
 from app.utils.redis import redis_client as _redis_client
 
@@ -258,6 +259,7 @@ async def conversation_ws(
             )
             await websocket.close(code=1008)
             return
+        use_user_api_key(user.encrypted_api_key)
 
         # Check maintenance mode
         try:
@@ -550,7 +552,7 @@ async def conversation_ws(
         if settings.VOICE_PROVIDER == "gemini_live":
             pipeline_cls = GeminiLivePipeline
             pipeline_services = {
-                "api_key": settings.GEMINI_API_KEY,
+                "api_key": gemini_api_key(),
                 "model": settings.GEMINI_LIVE_MODEL,
                 "live_voice": voice_pref or settings.GEMINI_LIVE_VOICE,
             }

@@ -2004,6 +2004,45 @@
       "unknown": "Katso lisätietoja taustapalvelun lokeista."
     },
     "detailLabel": "Palveluntarjoajan viesti:",
-    "dismiss": "Sulje"
+    "dismiss": "Sulje",
+    "ownKey": {
+      "auth": "Gemini hylkäsi API-avaimesi.",
+      "quota": "API-avaimesi on saavuttanut Gemini-kiintiönsä tai pyyntörajansa.",
+      "hint": "Tarkista tai vaihda avaimesi kohdassa Asetukset → Tili, tai poista se käyttääksesi tämän palvelimen avainta."
+    }
+  },
+  "apiKey": {
+    "title": "Oma Gemini API-avaimesi",
+    "description": "Käytä omaa Google Gemini API-avaintasi tämän palvelimen jaetun avaimen sijaan. Pyyntösi laskutetaan silloin avaimellesi ja lasketaan sen rajoihin.",
+    "getKey": "Hanki ilmainen avain Google AI Studiosta",
+    "usedFor": "Käytetään: {services}",
+    "usingOwn": "Käytössä avaimesi, joka päättyy {hint}.",
+    "usingServer": "Käytössä tämän palvelimen avain.",
+    "label": "Gemini API-avain",
+    "placeholderReplace": "Liitä uusi avain korvataksesi sen",
+    "save": "Tallenna avain",
+    "checking": "Tarkistetaan…",
+    "saved": "Avain tarkistettu ja tallennettu.",
+    "savedWarning": {
+      "quota": "Avain tallennettu, mutta Geminin mukaan sen kiintiö on nyt käytetty tai pyyntöraja on täynnä.",
+      "overloaded": "Avain tallennettu, mutta Gemini on juuri nyt ylikuormittunut, joten sitä ei voitu tarkistaa kokonaan.",
+      "auth": "Avain tallennettu.",
+      "timeout": "Avain tallennettu.",
+      "unreachable": "Avain tallennettu.",
+      "unknown": "Avain tallennettu."
+    },
+    "rejected": {
+      "auth": "Gemini hylkäsi tämän avaimen. Tarkista, että kopioit sen kokonaan.",
+      "quota": "Geminin mukaan tämän avaimen kiintiö on käytetty.",
+      "overloaded": "Gemini on ylikuormittunut. Yritä uudelleen minuutin kuluttua.",
+      "timeout": "Gemini vastasi liian hitaasti. Yritä uudelleen.",
+      "unreachable": "Geminiin ei saatu yhteyttä avaimen tarkistamiseksi. Yritä uudelleen.",
+      "unknown": "Gemini ei voinut vahvistaa tätä avainta."
+    },
+    "invalidFormat": "Tämä ei näytä API-avaimelta.",
+    "remove": "Poista avaimeni",
+    "removed": "Avain poistettu. Tämän palvelimen avain on taas käytössä.",
+    "removeFailed": "Avaimen poistaminen epäonnistui. Yritä uudelleen.",
+    "privacy": "Avaimesi salataan ja tallennetaan tälle palvelimelle, sitä käytetään vain omiin pyyntöihisi eikä sitä koskaan lähetetä takaisin selaimeen. Jos avaimesi lakkaa toimimasta, näet virheilmoituksen sen sijaan, että palvelimen avain otettaisiin huomaamatta käyttöön."
   }
 }

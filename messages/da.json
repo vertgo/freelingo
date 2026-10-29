@@ -2004,6 +2004,45 @@
       "unknown": "Se backend-loggene for detaljer."
     },
     "detailLabel": "Besked fra udbyderen:",
-    "dismiss": "Luk"
+    "dismiss": "Luk",
+    "ownKey": {
+      "auth": "Gemini afviste din API-nøgle.",
+      "quota": "Din API-nøgle har nået sin Gemini-kvote eller hastighedsgrænse.",
+      "hint": "Tjek eller erstat din nøgle under Indstillinger → Konto, eller fjern den for at bruge serverens nøgle."
+    }
+  },
+  "apiKey": {
+    "title": "Din Gemini API-nøgle",
+    "description": "Brug din egen Google Gemini API-nøgle i stedet for serverens fælles nøgle. Dine forespørgsler faktureres så til din nøgle og tæller mod dens grænser.",
+    "getKey": "Få en gratis nøgle fra Google AI Studio",
+    "usedFor": "Bruges til: {services}",
+    "usingOwn": "Bruger din nøgle, der ender på {hint}.",
+    "usingServer": "Bruger serverens nøgle.",
+    "label": "Gemini API-nøgle",
+    "placeholderReplace": "Indsæt en ny nøgle for at erstatte den",
+    "save": "Gem nøgle",
+    "checking": "Kontrollerer…",
+    "saved": "Nøglen er bekræftet og gemt.",
+    "savedWarning": {
+      "quota": "Nøglen er gemt, men Gemini siger, at kvoten er brugt op eller at hastighedsgrænsen er nået lige nu.",
+      "overloaded": "Nøglen er gemt, men Gemini er overbelastet lige nu, så den kunne ikke kontrolleres fuldt ud.",
+      "auth": "Nøglen er gemt.",
+      "timeout": "Nøglen er gemt.",
+      "unreachable": "Nøglen er gemt.",
+      "unknown": "Nøglen er gemt."
+    },
+    "rejected": {
+      "auth": "Gemini afviste denne nøgle. Tjek, at du har kopieret hele nøglen.",
+      "quota": "Gemini siger, at denne nøgles kvote er brugt op.",
+      "overloaded": "Gemini er overbelastet. Prøv igen om et minut.",
+      "timeout": "Gemini var for længe om at svare. Prøv igen.",
+      "unreachable": "Kunne ikke kontakte Gemini for at kontrollere nøglen. Prøv igen.",
+      "unknown": "Gemini kunne ikke bekræfte denne nøgle."
+    },
+    "invalidFormat": "Det ligner ikke en API-nøgle.",
+    "remove": "Fjern min nøgle",
+    "removed": "Nøglen er fjernet. Serverens nøgle bruges igen.",
+    "removeFailed": "Kunne ikke fjerne nøglen. Prøv igen.",
+    "privacy": "Din nøgle krypteres og gemmes på denne server, bruges kun til dine egne forespørgsler og sendes aldrig tilbage til browseren. Hvis din nøgle holder op med at virke, får du en fejl i stedet for et stille skift til serverens nøgle."
   }
 }

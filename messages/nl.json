@@ -2004,6 +2004,45 @@
       "unknown": "Bekijk de backend-logs voor details."
     },
     "detailLabel": "Bericht van aanbieder:",
-    "dismiss": "Sluiten"
+    "dismiss": "Sluiten",
+    "ownKey": {
+      "auth": "Gemini heeft je API-sleutel geweigerd.",
+      "quota": "Je API-sleutel heeft het Gemini-quotum of de snelheidslimiet bereikt.",
+      "hint": "Controleer of vervang je sleutel via Instellingen → Account, of verwijder hem om de sleutel van deze server te gebruiken."
+    }
+  },
+  "apiKey": {
+    "title": "Je Gemini API-sleutel",
+    "description": "Gebruik je eigen Google Gemini API-sleutel in plaats van de gedeelde sleutel van deze server. Je verzoeken worden dan op jouw sleutel gefactureerd en tellen mee voor de limieten ervan.",
+    "getKey": "Haal een gratis sleutel op bij Google AI Studio",
+    "usedFor": "Gebruikt voor: {services}",
+    "usingOwn": "Je sleutel die eindigt op {hint} wordt gebruikt.",
+    "usingServer": "De sleutel van deze server wordt gebruikt.",
+    "label": "Gemini API-sleutel",
+    "placeholderReplace": "Plak een nieuwe sleutel om deze te vervangen",
+    "save": "Sleutel opslaan",
+    "checking": "Controleren…",
+    "saved": "Sleutel gecontroleerd en opgeslagen.",
+    "savedWarning": {
+      "quota": "Sleutel opgeslagen, maar volgens Gemini is het quotum op dit moment op of is de snelheidslimiet bereikt.",
+      "overloaded": "Sleutel opgeslagen, maar Gemini is op dit moment overbelast, dus kon hij niet volledig worden gecontroleerd.",
+      "auth": "Sleutel opgeslagen.",
+      "timeout": "Sleutel opgeslagen.",
+      "unreachable": "Sleutel opgeslagen.",
+      "unknown": "Sleutel opgeslagen."
+    },
+    "rejected": {
+      "auth": "Gemini heeft deze sleutel geweigerd. Controleer of je hem volledig hebt gekopieerd.",
+      "quota": "Volgens Gemini is het quotum van deze sleutel op.",
+      "overloaded": "Gemini is overbelast. Probeer het over een minuut opnieuw.",
+      "timeout": "Gemini deed er te lang over om te reageren. Probeer het opnieuw.",
+      "unreachable": "Kon Gemini niet bereiken om de sleutel te controleren. Probeer het opnieuw.",
+      "unknown": "Gemini kon deze sleutel niet verifiëren."
+    },
+    "invalidFormat": "Dat lijkt geen API-sleutel.",
+    "remove": "Mijn sleutel verwijderen",
+    "removed": "Sleutel verwijderd. De sleutel van deze server wordt weer gebruikt.",
+    "removeFailed": "Kon de sleutel niet verwijderen. Probeer het opnieuw.",
+    "privacy": "Je sleutel wordt versleuteld op deze server opgeslagen, alleen gebruikt voor je eigen verzoeken en nooit teruggestuurd naar de browser. Als je sleutel niet meer werkt, zie je een foutmelding in plaats van een stille overstap naar de sleutel van de server."
   }
 }

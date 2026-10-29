@@ -166,3 +166,14 @@ differences remain internal to the adapter.
 - Treat failures before visible stream output differently from failures after partial output.
 - Keep error messages provider-neutral unless operator action is genuinely provider-specific.
 - Update endpoint/domain specs when an observable status or stream event changes.
+
+## Learner API keys
+
+Learners can save their own Gemini key in Settings → Account (`ApiKeySection`). `get_current_user`
+and the voice WebSocket call `use_user_api_key`, which sets a per-request ContextVar; the Gemini
+LLM client (`LLMAdapter._chat_client`), Gemini TTS/STT (`_client`), and Gemini Live
+(`gemini_api_key()`) use it instead of `GEMINI_API_KEY`, with one cached SDK client per key. Tasks
+started from the request inherit it. A failing learner key is reported to that learner (headers, SSE,
+WebSocket) but never written to `ai:last_failure`, and there is no fallback to the server key.
+`AIStatusBanner` uses `own_key_services` to tell the learner to check their own key for `auth` and
+`quota` failures. Set `ALLOW_USER_API_KEYS=false` to turn the feature off.

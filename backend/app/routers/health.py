@@ -11,6 +11,7 @@ from app.core.deps import get_current_user, require_admin
 from app.core.limiter import limiter
 from app.models.user import User
 from app.services.ai_errors import get_last_ai_failure
+from app.services.user_api_keys import current_user_api_key, gemini_services
 from app.utils.redis import redis_client as _redis_client
 
 router = APIRouter(tags=["health"])
@@ -31,16 +32,25 @@ async def ai_status(
     request: Request,  # noqa: ARG001
     current_user: User = Depends(get_current_user),
 ) -> JSONResponse:
-    """The most recent AI provider failure, if it happened recently."""
+    """The most recent AI provider failure, if it happened recently.
+
+    ``own_key_services`` lists the services running on the learner's own API
+    key; server-key failures in those don't affect them and are left out.
+    """
+    own_key_services = gemini_services() if current_user_api_key() else []
     try:
         failure = await get_last_ai_failure()
     except Exception:
         failure = None
-    if not failure or time.time() - failure["at"] > AI_STATUS_WINDOW_SECONDS:
-        return JSONResponse({"failure": None})
-    if current_user.role != "admin":
+    if (
+        not failure
+        or time.time() - failure["at"] > AI_STATUS_WINDOW_SECONDS
+        or failure.get("service") in own_key_services
+    ):
+        failure = None
+    elif current_user.role != "admin":
         failure = {k: v for k, v in failure.items() if k != "detail"}
-    return JSONResponse({"failure": failure})
+    return JSONResponse({"failure": failure, "own_key_services": own_key_services})
 
 
 @router.get("/api/admin/health")

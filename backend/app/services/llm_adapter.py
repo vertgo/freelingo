@@ -19,6 +19,7 @@ from app.services.prompts.common import (
     JSON_ONLY_INSTRUCTION,
     STRUCTURED_OUTPUT_RETRY_PROMPT,
 )
+from app.services.user_api_keys import client_for_key, current_user_api_key
 
 logger = get_logger(__name__)
 
@@ -708,6 +709,17 @@ class LLMAdapter:
             self.client = None
             self.model = settings.ANTHROPIC_MODEL
 
+    def _chat_client(self) -> AsyncOpenAI:
+        """The learner's own Gemini key when they saved one, otherwise the server's."""
+        api_key = current_user_api_key() if self.provider == "gemini" else None
+        if api_key is None:
+            return self.client
+        return client_for_key(
+            "gemini-openai",
+            api_key,
+            lambda key: AsyncOpenAI(base_url=GEMINI_OPENAI_BASE_URL, api_key=key),
+        )
+
     async def _call_with_retry(
         self, fn, *args, tools_requested: bool = False, max_retries: int = MAX_RETRIES, **kwargs
     ):
@@ -865,7 +877,7 @@ class LLMAdapter:
                 }
                 for tool in tools
             ]
-        client = self.client
+        client = self._chat_client()
         if sdk_max_retries is not None:
             client = client.with_options(max_retries=sdk_max_retries)
         models = [self.model]

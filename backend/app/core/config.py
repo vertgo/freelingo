@@ -30,6 +30,8 @@ class Settings(BaseSettings):
     CODEX_BRIDGE_URL: str = "http://host.docker.internal:11535"
     CODEX_MODEL: str = "codex"
     GEMINI_API_KEY: str = ""
+    # Let learners save their own Gemini key in Settings, used instead of GEMINI_API_KEY.
+    ALLOW_USER_API_KEYS: bool = True
     GEMINI_MODEL: str = "gemini-3.8-flash"
     # Tried in order when the primary model is overloaded (HTTP 503/429).
     GEMINI_FALLBACK_MODELS: list[str] = ["gemini-3.5-flash", "gemini-3.5-flash-lite"]

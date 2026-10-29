@@ -2004,6 +2004,45 @@
       "unknown": "Consultă jurnalele backend-ului pentru detalii."
     },
     "detailLabel": "Mesajul furnizorului:",
-    "dismiss": "Închide"
+    "dismiss": "Închide",
+    "ownKey": {
+      "auth": "Gemini a respins cheia ta API.",
+      "quota": "Cheia ta API a atins cota sau limita de solicitări Gemini.",
+      "hint": "Verifică sau înlocuiește cheia în Setări → Cont sau elimin-o pentru a folosi cheia acestui server."
+    }
+  },
+  "apiKey": {
+    "title": "Cheia ta API Gemini",
+    "description": "Folosește propria cheie API Google Gemini în locul cheii comune a acestui server. Solicitările tale vor fi facturate pe cheia ta și se vor încadra în limitele ei.",
+    "getKey": "Obține o cheie gratuită din Google AI Studio",
+    "usedFor": "Folosită pentru: {services}",
+    "usingOwn": "Se folosește cheia ta care se termină cu {hint}.",
+    "usingServer": "Se folosește cheia acestui server.",
+    "label": "Cheie API Gemini",
+    "placeholderReplace": "Lipește o cheie nouă pentru a o înlocui",
+    "save": "Salvează cheia",
+    "checking": "Se verifică…",
+    "saved": "Cheie verificată și salvată.",
+    "savedWarning": {
+      "quota": "Cheia a fost salvată, dar Gemini spune că momentan cota este epuizată sau limita de solicitări a fost atinsă.",
+      "overloaded": "Cheia a fost salvată, dar Gemini este suprasolicitat momentan, așa că nu a putut fi verificată complet.",
+      "auth": "Cheia a fost salvată.",
+      "timeout": "Cheia a fost salvată.",
+      "unreachable": "Cheia a fost salvată.",
+      "unknown": "Cheia a fost salvată."
+    },
+    "rejected": {
+      "auth": "Gemini a respins această cheie. Verifică dacă ai copiat-o în întregime.",
+      "quota": "Gemini spune că această cheie și-a epuizat cota.",
+      "overloaded": "Gemini este suprasolicitat. Încearcă din nou peste un minut.",
+      "timeout": "Gemini a răspuns prea greu. Încearcă din nou.",
+      "unreachable": "Nu s-a putut contacta Gemini pentru verificarea cheii. Încearcă din nou.",
+      "unknown": "Gemini nu a putut verifica această cheie."
+    },
+    "invalidFormat": "Aceasta nu pare a fi o cheie API.",
+    "remove": "Elimină cheia mea",
+    "removed": "Cheia a fost eliminată. Se folosește din nou cheia acestui server.",
+    "removeFailed": "Cheia nu a putut fi eliminată. Încearcă din nou.",
+    "privacy": "Cheia ta este criptată și stocată pe acest server, folosită doar pentru propriile tale solicitări și nu este trimisă niciodată înapoi către browser. Dacă cheia ta nu mai funcționează, vei vedea o eroare, nu o trecere tacită la cheia serverului."
   }
 }

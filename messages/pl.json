@@ -2004,6 +2004,45 @@
       "unknown": "Szczegóły znajdziesz w logach backendu."
     },
     "detailLabel": "Komunikat dostawcy:",
-    "dismiss": "Zamknij"
+    "dismiss": "Zamknij",
+    "ownKey": {
+      "auth": "Gemini odrzucił Twój klucz API.",
+      "quota": "Twój klucz API osiągnął limit wykorzystania lub limit żądań Gemini.",
+      "hint": "Sprawdź lub zmień swój klucz w Ustawienia → Konto albo usuń go, aby używać klucza tego serwera."
+    }
+  },
+  "apiKey": {
+    "title": "Twój klucz API Gemini",
+    "description": "Używaj własnego klucza API Google Gemini zamiast wspólnego klucza tego serwera. Twoje żądania będą wtedy rozliczane na Twój klucz i wliczane do jego limitów.",
+    "getKey": "Uzyskaj darmowy klucz w Google AI Studio",
+    "usedFor": "Używany do: {services}",
+    "usingOwn": "Używany jest Twój klucz kończący się na {hint}.",
+    "usingServer": "Używany jest klucz tego serwera.",
+    "label": "Klucz API Gemini",
+    "placeholderReplace": "Wklej nowy klucz, aby go zastąpić",
+    "save": "Zapisz klucz",
+    "checking": "Sprawdzanie…",
+    "saved": "Klucz zweryfikowany i zapisany.",
+    "savedWarning": {
+      "quota": "Klucz zapisany, ale według Gemini limit wykorzystania jest obecnie wyczerpany lub osiągnięto limit żądań.",
+      "overloaded": "Klucz zapisany, ale Gemini jest obecnie przeciążony, więc nie udało się go w pełni sprawdzić.",
+      "auth": "Klucz zapisany.",
+      "timeout": "Klucz zapisany.",
+      "unreachable": "Klucz zapisany.",
+      "unknown": "Klucz zapisany."
+    },
+    "rejected": {
+      "auth": "Gemini odrzucił ten klucz. Sprawdź, czy skopiowano go w całości.",
+      "quota": "Według Gemini limit tego klucza jest wyczerpany.",
+      "overloaded": "Gemini jest przeciążony. Spróbuj ponownie za minutę.",
+      "timeout": "Gemini odpowiadał zbyt długo. Spróbuj ponownie.",
+      "unreachable": "Nie udało się połączyć z Gemini, aby sprawdzić klucz. Spróbuj ponownie.",
+      "unknown": "Gemini nie mógł zweryfikować tego klucza."
+    },
+    "invalidFormat": "To nie wygląda na klucz API.",
+    "remove": "Usuń mój klucz",
+    "removed": "Klucz usunięty. Ponownie używany jest klucz tego serwera.",
+    "removeFailed": "Nie udało się usunąć klucza. Spróbuj ponownie.",
+    "privacy": "Twój klucz jest szyfrowany i przechowywany na tym serwerze, używany tylko do Twoich żądań i nigdy nie jest odsyłany do przeglądarki. Jeśli Twój klucz przestanie działać, zobaczysz błąd zamiast cichego przełączenia na klucz serwera."
   }
 }

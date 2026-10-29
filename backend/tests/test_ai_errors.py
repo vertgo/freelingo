@@ -180,7 +180,7 @@ async def test_ai_status_ignores_old_failures(client, test_user):
     failure = {"service": "llm", "code": "quota", "detail": "", "at": int(time.time()) - 3600}
     with patch("app.routers.health.get_last_ai_failure", AsyncMock(return_value=failure)):
         res = await client.get("/api/ai-status", headers=headers)
-    assert res.json() == {"failure": None}
+    assert res.json()["failure"] is None
 
 
 async def _drain() -> None:

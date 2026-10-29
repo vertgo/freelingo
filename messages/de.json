@@ -2004,6 +2004,45 @@
       "unknown": "Details finden Sie in den Backend-Logs."
     },
     "detailLabel": "Meldung des Anbieters:",
-    "dismiss": "Schließen"
+    "dismiss": "Schließen",
+    "ownKey": {
+      "auth": "Gemini hat deinen API-Schlüssel abgelehnt.",
+      "quota": "Dein API-Schlüssel hat sein Gemini-Kontingent oder Ratenlimit erreicht.",
+      "hint": "Prüfe oder ersetze deinen Schlüssel unter Einstellungen → Konto, oder entferne ihn, um den Schlüssel dieses Servers zu verwenden."
+    }
+  },
+  "apiKey": {
+    "title": "Dein Gemini-API-Schlüssel",
+    "description": "Verwende deinen eigenen Google-Gemini-API-Schlüssel statt des gemeinsamen Schlüssels dieses Servers. Deine Anfragen werden dann über deinen Schlüssel abgerechnet und zählen zu dessen Limits.",
+    "getKey": "Hol dir einen kostenlosen Schlüssel bei Google AI Studio",
+    "usedFor": "Verwendet für: {services}",
+    "usingOwn": "Dein Schlüssel mit der Endung {hint} wird verwendet.",
+    "usingServer": "Der Schlüssel dieses Servers wird verwendet.",
+    "label": "Gemini-API-Schlüssel",
+    "placeholderReplace": "Neuen Schlüssel einfügen, um ihn zu ersetzen",
+    "save": "Schlüssel speichern",
+    "checking": "Wird geprüft…",
+    "saved": "Schlüssel geprüft und gespeichert.",
+    "savedWarning": {
+      "quota": "Schlüssel gespeichert, aber laut Gemini ist das Kontingent gerade erschöpft oder das Ratenlimit erreicht.",
+      "overloaded": "Schlüssel gespeichert, aber Gemini ist gerade überlastet, daher konnte er nicht vollständig geprüft werden.",
+      "auth": "Schlüssel gespeichert.",
+      "timeout": "Schlüssel gespeichert.",
+      "unreachable": "Schlüssel gespeichert.",
+      "unknown": "Schlüssel gespeichert."
+    },
+    "rejected": {
+      "auth": "Gemini hat diesen Schlüssel abgelehnt. Prüfe, ob du ihn vollständig kopiert hast.",
+      "quota": "Laut Gemini ist das Kontingent dieses Schlüssels erschöpft.",
+      "overloaded": "Gemini ist überlastet. Versuch es in einer Minute noch einmal.",
+      "timeout": "Gemini hat zu lange gebraucht. Versuch es noch einmal.",
+      "unreachable": "Gemini war nicht erreichbar, um den Schlüssel zu prüfen. Versuch es noch einmal.",
+      "unknown": "Gemini konnte diesen Schlüssel nicht bestätigen."
+    },
+    "invalidFormat": "Das sieht nicht nach einem API-Schlüssel aus.",
+    "remove": "Meinen Schlüssel entfernen",
+    "removed": "Schlüssel entfernt. Der Schlüssel dieses Servers wird wieder verwendet.",
+    "removeFailed": "Schlüssel konnte nicht entfernt werden. Versuch es noch einmal.",
+    "privacy": "Dein Schlüssel wird verschlüsselt auf diesem Server gespeichert, nur für deine eigenen Anfragen verwendet und nie an den Browser zurückgesendet. Wenn dein Schlüssel nicht mehr funktioniert, siehst du eine Fehlermeldung statt eines stillen Wechsels zum Schlüssel des Servers."
   }
 }

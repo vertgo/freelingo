@@ -21,6 +21,7 @@ from starlette.responses import JSONResponse
 from starlette.types import ASGIApp, Message, Receive, Scope, Send
 
 from app.core.app_logger import get_logger
+from app.services.user_api_keys import current_user_api_key
 from app.utils.redis import redis_client
 
 logger = get_logger(__name__)
@@ -102,6 +103,9 @@ def record_ai_failure(
     if holder is not None:
         holder.update(code=code, service=service)
 
+    # A learner's own key failing says nothing about the server's key.
+    if current_user_api_key() is not None:
+        return code
     _failing_services.add(service)
     _spawn(_persist(service, code, detail))
     return code
@@ -109,7 +113,7 @@ def record_ai_failure(
 
 def record_ai_success(service: AIService) -> None:
     """Clear a stored failure for ``service`` once it works again."""
-    if service not in _failing_services:
+    if service not in _failing_services or current_user_api_key() is not None:
         return
     _failing_services.discard(service)
     _spawn(_clear(service))
