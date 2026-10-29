@@ -75,8 +75,8 @@ memory.
 `save_user_memory` has a strict input schema with one required `content` string, maximum 200
 characters, and no additional properties.
 
-The normalized LLM adapter supports OpenAI Responses, Ollama/DeepSeek Chat Completions, and
-Anthropic native tool protocols:
+The normalized LLM adapter supports OpenAI Responses, Ollama/DeepSeek/Codex/Gemini Chat
+Completions, and Anthropic native tool protocols:
 
 1. Visible initial text streams normally while tool-call fragments stay internal.
 2. Fragments become normalized calls.
@@ -132,6 +132,10 @@ failure preserves the previous context. The greeting uses memory context but doe
 Normal turns save with source `voice` and optional session-plan provenance. Only a confirmed save
 emits one `memory_updated` WebSocket message. Partial text discarded by fallback never reaches TTS or
 the transcript.
+
+With `VOICE_PROVIDER=gemini_live`, the Live session declares the same tool once per connection,
+uses the memory context loaded at connection without per-turn refresh, and saves with source `voice`;
+see `speech-services.instructions.md`.
 
 Further lifecycle details are specified in `voice-conversation.instructions.md`.
 

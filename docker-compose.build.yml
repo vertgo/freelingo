@@ -1,0 +1,24 @@
+# Build the backend and frontend images from this checkout instead of pulling
+# the published ghcr.io images. Use it for forks or unreleased branches:
+#
+#   docker compose -f docker-compose.yml -f docker-compose.build.yml up -d --build
+#
+# With cloud speech providers (TTS_PROVIDER/STT_PROVIDER set to openai or
+# gemini), start only the services you need so the GPU-only kokoro and whisper
+# containers stay down:
+#
+#   docker compose -f docker-compose.yml -f docker-compose.build.yml up -d --build \
+#     postgres redis backend frontend
+
+services:
+  backend:
+    image: freelingo-backend:local
+    build: ./backend
+    pull_policy: build
+
+  frontend:
+    image: freelingo-frontend:local
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    pull_policy: build

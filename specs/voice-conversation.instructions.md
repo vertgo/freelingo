@@ -9,7 +9,10 @@ applyTo: "backend/app/routers/conversation.py, backend/app/services/conversation
 
 Voice conversation lets the learner speak through browser Voice Activity Detection (VAD) and receive
 spoken responses from Lingu over one WebSocket connection. The backend orchestrates STT, LLM, memory,
-TTS, quota tracking, timeout enforcement, and transcript persistence.
+TTS, quota tracking, timeout enforcement, and transcript persistence. With
+`VOICE_PROVIDER=gemini_live`, one Gemini Live speech-to-speech session replaces STT, LLM, and TTS
+behind the same protocol; its turn, barge-in, memory, and resumption rules are in
+`speech-services.instructions.md`, and this spec describes the default `pipeline` engine.
 
 The browser sends one complete WAV frame per accepted utterance. Audio is not streamed continuously
 from the microphone to the backend.
@@ -29,7 +32,8 @@ The frontend startup order is:
 Warmup requires authentication, voice access, and absence of maintenance for non-admin users. TTS
 and STT probes run in parallel with a shared 60-second budget. Individual failures and exhaustion of
 that budget are logged; unfinished probes are cancelled at the deadline. The endpoint returns
-`status: "ready"` after these best-effort probes, not a strict provider-health guarantee.
+`status: "ready"` after these best-effort probes, not a strict provider-health guarantee. Under
+`gemini_live` it returns `ready` without probes.
 
 The Next.js warmup proxy has a 70-second deadline, forwards authentication and the optional trial
 token, and propagates client cancellation. It preserves backend HTTP errors and returns 504 if its
@@ -66,7 +70,8 @@ active, or default `en-GB` language.
 The pipeline converts the resolved target language to ISO 639-1 and declares it in every STT call.
 TTS receives the full resolved BCP-47 target language so regional distinctions such as `en-GB` and
 `en-US` remain available. OpenAI uses it in pronunciation instructions for `gpt-4o-mini-tts` and its
-snapshots; legacy/unknown OpenAI models and Kokoro ignore it.
+snapshots, and Gemini TTS always does; legacy/unknown OpenAI models ignore it and Kokoro uses it only
+to choose its default voice.
 
 The current fallback path can combine a fallback active plan with a different target language sent
 by the client. This association is not enforced by the WebSocket contract.

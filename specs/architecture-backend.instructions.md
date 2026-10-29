@@ -47,6 +47,10 @@ contracts and `games.instructions.md` for domain behavior.
 values, while Docker determines which values are passed into containers.
 `OPENAI_MODEL` defaults to `gpt-6-luna`. Optional `OPENAI_REASONING_EFFORT` is forwarded by both
 Compose files; an empty value omits the reasoning option and preserves the model default.
+`GEMINI_API_KEY` serves every Gemini provider: `LLM_PROVIDER=gemini`, `TTS_PROVIDER=gemini`,
+`STT_PROVIDER=gemini`, and `VOICE_PROVIDER=gemini_live`. Startup rejects Gemini TTS or STT without
+the key. `VOICE_PROVIDER` (`pipeline` by default) and `SPANISH_VARIANT` (`es` by default, or `mx`)
+are validated literals.
 
 Database sessions come from the async SQLAlchemy engine. Redis is optional at process startup but
 features that require Redis expose their own degraded or unavailable behavior.
@@ -121,10 +125,17 @@ helper owns parsing and spoken boundaries. Original chat content remains in stor
 provider adapters continue receiving ordinary text. Direct and transitive parser dependencies are
 pinned in `requirements.txt` and `constraints.txt`.
 
-The LLM adapter uses Responses for OpenAI, Chat Completions for Ollama/DeepSeek, and Anthropic's native
-API. OpenAI requests use `store=false`; each tool stream owns its native output and replays it only
-into its own continuation. Provider response IDs, reasoning items, and tool payloads are not shared
-through the singleton adapter or added to the persisted conversation transcript.
+Gemini TTS, STT, and Live voice use the `google-genai` SDK pinned in `requirements.txt`. Gemini TTS
+encodes MP3 with the `ffmpeg` binary installed in the backend image. The conversation router selects
+`GeminiLivePipeline` instead of `ConversationPipeline` when `VOICE_PROVIDER=gemini_live`; that mode
+needs no TTS/STT service object and skips warmup probes.
+
+The LLM adapter uses Responses for OpenAI, Chat Completions for Ollama/DeepSeek/Codex/Gemini, and
+Anthropic's native API. Gemini requests merge system messages, ensure a user turn, and fall back
+through configured models on overload. OpenAI requests use `store=false`; each tool stream owns its
+native output and replays it only into its own continuation. Provider response IDs, reasoning items,
+and tool payloads are not shared through the singleton adapter or added to the persisted conversation
+transcript.
 
 Listening and Reading retain FastAPI background tasks with independent database/Redis resources.
 `exercise_generation.py` owns their renewable Redis leases, total generation deadline, cancellation,
@@ -164,8 +175,10 @@ not validate PostgreSQL locking. Local execution does not require or start Postg
 ### Static learning data
 
 `app/data/` contains the canonical curriculum, grammar, vocabulary, phrasebook, and assessment-bank
-packages for supported target languages. Dispatchers resolve canonical language variants and provide
-the fallback behavior documented in `target-language.instructions.md`.
+packages for supported target languages. The `es` package is written in Mexican Spanish: it teaches
+`ustedes`, mentions `vosotros` only as a Spain comparison, and uses Mexican vocabulary, IPA, places,
+and usage. It serves `es-ES` under either `SPANISH_VARIANT`. Dispatchers resolve canonical language
+variants and provide the fallback behavior documented in `target-language.instructions.md`.
 
 The frontend consumes this content through authenticated backend APIs and must not duplicate it.
 

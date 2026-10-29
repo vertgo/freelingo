@@ -13,10 +13,11 @@ The frontend never calls an external provider directly.
 
 ## LLM adapter
 
-`llm_adapter.py` provides provider-neutral access to Ollama, OpenAI, Anthropic, and DeepSeek.
+`llm_adapter.py` provides provider-neutral access to Ollama, OpenAI, Anthropic, DeepSeek, Gemini,
+and Codex (a host-side Codex CLI bridge).
 
-OpenAI uses the Responses API for every LLM request; Ollama and DeepSeek use Chat Completions and
-Anthropic uses its native API. The OpenAI model defaults to `gpt-6-luna`. Optional
+OpenAI uses the Responses API for every LLM request; Ollama, DeepSeek, Codex, and Gemini use Chat
+Completions and Anthropic uses its native API. The OpenAI model defaults to `gpt-6-luna`. Optional
 `OPENAI_REASONING_EFFORT` is sent as `reasoning.effort` on chat, structured generation, tool
 continuations, and fallbacks. An empty value omits it. Supported values depend on the model; the
 adapter does not infer reasoning settings from model names or force `none` for tools.
@@ -29,6 +30,16 @@ native output, including reasoning, plus `function_call_output` items linked by 
 `previous_response_id` or a provider-managed conversation. Reasoning and tool arguments never become
 visible tutor text. Function definitions explicitly use `strict=false` to preserve the existing
 validation contract, and `parallel_tool_calls=false`; the adapter still enforces its one-call limit.
+
+Gemini (`LLM_PROVIDER=gemini`) uses Gemini's OpenAI-compatible Chat Completions endpoint with
+`GEMINI_API_KEY` and `GEMINI_MODEL` (default `gemini-3.8-flash`). Before each request,
+`_gemini_messages()` merges every system message into one leading system message, because Gemini keeps
+only one system instruction, and appends the Anthropic system-only trigger as a user turn when no
+user or assistant message exists. Nonempty `GEMINI_REASONING_EFFORT` (`none`, `low`, `medium` or
+`high`; default `low`) is sent as `reasoning_effort`; an empty value omits it. When a request fails
+with HTTP 429/503 or an overload/unavailable message, the same request is retried on each
+`GEMINI_FALLBACK_MODELS` entry in order (default `gemini-3.5-flash`, `gemini-3.5-flash-lite`); other
+errors, or failure of the last model, propagate to normal error handling.
 
 - `chat(messages, stream=False, tools=None, tool_executor=None, fallback_messages=None)` returns text
   or a normalized async stream.
@@ -133,7 +144,8 @@ rows by resource type/key, target language, and native language; source hash det
 
 `language_helpers.py` exposes prompt/display name, self name, flag, ISO 639-1, script, romanization,
 word-spacing, and comprehension-length metadata. Unknown codes use the fallback behavior defined in
-`target-language.instructions.md`.
+`target-language.instructions.md`. With `SPANISH_VARIANT=mx`, `es-ES` keeps its code and static data
+but reports `Spanish (Mexico)`, `Español (México)`, and the Mexican flag; the default `es` keeps Spain.
 
 `user_language_service.py` owns language lifecycle operations:
 
@@ -163,16 +175,19 @@ It does not call a provider or persist anything. The HTTP TTS router invokes it 
 `conversation_id`; other TTS callers
 and the voice pipeline continue supplying their existing text.
 
-`tts_service.py` exposes `synthesize(text, voice=None, language=None) -> bytes` through local Kokoro or
-OpenAI. OpenAI supplies shared native-pronunciation instructions for `gpt-4o-mini-tts` and its snapshots,
-using the supplied language/region when available and requesting language inference otherwise.
-Legacy/unknown OpenAI models and Kokoro ignore `language` and receive no pronunciation instructions.
-Voice selection remains independent of language. OpenAI synthesis cache keys include instructions
-only when supported by the configured model.
+`tts_service.py` exposes `synthesize(text, voice=None, language=None) -> bytes` through local Kokoro,
+OpenAI, or Gemini; every adapter returns MP3. OpenAI supplies shared native-pronunciation instructions
+for `gpt-4o-mini-tts` and its snapshots, using the supplied language/region when available and
+requesting language inference otherwise. Gemini always sends these instructions with the text,
+converts its WAV/PCM output to MP3 through `ffmpeg`, and tries `GEMINI_TTS_FALLBACK_MODELS` on 429/503.
+Legacy/unknown OpenAI models and Kokoro receive no pronunciation instructions; Kokoro uses `language`
+only to choose a per-language default voice. OpenAI synthesis cache keys include instructions only
+when supported by the configured model; Gemini cache keys always include them.
 
 `stt_service.py` exposes
-`transcribe(audio_bytes, filename, mime_type, *, language) -> str` through local faster-whisper or
-OpenAI. `language` is required and explicit. Resource STT derives it from an owned plan; voice derives
+`transcribe(audio_bytes, filename, mime_type, *, language) -> str` through local faster-whisper,
+OpenAI, or Gemini. `language` is required and explicit; Gemini's transcription model detects the
+language itself, so it only logs the argument. Resource STT derives it from an owned plan; voice derives
 it from resolved session language.
 
 Provider details belong to `speech-services.instructions.md`.
@@ -251,6 +266,13 @@ Its in-memory prompt buffer is bounded, while complete user/assistant transcript
 in `chat_history` and the parent conversation is updated. Provider turn failures may remain recoverable;
 fatal session errors release resources. Detailed protocol belongs to
 `voice-conversation.instructions.md`.
+
+`gemini_live_pipeline.py` provides `GeminiLivePipeline`, a `ConversationPipeline` subclass selected by
+`VOICE_PROVIDER=gemini_live`. It replaces STT, LLM and TTS with one Gemini Live speech-to-speech
+session per WebSocket conversation while keeping the browser protocol, timeout watchers, transcript
+persistence, rewards, and memory tool. It reuses the conversation system prompt plus a spoken-call
+addendum. Turn, barge-in, resumption, and compression behavior belongs to
+`speech-services.instructions.md`.
 
 ## Logging
 

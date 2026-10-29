@@ -1,14 +1,14 @@
 ---
 description: "Current-state specification for text-to-speech and speech-to-text providers, backend gateways, plan-derived recognition language, persistent audio, and reusable frontend audio components."
-applyTo: "backend/app/services/{tts_service,stt_service,chat_markdown}.py, backend/app/routers/{tts,stt}.py, backend/app/schemas/tts_stt.py, backend/app/core/config.py, backend/app/main.py, frontend/src/components/ui/{AudioPlayer,VoiceRecorder,exercise-audio-player}.tsx, frontend/src/app/api/{tts,stt}/**, docker-compose*.yml, .env.example"
+applyTo: "backend/app/services/{tts_service,stt_service,chat_markdown,gemini_live_pipeline}.py, backend/app/routers/{tts,stt}.py, backend/app/schemas/tts_stt.py, backend/app/core/config.py, backend/app/main.py, frontend/src/components/ui/{AudioPlayer,VoiceRecorder,exercise-audio-player}.tsx, frontend/src/app/api/{tts,stt}/**, docker-compose*.yml, .env.example"
 ---
 
 # Speech Services
 
 ## Purpose
 
-The backend is the only gateway to speech providers. Browser code never calls Kokoro, Whisper, or
-OpenAI speech APIs directly and never receives provider credentials.
+The backend is the only gateway to speech providers. Browser code never calls Kokoro, Whisper,
+OpenAI, or Gemini speech APIs directly and never receives provider credentials.
 
 Text-to-speech (TTS) and speech-to-text (STT) are configured independently. Their backend service
 objects are created during FastAPI startup and stored in `app.state.tts_service` and
@@ -18,24 +18,34 @@ objects are created during FastAPI startup and stored in `app.state.tts_service`
 
 TTS configuration:
 
-- `TTS_PROVIDER=local` selects Kokoro; `openai` selects OpenAI TTS.
+- `TTS_PROVIDER=local` selects Kokoro; `openai` selects OpenAI TTS; `gemini` selects Gemini TTS.
 - `TTS_BASE_URL` defaults to `http://kokoro:8880`.
 - `TTS_VOICE` defaults to `af_heart` for Kokoro.
 - `OPENAI_TTS_MODEL` defaults to `tts-1` in backend `Settings`. Both Compose files instead supply
   `gpt-4o-mini-tts` when the operator omits the variable; this model is used when `TTS_PROVIDER=openai`.
 - `OPENAI_TTS_VOICE` defaults to `nova`.
 - `OPENAI_TTS_SPEED` defaults to `1.0`.
+- `GEMINI_TTS_MODEL` defaults to `gemini-3.8-flash-tts` and `GEMINI_TTS_VOICE` to `Kore`.
+- `GEMINI_TTS_FALLBACK_MODELS` defaults to `gemini-3.8-flash-lite-tts` and
+  `gemini-3.1-flash-tts-preview`.
 
 STT configuration:
 
-- `STT_PROVIDER=local` selects the local Whisper service; `openai` selects OpenAI transcription.
+- `STT_PROVIDER=local` selects the local Whisper service; `openai` selects OpenAI transcription;
+  `gemini` selects Gemini transcription.
 - `STT_BASE_URL` defaults to `http://whisper:9000`.
 - `OPENAI_STT_MODEL` defaults to `whisper-1`.
+- `GEMINI_STT_MODEL` defaults to `gemini-3.5-transcribe`.
 - `STT_MODEL` and `STT_ENGINE` configure the local Whisper container as `ASR_MODEL` and
   `ASR_ENGINE`; they are not backend `Settings` fields.
 
-`OPENAI_API_KEY` is required at startup when either selected provider is OpenAI. Provider values are
-not enum-validated: values other than `openai` currently select the local adapter.
+`OPENAI_API_KEY` is required at startup when either selected provider is OpenAI, and `GEMINI_API_KEY`
+when either is Gemini. Provider values are not enum-validated: values other than `openai` and
+`gemini` currently select the local adapter.
+
+`VOICE_PROVIDER` selects the voice-conversation engine independently: `pipeline` (default) uses the
+configured STT, LLM, and TTS; `gemini_live` uses one Gemini Live session (see below) with
+`GEMINI_LIVE_MODEL` (default `gemini-3.8-live`) and `GEMINI_LIVE_VOICE` (default `Kore`).
 
 The public configuration exposes the selected TTS provider and default OpenAI TTS voice. It does
 not expose provider credentials or the selected STT provider.
@@ -49,10 +59,13 @@ not expose provider credentials or the selected STT provider.
 - checks health with `GET {base_url}/v1/models` and a five-second timeout;
 - synthesizes with `POST {base_url}/v1/audio/speech` and a 30-second timeout;
 - sends model `kokoro`, text, voice, and MP3 response format;
-- uses the requested voice or configured `TTS_VOICE`;
+- uses the requested voice, otherwise a per-language default voice (`bf_emma` for `en-GB`, `ef_dora`
+  for Spanish, `ff_siwis` for French, `if_sara` for Italian, `pf_dora` for Portuguese, `jf_alpha` for
+  Japanese, `zf_xiaobei` for Chinese), otherwise configured `TTS_VOICE`;
 - raises on non-success HTTP responses;
 - returns response bytes without validating that they contain a non-empty MP3;
-- accepts a language argument but does not use it.
+- uses the language argument only for that voice choice; Kokoro selects pronunciation from the voice
+  prefix and has no German or Korean voice.
 
 ### OpenAI
 
@@ -74,12 +87,13 @@ language ask the model to infer it from the text; isolated ambiguous words canno
 a language or regional variety.
 
 Known language arguments add explicit regional guidance for supported learned languages and UI
-locales: `es`/`es-ES` requests Spain pronunciation, `pt`/`pt-PT` requests Portugal pronunciation,
-`en`/`en-GB` requests British pronunciation, and `en-US` requests American pronunciation. Without a
-language argument, instructions do not impose a regional accent. Conversation, Listening, and
-Phrasebook supply their full target-language code; the tour supplies its UI locale. Legacy models
-and Kokoro ignore this language argument. Model instructions do not alter the input text or select
-a different voice.
+locales: `es`/`es-ES` requests Spain pronunciation (Mexico City Mexican Spanish with seseo when
+`SPANISH_VARIANT=mx`), `pt`/`pt-PT` requests Portugal pronunciation, `en`/`en-GB` requests British
+pronunciation, and `en-US` requests American pronunciation. Without a language argument, instructions
+do not impose a regional accent. Conversation, Listening, and Phrasebook supply their full
+target-language code; the tour supplies its UI locale. Legacy models ignore this language argument and
+Kokoro uses it only for its default voice. Model instructions do not alter the input text or select a
+different voice.
 
 Each supported language has focused pronunciation guidance for vowel and consonant quality, rhythm,
 stress, and relevant tonal/pitch distinctions. It asks for everyday native articulation without
@@ -88,16 +102,35 @@ to any selected voice, preserving its vocal identity. `nova` is the configured d
 voice; user preferences continue to take precedence. These instructions guide the model rather than
 guaranteeing accent quality for every voice or text.
 
-Neither current TTS adapter chooses a model or voice automatically from the target language.
+Only Kokoro chooses a voice from the target language; no adapter chooses a model from it.
+
+### Gemini
+
+`GeminiTTSService`:
+
+- checks health by fetching the configured model;
+- trims input and returns empty bytes for empty trimmed text;
+- uses the requested voice only when it is a supported Gemini voice (`Kore`, `Aoede`, `Leda`,
+  `Zephyr`, `Puck`, `Charon`, `Fenrir`, `Orus`), otherwise `GEMINI_TTS_VOICE`;
+- always prefixes the text with the shared `prompts/speech.py` instructions for the supplied language;
+- requests audio output with a 60-second timeout;
+- on HTTP 429 or 503 retries the request on each `GEMINI_TTS_FALLBACK_MODELS` entry in order, because
+  quotas are per model; other errors, or failure of the last model, propagate;
+- rejects an empty audio payload, wraps raw PCM16 (24 kHz unless the MIME type states a rate) in a WAV
+  header, and encodes the WAV to 64 kbit/s MP3 with `ffmpeg`, failing if `ffmpeg` fails.
+
+Its cache keys follow the OpenAI instruction-capable pattern and are always used: they hash text,
+language context, provider, primary model, voice, MP3 format, and instructions. A fallback model's
+output is cached under the primary model's key.
 
 ## STT adapters
 
-Both STT adapters require an explicit keyword-only ISO 639-1 language on every transcription call.
+Every STT adapter requires an explicit keyword-only ISO 639-1 language on every transcription call.
 There is no implicit English fallback.
 
 `WhisperSTTService`:
 
-- checks health with `GET {base_url}/` and a five-second timeout;
+- checks health with `GET {base_url}/`, following redirects, and a five-second timeout;
 - sends `POST {base_url}/asr` with `output=json`, explicit `language`, and `task=transcribe`;
 - uploads the file under multipart field `audio_file`;
 - uses a 60-second timeout;
@@ -109,6 +142,14 @@ There is no implicit English fallback.
 - sends configured model, file bytes, filename, MIME type, explicit language, and a 60-second
   timeout to OpenAI transcription;
 - extracts and trims the returned text.
+
+`GeminiSTTService`:
+
+- checks health by fetching the configured model;
+- sends the audio bytes with their MIME type to `GEMINI_STT_MODEL` with a 60-second timeout;
+- does not send the language: the transcription model detects it and rejects developer instructions,
+  so the required argument is only logged;
+- joins the trimmed transcription or text parts of the response.
 
 ## HTTP API
 
@@ -124,7 +165,8 @@ There is no implicit English fallback.
   owned plan's language when present, otherwise its stored target language. Active-language selection
   is never used to resolve supplied context. Without context, synthesis infers language from the text.
 - Ignores the client voice when the configured provider is local, preventing stale OpenAI voice
-  preferences from reaching Kokoro.
+  preferences from reaching Kokoro. Gemini receives it but replaces unsupported names with its
+  configured voice.
 - With `conversation_id`, converts the supplied Markdown to spoken text through
   `chat_markdown_to_speech()` after ownership and language resolution. Bold/italic markers and list
   numbering/bullets are omitted; words, literal punctuation and paragraph/list boundaries are kept.
@@ -142,7 +184,7 @@ There is no implicit English fallback.
 
 - Requires authentication.
 - Rate limit: `60/minute`.
-- Exists only for OpenAI TTS; local-provider requests return `404`.
+- Exists only for OpenAI TTS; local and Gemini requests return `404`.
 - Accepts `alloy`, `ash`, `coral`, `echo`, `fable`, `nova`, `onyx`, `sage`, or `shimmer`.
 - Invalid voices return `400`; a missing service object returns `503`.
 - Generates the Lingu preview and atomically caches it under `/app/tts_previews/`.
@@ -161,12 +203,14 @@ There is no implicit English fallback.
   invalid or missing text returns `422`) and synthesizes that supplied text.
 - An optional JSON `voice` selects a supported OpenAI voice (`400` for an invalid selection).
   Omission uses the configured default. Kokoro always uses its configured default, ignoring client voice preferences.
+  Gemini voices are not validated here; unsupported names fall back to `GEMINI_TTS_VOICE` in
+  synthesis.
   Locale follows the interface, not the learned language, and supplies pronunciation guidance when
   the configured OpenAI model supports instructions.
 - `services/tour_audio.py` stores shared MP3 files at
   `{AUDIO_STORAGE_PATH}/tour/{locale}/{sha256}.mp3`. The hash includes the exact text, locale,
-  effective provider/model/voice/speed, output format, and instructions when supported. Requests never
-  overwrite a different version.
+  effective provider/model/voice/speed, output format, and instructions when supported. Gemini uses its
+  own cache key, which has no speed. Requests never overwrite a different version.
 - Shared-volume file locks serialize generation across workers; cancellable acquisition and synthesis
   share a 60-second deadline. A second request rechecks the file after obtaining the lock. Writes use
   unique temporary files and atomic replacement; empty output and failures do not publish audio.
@@ -242,6 +286,11 @@ binary response handling. The player's timeout includes token renewal. Canceling
 cancels its wait/retry without canceling renewal shared by other requests. Changing account sessions
 cancels playback and discards late audio; token rotation within the same session does not interrupt it.
 
+The player keeps its fetched Blob URL after playback ends or is stopped, so replaying the same
+content plays from memory without another TTS request. Errors, unmount, account-session changes, and
+changes of text, URL, method, resolved voice, or resource context release it. Only one player sounds
+at a time: starting one stops the previously active player and aborts its pending request.
+
 The dashboard tour posts its displayed i18n text and voice to its locale/step audio URL with this
 player. Optional playback-state notifications coordinate Lingu's speaking animation; they do not
 provide phoneme-level lip sync.
@@ -275,15 +324,69 @@ Persistent MP3 uses include:
   for pronunciation instructions.
 - Dashboard tour: `{AUDIO_STORAGE_PATH}/tour/{locale}/{sha256}.mp3`.
 
-For instruction-capable OpenAI models, Phrasebook uses a synthesis hash covering text, language,
-model, voice, speed, format, and instructions. Other providers/models retain the category/phrase/text
-cache identity. Phrasebook responses use `Cache-Control: no-store` because their public URL does not
-identify the synthesis settings. Tour, Phrasebook, and voice-preview audio is generated on demand for a new key, leaving
-previous files intact. Listening recordings remain attached to their exercises and are not regenerated
-by model or prompt changes. A provider-side update behind a model alias does not change cache keys.
+For instruction-capable OpenAI models and Gemini, Phrasebook uses the adapter's synthesis hash
+covering text, language, model, voice, format, instructions, and (OpenAI only) speed. Other
+providers/models retain the category/phrase/text cache identity. Phrasebook responses use
+`Cache-Control: no-store` because their public URL does not identify the synthesis settings. Tour,
+Phrasebook, and voice-preview audio is generated on demand for a new key, leaving previous files
+intact. Listening recordings remain attached to their exercises and are not regenerated by model or
+prompt changes. A provider-side update behind a model alias does not change cache keys.
 
 The compose stack mounts persistent host storage for generated audio and previews. Local Kokoro and
 Whisper services use internal network addresses and are not called from the frontend.
+
+## Gemini Live voice
+
+With `VOICE_PROVIDER=gemini_live`, the conversation router runs `GeminiLivePipeline` instead of the
+STT-LLM-TTS pipeline. It opens one Gemini Live speech-to-speech session per WebSocket conversation and
+needs no TTS or STT service object. The browser protocol is unchanged: frontend VAD sends one WAV per
+utterance and receives status, transcript, binary audio, and the existing turn events. Voice
+preferences are kept only when they name a supported Gemini voice (also under `TTS_PROVIDER=gemini`);
+otherwise `GEMINI_LIVE_VOICE` applies.
+
+Session setup:
+
+- The system instruction is the normal conversation system prompt, built at connection with the
+  memory context, plus a spoken-call addendum (no lists or formatting, pace suited to the CEFR level).
+- Audio output with input and output transcription; Gemini automatic activity detection is disabled.
+- On first connect, the pipeline's initial context messages (capped at 20) are sent as prior turns,
+  followed by a greeting request. The greeting persists only the assistant message.
+
+Turns:
+
+- Each WAV is converted to 16 kHz mono PCM16 (downmixed and resampled when needed), then sent as one
+  explicit activity: activity start, 100 ms audio chunks, activity end. This keeps Gemini's turns
+  aligned with the frontend's. Unreadable or empty WAVs are ignored.
+- The backend emits `transcribing` on receipt and `thinking` after sending. Gemini's input
+  transcription replaces STT; the final user transcript is sent before the first reply audio.
+- Reply PCM (24 kHz) is wrapped as WAV chunks: the first after 250 ms of audio, then about one second
+  each. After audio starts, non-final assistant transcripts stream from output transcription; the
+  final transcript, `listening`, and `turn_complete` follow at generation/turn completion.
+- Completed turns with user text persist user and assistant messages through the normal pipeline
+  path, including rewards. Token usage reported by the session is stored with
+  `source="conversation"`.
+- A turn with no reply output after 20 seconds (for example, noise only) is released with `listening`
+  and `turn_complete` and is not persisted.
+
+Barge-in and interruption: a new utterance marks any reply that has started output as stale, drops
+its remaining audio and transcript without persisting it, and emits `barge_in` if one was still
+unfinished. User text of activities Gemini has not answered is carried into the next turn, because
+Gemini merges them. An explicit `interrupt` drops in-flight replies the same way and replies
+`interrupted`. If Gemini reports an interruption before the backend marked the reply stale, that
+reply is discarded and the turn stays open for the real answer.
+
+Memory: when memory tools are available for an authenticated user, the session declares
+`save_user_memory` as a non-blocking function. Calls are executed through the shared memory service
+with voice provenance, answered with silent function responses, and a confirmed save emits
+`memory_updated`. Memory context is not refreshed per turn within one connection.
+
+Session length: sliding-window context compression lifts the Live audio session length cap, and
+session resumption handles are tracked continuously. After a `GoAway` (once no reply is producing
+output) or a server-closed connection, the session reconnects with the latest handle; unfinished turns
+from the old connection are closed in the UI without persistence, and the greeting is not repeated. If
+the connection ends without a resumption handle, or the session fails, the backend sends
+`internal_error` and closes with 1011. Maximum-duration and inactivity watchers behave as in the
+pipeline.
 
 ## Availability semantics
 
@@ -293,6 +396,8 @@ a shared 60-second budget. It logs and suppresses individual failures, cancels u
 the deadline, and logs the timeout. Its `ready` response is therefore not a strict health guarantee.
 The conversation frontend allows 75 seconds for the warmup request, including transport and
 authentication overhead, and aborts its request on timeout, manual stop, or unmount.
+With `VOICE_PROVIDER=gemini_live`, warmup returns `ready` after its access checks without provider
+probes, because the Live session connects per conversation.
 
 ## Related specifications
 

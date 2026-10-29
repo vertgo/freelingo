@@ -22,7 +22,7 @@ The application supports these BCP-47 target-language codes:
 - `en-GB` — British English
 - `en-US` — American English
 - `de-DE` — German
-- `es-ES` — Spanish (Spain)
+- `es-ES` — Spanish (Spain, or Mexico with `SPANISH_VARIANT=mx`)
 - `fr-FR` — French
 - `it-IT` — Italian
 - `ja-JP` — Japanese
@@ -329,7 +329,9 @@ and practice surfaces reload from the active context after a switch.
 
 The frontend catalog stores code, display names, flag, ISO 639-1 code, script, word-spacing behavior,
 font class, and optional romanization metadata. User-facing names are translated with the UI locale
-where those surfaces use message keys.
+where those surfaces use message keys. The catalog labels `es-ES` as `Español (México)` /
+`Spanish (Mexico)` with `/flags/mexico.jpg`; this frontend label does not follow `SPANISH_VARIANT`,
+and the `targetLanguages` message keys keep their existing Spanish names and descriptions.
 
 Target-language learning content uses `TargetLanguageText`. Latin-script content uses the shared
 Latin learning style; Japanese, Korean, and Mainland Chinese use script-specific font metadata and
@@ -342,9 +344,9 @@ conversation receive the target language explicitly. They must not assume Englis
 both English variants are supported.
 
 Language metadata and prompt overlays preserve regional and writing-system requirements, including
-British/American English, Spanish from Spain, European Portuguese, and CJK scripts. Comprehension
-length guidance uses characters for Japanese and Mainland Chinese and words for word-spaced
-languages.
+British/American English, Spanish from Spain (or Mexican Spanish with `SPANISH_VARIANT=mx`), European
+Portuguese, and CJK scripts. Comprehension length guidance uses characters for Japanese and Mainland
+Chinese and words for word-spaced languages.
 
 Learning examples and answer content remain in the target language. Translations, explanations,
 hints, and memory-writing instructions that support the learner use the native language where the

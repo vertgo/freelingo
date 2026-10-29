@@ -96,9 +96,9 @@ New code must not infer a plan-owned operation's language from the compatibility
 ## Regional and writing-system behavior
 
 Prompt builders receive an explicit target-language name and shared overlay. Current overlays specify
-British/American English, Spanish from Spain, European Portuguese, French from France, German from
-Germany, standard Italian, Japanese kanji/kana, South Korean Hangul, and Mainland Mandarin with
-simplified characters.
+British/American English, Spanish from Spain (Mexican Spanish when `SPANISH_VARIANT=mx`), European
+Portuguese, French from France, German from Germany, standard Italian, Japanese kanji/kana, South
+Korean Hangul, and Mainland Mandarin with simplified characters.
 
 Chat, voice, assessment, lessons, flashcards, Listening, and Reading consume these instructions where
 their prompt builders require them. There is no legacy `american`/`british` conversion contract.
@@ -117,8 +117,9 @@ implicit English default inside either STT adapter.
 
 TTS accepts a full BCP-47 language argument. OpenAI `gpt-4o-mini-tts` and its snapshots use it for
 native regional pronunciation instructions; without context, instructions request language inference
-without imposing a regional accent. Legacy/unknown OpenAI models and Kokoro ignore this argument.
-Model and voice selection remain configured independently of the target language. Provider and
+without imposing a regional accent. Gemini TTS always sends these instructions. Legacy/unknown OpenAI
+models ignore this argument; Kokoro uses it only to pick a per-language default voice. Model
+selection remains configured independently of the target language. Provider and
 resource-owned language contracts are defined in `speech-services.instructions.md`.
 
 ## Validation boundaries

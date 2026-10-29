@@ -102,8 +102,9 @@ Verify Listening/Reading length guidance, especially for character-based writing
 
 ## Speech compatibility
 
-Verify TTS and STT provider support. Kokoro's configured voices are English-only, so a non-English
-target normally requires another TTS provider under the current architecture.
+Verify TTS and STT provider support. Kokoro picks pronunciation from the voice, and
+`KOKORO_LANGUAGE_VOICES` in `tts_service.py` maps a default voice per language; a language without a
+Kokoro voice (currently German and Korean) needs another TTS provider or a new mapping.
 
 Add/verify the BCP-47-to-ISO recognition mapping. Resource STT must continue to derive language from an
 owned study plan and must never gain a provider-level English fallback.

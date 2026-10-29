@@ -166,6 +166,12 @@ Only the surviving flow may publish the offer or navigate. An unreadable success
 recovers the existing plan through GET instead of enabling another completion POST.
 
 - A complete beginner can choose A1 without the adaptive quiz.
+- "Choose my level" on the first step skips the quiz and opens an A1-C2 level picker, preselected
+  with A2. An existing plan's screen offers "Change level", which opens the same picker preselected
+  with the current plan level. Confirming goes straight to the plan duration step with empty skill
+  profile, strengths, and weaknesses; Back from duration returns to the picker and Back from the
+  picker returns to the screen that opened it. Completion uses the normal assessment completion POST,
+  which accepts any level, so changing level replaces the active plan like a retake.
 - The current adaptive frontend uses at most 15 static-bank questions, begins at A2, and moves after
   two consecutive correct or incorrect answers.
 - Evaluation starts at the answer limit or when no unused question remains at the selected level.

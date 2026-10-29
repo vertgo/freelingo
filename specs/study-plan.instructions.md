@@ -11,7 +11,8 @@ Each target-language track can have one active `StudyPlan`. The owning `UserLang
 `StudyPlan.target_language` determine isolation; switching the active client language does not reassign
 existing resources.
 
-Assessment completion normally creates the plan. `POST /api/study-plan/generate` remains available as
+Assessment completion normally creates the plan, either from the quiz result or from a level the
+learner chose directly on the assessment page. `POST /api/study-plan/generate` remains available as
 an explicit plan-generation endpoint.
 
 The plan stores a deterministic week/day grid in `generated_plan`; lesson content is generated lazily

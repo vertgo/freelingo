@@ -17,8 +17,8 @@ A language model evaluates your CEFR level, generates a personalized study plan,
 grammar, vocabulary, reading comprehension, writing lessons, AI-generated listening and reading exercises, and voice practice.
 
 The study plan follows a CEFR-aligned curriculum (A1-C2) organized into units with
-clear competencies and prerequisites. After a deterministic placement assessment,
-FreeLingo creates a weekly roadmap based on your selected intensity (4, 8, 12, or
+clear competencies and prerequisites. After a deterministic placement assessment (or a level you
+choose yourself, skipping the quiz), FreeLingo creates a weekly roadmap based on your selected intensity (4, 8, 12, or
 16 weeks), then unlocks lessons in sequence: grammar, vocabulary, reading, writing,
 and review.
 
@@ -96,6 +96,7 @@ freelingo/
 ├── DEVELOPMENT.md                   # Local development setup
 ├── docker-compose.yml               # Production deployment
 ├── docker-compose.dev.yml           # Development deployment
+├── docker-compose.build.yml         # Build images from source instead of pulling them
 ├── LICENSE                          # AGPL-3.0 licence
 ├── README.md                        # This file
 └── run-dev.sh                       # Development helper script
@@ -106,8 +107,8 @@ freelingo/
 - **Frontend:** Next.js 16, shadcn/ui, Tailwind CSS, Zustand, next-intl
 - **Backend:** FastAPI, SQLAlchemy async, Alembic, Pydantic v2
 - **Data:** PostgreSQL 16 and Redis 7
-- **LLM:** Ollama, OpenAI, Anthropic, or DeepSeek
-- **Speech:** Kokoro-FastAPI or OpenAI TTS; faster-whisper or OpenAI Whisper
+- **LLM:** Ollama, OpenAI, Anthropic, DeepSeek, or Gemini
+- **Speech:** Kokoro-FastAPI, OpenAI, or Gemini TTS; faster-whisper, OpenAI Whisper, or Gemini STT; optional Gemini Live speech-to-speech voice tutor
 - **Auth:** JWT access and refresh tokens with admin/user roles
 - **Deployment:** Docker Compose
 
@@ -135,6 +136,11 @@ ollama pull gemma4:e4b
 docker compose up -d
 ```
 
+`docker-compose.yml` pulls the published images. To run a fork or an unreleased branch, build from
+the checkout instead with `docker compose -f docker-compose.yml -f docker-compose.build.yml up -d --build`.
+When both speech providers are cloud services, append `postgres redis backend frontend` so the
+GPU-only Kokoro and Whisper containers are not started.
+
 Access at `http://localhost:3000` (or `http://<server-ip>:3000`).
 By default, the first registered user becomes an administrator; set `FIRST_USER_IS_ADMIN=false` to
 disable this behavior.
@@ -156,14 +162,16 @@ disable this behavior.
 
 - The recommended model for Ollama is `gemma4:e4b`. It can be changed in `.env`.
 - The backend proxies all LLM, TTS, and STT calls so the frontend never talks directly to providers.
-- The `LLM_PROVIDER` field controls the LLM provider: `ollama` (local, recommended), `openai`, `anthropic`, or `deepseek`.
+- The `LLM_PROVIDER` field controls the LLM provider: `ollama` (local, recommended), `openai`, `anthropic`, `deepseek`, or `gemini`.
+- `LLM_PROVIDER=gemini` uses Gemini's OpenAI-compatible Chat Completions endpoint with `GEMINI_MODEL`, retrying `GEMINI_FALLBACK_MODELS` when a model is rate-limited or overloaded. One `GEMINI_API_KEY` also covers `TTS_PROVIDER=gemini`, `STT_PROVIDER=gemini`, and `VOICE_PROVIDER=gemini_live`, so a single key can run the whole platform without GPUs.
+- `VOICE_PROVIDER` selects how voice conversations run: `pipeline` (default; STT → LLM → TTS) or `gemini_live` (one Gemini Live speech-to-speech session per conversation, with much lower response latency).
 - `LLM_PROVIDER=openai` uses the Responses API for all LLM requests, with `OPENAI_MODEL=gpt-6-luna` by default. The selected model and endpoint must support Responses; a Chat Completions-only gateway is insufficient. Conversation context is managed by FreeLingo and requests use `store=false`.
 - Optional `OPENAI_REASONING_EFFORT` sets reasoning across OpenAI chat, memory-tool turns, and content generation. Leave it empty for the model default; accepted values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`, subject to model support. There are no model-specific overrides. Ollama and DeepSeek use Chat Completions, and Anthropic uses its native API.
 - Anthropic's output budget is configurable with `ANTHROPIC_MAX_TOKENS` (default: `8192`) and must stay within the selected model's supported output limit.
-- `TTS_PROVIDER` and `STT_PROVIDER` are independent: `local` (Kokoro / faster-whisper) or `openai` (OpenAI API).
+- `TTS_PROVIDER` and `STT_PROVIDER` are independent: `local` (Kokoro / faster-whisper), `openai` (OpenAI API), or `gemini` (Gemini API).
 - Conversation, token, freemium, and trial limits are configurable in `.env.example`. In general
   quota defaults, `0` means unlimited; in freemium feature quotas, `0` blocks that feature.
-- Supported study languages include English (`en-GB`, `en-US`), Spanish (`es-ES`), Italian (`it-IT`), Portuguese (`pt-PT`), German (`de-DE`), French (`fr-FR`), Japanese (`ja-JP`), Korean (`ko-KR`), and Mainland Chinese (`zh-CN`). The study language is chosen on `/onboarding` and can be expanded later from Settings → My Languages. The user's native language is asked during registration and is used for flashcard translations, tutor feedback, lesson native explanations, and cached native-language help in static grammar, phrasebook, and vocabulary resources.
+- Supported study languages include English (`en-GB`, `en-US`), Spanish (`es-ES`), Italian (`it-IT`), Portuguese (`pt-PT`), German (`de-DE`), French (`fr-FR`), Japanese (`ja-JP`), Korean (`ko-KR`), and Mainland Chinese (`zh-CN`). The study language is chosen on `/onboarding` and can be expanded later from Settings → My Languages. `SPANISH_VARIANT=mx` teaches Mexican Spanish for `es-ES` (ustedes, Mexican vocabulary and pronunciation, labelled Spanish (Mexico)); the default `es` teaches Spain Spanish. The user's native language is asked during registration and is used for flashcard translations, tutor feedback, lesson native explanations, and cached native-language help in static grammar, phrasebook, and vocabulary resources.
 
 ## Linux host: Redis memory overcommit
 
@@ -185,6 +193,16 @@ The real-time voice conversation feature uses a WebSocket connection (`/ws/conve
 This is also a hard browser requirement: `getUserMedia` (microphone access) only works in a [secure context](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts) — HTTPS or localhost. A reverse proxy terminating TLS is therefore mandatory for the conversation feature to work at all in production.
 
 The WebSocket URL is derived automatically from `window.location`, so no extra configuration is needed on the frontend side — just ensure your reverse proxy forwards `/ws/*` to `backend:8000`.
+Set `CORS_ORIGINS` and `APP_BASE_URL` to the public HTTPS origin and `COOKIE_SECURE=true`.
+
+For a private deployment, [Tailscale Serve](https://tailscale.com/kb/1312/serve) can terminate TLS on
+the tailnet. Publish the frontend and backend on the host's loopback (`127.0.0.1:3000:3000`,
+`127.0.0.1:8000:8000`) and route the paths separately:
+
+```bash
+tailscale serve --bg --set-path / http://127.0.0.1:3000
+tailscale serve --bg --set-path /ws http://127.0.0.1:8000/ws
+```
 
 ## Configuring TTS & STT
 
@@ -192,9 +210,9 @@ TTS and STT are required services. Each supports two providers selected independ
 
 ### Provider options
 
-- `TTS_PROVIDER=local` uses Kokoro-FastAPI; `TTS_PROVIDER=openai` uses OpenAI TTS.
-- `STT_PROVIDER=local` uses faster-whisper; `STT_PROVIDER=openai` uses OpenAI Whisper.
-- `OPENAI_API_KEY` is required when either service uses OpenAI.
+- `TTS_PROVIDER=local` uses Kokoro-FastAPI; `TTS_PROVIDER=openai` uses OpenAI TTS; `TTS_PROVIDER=gemini` uses Gemini TTS (converted to MP3 with ffmpeg).
+- `STT_PROVIDER=local` uses faster-whisper; `STT_PROVIDER=openai` uses OpenAI Whisper; `STT_PROVIDER=gemini` uses Gemini transcription.
+- `OPENAI_API_KEY` is required when either service uses OpenAI; `GEMINI_API_KEY` when either uses Gemini.
 
 The default local services in `docker-compose.yml` are configured for NVIDIA GPUs:
 
@@ -215,7 +233,9 @@ STT_PROVIDER=openai
 OPENAI_API_KEY=sk-...
 ```
 
-The services reuse `OPENAI_API_KEY` when OpenAI is also the LLM provider. See `.env.example` for
+Gemini works the same way with `TTS_PROVIDER=gemini`, `STT_PROVIDER=gemini`, and `GEMINI_API_KEY`.
+
+The services reuse `OPENAI_API_KEY` or `GEMINI_API_KEY` when the same vendor is also the LLM provider. See `.env.example` for
 available settings and [the speech-services specification](specs/speech-services.instructions.md) for
 provider contracts.
 

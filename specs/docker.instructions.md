@@ -39,9 +39,19 @@ services contained in that file.
 `frontend/Dockerfile.dev` is used only by development Compose. Publishing workflows use the production
 backend and frontend Dockerfiles.
 
+## Building from the checkout
+
+`docker-compose.build.yml` is an override for `docker-compose.yml` that builds `backend` (from
+`./backend`) and `frontend` (from `frontend/Dockerfile` with the repository root as context) from the
+current checkout, tagged `freelingo-backend:local` and `freelingo-frontend:local` with
+`pull_policy: build`, instead of pulling the published images. It is meant for forks and unreleased
+branches. With cloud speech providers, operators can start only `postgres`, `redis`, `backend`, and
+`frontend` so the GPU-only Kokoro and Whisper services stay down.
+
 ## Images and publication
 
-Backend images use Python 3.14.9 and pip 26.2.2 with `requirements.txt` plus `constraints.txt`.
+Backend images use Python 3.14.9 and pip 26.2.2 with `requirements.txt` plus `constraints.txt`, and
+install `ffmpeg` alongside the build packages; Gemini TTS needs it to encode MP3.
 Frontend production/development images use Node 26.12.1, explicitly install npm 11.20.0, and use the
 committed lockfile through `npm ci`. These exact runtime and package-manager versions match the local
 toolchain and PR CI. Production uses Next.js standalone output.
@@ -81,6 +91,15 @@ Both Compose files forward optional `OPENAI_REASONING_EFFORT` with an empty defa
 `reasoning.effort` on OpenAI Responses requests only; nonempty values must be supported by the selected
 model. An empty value leaves reasoning to the provider. `LLM_PROVIDER=openai` requires a model and
 endpoint supporting Responses, not only Chat Completions.
+
+Both Compose files forward the Gemini settings with the same defaults as `Settings`:
+`GEMINI_API_KEY` (empty), `GEMINI_MODEL` (`gemini-3.8-flash`), `GEMINI_FALLBACK_MODELS`,
+`GEMINI_REASONING_EFFORT` (`low`), `GEMINI_TTS_MODEL` (`gemini-3.8-flash-tts`), `GEMINI_TTS_VOICE`
+(`Kore`), `GEMINI_TTS_FALLBACK_MODELS`, `GEMINI_STT_MODEL` (`gemini-3.5-transcribe`),
+`VOICE_PROVIDER` (`pipeline`), `GEMINI_LIVE_MODEL` (`gemini-3.8-live`), and `GEMINI_LIVE_VOICE`
+(`Kore`). Fallback-model lists are JSON arrays. One Google AI Studio key covers every Gemini
+provider. They also forward `SPANISH_VARIANT` (default `es`; `mx` teaches and labels `es-ES` as
+Mexican Spanish) and the Codex bridge settings `CODEX_BRIDGE_URL` and `CODEX_MODEL`.
 
 Both Compose files forward `EXERCISE_GENERATION_TIMEOUT_SECONDS` with a default of 600. This positive
 integer limits the complete Listening/Reading background job, including LLM output, JSON correction,
@@ -131,7 +150,8 @@ Production Compose declares NVIDIA reservations for Kokoro and Whisper. CPU-only
 an appropriate upstream CPU image and removal of the GPU reservation; exact upstream tags are not a
 stable FreeLingo contract.
 
-When TTS or STT uses OpenAI, the corresponding local speech service is unnecessary. LLM, TTS, STT,
+When TTS or STT uses OpenAI or Gemini, the corresponding local speech service is unnecessary.
+`VOICE_PROVIDER=gemini_live` runs voice conversation without either local service. LLM, TTS, STT,
 recognition-language, and provider HTTP contracts belong to `services.instructions.md` and
 `speech-services.instructions.md`.
 

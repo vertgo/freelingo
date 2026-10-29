@@ -523,8 +523,10 @@ synthesizes the supplied text, and owns the persistent audio cache.
 For generic TTS, `AudioPlayer` posts an optional `studyPlanId` as `study_plan_id` or `conversationId`
 as `conversation_id`. Lessons, flashcards, saved vocabulary, and games use their persisted resource's
 plan ID; chat uses its conversation ID. The backend authorizes that context and resolves its language.
-Context changes cancel pending requests and release playback. Custom audio GET requests bypass browser
-caches with `cache: 'no-store'`; Phrasebook retains its backend disk cache and returns HTTP `no-store`.
+Context changes cancel pending requests and release playback. Fetched audio is kept in memory for
+replays of the same content, and starting one player stops any other active player. Custom audio GET
+requests bypass browser caches with `cache: 'no-store'`; Phrasebook retains its backend disk cache and
+returns HTTP `no-store`.
 
 Chat consumes JSON SSE events and must handle response reset before appending subsequent content.
 Voice conversation owns microphone/VAD and playback lifecycle with cancellation and late-callback

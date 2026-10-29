@@ -128,9 +128,12 @@ learner content.
 ## Provider differences
 
 Anthropic extracts system messages into its separate system parameter, requires a configured output
-token budget, and uses provider-specific stream/content shapes. Ollama and DeepSeek share the Chat
-Completions request path. OpenAI uses Responses with stateless native tool continuation and no
-model-name reasoning exceptions. These differences remain internal to the adapter.
+token budget, and uses provider-specific stream/content shapes. Ollama, DeepSeek, Codex, and Gemini
+share the Chat Completions request path. Gemini merges system messages and adds a user turn when none
+exists; inside each adapter invocation, a 429/503 or overload error moves the same request to the next
+`GEMINI_FALLBACK_MODELS` entry before normal normalization and adapter retries apply. OpenAI uses
+Responses with stateless native tool continuation and no model-name reasoning exceptions. These
+differences remain internal to the adapter.
 
 ## Maintenance rules
 
