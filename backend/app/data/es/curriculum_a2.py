@@ -75,7 +75,7 @@ A2_UNITS: list[CurriculumUnit] = [
         vocabulary_set_ids=["ciudades_a2", "cultura_a2", "animales_naturaleza_a2"],
         lesson_types=["grammar", "vocabulary", "reading", "writing", "review"],
         competency_checklist=[
-            "Compara con más/menos + adjetivo/adverbio + que y distingue esta estructura de más de + número: Es más caro que el otro, Cuesta más de 10 euros",
+            "Compara con más/menos + adjetivo/adverbio + que y distingue esta estructura de más de + número: Es más caro que el otro, Cuesta más de 100 pesos",
             "Expresa igualdad con tan + adjetivo/adverbio + como y tanto/a/os/as + sustantivo + como",
             "Forma superlativos con el/la/los/las + más/menos + adjetivo + de: Es el más caro de la ciudad",
             "Usa comparativos y superlativos irregulares: mejor/peor, mayor/menor, superior/inferior sin añadir más",
@@ -99,7 +99,7 @@ A2_UNITS: list[CurriculumUnit] = [
         competency_checklist=[
             "Forma el imperativo afirmativo de tú con verbos regulares (¡Habla! ¡Come! ¡Escribe!) y las ocho formas irregulares: ten, pon, ven, sal, haz, di, ve, sé",
             "Forma el imperativo negativo de tú con la base del presente de subjuntivo: ¡No hables! ¡No comas! ¡No salgas!",
-            "Construye imperativos de usted/ustedes (registro formal) en verbos regulares y en irregulares frecuentes",
+            "Construye imperativos de usted (formal) y ustedes (plural en todos los registros) en verbos regulares y en irregulares frecuentes",
             "Adjunta pronombres reflexivos y de objeto en imperativos afirmativos: ¡Siéntate! ¡Dámelo! y los coloca delante en negativos: ¡No te sientes! ¡No me lo des!",
             "Escribe con corrección patrones frecuentes de b/v en textos cotidianos (también, iba, escribir, resolver)",
         ],

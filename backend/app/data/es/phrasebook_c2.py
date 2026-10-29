@@ -234,7 +234,7 @@ C2_CATEGORIES: list[PhrasebookCategory] = [
                 register="formal",
             ),
             PhrasebookEntry(
-                text="La sociedad espa\u00f1ola ha experimentado una evoluci\u00f3n notable en...",
+                text="La sociedad mexicana ha experimentado una evoluci\u00f3n notable en...",
                 context="Contextualizar un cambio social",
                 register="formal",
             ),

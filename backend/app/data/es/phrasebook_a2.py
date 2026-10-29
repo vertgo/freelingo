@@ -20,23 +20,23 @@ A2_CATEGORIES: list[PhrasebookCategory] = [
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="Tenemos reserva a nombre de [nombre].",
-                context="Al llegar con reserva",
+                text="Tenemos reservaci\u00f3n a nombre de [nombre].",
+                context="Al llegar con reservaci\u00f3n",
                 register="formal",
             ),
             PhrasebookEntry(
                 text="\u00bfCu\u00e1l es el plato del d\u00eda?",
-                context="Preguntar por el men\u00fa del d\u00eda",
+                context="Preguntar por la comida corrida del d\u00eda",
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="De primero quiero [plato].",
-                context="Pedir el primer plato",
+                text="De entrada quiero [plato].",
+                context="Pedir la entrada",
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="De segundo voy a tomar [plato].",
-                context="Pedir el segundo plato",
+                text="De plato fuerte voy a pedir [plato].",
+                context="Pedir el plato fuerte",
                 register="neutral",
             ),
             PhrasebookEntry(
@@ -51,7 +51,7 @@ A2_CATEGORIES: list[PhrasebookCategory] = [
             ),
             PhrasebookEntry(
                 text="\u00bfQu\u00e9 me recomienda?",
-                context="Pedir recomendaci\u00f3n al camarero",
+                context="Pedir recomendaci\u00f3n al mesero",
                 register="neutral",
             ),
             PhrasebookEntry(
@@ -65,7 +65,7 @@ A2_CATEGORIES: list[PhrasebookCategory] = [
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="Para beber, agua con gas.",
+                text="Para tomar, un agua mineral.",
                 context="Pedir una bebida",
                 register="neutral",
             ),
@@ -88,12 +88,12 @@ A2_CATEGORIES: list[PhrasebookCategory] = [
         icon="\U0001f68c",
         phrases=[
             PhrasebookEntry(
-                text="Quiero un billete para [destino].",
-                context="Comprar un billete",
+                text="Quiero un boleto para [destino].",
+                context="Comprar un boleto",
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="\u00bfA qu\u00e9 hora sale el tren/avi\u00f3n?",
+                text="\u00bfA qu\u00e9 hora sale el cami\u00f3n/avi\u00f3n?",
                 context="Preguntar la hora de salida",
                 register="neutral",
             ),
@@ -103,27 +103,27 @@ A2_CATEGORIES: list[PhrasebookCategory] = [
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="Ida y vuelta, por favor.",
-                context="Comprar billete de ida y vuelta",
+                text="Viaje redondo, por favor.",
+                context="Comprar boleto de ida y vuelta (redondo)",
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="Solo ida.",
-                context="Comprar billete solo de ida",
+                text="Sencillo, por favor.",
+                context="Comprar boleto solo de ida (sencillo)",
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="\u00bfDe qu\u00e9 and\u00e9n sale?",
-                context="Preguntar el and\u00e9n del tren",
+                text="\u00bfDe qu\u00e9 and\u00e9n sale el cami\u00f3n?",
+                context="Preguntar el and\u00e9n en la central de autobuses",
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="\u00bfD\u00f3nde est\u00e1 la parada del autob\u00fas?",
+                text="\u00bfD\u00f3nde est\u00e1 la parada del cami\u00f3n?",
                 context="Preguntar por la parada",
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="Querr\u00eda reservar un hotel.",
+                text="Quisiera reservar un hotel.",
                 context="Reservar alojamiento",
                 register="formal",
             ),
@@ -133,8 +133,8 @@ A2_CATEGORIES: list[PhrasebookCategory] = [
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="Quer\u00eda alquilar un coche.",
-                context="Alquilar un veh\u00edculo",
+                text="Quisiera rentar un carro.",
+                context="Rentar un veh\u00edculo",
                 register="formal",
             ),
             PhrasebookEntry(
@@ -213,16 +213,16 @@ A2_CATEGORIES: list[PhrasebookCategory] = [
     PhrasebookCategory(
         id="making_plans_a2",
         level="A2",
-        situation="Hacer planes y quedar",
+        situation="Hacer planes y quedar de verse",
         icon="\U0001f4c5",
         phrases=[
             PhrasebookEntry(
-                text="\u00bfQuedamos el [d\u00eda]?",
+                text="\u00bfNos vemos el [d\u00eda]?",
                 context="Proponer un encuentro",
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="\u00bfTe apetece tomar algo?",
+                text="\u00bfSe te antoja tomar algo?",
                 context="Invitar a tomar algo",
                 register="informal",
             ),
@@ -232,7 +232,7 @@ A2_CATEGORIES: list[PhrasebookCategory] = [
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="Me viene bien a las [hora].",
+                text="Me queda bien a las [hora].",
                 context="Confirmar disponibilidad",
                 register="neutral",
             ),
@@ -242,12 +242,12 @@ A2_CATEGORIES: list[PhrasebookCategory] = [
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="\u00bfA qu\u00e9 hora quedamos?",
+                text="\u00bfA qu\u00e9 hora nos vemos?",
                 context="Preguntar la hora de encuentro",
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="Quedamos en [lugar].",
+                text="Nos vemos en [lugar].",
                 context="Acordar un punto de encuentro",
                 register="neutral",
             ),
@@ -257,27 +257,27 @@ A2_CATEGORIES: list[PhrasebookCategory] = [
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="\u00bfTe recojo o quedamos all\u00ed?",
+                text="\u00bfPaso por ti o nos vemos all\u00e1?",
                 context="Coordinar la log\u00edstica",
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="Otro d\u00eda, \u00bfvale?",
+                text="Otro d\u00eda, \u00bfsale?",
                 context="Posponer una cita",
                 register="informal",
             ),
             PhrasebookEntry(
-                text="He quedado con [persona] a las [hora].",
+                text="Qued\u00e9 de verme con [persona] a las [hora].",
                 context="Explicar un plan ya acordado",
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="\u00bfEl viernes te va bien?",
+                text="\u00bfEl viernes te queda bien?",
                 context="Preguntar por disponibilidad",
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="\u00bfTe viene bien quedar para cenar?",
+                text="\u00bfTe late ir a cenar?",
                 context="Proponer un plan concreto para cenar",
                 register="informal",
             ),
@@ -330,8 +330,8 @@ A2_CATEGORIES: list[PhrasebookCategory] = [
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="Me da mucha verg\u00fcenza.",
-                context="Expresar verg\u00fcenza",
+                text="Me da mucha pena.",
+                context='Expresar verg\u00fcenza (en M\u00e9xico se dice "pena")',
                 register="neutral",
             ),
             PhrasebookEntry(
@@ -345,7 +345,7 @@ A2_CATEGORIES: list[PhrasebookCategory] = [
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="\u00a1Estoy ilusionado/a!",
+                text="\u00a1Estoy emocionado/a!",
                 context="Expresar ilusi\u00f3n",
                 register="neutral",
             ),

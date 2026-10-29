@@ -87,9 +87,9 @@ export const TARGET_LANGUAGE_CATALOG: TargetLanguage[] = [
   }),
   withCapabilities({
     code: 'es-ES',
-    name: 'Español',
-    nameEn: 'Spanish',
-    flagPath: '/flags/spain.jpg',
+    name: 'Español (México)',
+    nameEn: 'Spanish (Mexico)',
+    flagPath: '/flags/mexico.jpg',
     iso639: 'es',
   }),
   withCapabilities({

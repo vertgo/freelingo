@@ -9,8 +9,8 @@ B2_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="B2",
         category="Subjuntivo",
         summary="Formación y usos del imperfecto de subjuntivo: -ra y -se.",
-        explanation='El **imperfecto de subjuntivo** tiene **dos formas** igualmente correctas: terminadas en **-ra** y en **-se**. Ambas se forman a partir de la tercera persona del plural del pretérito indefinido, quitando **-ron** y añadiendo las terminaciones.\n\n| Persona | -ra (hablar) | -se (comer) | -ra (vivir) |\n|--------|-------------|-------------|-------------|\n| yo | hablara | comiese | viviera |\n| tú | hablaras | comieses | vivieras |\n| él/ella/ud. | hablara | comiese | viviera |\n| nosotros | habláramos | comiésemos | viviéramos |\n| vosotros | hablarais | comieseis | vivierais |\n| ellos/ellas/uds. | hablaran | comiesen | vivieran |\n\n**Irregulares**: parten del indefinido irregular en tercera persona plural:\n- tener → tuvieron → tuviera/tuviese\n- hacer → hicieron → hiciera/hiciese\n- decir → dijeron → dijera/dijese\n- pedir → pidieron → pidiera/pidiese\n- dormir → durmieron → durmiera/durmiese\n\nLa forma en -ra es más frecuente en el habla; la forma en -se es más literaria. Se usa en condicionales irreales, tras "ojalá", y en estilo indirecto pasado.',
-        structure="3ª pers. pl. del indefinido -ron + -ra/-ras/-ra/-ramos/-rais/-ran (o -se/-ses/-se/-semos/-seis/-sen)",
+        explanation='El **imperfecto de subjuntivo** tiene **dos formas** igualmente correctas: terminadas en **-ra** y en **-se**. Ambas se forman a partir de la tercera persona del plural del pretérito indefinido, quitando **-ron** y añadiendo las terminaciones.\n\n| Persona | -ra (hablar) | -se (comer) | -ra (vivir) |\n|--------|-------------|-------------|-------------|\n| yo | hablara | comiese | viviera |\n| tú | hablaras | comieses | vivieras |\n| él/ella/ud. | hablara | comiese | viviera |\n| nosotros | habláramos | comiésemos | viviéramos |\n| ellos/ellas/uds. | hablaran | comiesen | vivieran |\n\n**Irregulares**: parten del indefinido irregular en tercera persona plural:\n- tener → tuvieron → tuviera/tuviese\n- hacer → hicieron → hiciera/hiciese\n- decir → dijeron → dijera/dijese\n- pedir → pidieron → pidiera/pidiese\n- dormir → durmieron → durmiera/durmiese\n\nLa forma en -ra es más frecuente en el habla; la forma en -se es más literaria. Se usa en condicionales irreales, tras "ojalá", y en estilo indirecto pasado.',
+        structure="3ª pers. pl. del indefinido -ron + -ra/-ras/-ra/-ramos/-ran (o -se/-ses/-se/-semos/-sen)",
         rules=[
             "Dos formas: -ra y -se, ambas correctas e intercambiables.",
             "Se forma a partir de la 3ª persona plural del indefinido (sin -ron).",
@@ -297,7 +297,7 @@ B2_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="B2",
         category="Oraciones",
         summary="Conectores para la cohesión textual: no obstante, en cambio, por consiguiente, en efecto, asimismo.",
-        explanation="Los **conectores avanzados** elevan la formalidad y la precisión del discurso. Se usan en textos académicos, argumentativos y profesionales.\n\n**Adición**: *asimismo, igualmente, del mismo modo, por añadidura, es más*\n- *Es inteligente; es más, es brillante.*\n\n**Contraste y oposición**: *no obstante, en cambio, por el contrario, ahora bien, con todo, aun así*\n- *Hizo frío; no obstante, salimos.*\n\n**Consecuencia**: *por consiguiente, en consecuencia, de modo que, de manera que, así pues*\n- *No estudió; por consiguiente, suspendió.*\n\n**Reafirmación y explicación**: *en efecto, efectivamente, es decir, o sea, esto es, a saber*\n- *La situación, en efecto, era grave.*\n\n**Orden del discurso**: *en primer lugar, por último, para terminar, en resumen, en conclusión*",
+        explanation="Los **conectores avanzados** elevan la formalidad y la precisión del discurso. Se usan en textos académicos, argumentativos y profesionales.\n\n**Adición**: *asimismo, igualmente, del mismo modo, por añadidura, es más*\n- *Es inteligente; es más, es brillante.*\n\n**Contraste y oposición**: *no obstante, en cambio, por el contrario, ahora bien, con todo, aun así*\n- *Hizo frío; no obstante, salimos.*\n\n**Consecuencia**: *por consiguiente, en consecuencia, de modo que, de manera que, así pues*\n- *No estudió; por consiguiente, reprobó.*\n\n**Reafirmación y explicación**: *en efecto, efectivamente, es decir, o sea, esto es, a saber*\n- *La situación, en efecto, era grave.*\n\n**Orden del discurso**: *en primer lugar, por último, para terminar, en resumen, en conclusión*",
         rules=[
             '"No obstante" = "sin embargo", formal.',
             '"En cambio" para contrastar dos realidades diferentes.',
@@ -386,7 +386,7 @@ B2_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="B2",
         category="Avanzado",
         summary="Diferencias entre el español formal e informal: vocabulario, tratamiento, estructuras.",
-        explanation="El **registro** es la adaptación del lenguaje a la situación comunicativa. En español se distinguen varios niveles:\n\n**Registro formal**:\n- Uso de *usted/ustedes* en lugar de *tú/vosotros*.\n- Evitar contracciones coloquiales (*pa'* en lugar de *para*).\n- Vocabulario preciso y técnico.\n- Oraciones más largas y complejas.\n- Uso de pasiva refleja y estructuras impersonales.\n- Conectores formales (*no obstante, por consiguiente*).\n- *¿Podría decirme la hora?* en lugar de *¿Qué hora es?*\n\n**Registro coloquial**:\n- Uso de *tú/vos* y *vosotros/ustedes*.\n- Muletillas: *bueno, pues, o sea, ¿vale?, en plan, tipo...*\n- Frases hechas y expresiones idiomáticas.\n- Elipsis y frases inacabadas.\n- Diminutivos: *cafecito, momentito*.\n\nLa elección del registro depende del contexto, la relación entre interlocutores y la situación.",
+        explanation="El **registro** es la adaptación del lenguaje a la situación comunicativa. En español se distinguen varios niveles:\n\n**Registro formal**:\n- Uso de *usted* en lugar de *tú*.\n- Evitar contracciones coloquiales (*pa'* en lugar de *para*).\n- Vocabulario preciso y técnico.\n- Oraciones más largas y complejas.\n- Uso de pasiva refleja y estructuras impersonales.\n- Conectores formales (*no obstante, por consiguiente*).\n- *¿Podría decirme la hora?* en lugar de *¿Qué hora es?*\n\n**Registro coloquial**:\n- Uso de *tú* (y de *ustedes* para el plural, que en México sirve en ambos registros).\n- Muletillas: *bueno, pues, o sea, este..., ¿no?, tipo...*\n- Frases hechas y expresiones idiomáticas.\n- Elipsis y frases inacabadas.\n- Diminutivos: *cafecito, momentito*.\n\nLa elección del registro depende del contexto, la relación entre interlocutores y la situación.",
         rules=[
             '"Usted" marca formalidad; "tú" marca cercanía. El uso varía por país.',
             "El registro formal evita muletillas y coloquialismos.",
@@ -434,16 +434,16 @@ B2_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="B2",
         category="Avanzado",
         summary="Expresiones idiomáticas frecuentes: estar en las nubes, meter la pata, ser pan comido.",
-        explanation="Los **modismos** son expresiones fijas cuyo significado no se deduce de las palabras que las componen. Son fundamentales para sonar natural.\n\n**Modismos con partes del cuerpo**:\n- *Costar un ojo de la cara* → ser muy caro.\n- *No tener pelos en la lengua* → ser muy directo.\n- *Echar una mano* → ayudar.\n- *Meter la pata* → equivocarse.\n- *Estar hasta las narices* → estar harto.\n\n**Modismos con animales**:\n- *Ser un gallina* → ser cobarde.\n- *Estar como una cabra* → estar loco.\n- *Pagar el pato* → cargar con la culpa.\n\n**Modismos con comida**:\n- *Ser pan comido* → ser muy fácil.\n- *Dar calabazas* → rechazar a alguien.\n- *Ponerse como un tomate* → sonrojarse.\n\nLos modismos varían enormemente entre países. Un mismo significado puede expresarse con modismos distintos en España y Latinoamérica.",
+        explanation="Los **modismos** son expresiones fijas cuyo significado no se deduce de las palabras que las componen. Son fundamentales para sonar natural.\n\n**Modismos con partes del cuerpo**:\n- *Costar un ojo de la cara* → ser muy caro.\n- *No tener pelos en la lengua* → ser muy directo.\n- *Echar una mano* → ayudar.\n- *Meter la pata* → equivocarse.\n- *Estar hasta el gorro* → estar harto.\n\n**Modismos con animales**:\n- *Ser un gallina* → ser cobarde.\n- *Hacerse pato* → hacerse el distraído (México).\n- *Pagar el pato* → cargar con la culpa.\n\n**Modismos con comida**:\n- *Ser pan comido* → ser muy fácil.\n- *Importar un cacahuate* → no importar nada (México).\n- *Ponerse como un tomate* → sonrojarse.\n\nLos modismos varían enormemente entre países. Un mismo significado puede expresarse con modismos distintos en España y Latinoamérica.",
         rules=[
             "Los modismos son expresiones fijas; no se pueden modificar sus elementos.",
             "Muchos modismos no son literales y deben aprenderse de memoria.",
-            "Varían mucho entre regiones; un modismo español puede no entenderse en México.",
+            "Varían mucho entre regiones; un modismo de España puede no entenderse en México.",
             "En registros formales se evitan los modismos.",
         ],
         examples=[
             GrammarExample(
-                text="Ese coche cuesta un ojo de la cara.",
+                text="Ese carro cuesta un ojo de la cara.",
                 translation=None,
             ),
             GrammarExample(
@@ -475,13 +475,13 @@ B2_GRAMMAR_TOPICS: list[GrammarTopic] = [
         title="Expresiones coloquiales",
         level="B2",
         category="Avanzado",
-        summary="Muletillas, coletillas y expresiones del español cotidiano: pues, o sea, en plan, vale, venga.",
-        explanation="Las **expresiones coloquiales** son palabras y frases propias de la conversación informal. Dan fluidez, cercanía y naturalidad al discurso.\n\n**Muletillas conversacionales**:\n- *Pues... / Bueno...* → para ganar tiempo o suavizar.\n- *O sea... / Es decir...* → reformular.\n- *¿Vale? / ¿Sabes? / ¿No?* → buscar confirmación.\n- *En plan...* → introducir explicación (muy coloquial, especialmente en España).\n- *Venga / Vamos* → ánimo o cierre de conversación.\n\n**Coletillas y expresiones de reacción**:\n- *¡Qué fuerte! / ¡Qué barbaridad!* → sorpresa.\n- *¡Anda! / ¡Vaya!* → sorpresa o decepción.\n- *¡Qué guay! / ¡Qué chulo!* → aprobación (España).\n- *¡Qué padre! / ¡Qué chévere!* → aprobación (México / varios países).\n- *¡Qué rollo!* → aburrimiento o fastidio (España).",
+        summary="Muletillas, coletillas y expresiones del español cotidiano de México: pues, o sea, este, órale, sale, ¿mande?",
+        explanation="Las **expresiones coloquiales** son palabras y frases propias de la conversación informal. Dan fluidez, cercanía y naturalidad al discurso.\n\n**Muletillas conversacionales**:\n- *Pues... / Bueno...* → para ganar tiempo o suavizar.\n- *O sea... / Es decir...* → reformular.\n- *¿No? / ¿Sabes? / ¿Verdad?* → buscar confirmación.\n- *Este...* → pausa para pensar (muy mexicano).\n- *¿Mande?* → pedir que te repitan algo (cortés).\n- *Ahorita* → en un momento (o «ahora mismo», según el tono).\n- *Sale / Órale / Va* → aceptar un plan (en España se diría *vale*).\n\n**Coletillas y expresiones de reacción**:\n- *¡No manches! / ¡Qué barbaridad!* → sorpresa.\n- *¡Órale! / ¡Híjole!* → sorpresa, ánimo o preocupación.\n- *¡Qué padre! / ¡Qué chido!* → aprobación.\n- *¡Qué oso!* → vergüenza.\n- *¡Qué flojera!* → aburrimiento o pereza.",
         rules=[
             "Las muletillas son propias del registro oral e informal.",
-            'Varían mucho entre países; "guay" es típico de España, "chévere" de Latinoamérica.',
-            '"En plan" es muy coloquial y juvenil; evitar en contextos formales.',
-            '"Vale" como afirmación es típico de España; en América se usa "OK", "dale", "listo", "ya".',
+            'Varían mucho entre países; "padre" y "chido" son típicos de México, "chévere" de Venezuela o Colombia.',
+            '"No manches" y "chido" son muy coloquiales; evitar en contextos formales.',
+            '"Sale" u "órale" para aceptar algo son típicos de México; en España se usa "vale".',
         ],
         examples=[
             GrammarExample(
@@ -493,12 +493,12 @@ B2_GRAMMAR_TOPICS: list[GrammarTopic] = [
                 translation=None,
             ),
             GrammarExample(
-                text="¡Qué guay! Me encanta tu casa nueva.",
+                text="¡Qué padre! Me encanta tu casa nueva.",
                 translation=None,
-                note="España",
+                note="México",
             ),
             GrammarExample(
-                text='Estaba en plan "no me hables" y yo en plan "pues vale".',
+                text="—¿Vamos por unos tacos? —¡Órale, sale!",
                 translation=None,
                 note="muy coloquial",
             ),
@@ -506,8 +506,8 @@ B2_GRAMMAR_TOPICS: list[GrammarTopic] = [
         common_mistakes=[
             GrammarMistake(
                 wrong="¡Qué guay! Me encanta tu casa.",
-                correct="¡Qué guay! / ¡Qué chévere! / ¡Qué padre!",
-                note="Correcto en España. En Latinoamérica usar expresiones locales equivalentes.",
+                correct="¡Qué padre! Me encanta tu casa.",
+                note='"Guay" es de España; en México se dice "qué padre" o "qué chido".',
             ),
         ],
         related=["modismos-comunes", "registro-formal", "espanol-latinoamerica"],
@@ -834,7 +834,7 @@ B2_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="B2",
         category="Avanzado",
         summary="Patrones frecuentes en -ción/-sión, -cer/-cir y alternancias c/z en derivación.",
-        explanation="La oposición **c/s/z** genera errores frecuentes en escritura formal. En español de España, además, hay distinción fonética entre /s/ y /z/ en gran parte del territorio, lo que puede ayudar a fijar grafías.\n\nPatrones útiles:\n- Sustantivos en **-ción** suelen derivar de verbos en -ar: *informar -> información*.\n- Sustantivos en **-sión** suelen derivar de formas con -s- o -d-: *dividir -> división*, *expresar -> expresión*.\n- Verbos en **-cer/-cir**: primera persona con **-zco** en muchos casos (*conocer -> conozco, traducir -> traduzco*).\n- Alternancia c/z ante a/o/u en algunas familias: *cruz -> cruzar*, *luz -> lucir* (familias distintas, conviene memorizar).\n\nObjetivo B2: escribir con seguridad en registros académicos y profesionales.",
+        explanation="La oposición **c/s/z** genera errores frecuentes en escritura formal. En México, por el **seseo**, *s*, *z* y *c* (ante e, i) suenan igual, así que las grafías hay que fijarlas con patrones y práctica.\n\nPatrones útiles:\n- Sustantivos en **-ción** suelen derivar de verbos en -ar: *informar -> información*.\n- Sustantivos en **-sión** suelen derivar de formas con -s- o -d-: *dividir -> división*, *expresar -> expresión*.\n- Verbos en **-cer/-cir**: primera persona con **-zco** en muchos casos (*conocer -> conozco, traducir -> traduzco*).\n- Alternancia c/z ante a/o/u en algunas familias: *cruz -> cruzar*, *luz -> lucir* (familias distintas, conviene memorizar).\n\nObjetivo B2: escribir con seguridad en registros académicos y profesionales.",
         structure="-cion/-sion · -cer/-cir -> -zco (1a persona) · alternancias c/z por contexto",
         rules=[
             "-ción es muy frecuente en derivados de verbos en -ar.",

@@ -31,7 +31,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Temblar por una emoción intensa",
                 example="Se estremeció al oír la noticia.",
-                ipa="/estɾemeˈθeɾse/",
+                ipa="/estɾemeˈseɾse/",
             ),
             VocabularyEntry(
                 word="conmover",
@@ -47,7 +47,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Enfado intenso ante una injusticia",
                 example="La decisión causó indignación entre los ciudadanos.",
-                ipa="/indiɣnaˈθjon/",
+                ipa="/indiɣnaˈsjon/",
             ),
             VocabularyEntry(
                 word="añoranza",
@@ -55,7 +55,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Pena por la ausencia de algo o alguien",
                 example="Siente añoranza de su tierra natal.",
-                ipa="/aɲoˈɾanθa/",
+                ipa="/aɲoˈɾansa/",
             ),
             VocabularyEntry(
                 word="plenitud",
@@ -79,7 +79,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Provocar ternura",
                 example="La escena me enterneció.",
-                ipa="/enteɾneˈθeɾ/",
+                ipa="/enteɾneˈseɾ/",
             ),
             VocabularyEntry(
                 word="desolación",
@@ -87,7 +87,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Tristeza profunda y soledad",
                 example="La desolación se apoderó de él.",
-                ipa="/desolaˈθjon/",
+                ipa="/desolaˈsjon/",
             ),
         ],
     ),
@@ -111,7 +111,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Llegar a una conclusión por razonamiento",
                 example="Por su expresión deduje que no le gustaba.",
-                ipa="/deðuˈθiɾ/",
+                ipa="/deðuˈsiɾ/",
             ),
             VocabularyEntry(
                 word="especular",
@@ -135,7 +135,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Señal que apunta a algo",
                 example="No hay indicios de que sea cierto.",
-                ipa="/inˈdiθjo/",
+                ipa="/inˈdisjo/",
             ),
             VocabularyEntry(
                 word="presunción",
@@ -143,7 +143,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Suposición basada en apariencias",
                 example="Es una mera presunción, no un hecho.",
-                ipa="/pɾesunˈθjon/",
+                ipa="/pɾesunˈsjon/",
             ),
             VocabularyEntry(
                 word="plausible",
@@ -255,7 +255,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Repetición periódica de algo",
                 example="Viaja con frecuencia al extranjero.",
-                ipa="/fɾeˈkwenθja/",
+                ipa="/fɾeˈkwensja/",
             ),
             VocabularyEntry(
                 word="rutinario",
@@ -287,7 +287,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Cambio progresivo",
                 example="La evolución del proyecto ha sido notable.",
-                ipa="/eβoluˈθjon/",
+                ipa="/eβoluˈsjon/",
             ),
             VocabularyEntry(
                 word="transición",
@@ -295,7 +295,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Paso de un estado a otro",
                 example="Está en una transición profesional.",
-                ipa="/tɾansiˈθjon/",
+                ipa="/tɾansiˈsjon/",
             ),
             VocabularyEntry(
                 word="adaptarse",
@@ -343,7 +343,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Introducción de novedades",
                 example="La innovación es clave en este sector.",
-                ipa="/innoβaˈθjon/",
+                ipa="/innoβaˈsjon/",
             ),
             VocabularyEntry(
                 word="retroceso",
@@ -351,7 +351,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Vuelta atrás en un proceso",
                 example="La medida supone un retroceso.",
-                ipa="/retɾoˈθeso/",
+                ipa="/retɾoˈseso/",
             ),
         ],
     ),
@@ -383,7 +383,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Parte inicial de un texto",
                 example="La introducción plantea la tesis.",
-                ipa="/intɾoðukˈθjon/",
+                ipa="/intɾoðukˈsjon/",
             ),
             VocabularyEntry(
                 word="desarrollo",
@@ -391,7 +391,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Parte central donde se exponen los argumentos",
                 example="El desarrollo del ensayo es sólido.",
-                ipa="/desaˈroʎo/",
+                ipa="/desaˈroʝo/",
             ),
             VocabularyEntry(
                 word="conclusión",
@@ -415,7 +415,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Mencionar una fuente o autor",
                 example="Cita a varios expertos en el tema.",
-                ipa="/θiˈtaɾ/",
+                ipa="/siˈtaɾ/",
             ),
             VocabularyEntry(
                 word="exponer",
@@ -431,7 +431,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Conexión lógica entre las partes",
                 example="El texto carece de coherencia.",
-                ipa="/koeˈɾenθja/",
+                ipa="/koeˈɾensja/",
             ),
             VocabularyEntry(
                 word="cohesión",
@@ -455,7 +455,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Área de estudio o conocimiento",
                 example="La lingüística es una disciplina fascinante.",
-                ipa="/disθiˈplina/",
+                ipa="/disiˈplina/",
             ),
             VocabularyEntry(
                 word="investigación",
@@ -463,7 +463,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Estudio sistemático de un tema",
                 example="La investigación duró tres años.",
-                ipa="/imbestiɣaˈθjon/",
+                ipa="/imbestiɣaˈsjon/",
             ),
             VocabularyEntry(
                 word="metodología",
@@ -527,7 +527,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Presentación en un congreso",
                 example="Presentó una ponencia en el congreso.",
-                ipa="/poˈnenθja/",
+                ipa="/poˈnensja/",
             ),
         ],
     ),
@@ -542,7 +542,7 @@ B2_SETS: list[VocabularySet] = [
                 frequency_rank=654,
                 pos="phrase",
                 definition="Ser muy caro",
-                example="Ese coche cuesta un ojo de la cara.",
+                example="Ese carro cuesta un ojo de la cara.",
                 ipa="/kosˈtaɾ un ˈoxo ðe la ˈkaɾa/",
             ),
             VocabularyEntry(
@@ -599,7 +599,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="phrase",
                 definition="Rendirse, abandonar",
                 example="No pienso tirar la toalla.",
-                ipa="/tiˈɾaɾ la toˈaʎa/",
+                ipa="/tiˈɾaɾ la toˈaʝa/",
             ),
             VocabularyEntry(
                 word="dar la talla",
@@ -607,15 +607,15 @@ B2_SETS: list[VocabularySet] = [
                 pos="phrase",
                 definition="Estar a la altura esperada",
                 example="El nuevo empleado da la talla.",
-                ipa="/daɾ la ˈtaʎa/",
+                ipa="/daɾ la ˈtaʝa/",
             ),
             VocabularyEntry(
-                word="estar de mala leche",
+                word="andar de malas",
                 frequency_rank=663,
                 pos="phrase",
                 definition="Estar de mal humor (coloquial)",
-                example="Hoy está de mala leche.",
-                ipa="/esˈtaɾ de ˈmala ˈleʧe/",
+                example="Hoy anda de malas.",
+                ipa="/anˈdaɾ de ˈmalas/",
             ),
         ],
     ),
@@ -639,7 +639,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Legado cultural recibido",
                 example="Es una herencia de nuestros antepasados.",
-                ipa="/eˈɾenθja/",
+                ipa="/eˈɾensja/",
             ),
             VocabularyEntry(
                 word="arraigo",
@@ -735,7 +735,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Conclusión derivada de un razonamiento",
                 example="Hizo una inferencia lógica.",
-                ipa="/imfeˈɾenθja/",
+                ipa="/imfeˈɾensja/",
             ),
             VocabularyEntry(
                 word="sesgo",
@@ -751,7 +751,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Razones en contra de una propuesta",
                 example="Planteó varias objeciones al plan.",
-                ipa="/oβxeˈθjones/",
+                ipa="/oβxeˈsjones/",
             ),
             VocabularyEntry(
                 word="matizar",
@@ -759,7 +759,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Precisar o suavizar una afirmación",
                 example="Quisiera matizar mi postura.",
-                ipa="/matiˈθaɾ/",
+                ipa="/matiˈsaɾ/",
             ),
             VocabularyEntry(
                 word="retórica",
@@ -775,7 +775,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Argumento incorrecto que parece válido",
                 example="Eso es una falacia lógica.",
-                ipa="/faˈlaθja/",
+                ipa="/faˈlasja/",
             ),
             VocabularyEntry(
                 word="solidez",
@@ -783,7 +783,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Firmeza de un argumento",
                 example="Su argumentación carece de solidez.",
-                ipa="/soliˈðeθ/",
+                ipa="/soliˈðes/",
             ),
             VocabularyEntry(
                 word="concesión",
@@ -791,7 +791,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Reconocimiento parcial del argumento ajeno",
                 example="Hizo una concesión antes de refutar.",
-                ipa="/konθeˈsjon/",
+                ipa="/konseˈsjon/",
             ),
         ],
     ),
@@ -834,12 +834,12 @@ B2_SETS: list[VocabularySet] = [
                 ipa="/ˈbɾeʧa/",
             ),
             VocabularyEntry(
-                word="concienciar",
+                word="concientizar",
                 frequency_rank=688,
                 pos="verb",
                 definition="Hacer tomar conciencia sobre algo",
-                example="Hay que concienciar sobre el reciclaje.",
-                ipa="/konθjenˈθjaɾ/",
+                example="Hay que concientizar sobre el reciclaje.",
+                ipa="/konsjentiˈsaɾ/",
             ),
             VocabularyEntry(
                 word="globalización",
@@ -847,7 +847,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Interconexión mundial de economías y culturas",
                 example="La globalización tiene ventajas e inconvenientes.",
-                ipa="/ɡloβaliθaˈθjon/",
+                ipa="/ɡloβalisaˈsjon/",
             ),
             VocabularyEntry(
                 word="derechos humanos",
@@ -871,15 +871,15 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Registro estadístico de la población",
                 example="El censo se actualiza cada diez años.",
-                ipa="/ˈθenso/",
+                ipa="/ˈsenso/",
             ),
             VocabularyEntry(
-                word="paro",
+                word="desempleo",
                 frequency_rank=693,
                 pos="noun",
-                definition="Situación de desempleo",
-                example="La tasa de paro ha bajado.",
-                ipa="/ˈpaɾo/",
+                definition="Situación de no tener trabajo",
+                example="La tasa de desempleo bajó.",
+                ipa="/desemˈpleo/",
             ),
         ],
     ),
@@ -919,7 +919,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Final de una historia",
                 example="El desenlace fue inesperado.",
-                ipa="/desenˈlaθe/",
+                ipa="/desenˈlase/",
             ),
             VocabularyEntry(
                 word="narrador",
@@ -1023,7 +1023,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Texto introductorio de una obra",
                 example="El prefacio lo escribió otro autor.",
-                ipa="/pɾeˈfaθjo/",
+                ipa="/pɾeˈfasjo/",
             ),
             VocabularyEntry(
                 word="índice",
@@ -1031,7 +1031,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Lista de contenidos de un libro",
                 example="Consulta el índice para encontrar el capítulo.",
-                ipa="/ˈindiθe/",
+                ipa="/ˈindise/",
             ),
             VocabularyEntry(
                 word="vocabulario",
@@ -1071,7 +1071,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Equipo que elabora un medio",
                 example="Toda la redacción trabajó en la noticia.",
-                ipa="/reðakˈθjon/",
+                ipa="/reðakˈsjon/",
             ),
             VocabularyEntry(
                 word="corresponsal",
@@ -1095,7 +1095,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Noticia dada antes que por otros",
                 example="El periódico publicó la primicia.",
-                ipa="/pɾiˈmiθja/",
+                ipa="/pɾiˈmisja/",
             ),
             VocabularyEntry(
                 word="veracidad",
@@ -1103,7 +1103,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Cualidad de ser veraz",
                 example="La veracidad de la noticia está en duda.",
-                ipa="/beɾaθiˈðað/",
+                ipa="/beɾasiˈðað/",
             ),
             VocabularyEntry(
                 word="fuente",
@@ -1119,7 +1119,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Distorsión interesada de la información",
                 example="Denunciaron manipulación informativa.",
-                ipa="/manipulaˈθjon/",
+                ipa="/manipulaˈsjon/",
             ),
             VocabularyEntry(
                 word="difamar",
@@ -1183,7 +1183,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Dirección en que evoluciona algo",
                 example="Es una tendencia al alza.",
-                ipa="/tenˈdenθja/",
+                ipa="/tenˈdensja/",
             ),
             VocabularyEntry(
                 word="auge",
@@ -1215,7 +1215,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Hecho de relevancia social",
                 example="Fue el acontecimiento del año.",
-                ipa="/akon̪teθiˈmjento/",
+                ipa="/akon̪tesiˈmjento/",
             ),
             VocabularyEntry(
                 word="repercusión",
@@ -1255,7 +1255,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Exactitud al expresar algo",
                 example="Se expresa con gran precisión.",
-                ipa="/pɾeθiˈsjon/",
+                ipa="/pɾesiˈsjon/",
             ),
             VocabularyEntry(
                 word="elocuencia",
@@ -1263,7 +1263,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Capacidad de expresarse con fluidez",
                 example="Habló con elocuencia ante el público.",
-                ipa="/eloˈkwenθja/",
+                ipa="/eloˈkwensja/",
             ),
             VocabularyEntry(
                 word="matiz",
@@ -1271,7 +1271,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Detalle que aporta precisión",
                 example="Añadió un matiz importante.",
-                ipa="/maˈtiθ/",
+                ipa="/maˈtis/",
             ),
             VocabularyEntry(
                 word="argumentar",
@@ -1287,7 +1287,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Distinguir con claridad",
                 example="Sabe discernir entre lo importante y lo accesorio.",
-                ipa="/disθeɾˈniɾ/",
+                ipa="/diseɾˈniɾ/",
             ),
             VocabularyEntry(
                 word="cuestionar",
@@ -1303,7 +1303,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="adjective",
                 definition="De nivel superior",
                 example="Tiene un nivel avanzado de español.",
-                ipa="/aβanˈθaðo/",
+                ipa="/aβanˈsaðo/",
             ),
             VocabularyEntry(
                 word="perfeccionar",
@@ -1311,7 +1311,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Mejorar hasta alcanzar la excelencia",
                 example="Quiero perfeccionar mi pronunciación.",
-                ipa="/peɾfekθjoˈnaɾ/",
+                ipa="/peɾfeksjoˈnaɾ/",
             ),
             VocabularyEntry(
                 word="autonomía",
@@ -1350,7 +1350,7 @@ B2_SETS: list[VocabularySet] = [
                 frequency_rank=746,
                 pos="phrase",
                 definition="Acertar completamente",
-                example="Con esa respuesta has dado en el clavo.",
+                example="Con esa respuesta diste en el clavo.",
                 ipa="/daɾ en el ˈklaβo/",
             ),
             VocabularyEntry(
@@ -1366,7 +1366,7 @@ B2_SETS: list[VocabularySet] = [
                 frequency_rank=748,
                 pos="phrase",
                 definition="Ser muy caro",
-                example="Ese coche cuesta un ojo de la cara.",
+                example="Ese carro cuesta un ojo de la cara.",
                 ipa="/kosˈtaɾ un ˈoxo ðe la ˈkaɾa/",
             ),
             VocabularyEntry(
@@ -1378,12 +1378,12 @@ B2_SETS: list[VocabularySet] = [
                 ipa="/no teˈneɾ ni iˈðea/",
             ),
             VocabularyEntry(
-                word="echar de menos",
+                word="extrañar a alguien",
                 frequency_rank=750,
                 pos="phrase",
                 definition="Sentir la ausencia de alguien o algo",
-                example="Echo de menos a mi familia.",
-                ipa="/eˈtʃaɾ ðe ˈmenos/",
+                example="Extraño mucho a mi familia.",
+                ipa="/ekstɾaˈɲaɾ a alˈɣjen/",
             ),
             VocabularyEntry(
                 word="ponerse las pilas",
@@ -1415,7 +1415,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="phrase",
                 definition="Fingir que no se ve algo",
                 example="El profesor hizo la vista gorda con los retrasos.",
-                ipa="/aˈθeɾ la ˈβista ˈɣoɾða/",
+                ipa="/aˈseɾ la ˈβista ˈɣoɾða/",
             ),
             VocabularyEntry(
                 word="estar al tanto",
@@ -1431,7 +1431,7 @@ B2_SETS: list[VocabularySet] = [
                 pos="phrase",
                 definition="Realizar o ejecutar algo",
                 example="Llevamos a cabo el proyecto con éxito.",
-                ipa="/ʎeˈβaɾ a ˈkaβo/",
+                ipa="/ʝeˈβaɾ a ˈkaβo/",
             ),
             VocabularyEntry(
                 word="dar por sentado",
@@ -1458,12 +1458,12 @@ B2_SETS: list[VocabularySet] = [
                 ipa="/iɾse poɾ las ˈramas/",
             ),
             VocabularyEntry(
-                word="estar hasta las narices",
+                word="estar hasta el gorro",
                 frequency_rank=760,
                 pos="phrase",
                 definition="Estar harto o cansado de algo",
-                example="Estoy hasta las narices de este trabajo.",
-                ipa="/esˈtaɾ ˈasta las naˈɾiθes/",
+                example="Estoy hasta el gorro de este trabajo.",
+                ipa="/esˈtaɾ ˈasta el ˈgoro/",
             ),
             VocabularyEntry(
                 word="quedarse en blanco",

@@ -224,3 +224,22 @@ async def test_local_stt_forwards_required_language(monkeypatch) -> None:
         files={"audio_file": ("recording.wav", b"wav-bytes", "audio/wav")},
         timeout=60.0,
     )
+
+
+@pytest.mark.asyncio
+async def test_gemini_stt_reads_audio_transcription_parts():
+    from unittest.mock import AsyncMock, MagicMock, patch
+
+    from app.services.stt_service import GeminiSTTService
+
+    with patch("app.services.stt_service.genai.Client"):
+        service = GeminiSTTService(api_key="k", model="gemini-3.5-transcribe")
+    part = MagicMock()
+    part.audio_transcription.text = "¿Cómo se dice car en México?"
+    response = MagicMock()
+    response.candidates = [MagicMock()]
+    response.candidates[0].content.parts = [part]
+    service._client.aio.models.generate_content = AsyncMock(return_value=response)
+
+    text = await service.transcribe(b"RIFF....", language="es")
+    assert text == "¿Cómo se dice car en México?"

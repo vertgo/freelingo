@@ -9,8 +9,8 @@ A2_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="A2",
         category="Tiempos verbales",
         summary="El pasado simple para acciones terminadas: conjugación regular de -ar, -er, -ir.",
-        explanation="El **pretérito indefinido** (o pretérito perfecto simple) expresa **acciones pasadas y terminadas**, sin conexión con el presente.\n\n| Persona | -ar (hablar) | -er (comer) | -ir (vivir) |\n|--------|-------------|-------------|------------|\n| yo | hablé | comí | viví |\n| tú | hablaste | comiste | viviste |\n| él/ella/usted | habló | comió | vivió |\n| nosotros | hablamos | comimos | vivimos |\n| vosotros | hablasteis | comisteis | vivisteis |\n| ellos/ellas/ustedes | hablaron | comieron | vivieron |\n\nNota: las terminaciones de -er e -ir son **idénticas** en el indefinido. La primera persona de -ar y la de nosotros de -ar y -ir coinciden con el presente; el contexto aclara el tiempo.",
-        structure="raíz + -é/-aste/-ó/-amos/-asteis/-aron (AR) · -í/-iste/-ió/-imos/-isteis/-ieron (ER/IR)",
+        explanation="El **pretérito indefinido** (o pretérito perfecto simple) expresa **acciones pasadas y terminadas**, sin conexión con el presente.\n\n| Persona | -ar (hablar) | -er (comer) | -ir (vivir) |\n|--------|-------------|-------------|------------|\n| yo | hablé | comí | viví |\n| tú | hablaste | comiste | viviste |\n| él/ella/usted | habló | comió | vivió |\n| nosotros | hablamos | comimos | vivimos |\n| ellos/ellas/ustedes | hablaron | comieron | vivieron |\n\nNota: las terminaciones de -er e -ir son **idénticas** en el indefinido. La primera persona de -ar y la de nosotros de -ar y -ir coinciden con el presente; el contexto aclara el tiempo.",
+        structure="raíz + -é/-aste/-ó/-amos/-aron (AR) · -í/-iste/-ió/-imos/-ieron (ER/IR)",
         rules=[
             "-er e -ir comparten las mismas terminaciones en indefinido.",
             "La primera persona del singular (yo) siempre lleva tilde: hablé, comí, viví.",
@@ -23,9 +23,9 @@ A2_GRAMMAR_TOPICS: list[GrammarTopic] = [
                 text="Ayer hablé con mi madre por teléfono.",
                 translation=None,
             ),
-            GrammarExample(text="Comimos paella el domingo pasado.", translation=None),
+            GrammarExample(text="Comimos tacos el domingo pasado.", translation=None),
             GrammarExample(
-                text="¿Viviste en Barcelona el año pasado?",
+                text="¿Viviste en Guadalajara el año pasado?",
                 translation=None,
             ),
             GrammarExample(text="Ellos llegaron a las ocho.", translation=None),
@@ -37,8 +37,8 @@ A2_GRAMMAR_TOPICS: list[GrammarTopic] = [
                 note='"Hablo" es presente; para el pasado se necesita "hablé" con tilde.',
             ),
             GrammarMistake(
-                wrong="Ayer comí la paella.",
-                correct="Ayer comí paella.",
+                wrong="Ayer comí el pozole.",
+                correct="Ayer comí pozole.",
                 note="En general no se usa artículo definido con comidas cuando se habla de consumirlas.",
             ),
         ],
@@ -72,7 +72,7 @@ A2_GRAMMAR_TOPICS: list[GrammarTopic] = [
                 text="Hace tres años empecé a estudiar español.",
                 translation=None,
             ),
-            GrammarExample(text="En 2015 nos mudamos a Madrid.", translation=None),
+            GrammarExample(text="En 2015 nos mudamos a Monterrey.", translation=None),
         ],
         common_mistakes=[
             GrammarMistake(
@@ -98,8 +98,8 @@ A2_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="A2",
         category="Tiempos verbales",
         summary="Los principales verbos irregulares en pretérito indefinido.",
-        explanation="Muchos de los verbos más frecuentes tienen un **pretérito indefinido irregular** con raíces especiales y terminaciones sin tilde.\n\n**Verbos con raíz irregular (pretéritos fuertes)**:\n\n| Infinitivo | Raíz | yo | tú | él |\n|-----------|------|----|----|-----|\n| tener | tuv- | tuve | tuviste | tuvo |\n| estar | estuv- | estuve | estuviste | estuvo |\n| hacer | hic- (hiz-) | hice | hiciste | hizo |\n| poner | pus- | puse | pusiste | puso |\n| poder | pud- | pude | pudiste | pudo |\n| saber | sup- | supe | supiste | supo |\n| querer | quis- | quise | quisiste | quiso |\n| venir | vin- | vine | viniste | vino |\n| decir | dij- | dije | dijiste | dijo |\n| traer | traj- | traje | trajiste | trajo |\n| conducir | conduj- | conduje | condujiste | condujo |\n| andar | anduv- | anduve | anduviste | anduvo |\n\n**Ir y ser comparten la misma conjugación**: *fui, fuiste, fue, fuimos, fuisteis, fueron*.\n**Dar** es como un verbo -er/-ir: *di, diste, dio, dimos, disteis, dieron*.\n**Ver**: *vi, viste, vio, vimos, visteis, vieron* (sin tilde).",
-        structure="raíz irregular + -e/-iste/-o/-imos/-isteis/-ieron (sin tilde)",
+        explanation="Muchos de los verbos más frecuentes tienen un **pretérito indefinido irregular** con raíces especiales y terminaciones sin tilde.\n\n**Verbos con raíz irregular (pretéritos fuertes)**:\n\n| Infinitivo | Raíz | yo | tú | él |\n|-----------|------|----|----|-----|\n| tener | tuv- | tuve | tuviste | tuvo |\n| estar | estuv- | estuve | estuviste | estuvo |\n| hacer | hic- (hiz-) | hice | hiciste | hizo |\n| poner | pus- | puse | pusiste | puso |\n| poder | pud- | pude | pudiste | pudo |\n| saber | sup- | supe | supiste | supo |\n| querer | quis- | quise | quisiste | quiso |\n| venir | vin- | vine | viniste | vino |\n| decir | dij- | dije | dijiste | dijo |\n| traer | traj- | traje | trajiste | trajo |\n| traducir | traduj- | traduje | tradujiste | tradujo |\n| andar | anduv- | anduve | anduviste | anduvo |\n\n**Ir y ser comparten la misma conjugación**: *fui, fuiste, fue, fuimos, fueron*.\n**Dar** es como un verbo -er/-ir: *di, diste, dio, dimos, dieron*.\n**Ver**: *vi, viste, vio, vimos, vieron* (sin tilde).",
+        structure="raíz irregular + -e/-iste/-o/-imos/-ieron (sin tilde)",
         rules=[
             "Las terminaciones de los pretéritos fuertes NO llevan tilde.",
             '"Hacer" cambia c→z en la tercera persona: hizo (no ~~hico~~).',
@@ -146,8 +146,8 @@ A2_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="A2",
         category="Tiempos verbales",
         summary="Describir hábitos pasados, escenas y acciones en desarrollo en el pasado.",
-        explanation="El **pretérito imperfecto** describe acciones pasadas **no terminadas**, habituales o que servían de trasfondo a otros eventos. Solo hay **tres verbos irregulares**: *ir, ser, ver*.\n\n| Persona | -ar (hablar) | -er (comer) | -ir (vivir) |\n|--------|-------------|-------------|-------------|\n| yo | hablaba | comía | vivía |\n| tú | hablabas | comías | vivías |\n| él/ella/ud. | hablaba | comía | vivía |\n| nosotros | hablábamos | comíamos | vivíamos |\n| vosotros | hablabais | comíais | vivíais |\n| ellos/ellas/uds. | hablaban | comían | vivían |\n\nIrregulares: *ir → iba, ser → era, ver → veía*.\n\nUsos:\n- **Hábitos pasados**: *De pequeño jugaba al fútbol cada día.*\n- **Descripciones en el pasado**: *Era una noche oscura. Llovía.*\n- **Acciones en desarrollo**: *Mientras cocinaba, sonó el teléfono.*",
-        structure="raíz + -aba/-abas/-aba/-ábamos/-abais/-aban (AR) · -ía/-ías/-ía/-íamos/-íais/-ían (ER/IR)",
+        explanation="El **pretérito imperfecto** describe acciones pasadas **no terminadas**, habituales o que servían de trasfondo a otros eventos. Solo hay **tres verbos irregulares**: *ir, ser, ver*.\n\n| Persona | -ar (hablar) | -er (comer) | -ir (vivir) |\n|--------|-------------|-------------|-------------|\n| yo | hablaba | comía | vivía |\n| tú | hablabas | comías | vivías |\n| él/ella/ud. | hablaba | comía | vivía |\n| nosotros | hablábamos | comíamos | vivíamos |\n| ellos/ellas/uds. | hablaban | comían | vivían |\n\nIrregulares: *ir → iba, ser → era, ver → veía*.\n\nUsos:\n- **Hábitos pasados**: *De pequeño jugaba al fútbol cada día.*\n- **Descripciones en el pasado**: *Era una noche oscura. Llovía.*\n- **Acciones en desarrollo**: *Mientras cocinaba, sonó el teléfono.*",
+        structure="raíz + -aba/-abas/-aba/-ábamos/-aban (AR) · -ía/-ías/-ía/-íamos/-ían (ER/IR)",
         rules=[
             "El imperfecto de -er e -ir es idéntico.",
             "Indica acciones no terminadas, habituales o de fondo en el pasado.",
@@ -281,14 +281,14 @@ A2_GRAMMAR_TOPICS: list[GrammarTopic] = [
         title="Pronombres de objeto directo",
         level="A2",
         category="Pronombres",
-        summary="me, te, lo, la, nos, os, los, las — sustituir el complemento directo.",
-        explanation="Los **pronombres de objeto directo** sustituyen al complemento que recibe directamente la acción del verbo. Responden a *¿qué?* o *¿a quién?*.\n\n| Persona | Pronombre OD |\n|---------|-------------|\n| yo | me |\n| tú | te |\n| él/usted (masc.) | lo |\n| ella/usted (fem.) | la |\n| nosotros/as | nos |\n| vosotros/as | os |\n| ellos/ustedes (masc.) | los |\n| ellas/ustedes (fem.) | las |\n\nSe colocan **delante del verbo conjugado**: *Lo compré ayer.*\nCon **infinitivo o gerundio** pueden ir detrás soldados a la palabra: *Voy a comprarlo. / Estoy comprándolo.*",
+        summary="me, te, lo, la, nos, los, las — sustituir el complemento directo.",
+        explanation="Los **pronombres de objeto directo** sustituyen al complemento que recibe directamente la acción del verbo. Responden a *¿qué?* o *¿a quién?*.\n\n| Persona | Pronombre OD |\n|---------|-------------|\n| yo | me |\n| tú | te |\n| él/usted (masc.) | lo |\n| ella/usted (fem.) | la |\n| nosotros/as | nos |\n| ellos/ustedes (masc.) | los |\n| ellas/ustedes (fem.) | las |\n\nSe colocan **delante del verbo conjugado**: *Lo compré ayer.*\nCon **infinitivo o gerundio** pueden ir detrás soldados a la palabra: *Voy a comprarlo. / Estoy comprándolo.*",
         structure="pronombre OD + verbo conjugado · infinitivo/gerundio + pronombre OD",
         rules=[
             "Concuerdan en género y número con el sustantivo que sustituyen.",
             "Delante del verbo conjugado; detrás soldados al infinitivo o gerundio.",
             '"Lo" se usa también para ideas o frases enteras: "No lo sé".',
-            'En España hay tendencia al leísmo de persona, pero lo normativo es "lo" para OD masculino.',
+            'En México se usa "lo" para el OD masculino de persona: "A Juan lo vi ayer" (no "le vi").',
         ],
         examples=[
             GrammarExample(text="¿El libro? Lo leí ayer.", translation=None),
@@ -325,8 +325,8 @@ A2_GRAMMAR_TOPICS: list[GrammarTopic] = [
         title="Pronombres de objeto indirecto",
         level="A2",
         category="Pronombres",
-        summary="me, te, le, nos, os, les — sustituir el complemento indirecto (a quién).",
-        explanation="Los **pronombres de objeto indirecto** sustituyen a la persona o entidad que recibe el beneficio o daño de la acción. Responden a *¿a quién?* o *¿para quién?*.\n\n| Persona | Pronombre OI |\n|---------|-------------|\n| yo | me |\n| tú | te |\n| él/ella/usted | le |\n| nosotros/as | nos |\n| vosotros/as | os |\n| ellos/ellas/ustedes | les |\n\nA diferencia del OD, el OI **no distingue género**: *le* sirve para masculino y femenino singular; *les* para plural.\n\nSe colocan igual que los OD: delante del verbo conjugado o detrás del infinitivo/gerundio. La duplicación del OI es frecuente: *Le di el libro a Juan.*",
+        summary="me, te, le, nos, les — sustituir el complemento indirecto (a quién).",
+        explanation="Los **pronombres de objeto indirecto** sustituyen a la persona o entidad que recibe el beneficio o daño de la acción. Responden a *¿a quién?* o *¿para quién?*.\n\n| Persona | Pronombre OI |\n|---------|-------------|\n| yo | me |\n| tú | te |\n| él/ella/usted | le |\n| nosotros/as | nos |\n| ellos/ellas/ustedes | les |\n\nA diferencia del OD, el OI **no distingue género**: *le* sirve para masculino y femenino singular; *les* para plural.\n\nSe colocan igual que los OD: delante del verbo conjugado o detrás del infinitivo/gerundio. La duplicación del OI es frecuente: *Le di el libro a Juan.*",
         structure="pronombre OI + verbo conjugado",
         rules=[
             "No distinguen género: le/les para masculino y femenino.",
@@ -413,7 +413,7 @@ A2_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="A2",
         category="Adjetivos y adverbios",
         summary="Comparar personas, objetos y acciones: más... que, menos... que, tan... como.",
-        explanation="En español hay tres tipos de **comparación**:\n\n**Comparativo de superioridad**: *más + adjetivo/sustantivo/adverbio + que*\n- *Ella es más alta que yo. / Tengo más trabajo que antes.*\n\n**Comparativo de inferioridad**: *menos + adjetivo/sustantivo/adverbio + que*\n- *Este coche es menos caro que aquel.*\n\n**Comparativo de igualdad**: *tan + adjetivo/adverbio + como* / *tanto/a/os/as + sustantivo + como*\n- *Es tan inteligente como su hermano. / Tengo tantos libros como tú.*\n\n**Comparativos irregulares**:\n- bueno → mejor · malo → peor · grande → mayor · pequeño → menor\n- *Mejor/peor que*, nunca ~~más mejor~~.",
+        explanation="En español hay tres tipos de **comparación**:\n\n**Comparativo de superioridad**: *más + adjetivo/sustantivo/adverbio + que*\n- *Ella es más alta que yo. / Tengo más trabajo que antes.*\n\n**Comparativo de inferioridad**: *menos + adjetivo/sustantivo/adverbio + que*\n- *Este carro es menos caro que aquel.*\n\n**Comparativo de igualdad**: *tan + adjetivo/adverbio + como* / *tanto/a/os/as + sustantivo + como*\n- *Es tan inteligente como su hermano. / Tengo tantos libros como tú.*\n\n**Comparativos irregulares**:\n- bueno → mejor · malo → peor · grande → mayor · pequeño → menor\n- *Mejor/peor que*, nunca ~~más mejor~~.",
         structure="más + adjetivo/sustantivo/adverbio + que · menos + ... + que · tan + adjetivo + como",
         rules=[
             '"Más/menos + adjetivo + que" para superioridad e inferioridad.',
@@ -423,7 +423,7 @@ A2_GRAMMAR_TOPICS: list[GrammarTopic] = [
         ],
         examples=[
             GrammarExample(
-                text="Madrid es más grande que Barcelona.",
+                text="La Ciudad de México es más grande que Guadalajara.",
                 translation=None,
             ),
             GrammarExample(
@@ -472,7 +472,7 @@ A2_GRAMMAR_TOPICS: list[GrammarTopic] = [
                 text="Es el edificio más alto del mundo.",
                 translation=None,
             ),
-            GrammarExample(text="La paella está buenísima.", translation=None),
+            GrammarExample(text="El mole está buenísimo.", translation=None),
             GrammarExample(
                 text="Es la persona menos puntual de la oficina.",
                 translation=None,
@@ -543,20 +543,20 @@ A2_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="A2",
         category="Verbos",
         summary="Dar órdenes, instrucciones y consejos con el imperativo afirmativo.",
-        explanation='El **imperativo afirmativo** se usa para dar órdenes, instrucciones, consejos o hacer invitaciones. Tiene formas propias para **tú** y **vosotros**; las formas de **usted** y **ustedes** se toman del **presente de subjuntivo**.\n\n**Formación regular**:\n\n| | -ar (hablar) | -er (comer) | -ir (escribir) |\n|---|-------------|-------------|---------------|\n| tú | habla | come | escribe |\n| usted | hable | coma | escriba |\n| vosotros | hablad | comed | escribid |\n| ustedes | hablen | coman | escriban |\n\nEl imperativo de **tú** afirmativo coincide con la tercera persona singular del presente de indicativo: *él habla → ¡habla tú!*\nEl de **vosotros** se forma sustituyendo la -r del infinitivo por -d: *hablar → hablad*.\n\nLos pronombres van **detrás y soldados**: *cómpralo, siéntate, dime, dáselo*.\nEl imperativo de vosotros pierde la -d ante "os": *sentad + os → sentaos*.',
-        structure="tú: 3ª pers. sing. presente · usted: 3ª pers. sing. subjuntivo · vosotros: infinitivo -r + d",
+        explanation="El **imperativo afirmativo** se usa para dar órdenes, instrucciones, consejos o hacer invitaciones. Tiene forma propia para **tú**; las formas de **usted** y **ustedes** se toman del **presente de subjuntivo**. En México **ustedes** es el plural para todos, amigos incluidos.\n\n**Formación regular**:\n\n| | -ar (hablar) | -er (comer) | -ir (escribir) |\n|---|-------------|-------------|---------------|\n| tú | habla | come | escribe |\n| usted | hable | coma | escriba |\n| ustedes | hablen | coman | escriban |\n\nEl imperativo de **tú** afirmativo coincide con la tercera persona singular del presente de indicativo: *él habla → ¡habla tú!*\nEl de **ustedes** coincide con el presente de subjuntivo: *hablar → hablen*.\n\nLos pronombres van **detrás y soldados**: *cómpralo, siéntate, dime, dáselo*.\nCon ustedes el pronombre va al final una sola vez: *siéntense, díganme*.",
+        structure="tú: 3ª pers. sing. presente · usted: 3ª pers. sing. subjuntivo · ustedes: 3ª pers. pl. subjuntivo",
         rules=[
             "Tú afirmativo: como la 3ª persona singular del presente (habla, come, escribe).",
-            "Vosotros afirmativo: cambiar -r del infinitivo por -d (hablad, comed, escribid).",
-            "Usted/ustedes: igual que el presente de subjuntivo.",
+            "Ustedes afirmativo (plural formal e informal): hablen, coman, escriban.",
+            "Usted y ustedes: igual que el presente de subjuntivo.",
             'Los pronombres van detrás: "dime", "cómpralo", "siéntate".',
         ],
         examples=[
             GrammarExample(text="¡Come más despacio!", translation=None),
             GrammarExample(
-                text="Hablad más bajo, por favor.",
+                text="Hablen más bajo, por favor.",
                 translation=None,
-                note="vosotros",
+                note="ustedes",
             ),
             GrammarExample(text="Dime la verdad.", translation=None),
             GrammarExample(text="Siéntese, por favor.", translation=None, note="usted"),
@@ -568,9 +568,9 @@ A2_GRAMMAR_TOPICS: list[GrammarTopic] = [
                 note='El imperativo de tú es "come", no "comes".',
             ),
             GrammarMistake(
-                wrong="Sentaros aquí.",
-                correct="Sentaos aquí.",
-                note='El imperativo de vosotros pierde la -d delante de "os": sentad + os → sentaos.',
+                wrong="Siéntensen aquí.",
+                correct="Siéntense aquí.",
+                note='Con ustedes el pronombre "se" va al final una sola vez: siéntense (no "siéntensen").',
             ),
         ],
         related=[
@@ -585,20 +585,20 @@ A2_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="A2",
         category="Verbos",
         summary="Prohibir o desaconsejar con el imperativo negativo.",
-        explanation="El **imperativo negativo** usa siempre las formas del **presente de subjuntivo**, para todas las personas, incluido tú y vosotros.\n\n| Persona | -ar (hablar) | -er (comer) | -ir (escribir) |\n|--------|-------------|-------------|---------------|\n| tú | no hables | no comas | no escribas |\n| usted | no hable | no coma | no escriba |\n| vosotros | no habléis | no comáis | no escribáis |\n| ustedes | no hablen | no coman | no escriban |\n\nLos pronombres en el imperativo negativo van **delante del verbo** (a diferencia del afirmativo):\n- *Cómpralo. → No lo compres.*\n- *Siéntate. → No te sientes.*",
+        explanation="El **imperativo negativo** usa siempre las formas del **presente de subjuntivo**, para todas las personas, incluido tú.\n\n| Persona | -ar (hablar) | -er (comer) | -ir (escribir) |\n|--------|-------------|-------------|---------------|\n| tú | no hables | no comas | no escribas |\n| usted | no hable | no coma | no escriba |\n| ustedes | no hablen | no coman | no escriban |\n\nLos pronombres en el imperativo negativo van **delante del verbo** (a diferencia del afirmativo):\n- *Cómpralo. → No lo compres.*\n- *Siéntate. → No te sientes.*",
         structure="no + presente de subjuntivo",
         rules=[
             "El imperativo negativo usa siempre el presente de subjuntivo.",
             'Los pronombres van delante del verbo en el negativo: "No lo hagas".',
             '"No + subjuntivo" reemplaza completamente al imperativo afirmativo para prohibiciones.',
-            "La forma de vosotros negativo termina en -éis (AR) o -áis (ER/IR): no habléis, no comáis.",
+            "La forma de ustedes negativo es 'no' + subjuntivo: no hablen, no coman, no escriban.",
         ],
         examples=[
             GrammarExample(text="No hables tan alto.", translation=None),
             GrammarExample(
-                text="No comáis tantos dulces.",
+                text="No coman tantos dulces.",
                 translation=None,
-                note="vosotros",
+                note="ustedes",
             ),
             GrammarExample(text="Por favor, no se preocupe.", translation=None, note="usted"),
             GrammarExample(text="No lo toques, está caliente.", translation=None),
@@ -610,9 +610,9 @@ A2_GRAMMAR_TOPICS: list[GrammarTopic] = [
                 note='El imperativo negativo de tú es "no hables", no "no habla".',
             ),
             GrammarMistake(
-                wrong="No sentaros aquí.",
-                correct="No os sentéis aquí.",
-                note='En el negativo los pronombres van delante: "no os sentéis".',
+                wrong="No siéntense aquí.",
+                correct="No se sienten aquí.",
+                note='En el negativo los pronombres van delante: "no se sienten".',
             ),
         ],
         related=[
@@ -627,24 +627,24 @@ A2_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="A2",
         category="Verbos",
         summary="Los imperativos irregulares de tú: ven, di, sal, haz, ten, ve, pon, sé.",
-        explanation="El imperativo afirmativo de **tú** tiene **ocho formas irregulares** muy frecuentes:\n\n| Infinitivo | Imperativo tú |\n|-----------|--------------|\n| decir | **di** |\n| hacer | **haz** |\n| ir | **ve** |\n| poner | **pon** |\n| salir | **sal** |\n| ser | **sé** |\n| tener | **ten** |\n| venir | **ven** |\n\nEstas formas irregulares mantienen los pronombres soldados detrás: *dime, hazlo, ponte, vete, tenlo, ven aquí*.\n\nPara **vosotros**, el imperativo es siempre regular (salvo ir → id).\n\nEl imperativo negativo usa el subjuntivo y sigue las irregularidades del presente de subjuntivo: *no digas, no hagas, no vayas, no pongas...*",
+        explanation="El imperativo afirmativo de **tú** tiene **ocho formas irregulares** muy frecuentes:\n\n| Infinitivo | Imperativo tú |\n|-----------|--------------|\n| decir | **di** |\n| hacer | **haz** |\n| ir | **ve** |\n| poner | **pon** |\n| salir | **sal** |\n| ser | **sé** |\n| tener | **ten** |\n| venir | **ven** |\n\nEstas formas irregulares mantienen los pronombres soldados detrás: *dime, hazlo, ponte, vete, tenlo, ven aquí*.\n\nPara **ustedes**, se usa el subjuntivo: *digan, hagan, vayan, pongan, salgan, sean, tengan, vengan*.\n\nEl imperativo negativo usa el subjuntivo y sigue las irregularidades del presente de subjuntivo: *no digas, no hagas, no vayas, no pongas...*",
         structure="ocho formas irregulares de tú",
         rules=[
             "Solo ocho verbos tienen imperativo de tú irregular.",
-            "Las formas de vosotros son siempre regulares (infinitivo -r + d).",
+            "Las formas de ustedes salen del subjuntivo: digan, hagan, vayan.",
             'Los imperativos irregulares de tú se memorizan: "di, haz, ve, pon, sal, sé, ten, ven".',
             "El imperativo negativo irregular sigue el subjuntivo.",
         ],
         examples=[
             GrammarExample(text="Di la verdad.", translation=None),
-            GrammarExample(text="Haz los deberes ahora.", translation=None),
+            GrammarExample(text="Haz la tarea ahora.", translation=None),
             GrammarExample(text="Ten paciencia.", translation=None),
             GrammarExample(text="Pon la mesa, por favor.", translation=None),
         ],
         common_mistakes=[
             GrammarMistake(
-                wrong="Hace los deberes.",
-                correct="Haz los deberes.",
+                wrong="Hace la tarea.",
+                correct="Haz la tarea.",
                 note='El imperativo de hacer es "haz". "Hace" es presente de indicativo.',
             ),
             GrammarMistake(
@@ -661,8 +661,8 @@ A2_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="A2",
         category="Tiempos verbales",
         summary="Hablar de acciones futuras: hablaré, comerás, vivirán.",
-        explanation="El **futuro simple** se forma añadiendo las terminaciones al **infinitivo completo** (sin quitar -ar/-er/-ir). Es igual para las tres conjugaciones.\n\n| Persona | -ar (hablar) | -er (comer) | -ir (vivir) |\n|--------|-------------|-------------|------------|\n| yo | hablaré | comeré | viviré |\n| tú | hablarás | comerás | vivirás |\n| él/ella/usted | hablará | comerá | vivirá |\n| nosotros | hablaremos | comeremos | viviremos |\n| vosotros | hablaréis | comeréis | viviréis |\n| ellos/ellas/uds. | hablarán | comerán | vivirán |\n\n**Irregulares**: modifican la raíz pero mantienen las mismas terminaciones:\n- decir → dir- · hacer → har- · querer → querr- · poder → podr- · saber → sabr- · salir → saldr- · tener → tendr- · venir → vendr- · poner → pondr- · valer → valdr- · haber → habr- · caber → cabr-\n\nSe usa también para expresar **probabilidad o conjetura** en el presente: *Serán las tres* (probablemente son las tres).",
-        structure="infinitivo completo + -é/-ás/-á/-emos/-éis/-án",
+        explanation="El **futuro simple** se forma añadiendo las terminaciones al **infinitivo completo** (sin quitar -ar/-er/-ir). Es igual para las tres conjugaciones.\n\n| Persona | -ar (hablar) | -er (comer) | -ir (vivir) |\n|--------|-------------|-------------|------------|\n| yo | hablaré | comeré | viviré |\n| tú | hablarás | comerás | vivirás |\n| él/ella/usted | hablará | comerá | vivirá |\n| nosotros | hablaremos | comeremos | viviremos |\n| ellos/ellas/uds. | hablarán | comerán | vivirán |\n\n**Irregulares**: modifican la raíz pero mantienen las mismas terminaciones:\n- decir → dir- · hacer → har- · querer → querr- · poder → podr- · saber → sabr- · salir → saldr- · tener → tendr- · venir → vendr- · poner → pondr- · valer → valdr- · haber → habr- · caber → cabr-\n\nSe usa también para expresar **probabilidad o conjetura** en el presente: *Serán las tres* (probablemente son las tres).",
+        structure="infinitivo completo + -é/-ás/-á/-emos/-án",
         rules=[
             "Las terminaciones se añaden al infinitivo completo; igual para -ar, -er, -ir.",
             'Todas las formas llevan tilde menos "nosotros" (no lleva tilde: hablaremos).',
@@ -671,7 +671,7 @@ A2_GRAMMAR_TOPICS: list[GrammarTopic] = [
         ],
         examples=[
             GrammarExample(
-                text="El año que viene estudiaré en Granada.",
+                text="El año que viene estudiaré en Oaxaca.",
                 translation=None,
             ),
             GrammarExample(text="¿Vendrás a la boda?", translation=None),
@@ -700,8 +700,8 @@ A2_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="A2",
         category="Condicionales",
         summary="Expresar deseos, cortesía, probabilidad en el pasado y situaciones hipotéticas.",
-        explanation="El **condicional simple** se forma añadiendo terminaciones al **infinitivo completo**. Los mismos verbos que son irregulares en futuro lo son en condicional.\n\n| Persona | -ar (hablar) | -er (comer) | -ir (vivir) |\n|--------|-------------|-------------|------------|\n| yo | hablaría | comería | viviría |\n| tú | hablarías | comerías | vivirías |\n| él/ella/ud. | hablaría | comería | viviría |\n| nosotros | hablaríamos | comeríamos | viviríamos |\n| vosotros | hablaríais | comeríais | viviríais |\n| ellos/ellas/uds. | hablarían | comerían | vivirían |\n\nUsos:\n- **Deseo**: *Me gustaría viajar a Japón.*\n- **Cortesía**: *¿Podría ayudarme?*\n- **Consejo**: *Deberías estudiar más.*\n- **Probabilidad en el pasado**: *Serían las tres cuando llegó.*\n- **Futuro del pasado**: *Dijo que vendría.*",
-        structure="infinitivo completo + -ía/-ías/-ía/-íamos/-íais/-ían",
+        explanation="El **condicional simple** se forma añadiendo terminaciones al **infinitivo completo**. Los mismos verbos que son irregulares en futuro lo son en condicional.\n\n| Persona | -ar (hablar) | -er (comer) | -ir (vivir) |\n|--------|-------------|-------------|------------|\n| yo | hablaría | comería | viviría |\n| tú | hablarías | comerías | vivirías |\n| él/ella/ud. | hablaría | comería | viviría |\n| nosotros | hablaríamos | comeríamos | viviríamos |\n| ellos/ellas/uds. | hablarían | comerían | vivirían |\n\nUsos:\n- **Deseo**: *Me gustaría viajar a Japón.*\n- **Cortesía**: *¿Podría ayudarme?*\n- **Consejo**: *Deberías estudiar más.*\n- **Probabilidad en el pasado**: *Serían las tres cuando llegó.*\n- **Futuro del pasado**: *Dijo que vendría.*",
+        structure="infinitivo completo + -ía/-ías/-ía/-íamos/-ían",
         rules=[
             "Terminaciones sobre el infinitivo completo. Siempre llevan tilde.",
             "Mismos irregulares que el futuro: diría, haría, querría, podría, sabría, saldría, tendría, vendría, pondría, valdría, habría, cabría.",
@@ -921,7 +921,7 @@ A2_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="A2",
         category="Oraciones",
         summary="Conectores para causa, consecuencia y contraste: porque, así que, sin embargo.",
-        explanation="Los **conectores argumentativos** unen ideas y permiten expresar relaciones lógicas: causa, consecuencia, oposición.\n\n**Causa**: *porque, ya que, puesto que, debido a que*\n- *No fui a la fiesta **porque** estaba enfermo.*\n- *Ya que has terminado, puedes salir.*\n\n**Consecuencia**: *así que, por eso, por lo tanto, en consecuencia*\n- *Tenía hambre, **así que** me preparé un bocadillo.*\n- *No estudió nada; **por eso** suspendió.*\n\n**Contraste**: *pero, sin embargo, no obstante, aunque, en cambio*\n- *Es caro, **pero** merece la pena.*\n- *Hace frío; **sin embargo**, saldré a correr.*",
+        explanation="Los **conectores argumentativos** unen ideas y permiten expresar relaciones lógicas: causa, consecuencia, oposición.\n\n**Causa**: *porque, ya que, puesto que, debido a que*\n- *No fui a la fiesta **porque** estaba enfermo.*\n- *Ya que terminaste, puedes salir.*\n\n**Consecuencia**: *así que, por eso, por lo tanto, en consecuencia*\n- *Tenía hambre, **así que** me preparé una torta.*\n- *No estudió nada; **por eso** reprobó.*\n\n**Contraste**: *pero, sin embargo, no obstante, aunque, en cambio*\n- *Es caro, **pero** merece la pena.*\n- *Hace frío; **sin embargo**, saldré a correr.*",
         rules=[
             '"Porque" (causa) junto, sin tilde. "Por qué" (interrogativo) separado y con tilde.',
             '"Así que" introduce una consecuencia y se escribe separado.',
@@ -984,7 +984,7 @@ A2_GRAMMAR_TOPICS: list[GrammarTopic] = [
                 translation=None,
             ),
             GrammarExample(
-                text="Comentó que entonces vivía en Barcelona.",
+                text="Comentó que entonces vivía en Puebla.",
                 translation=None,
             ),
             GrammarExample(

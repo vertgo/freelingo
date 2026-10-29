@@ -10,7 +10,7 @@ B1_CATEGORIES: list[PhrasebookCategory] = [
         icon="\U0001f4de",
         phrases=[
             PhrasebookEntry(
-                text="\u00bfDiga? / \u00bfS\u00ed?",
+                text="\u00bfBueno? / \u00bfS\u00ed?",
                 context="Contestar el tel\u00e9fono",
                 register="neutral",
             ),
@@ -26,7 +26,7 @@ B1_CATEGORIES: list[PhrasebookCategory] = [
             ),
             PhrasebookEntry(text="Soy [nombre].", context="Identificarse", register="neutral"),
             PhrasebookEntry(
-                text="Le paso con \u00e9l/ella.",
+                text="Ahorita se lo comunico.",
                 context="Transferir una llamada",
                 register="neutral",
             ),
@@ -51,7 +51,7 @@ B1_CATEGORIES: list[PhrasebookCategory] = [
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="Un momento, ahora se pone.",
+                text="Un momento, ahorita se lo paso.",
                 context="Pedir que espere",
                 register="neutral",
             ),
@@ -195,7 +195,7 @@ B1_CATEGORIES: list[PhrasebookCategory] = [
         icon="\U0001f3e5",
         phrases=[
             PhrasebookEntry(
-                text="Quer\u00eda pedir cita con el m\u00e9dico.",
+                text="Quisiera hacer una cita con el doctor.",
                 context="Solicitar una cita",
                 register="formal",
             ),
@@ -210,7 +210,7 @@ B1_CATEGORIES: list[PhrasebookCategory] = [
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="No me encuentro bien.",
+                text="No me siento bien.",
                 context="Decir que est\u00e1s enfermo",
                 register="neutral",
             ),
@@ -245,7 +245,7 @@ B1_CATEGORIES: list[PhrasebookCategory] = [
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="Necesito un volante para el especialista.",
+                text="Necesito un pase para el especialista.",
                 context="Pedir derivaci\u00f3n a especialista",
                 register="neutral",
             ),

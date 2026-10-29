@@ -84,7 +84,7 @@ C1_UNITS: list[CurriculumUnit] = [
         competency_checklist=[
             "Reconoce ironía verbal y sarcasmo en español atendiendo a entonación, contexto e incongruencia léxica: ¡Qué lista eres! (dicho a alguien que ha cometido una torpeza)",
             "Comprende juegos de palabras, calambures y dobles sentidos frecuentes en publicidad, titulares y habla cotidiana",
-            "Interpreta humor apoyado en referencias culturales hispanas (las rebajas, la siesta, la sobremesa, Semana Santa) sin necesidad de explicación adicional",
+            "Interpreta humor apoyado en referencias culturales hispanas (el Buen Fin, la sobremesa, el Día de Muertos, las posadas) sin necesidad de explicación adicional",
             "Produce un texto breve satírico o irónico sobre un tema social con tono y registro adecuados, sin generar ofensas no intencionadas",
             "Distingue ironía de mentira y sarcasmo de insulto en función del conocimiento pragmático compartido entre interlocutores",
         ],
@@ -118,10 +118,10 @@ C1_UNITS: list[CurriculumUnit] = [
         vocabulary_set_ids=["variedades_c1", "dialectos_c1"],
         lesson_types=["grammar", "vocabulary", "reading", "writing", "review"],
         competency_checklist=[
-            "Identifica diferencias fonológicas clave entre el español peninsular (distinción s/z, leísmo) y variedades mayoritarias de América (seseo, yeísmo), y reconoce ceceo y seseo en variedades del sur peninsular (Andalucía, Canarias)",
+            "Identifica diferencias fonológicas clave entre el español de México y la mayoría de América (seseo, yeísmo) y el español de España (distinción s/z, leísmo), y reconoce ceceo y seseo en variedades del sur peninsular (Andalucía, Canarias)",
             "Comprende y responde al voseo (vos + formas verbales específicas: vos tenés, vos querés, vos sos) en los contextos donde se emplea",
-            "Reconoce diferencias léxicas relevantes entre español peninsular y americano en ámbitos cotidianos: coche/carro, ordenador/computadora, móvil/celular, conducir/manejar",
-            "Usa correctamente la oposición vosotros/ustedes (peninsular) frente a ustedes en todos los contextos (América) según la variedad trabajada",
+            "Reconoce diferencias léxicas relevantes entre español peninsular y americano en ámbitos cotidianos: carro/coche, computadora/ordenador, celular/móvil, manejar/conducir",
+            "Usa ustedes en todos los contextos, como en México, y reconoce vosotros cuando lo oye en el español de España",
             "Analiza el estatus sociolingüístico de las variedades del español sin jerarquías de valor, entendiendo que todas son válidas y sistemáticas",
         ],
         default_weeks=2,

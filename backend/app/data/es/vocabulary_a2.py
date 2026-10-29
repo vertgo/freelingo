@@ -124,7 +124,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Conocimiento adquirido por la práctica",
                 example="Fue una experiencia maravillosa.",
-                ipa="/ekspeˈɾjenθja/",
+                ipa="/ekspeˈɾjensja/",
             ),
             VocabularyEntry(
                 word="recuerdo",
@@ -156,7 +156,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Tener información sobre algo por primera vez",
                 example="Conocí a su familia en la boda.",
-                ipa="/konoˈθeɾ/",
+                ipa="/konoˈseɾ/",
             ),
             VocabularyEntry(
                 word="descubrir",
@@ -204,7 +204,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Ocurrir un hecho",
                 example="¿Qué sucedió aquella noche?",
-                ipa="/suθeˈðeɾ/",
+                ipa="/suseˈðeɾ/",
             ),
             VocabularyEntry(
                 word="vivencia",
@@ -212,7 +212,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Experiencia personal vivida",
                 example="Compartió sus vivencias en el extranjero.",
-                ipa="/biˈβenθja/",
+                ipa="/biˈβensja/",
             ),
         ],
     ),
@@ -228,7 +228,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Período de la vida desde el nacimiento hasta la adolescencia",
                 example="Tuve una infancia muy feliz.",
-                ipa="/inˈfanθja/",
+                ipa="/inˈfansja/",
             ),
             VocabularyEntry(
                 word="juguete",
@@ -244,7 +244,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Etapa de la vida del niño",
                 example="Recuerdo mi niñez con cariño.",
-                ipa="/niˈɲeθ/",
+                ipa="/niˈɲes/",
             ),
             VocabularyEntry(
                 word="crecer",
@@ -252,7 +252,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Aumentar de tamaño o edad",
                 example="Crecí en un pueblo pequeño.",
-                ipa="/kɾeˈθeɾ/",
+                ipa="/kɾeˈseɾ/",
             ),
             VocabularyEntry(
                 word="jugar",
@@ -355,7 +355,7 @@ A2_SETS: list[VocabularySet] = [
                 frequency_rank=58,
                 pos="adjective",
                 definition="De tamaño reducido",
-                example="El apartamento es pequeño pero acogedor.",
+                example="El departamento es pequeño pero acogedor.",
                 ipa="/peˈkeɲo/",
             ),
             VocabularyEntry(
@@ -363,7 +363,7 @@ A2_SETS: list[VocabularySet] = [
                 frequency_rank=61,
                 pos="adjective",
                 definition="Recién hecho o adquirido",
-                example="Me compré un coche nuevo.",
+                example="Me compré un carro nuevo.",
                 ipa="/ˈnweβo/",
             ),
             VocabularyEntry(
@@ -388,7 +388,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="adjective",
                 definition="Con suciedad",
                 example="Los platos están sucios.",
-                ipa="/ˈsuθjo/",
+                ipa="/ˈsusjo/",
             ),
             VocabularyEntry(
                 word="rápido",
@@ -444,7 +444,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Cantidad de dinero que cuesta algo",
                 example="¿Cuál es el precio de este abrigo?",
-                ipa="/ˈpɾeθjo/",
+                ipa="/ˈpɾesjo/",
             ),
             VocabularyEntry(
                 word="descuento",
@@ -476,7 +476,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Comprobante de pago",
                 example="Guarde el recibo por si acaso.",
-                ipa="/reˈθiβo/",
+                ipa="/reˈsiβo/",
             ),
             VocabularyEntry(
                 word="devolver",
@@ -588,7 +588,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Dar las gracias",
                 example="Te agradezco mucho el detalle.",
-                ipa="/aɣɾaðeˈθeɾ/",
+                ipa="/aɣɾaðeˈseɾ/",
             ),
             VocabularyEntry(
                 word="detalle",
@@ -612,7 +612,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Festejar un acontecimiento",
                 example="Celebramos su cumpleaños en casa.",
-                ipa="/θeleˈβɾaɾ/",
+                ipa="/seleˈβɾaɾ/",
             ),
             VocabularyEntry(
                 word="invitar",
@@ -628,7 +628,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Tarjeta con mensaje de buenos deseos",
                 example="Le escribí una tarjeta de felicitación.",
-                ipa="/taɾˈxeta de feliθitaˈθjon/",
+                ipa="/taɾˈxeta de felisitaˈsjon/",
             ),
         ],
     ),
@@ -643,8 +643,8 @@ A2_SETS: list[VocabularySet] = [
                 frequency_rank=26,
                 pos="noun",
                 definition="Población grande y desarrollada",
-                example="Madrid es una ciudad vibrante.",
-                ipa="/θjuˈðad/",
+                example="Guadalajara es una ciudad vibrante.",
+                ipa="/sjuˈðad/",
             ),
             VocabularyEntry(
                 word="pueblo",
@@ -676,7 +676,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Construcción con varios pisos",
                 example="El edificio más alto tiene cincuenta plantas.",
-                ipa="/eðiˈfiθjo/",
+                ipa="/eðiˈfisjo/",
             ),
             VocabularyEntry(
                 word="tráfico",
@@ -692,7 +692,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Suciedad en el aire o el ambiente",
                 example="La contaminación es un problema grave.",
-                ipa="/kontaminaˈθjon/",
+                ipa="/kontaminaˈsjon/",
             ),
             VocabularyEntry(
                 word="transporte público",
@@ -708,7 +708,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Edificio de gran altura",
                 example="Los rascacielos dominan el paisaje urbano.",
-                ipa="/raskaˈθjelos/",
+                ipa="/raskaˈsjelos/",
             ),
             VocabularyEntry(
                 word="suburbio",
@@ -719,12 +719,12 @@ A2_SETS: list[VocabularySet] = [
                 ipa="/suˈβuɾβjo/",
             ),
             VocabularyEntry(
-                word="ayuntamiento",
+                word="presidencia municipal",
                 frequency_rank=380,
                 pos="noun",
                 definition="Edificio del gobierno municipal",
-                example="El ayuntamiento está en la plaza.",
-                ipa="/aʝuntaˈmjento/",
+                example="La presidencia municipal está en la plaza.",
+                ipa="/pɾesiˈðensja munisiˈpal/",
             ),
             VocabularyEntry(
                 word="peatonal",
@@ -772,7 +772,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Costumbre transmitida entre generaciones",
                 example="Es una tradición familiar.",
-                ipa="/tɾaðiˈθjon/",
+                ipa="/tɾaðiˈsjon/",
             ),
             VocabularyEntry(
                 word="fiesta",
@@ -820,7 +820,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Muestra pública de obras de arte",
                 example="Visitamos una exposición de pintura.",
-                ipa="/eksposiˈθjon/",
+                ipa="/eksposiˈsjon/",
             ),
             VocabularyEntry(
                 word="concierto",
@@ -828,7 +828,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Espectáculo musical en vivo",
                 example="El concierto duró dos horas.",
-                ipa="/konˈθjeɾto/",
+                ipa="/konˈsjeɾto/",
             ),
             VocabularyEntry(
                 word="artesanía",
@@ -884,7 +884,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Sustancia para curar enfermedades",
                 example="Toma la medicina cada ocho horas.",
-                ipa="/meðiˈθina/",
+                ipa="/meðiˈsina/",
             ),
             VocabularyEntry(
                 word="receta",
@@ -892,7 +892,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Documento médico para obtener fármacos",
                 example="El médico me dio una receta.",
-                ipa="/reˈθeta/",
+                ipa="/reˈseta/",
             ),
             VocabularyEntry(
                 word="cita",
@@ -900,7 +900,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Encuentro acordado con un profesional",
                 example="Tengo cita con el dentista.",
-                ipa="/ˈθita/",
+                ipa="/ˈsita/",
             ),
             VocabularyEntry(
                 word="consultorio",
@@ -1004,7 +1004,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Requerir algo indispensable",
                 example="Necesitas descansar más.",
-                ipa="/neθesiˈtaɾ/",
+                ipa="/nesesiˈtaɾ/",
             ),
             VocabularyEntry(
                 word="cuidado",
@@ -1036,7 +1036,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Respuesta a un problema",
                 example="Siempre hay una solución.",
-                ipa="/soluˈθjon/",
+                ipa="/soluˈsjon/",
             ),
             VocabularyEntry(
                 word="opción",
@@ -1044,7 +1044,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Alternativa entre la que elegir",
                 example="Tienes varias opciones para viajar.",
-                ipa="/opˈθjon/",
+                ipa="/opˈsjon/",
             ),
         ],
     ),
@@ -1068,7 +1068,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Lugar donde se hacen tareas administrativas",
                 example="La oficina está en el centro.",
-                ipa="/ofiˈθina/",
+                ipa="/ofiˈsina/",
             ),
             VocabularyEntry(
                 word="jefe",
@@ -1180,7 +1180,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Planificar y ordenar algo",
                 example="Organizamos una fiesta sorpresa.",
-                ipa="/oɾɣaniˈθaɾ/",
+                ipa="/oɾɣaniˈsaɾ/",
             ),
             VocabularyEntry(
                 word="futuro",
@@ -1212,7 +1212,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Propósito de hacer algo",
                 example="Tengo la intención de visitarte.",
-                ipa="/intenˈθjon/",
+                ipa="/intenˈsjon/",
             ),
             VocabularyEntry(
                 word="preparar",
@@ -1228,7 +1228,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Tomar una determinación",
                 example="Decidí mudarme a otra ciudad.",
-                ipa="/deθiˈðiɾ/",
+                ipa="/desiˈðiɾ/",
             ),
             VocabularyEntry(
                 word="cancelar",
@@ -1236,7 +1236,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Anular algo planeado",
                 example="Tuvimos que cancelar la excursión.",
-                ipa="/kanθeˈlaɾ/",
+                ipa="/kanseˈlaɾ/",
             ),
             VocabularyEntry(
                 word="pospuesto",
@@ -1284,7 +1284,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Comienzo de algo",
                 example="El principio de la historia es lento.",
-                ipa="/pɾinˈθipjo/",
+                ipa="/pɾinˈsipjo/",
             ),
             VocabularyEntry(
                 word="final",
@@ -1316,7 +1316,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Hecho importante",
                 example="Fue un acontecimiento histórico.",
-                ipa="/akonteθiˈmjento/",
+                ipa="/akontesiˈmjento/",
             ),
             VocabularyEntry(
                 word="leyenda",
@@ -1356,7 +1356,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Final de una narración",
                 example="El desenlace fue inesperado.",
-                ipa="/desenˈlaθe/",
+                ipa="/desenˈlase/",
             ),
         ],
     ),
@@ -1388,7 +1388,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="adjective",
                 definition="Que hace reír",
                 example="Es una persona muy graciosa.",
-                ipa="/ɡɾaˈθjoso/",
+                ipa="/ɡɾaˈsjoso/",
             ),
             VocabularyEntry(
                 word="curioso",
@@ -1404,7 +1404,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Sensación de incomodidad por una falta",
                 example="¡Qué vergüenza pasé en la fiesta!",
-                ipa="/beɾˈɣwenθa/",
+                ipa="/beɾˈɣwensa/",
             ),
             VocabularyEntry(
                 word="equivocarse",
@@ -1428,7 +1428,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Algo que ocurre",
                 example="Fue un suceso extraño.",
-                ipa="/suˈθeso/",
+                ipa="/suˈseso/",
             ),
             VocabularyEntry(
                 word="casualidad",
@@ -1483,10 +1483,10 @@ A2_SETS: list[VocabularySet] = [
                 "¿Cuál es el precio de esta camisa?",
             ),
             _entry(
-                "euro",
+                "peso",
                 "noun",
-                "Moneda usada en España y otros países europeos.",
-                "Cuesta diez euros.",
+                "Moneda de México y de otros países de América Latina.",
+                "Cuesta diez pesos.",
             ),
             _entry("pagar", "verb", "Dar dinero por algo.", "Voy a pagar con tarjeta."),
             _entry("costar", "verb", "Tener un precio.", "¿Cuánto cuesta?"),
@@ -1638,7 +1638,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Intercambio hablado entre personas",
                 example="Tuvimos una conversación muy interesante.",
-                ipa="/kombeɾsaˈθjon/",
+                ipa="/kombeɾsaˈsjon/",
             ),
             VocabularyEntry(
                 word="pronunciación",
@@ -1646,7 +1646,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Manera de articular los sonidos",
                 example="Mi pronunciación ha mejorado mucho.",
-                ipa="/pɾonunθjaˈθjon/",
+                ipa="/pɾonunsjaˈsjon/",
             ),
             VocabularyEntry(
                 word="gramática",
@@ -1670,7 +1670,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Libro con palabras y sus significados",
                 example="Consulto el diccionario a menudo.",
-                ipa="/dikθjoˈnaɾjo/",
+                ipa="/diksjoˈnaɾjo/",
             ),
         ],
     ),
@@ -1822,7 +1822,7 @@ A2_SETS: list[VocabularySet] = [
                 pos="adverb",
                 definition="En ese caso, por lo tanto",
                 example="¿No vienes? Entonces me voy solo.",
-                ipa="/enˈtonθes/",
+                ipa="/enˈtonses/",
             ),
         ],
     ),

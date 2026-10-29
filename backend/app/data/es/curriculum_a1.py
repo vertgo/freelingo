@@ -25,7 +25,7 @@ A1_UNITS: list[CurriculumUnit] = [
         ],
         lesson_types=["grammar", "vocabulary", "reading", "writing", "review"],
         competency_checklist=[
-            "Se presenta usando ser: nombre, edad y nacionalidad (Soy María, tengo 25 años, soy española)",
+            "Se presenta usando ser: nombre, edad y nacionalidad (Soy María, tengo 25 años, soy mexicana)",
             "Saluda y se despide con el registro adecuado: hola, buenos días, buenas tardes, hasta luego",
             "Usa los artículos definidos el/la/los/las con sustantivos frecuentes y controla la concordancia de género",
             "Pregunta y responde ¿Cómo te llamas? / ¿De dónde eres? en intercambios orales breves",
@@ -48,7 +48,7 @@ A1_UNITS: list[CurriculumUnit] = [
         lesson_types=["grammar", "vocabulary", "reading", "writing", "review"],
         competency_checklist=[
             "Expresa nacionalidad y profesión con ser, con forma masculina/femenina correcta: soy inglés/inglesa, soy médico/médica",
-            "Aplica la concordancia de género entre sustantivo y adjetivo: una profesora española, un alumno inglés",
+            "Aplica la concordancia de género entre sustantivo y adjetivo: una profesora mexicana, un alumno inglés",
             "Usa correctamente un/una/unos/unas con profesiones y objetos en oraciones simples",
             "Distingue ser (identidad, nacionalidad, profesión) de estar (aún no trabajado) en contextos de A1",
         ],
@@ -110,7 +110,7 @@ A1_UNITS: list[CurriculumUnit] = [
         lesson_types=["grammar", "vocabulary", "reading", "writing", "review"],
         competency_checklist=[
             "Usa gustar correctamente con sustantivos singulares/plurales e infinitivos: me gusta el café, me gustan los libros, me gusta leer",
-            "Coloca los pronombres de objeto indirecto me/te/le/nos/os/les antes de gusta/gustan",
+            "Coloca los pronombres de objeto indirecto me/te/le/nos/les antes de gusta/gustan",
             "Expresa grado con mucho, bastante, un poco, nada: Me gusta mucho el fútbol, No me gusta nada el ruido",
             "Muestra acuerdo y desacuerdo con a mí también/a mí tampoco y a mí sí/a mí no",
         ],
@@ -126,9 +126,9 @@ A1_UNITS: list[CurriculumUnit] = [
         vocabulary_set_ids=["lugares_a1", "direcciones_a1", "casa_a1"],
         lesson_types=["grammar", "vocabulary", "reading", "writing", "review"],
         competency_checklist=[
-            "Distingue estar (ubicación de personas y objetos concretos) de hay (existencia de elementos no definidos): La farmacia está en la calle Mayor vs Hay una farmacia cerca",
+            "Distingue estar (ubicación de personas y objetos concretos) de hay (existencia de elementos no definidos): La farmacia está en la avenida Juárez vs Hay una farmacia cerca",
             "Ubica lugares y objetos con: en, al lado de, enfrente de, cerca de, lejos de, entre",
-            "Da indicaciones sencillas con: gira a la derecha/izquierda, sigue todo recto, cruza la calle",
+            "Da indicaciones sencillas con: gira a la derecha/izquierda, sigue derecho, cruza la calle",
             "Nombra lugares esenciales de la ciudad y comprende una descripción escrita simple de un mapa",
         ],
         default_weeks=2,

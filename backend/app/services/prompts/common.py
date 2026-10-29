@@ -1,5 +1,7 @@
 """Shared prompt fragments used across LLM-backed services."""
 
+from app.core.config import settings
+
 PLAIN_TEXT_OUTPUT_INSTRUCTION = (
     "OUTPUT FORMAT: The interface displays text literally and does not render Markdown. "
     "Use plain text for all learner-facing content, including text inside JSON string values. "
@@ -93,6 +95,17 @@ Language-specific guidance:
 """.strip(),
 }
 
+# Used for es-ES when SPANISH_VARIANT=mx; the static curriculum stays shared.
+_MEXICAN_SPANISH_OVERLAY = """
+Language-specific guidance:
+- Use Mexican Spanish consistently, as spoken in Mexico.
+- Use ustedes for all plural address; never teach or use vosotros forms unless explicitly comparing variants.
+- Prefer Mexican vocabulary and idiom such as carro, computadora, celular, manejar, jugo, platicar, and ahorita.
+- Prefer the preterite (indefinido) for completed past actions, as is usual in Mexico, even where Spain would use the present perfect.
+- When curriculum text names a Spain-only form, teach the Mexican equivalent and mention the Spain form only as a note.
+- Pay close attention to accents, gender, number agreement, and natural Mexican phrasing.
+""".strip()
+
 _LANGUAGE_PROMPT_OVERLAY_ALIASES: dict[str, str] = {
     "de": "de-DE",
     "fr": "fr-FR",
@@ -108,6 +121,8 @@ _LANGUAGE_PROMPT_OVERLAY_ALIASES: dict[str, str] = {
 def get_language_prompt_overlay(target_language: str) -> str:
     """Return concise language/variant guidance for prompt composition."""
     canonical_language = _LANGUAGE_PROMPT_OVERLAY_ALIASES.get(target_language, target_language)
+    if canonical_language == "es-ES" and settings.SPANISH_VARIANT == "mx":
+        return _MEXICAN_SPANISH_OVERLAY
     return _LANGUAGE_PROMPT_OVERLAYS.get(canonical_language, "")
 
 

@@ -31,7 +31,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Implicar o suponer forzosamente",
                 example="El cargo conlleva mucha responsabilidad.",
-                ipa="/konʎeˈβaɾ/",
+                ipa="/konʝeˈβaɾ/",
             ),
             VocabularyEntry(
                 word="sesgo",
@@ -47,7 +47,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="adjective",
                 definition="Que trata un asunto de forma superficial",
                 example="Hizo un comentario tangencial.",
-                ipa="/tanxenˈθjal/",
+                ipa="/tanxenˈsjal/",
             ),
             VocabularyEntry(
                 word="vislumbrar",
@@ -63,7 +63,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Coexistencia de sentimientos opuestos",
                 example="Siente ambivalencia ante la decisión.",
-                ipa="/ambiβaˈlenθja/",
+                ipa="/ambiβaˈlensja/",
             ),
             VocabularyEntry(
                 word="sutil",
@@ -215,7 +215,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Exposición oral o escrita sobre un tema",
                 example="Leyó una disertación sobre el Barroco.",
-                ipa="/diseɾtaˈθjon/",
+                ipa="/diseɾtaˈsjon/",
             ),
             VocabularyEntry(
                 word="tratado",
@@ -351,7 +351,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Difusión formal de un trabajo científico",
                 example="La publicación salió en Nature.",
-                ipa="/puβlikaˈθjon/",
+                ipa="/puβlikaˈsjon/",
             ),
         ],
     ),
@@ -375,7 +375,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Cuidado y prontitud al ejecutar algo",
                 example="Tramitó el expediente con diligencia.",
-                ipa="/diliˈxenθja/",
+                ipa="/diliˈxensja/",
             ),
             VocabularyEntry(
                 word="prerrogativa",
@@ -418,12 +418,12 @@ C1_SETS: list[VocabularySet] = [
                 ipa="/inteɾiniˈðað/",
             ),
             VocabularyEntry(
-                word="cualificación",
+                word="capacitación",
                 frequency_rank=809,
                 pos="noun",
-                definition="Conjunto de capacidades profesionales",
-                example="Tiene una alta cualificación.",
-                ipa="/kwalifikaˈθjon/",
+                definition="Conjunto de capacidades profesionales adquiridas con formación",
+                example="Tiene una alta capacitación.",
+                ipa="/kapasitaˈsjon/",
             ),
             VocabularyEntry(
                 word="proactivo",
@@ -463,7 +463,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Mejorar el rendimiento de algo",
                 example="Optimizamos los procesos de producción.",
-                ipa="/optimiˈθaɾ/",
+                ipa="/optimiˈsaɾ/",
             ),
             VocabularyEntry(
                 word="sincronizar",
@@ -471,7 +471,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Coordinar para que ocurra a la vez",
                 example="Sincroniza los datos entre dispositivos.",
-                ipa="/sinkɾoniˈθaɾ/",
+                ipa="/sinkɾoniˈsaɾ/",
             ),
             VocabularyEntry(
                 word="compatibilidad",
@@ -511,7 +511,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Sistema de comunicación usuario-máquina",
                 example="La interfaz es muy intuitiva.",
-                ipa="/inteɾˈfaθ/",
+                ipa="/inteɾˈfas/",
             ),
             VocabularyEntry(
                 word="escalabilidad",
@@ -559,7 +559,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="adjective",
                 definition="Crítico e hiriente con ingenio",
                 example="Tiene un sentido del humor muy mordaz.",
-                ipa="/moɾˈðaθ/",
+                ipa="/moɾˈðas/",
             ),
             VocabularyEntry(
                 word="sátira",
@@ -570,12 +570,12 @@ C1_SETS: list[VocabularySet] = [
                 ipa="/ˈsatiɾa/",
             ),
             VocabularyEntry(
-                word="retranca",
+                word="albur",
                 frequency_rank=826,
                 pos="noun",
-                definition="Segunda intención maliciosa (coloquial)",
-                example="Lo dijo con retranca.",
-                ipa="/reˈtɾanka/",
+                definition="Juego de palabras de doble sentido, típico de México (coloquial)",
+                example="A mi tío le encanta echar albures.",
+                ipa="/alˈβuɾ/",
             ),
             VocabularyEntry(
                 word="chusco",
@@ -591,7 +591,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Anécdota breve y graciosa",
                 example="Contó un chascarrillo en la sobremesa.",
-                ipa="/ʧaskaˈriʎo/",
+                ipa="/ʧaskaˈriʝo/",
             ),
             VocabularyEntry(
                 word="parodia",
@@ -639,7 +639,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Conjunto de bienes culturales acumulados",
                 example="El acervo cultural de la región es inmenso.",
-                ipa="/aˈθeɾβo/",
+                ipa="/aˈseɾβo/",
             ),
             VocabularyEntry(
                 word="vanguardia",
@@ -655,7 +655,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Protección económica de artistas",
                 example="El mecenazgo impulsó el Renacimiento.",
-                ipa="/meθeˈnaθɣo/",
+                ipa="/meseˈnasɣo/",
             ),
             VocabularyEntry(
                 word="vernáculo",
@@ -727,7 +727,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Discurso breve y solemne",
                 example="El presidente dirigió una alocución a la nación.",
-                ipa="/alokuˈθjon/",
+                ipa="/alokuˈsjon/",
             ),
             VocabularyEntry(
                 word="arenga",
@@ -743,7 +743,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Manera de hablar en público",
                 example="Su elocución es clara y pausada.",
-                ipa="/elokuˈθjon/",
+                ipa="/elokuˈsjon/",
             ),
             VocabularyEntry(
                 word="proclama",
@@ -855,7 +855,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="adjective",
                 definition="Breve y preciso",
                 example="Fue un discurso conciso y brillante.",
-                ipa="/konˈθiso/",
+                ipa="/konˈsiso/",
             ),
             VocabularyEntry(
                 word="audiovisual",
@@ -879,7 +879,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Presentación detallada de un tema",
                 example="Su exposición fue muy clara.",
-                ipa="/eksposiˈθjon/",
+                ipa="/eksposiˈsjon/",
             ),
         ],
     ),
@@ -895,7 +895,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Pronunciación de s como z (rasgo dialectal)",
                 example="El ceceo es común en algunas zonas de Andalucía.",
-                ipa="/θeˈθeo/",
+                ipa="/seˈseo/",
             ),
             VocabularyEntry(
                 word="seseo",
@@ -999,7 +999,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Nombre del español en España",
                 example="En España se suele decir castellano.",
-                ipa="/kasteˈʎano/",
+                ipa="/kasteˈʝano/",
             ),
             VocabularyEntry(
                 word="hispanohablante",
@@ -1023,7 +1023,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Préstamo del inglés",
                 example="Hay muchos anglicismos en el español actual.",
-                ipa="/anɡliˈθismo/",
+                ipa="/anɡliˈsismo/",
             ),
             VocabularyEntry(
                 word="galicismo",
@@ -1031,7 +1031,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Préstamo del francés",
                 example="Chófer es un galicismo.",
-                ipa="/ɡaliˈθismo/",
+                ipa="/ɡaliˈsismo/",
             ),
             VocabularyEntry(
                 word="nahuatlismo",
@@ -1071,7 +1071,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Analizar minuciosamente",
                 example="Desmenuzó el argumento punto por punto.",
-                ipa="/desmenuˈθaɾ/",
+                ipa="/desmenuˈsaɾ/",
             ),
             VocabularyEntry(
                 word="disecar",
@@ -1103,7 +1103,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Capacidad de distinguir y valorar",
                 example="Actuó con gran discernimiento.",
-                ipa="/disθeɾniˈmjento/",
+                ipa="/diseɾniˈmjento/",
             ),
             VocabularyEntry(
                 word="exhaustivo",
@@ -1119,7 +1119,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="adjective",
                 definition="Propio de un experto",
                 example="Emitió un informe pericial.",
-                ipa="/peɾiˈθjal/",
+                ipa="/peɾiˈsjal/",
             ),
             VocabularyEntry(
                 word="taxonomía",
@@ -1167,7 +1167,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Reducir a lo fundamental",
                 example="Sintetiza los puntos clave del debate.",
-                ipa="/sintetiˈθaɾ/",
+                ipa="/sintetiˈsaɾ/",
             ),
             VocabularyEntry(
                 word="esbozar",
@@ -1175,7 +1175,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Trazar de forma esquemática",
                 example="Esbozó su idea en la reunión.",
-                ipa="/esβoˈθaɾ/",
+                ipa="/esβoˈsaɾ/",
             ),
             VocabularyEntry(
                 word="reformular",
@@ -1199,7 +1199,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Representar de forma esquemática",
                 example="Esquematizó todo el proceso.",
-                ipa="/eskematiˈθaɾ/",
+                ipa="/eskematiˈsaɾ/",
             ),
             VocabularyEntry(
                 word="extracto",
@@ -1271,7 +1271,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Contribución valiosa",
                 example="Su aportación al debate fue fundamental.",
-                ipa="/apoɾtaˈθjon/",
+                ipa="/apoɾtaˈsjon/",
             ),
             VocabularyEntry(
                 word="renombrado",
@@ -1295,7 +1295,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Acción que requiere gran esfuerzo",
                 example="Aprender un idioma es toda una proeza.",
-                ipa="/pɾoˈeθa/",
+                ipa="/pɾoˈesa/",
             ),
             VocabularyEntry(
                 word="competencia",
@@ -1303,7 +1303,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Capacidad para desenvolverse en un ámbito",
                 example="Su competencia lingüística es admirable.",
-                ipa="/kompeˈtenθja/",
+                ipa="/kompeˈtensja/",
             ),
             VocabularyEntry(
                 word="solvencia",
@@ -1311,7 +1311,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Capacidad y seguridad al hacer algo",
                 example="Habla con absoluta solvencia.",
-                ipa="/solˈβenθja/",
+                ipa="/solˈβensja/",
             ),
             VocabularyEntry(
                 word="destreza",
@@ -1319,7 +1319,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Habilidad adquirida con la práctica",
                 example="Ha desarrollado una gran destreza comunicativa.",
-                ipa="/desˈtɾeθa/",
+                ipa="/desˈtɾesa/",
             ),
         ],
     ),
@@ -1359,7 +1359,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Término propio de una especialidad",
                 example="El artículo está lleno de tecnicismos médicos.",
-                ipa="/tekniˈθismo/",
+                ipa="/tekniˈsismo/",
             ),
             VocabularyEntry(
                 word="neologismo",
@@ -1423,7 +1423,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Capacidad de hablar con fluidez y persuasión",
                 example="Su elocuencia cautivó al auditorio.",
-                ipa="/elokˈwenθja/",
+                ipa="/elokˈwensja/",
             ),
             VocabularyEntry(
                 word="verborrea",
@@ -1439,7 +1439,7 @@ C1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Brevedad y precisión al expresarse",
                 example="Valoro la concisión en la escritura.",
-                ipa="/konθiˈsjon/",
+                ipa="/konsiˈsjon/",
             ),
             VocabularyEntry(
                 word="ambigüedad",

@@ -30,7 +30,35 @@ MAX_CONTEXT_TOKENS = {
     "anthropic": 200000,
     "deepseek": 128000,
     "ollama": 8192,
+    "codex": 128000,
+    "gemini": 1000000,
 }
+
+GEMINI_OPENAI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
+
+
+def _gemini_messages(messages: list[dict]) -> list[dict]:
+    """Adapt Chat Completions messages to Gemini's OpenAI-compatible endpoint.
+
+    Gemini keeps only one system instruction (later system messages replace earlier
+    ones) and rejects requests without user/assistant contents, so merge every system
+    message into one leading instruction and add the same minimal trigger as Anthropic.
+    """
+    system = [m["content"] for m in messages if m.get("role") == "system"]
+    rest = [m for m in messages if m.get("role") != "system"]
+    if not any(m.get("role") in ("user", "assistant") for m in rest):
+        rest.append({"role": "user", "content": ANTHROPIC_SYSTEM_ONLY_TRIGGER})
+    if not system:
+        return rest
+    return [{"role": "system", "content": "\n\n".join(system)}] + rest
+
+
+def _is_overloaded_error(exc: BaseException) -> bool:
+    status = getattr(exc, "status_code", None)
+    if status in (429, 503):
+        return True
+    text = str(exc).lower()
+    return "high demand" in text or "unavailable" in text or "overloaded" in text
 
 
 class LLMError(Exception):
@@ -636,6 +664,20 @@ class LLMAdapter:
                 api_key=settings.DEEPSEEK_API_KEY,
             )
             self.model = settings.DEEPSEEK_MODEL
+        elif self.provider == "codex":
+            # Host-side scripts/codex_bridge.py drives the logged-in Codex CLI.
+            self.client = AsyncOpenAI(
+                base_url=f"{settings.CODEX_BRIDGE_URL}/v1",
+                api_key="codex",
+            )
+            self.model = settings.CODEX_MODEL
+        elif self.provider == "gemini":
+            # Gemini's OpenAI-compatible Chat Completions endpoint.
+            self.client = AsyncOpenAI(
+                base_url=GEMINI_OPENAI_BASE_URL,
+                api_key=settings.GEMINI_API_KEY,
+            )
+            self.model = settings.GEMINI_MODEL
         elif self.provider == "anthropic":
             self._anthropic = _anthropic.AsyncAnthropic(
                 api_key=settings.ANTHROPIC_API_KEY,
@@ -779,7 +821,7 @@ class LLMAdapter:
                 sdk_max_retries=sdk_max_retries,
             )
 
-        # For Ollama and DeepSeek (OpenAI-compatible Chat Completions):
+        # For Ollama, DeepSeek, Codex and Gemini (OpenAI-compatible Chat Completions):
         # pass stream_options so the final chunk includes token usage.
         # Defensively build kwargs to stay compatible with older SDK versions.
         extra: dict = {}
@@ -800,13 +842,29 @@ class LLMAdapter:
         client = self.client
         if sdk_max_retries is not None:
             client = client.with_options(max_retries=sdk_max_retries)
-        response = await client.chat.completions.create(
-            model=self.model,
-            messages=messages,
-            stream=stream,
-            timeout=request_timeout,
-            **extra,
-        )
+        models = [self.model]
+        if self.provider == "gemini":
+            messages = _gemini_messages(messages)
+            if settings.GEMINI_REASONING_EFFORT:
+                extra["reasoning_effort"] = settings.GEMINI_REASONING_EFFORT
+            models += [m for m in settings.GEMINI_FALLBACK_MODELS if m != self.model]
+        for index, model in enumerate(models):
+            try:
+                response = await client.chat.completions.create(
+                    model=model,
+                    messages=messages,
+                    stream=stream,
+                    timeout=request_timeout,
+                    **extra,
+                )
+                break
+            except Exception as exc:
+                if index + 1 < len(models) and _is_overloaded_error(exc):
+                    logger.warning(
+                        "LLM model %s overloaded; falling back to %s", model, models[index + 1]
+                    )
+                    continue
+                raise
         if stream:
             return response
 

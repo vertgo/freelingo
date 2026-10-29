@@ -4,6 +4,16 @@ import re
 os.environ["DATABASE_URL"] = "sqlite+aiosqlite:///:memory:"
 os.environ["SECRET_KEY"] = "test-secret-key-for-pytest-ci-32b"
 os.environ["RATE_LIMIT_ENABLED"] = "false"
+# Operator choices in a developer's .env must not change what the tests expect.
+for _name, _default in {
+    "LLM_PROVIDER": "ollama",
+    "TTS_PROVIDER": "local",
+    "STT_PROVIDER": "local",
+    "VOICE_PROVIDER": "pipeline",
+    "SPANISH_VARIANT": "es",
+    "AVAILABLE_TARGET_LANGUAGES": '["de-DE","en-GB","en-US","es-ES","fr-FR","it-IT","ja-JP","ko-KR","pt-PT","zh-CN"]',
+}.items():
+    os.environ[_name] = _default
 
 import pytest
 import pytest_asyncio

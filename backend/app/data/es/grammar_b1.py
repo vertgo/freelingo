@@ -9,7 +9,7 @@ B1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="B1",
         category="Subjuntivo",
         summary="Formación y usos básicos del presente de subjuntivo: deseo, duda, emoción, negación.",
-        explanation="El **presente de subjuntivo** expresa acciones no factuales: deseos, dudas, emociones, mandatos negativos, opiniones negadas y finalidad. Se forma a partir de la primera persona singular del presente de indicativo, cambiando la **vocal temática**:\n\n| | -ar (hablar) | -er (comer) | -ir (vivir) |\n|---|-------------|-------------|-------------|\n| yo | hable | coma | viva |\n| tú | hables | comas | vivas |\n| él/ella/usted | hable | coma | viva |\n| nosotros | hablemos | comamos | vivamos |\n| vosotros | habléis | comáis | viváis |\n| ellos/ellas/uds. | hablen | coman | vivan |\n\n**Irregulares**: los verbos que son irregulares en la primera persona del presente de indicativo mantienen la irregularidad en el subjuntivo:\n- tener → tengo → tenga, tengas...\n- hacer → hago → haga, hagas...\n- decir → digo → diga, digas...\n- conocer → conozco → conozca, conozcas...\n- salir → salgo → salga, salgas...\n\nLos verbos con cambio vocálico (e→ie, o→ue) tienen el mismo cambio en las formas tónicas, y además en -ir cambian también e→i o o→u en nosotros/vosotros: *dormir → durmamos, pedir → pidamos*.",
+        explanation="El **presente de subjuntivo** expresa acciones no factuales: deseos, dudas, emociones, mandatos negativos, opiniones negadas y finalidad. Se forma a partir de la primera persona singular del presente de indicativo, cambiando la **vocal temática**:\n\n| | -ar (hablar) | -er (comer) | -ir (vivir) |\n|---|-------------|-------------|-------------|\n| yo | hable | coma | viva |\n| tú | hables | comas | vivas |\n| él/ella/usted | hable | coma | viva |\n| nosotros | hablemos | comamos | vivamos |\n| ellos/ellas/uds. | hablen | coman | vivan |\n\n**Irregulares**: los verbos que son irregulares en la primera persona del presente de indicativo mantienen la irregularidad en el subjuntivo:\n- tener → tengo → tenga, tengas...\n- hacer → hago → haga, hagas...\n- decir → digo → diga, digas...\n- conocer → conozco → conozca, conozcas...\n- salir → salgo → salga, salgas...\n\nLos verbos con cambio vocálico (e→ie, o→ue) tienen el mismo cambio en las formas tónicas, y además en -ir cambian también e→i o o→u en nosotros: *dormir → durmamos, pedir → pidamos*.",
         structure="raíz de 1ª pers. sing. presente indicativo + vocal opuesta (-ar → -e; -er/-ir → -a)",
         rules=[
             '-ar toma vocal -e; -er/-ir toman vocal -a (principio de "vocal opuesta").',
@@ -66,7 +66,7 @@ B1_GRAMMAR_TOPICS: list[GrammarTopic] = [
                 text="Necesito que me ayudes con esto.",
                 translation=None,
             ),
-            GrammarExample(text="Prefiero que vengáis mañana.", translation=None),
+            GrammarExample(text="Prefiero que vengan mañana.", translation=None),
         ],
         common_mistakes=[
             GrammarMistake(
@@ -138,7 +138,7 @@ B1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="B1",
         category="Subjuntivo",
         summary="Aconsejar y recomendar usando el subjuntivo.",
-        explanation="Las **recomendaciones, consejos y sugerencias** que se dirigen a otra persona llevan el verbo subordinado en **subjuntivo**.\n\n**Verbo de influencia + que + subjuntivo**\n\nVerbos de influencia más comunes:\n- *recomendar que, sugerir que, aconsejar que, proponer que, insistir en que, rogar que, suplicar que, pedir que*\n\nTambién funcionan con esta estructura las expresiones impersonales:\n- *Es recomendable que, Es aconsejable que, Es importante que, Es necesario que, Conviene que, Más vale que*\n\nEjemplos:\n- *Te recomiendo que **leas** este libro.*\n- *Es importante que **lleguéis** puntuales.*",
+        explanation="Las **recomendaciones, consejos y sugerencias** que se dirigen a otra persona llevan el verbo subordinado en **subjuntivo**.\n\n**Verbo de influencia + que + subjuntivo**\n\nVerbos de influencia más comunes:\n- *recomendar que, sugerir que, aconsejar que, proponer que, insistir en que, rogar que, suplicar que, pedir que*\n\nTambién funcionan con esta estructura las expresiones impersonales:\n- *Es recomendable que, Es aconsejable que, Es importante que, Es necesario que, Conviene que, Más vale que*\n\nEjemplos:\n- *Te recomiendo que **leas** este libro.*\n- *Es importante que **lleguen** puntuales.*",
         structure="recomendar/sugerir/aconsejar + que + subjuntivo",
         rules=[
             "Verbos de influencia + que + subjuntivo cuando el sujeto de la influencia es distinto.",
@@ -148,7 +148,7 @@ B1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         ],
         examples=[
             GrammarExample(
-                text="Te recomiendo que visites Granada.",
+                text="Te recomiendo que visites Oaxaca.",
                 translation=None,
             ),
             GrammarExample(
@@ -156,7 +156,7 @@ B1_GRAMMAR_TOPICS: list[GrammarTopic] = [
                 translation=None,
             ),
             GrammarExample(
-                text="Sugiero que lleguéis media hora antes.",
+                text="Sugiero que lleguen media hora antes.",
                 translation=None,
             ),
             GrammarExample(
@@ -166,8 +166,8 @@ B1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         ],
         common_mistakes=[
             GrammarMistake(
-                wrong="Recomiendo que visitas Granada.",
-                correct="Recomiendo que visites Granada.",
+                wrong="Recomiendo que visitas Oaxaca.",
+                correct="Recomiendo que visites Oaxaca.",
                 note='"Recomendar que" rige subjuntivo.',
             ),
             GrammarMistake(
@@ -273,25 +273,25 @@ B1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="B1",
         category="Tiempos verbales",
         summary="He hablado, has comido, han vivido — acciones pasadas conectadas con el presente.",
-        explanation="El **pretérito perfecto compuesto** se forma con el presente del verbo **haber** + **participio**. El participio es **invariable** en esta construcción: *he comido* (no ~~he comida~~).\n\n| Persona | Haber | + Participio |\n|---------|-------|--------------|\n| yo | he | hablado/comido/vivido |\n| tú | has | hablado/comido/vivido |\n| él/ella/usted | ha | hablado/comido/vivido |\n| nosotros | hemos | hablado/comido/vivido |\n| vosotros | habéis | hablado/comido/vivido |\n| ellos/ellas/uds. | han | hablado/comido/vivido |\n\nSe usa para:\n- **Acciones pasadas en un periodo de tiempo no terminado**: *Hoy he ido al médico. / Esta semana hemos trabajado mucho.*\n- **Experiencias sin marcador temporal concreto**: *He visitado Japón tres veces.*\n- **Acciones con resultados en el presente**: *He perdido las llaves.* (y aún no las encuentro)\n\nEn algunas zonas de España se prefiere este tiempo para cualquier pasado reciente; en gran parte de América Latina se usa el indefinido.",
-        structure="haber (presente: he/has/ha/hemos/habéis/han) + participio (-ado/-ido)",
+        explanation="El **pretérito perfecto compuesto** se forma con el presente del verbo **haber** + **participio**. El participio es **invariable** en esta construcción: *he comido* (no ~~he comida~~).\n\n| Persona | Haber | + Participio |\n|---------|-------|--------------|\n| yo | he | hablado/comido/vivido |\n| tú | has | hablado/comido/vivido |\n| él/ella/usted | ha | hablado/comido/vivido |\n| nosotros | hemos | hablado/comido/vivido |\n| ellos/ellas/uds. | han | hablado/comido/vivido |\n\nSe usa para:\n- **Experiencias sin marcador temporal concreto**: *¿Has estado en Oaxaca? / He visitado Japón tres veces.*\n- **Situaciones que continúan hasta ahora**: *Últimamente he trabajado mucho. / Todavía no hemos terminado.*\n- **Acciones con resultados en el presente**: *He perdido las llaves.* (y aún no las encuentro)\n\nEn México, para acciones terminadas de hoy o de esta semana se prefiere el indefinido: *Hoy fui al médico. / Esta semana trabajamos mucho.* (En España se diría *Hoy he ido al médico*.)",
+        structure="haber (presente: he/has/ha/hemos/han) + participio (-ado/-ido)",
         rules=[
             "Se forma con haber (presente) + participio invariable.",
             "Participios regulares: -ar → -ado (hablar → hablado); -er/-ir → -ido (comer → comido, vivir → vivido).",
             "Participios irregulares: hacer → hecho, decir → dicho, ver → visto, escribir → escrito, poner → puesto, volver → vuelto, romper → roto, morir → muerto, abrir → abierto, cubrir → cubierto.",
-            "Se usa con marcadores como hoy, esta semana, este año, ya, todavía no, nunca, alguna vez.",
+            'Se usa con marcadores como todavía no, nunca, alguna vez, últimamente. Para acciones ya terminadas de hoy, en México se prefiere el indefinido ("Hoy comí tacos").',
         ],
         examples=[
-            GrammarExample(text="Hoy he comido paella.", translation=None),
+            GrammarExample(text="Nunca he comido chapulines.", translation=None),
             GrammarExample(
-                text="¿Has estado alguna vez en México?",
+                text="¿Has estado alguna vez en Oaxaca?",
                 translation=None,
             ),
             GrammarExample(
                 text="Todavía no hemos terminado el proyecto.",
                 translation=None,
             ),
-            GrammarExample(text="Ya he visto esa película.", translation=None),
+            GrammarExample(text="Siempre he querido vivir en la playa.", translation=None),
         ],
         common_mistakes=[
             GrammarMistake(
@@ -317,8 +317,8 @@ B1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="B1",
         category="Tiempos verbales",
         summary="Había hablado, habías comido... — acción pasada anterior a otra pasada.",
-        explanation="El **pretérito pluscuamperfecto** expresa una acción pasada **anterior a otra acción también pasada**. Se forma con el **imperfecto de haber + participio**.\n\n| Persona | Haber (imperfecto) | + Participio |\n|---------|-------------------|--------------|\n| yo | había | hablado/comido/vivido |\n| tú | habías | hablado/comido/vivido |\n| él/ella/usted | había | hablado/comido/vivido |\n| nosotros | habíamos | hablado/comido/vivido |\n| vosotros | habíais | hablado/comido/vivido |\n| ellos/ellas/uds. | habían | hablado/comido/vivido |\n\nEs muy frecuente en narraciones para marcar que algo ocurrió antes que el punto de referencia pasado.\n\nEjemplo: *Cuando llegué, ella ya se había ido.*",
-        structure="haber (imperfecto: había/habías/había/habíamos/habíais/habían) + participio",
+        explanation="El **pretérito pluscuamperfecto** expresa una acción pasada **anterior a otra acción también pasada**. Se forma con el **imperfecto de haber + participio**.\n\n| Persona | Haber (imperfecto) | + Participio |\n|---------|-------------------|--------------|\n| yo | había | hablado/comido/vivido |\n| tú | habías | hablado/comido/vivido |\n| él/ella/usted | había | hablado/comido/vivido |\n| nosotros | habíamos | hablado/comido/vivido |\n| ellos/ellas/uds. | habían | hablado/comido/vivido |\n\nEs muy frecuente en narraciones para marcar que algo ocurrió antes que el punto de referencia pasado.\n\nEjemplo: *Cuando llegué, ella ya se había ido.*",
+        structure="haber (imperfecto: había/habías/había/habíamos/habían) + participio",
         rules=[
             "Acción pasada anterior a otra acción pasada.",
             "Se forma con el imperfecto de haber + participio invariable.",
@@ -335,7 +335,7 @@ B1_GRAMMAR_TOPICS: list[GrammarTopic] = [
                 translation=None,
             ),
             GrammarExample(
-                text="No habían terminado los deberes cuando llegó su madre.",
+                text="No habían terminado la tarea cuando llegó su mamá.",
                 translation=None,
             ),
             GrammarExample(
@@ -362,21 +362,21 @@ B1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         title="Marcadores temporales del perfecto",
         level="B1",
         category="Adjetivos y adverbios",
-        summary="Hoy, esta semana, ya, todavía no, nunca, alguna vez — marcadores del pretérito perfecto.",
-        explanation="Los **marcadores temporales** ayudan a decidir entre pretérito perfecto e indefinido. Cada tiempo tiene sus marcadores característicos:\n\n**Pretérito perfecto** (periodo no terminado o experiencia):\n- *hoy, esta mañana/tarde/noche, esta semana, este mes, este año, este verano...*\n- *ya, todavía no / aún no*\n- *alguna vez, nunca, siempre*\n- *últimamente, en los últimos días*\n- *hace un rato, hace poco*\n\n**Pretérito indefinido** (periodo terminado):\n- *ayer, anoche, anteayer*\n- *la semana pasada, el mes pasado, el año pasado*\n- *hace dos días / tres meses / mucho tiempo*\n- *en 2015, en julio*\n- *aquel día, entonces*\n\nLa clave es si el periodo de tiempo **incluye o no el presente**.",
+        summary="Hoy, ya, todavía no, nunca, alguna vez — cuándo usar perfecto o indefinido en el español de México.",
+        explanation="Los **marcadores temporales** ayudan a decidir entre pretérito perfecto e indefinido. En México el **indefinido** es el tiempo normal para cualquier acción terminada, aunque haya pasado hoy:\n\n**Pretérito indefinido** (acción terminada):\n- *hoy, esta mañana, esta semana* (si la acción ya acabó): *Hoy fui al médico.*\n- *ya*: *Ya comí. / Ya terminé.*\n- *ayer, anoche, anteayer*\n- *la semana pasada, el mes pasado, el año pasado*\n- *hace un rato, hace dos días, hace mucho tiempo*\n- *en 2015, en julio, aquel día, entonces*\n\n**Pretérito perfecto** (experiencia o situación que llega hasta ahora):\n- *alguna vez, nunca, siempre*: *¿Has ido a Oaxaca alguna vez?*\n- *todavía no / aún no*: *Todavía no he encontrado las llaves.*\n- *últimamente, en los últimos días*: *Últimamente he estado muy ocupado.*\n\nEn España se usa el perfecto para todo lo de hoy (*Hoy he ido al médico*); en México eso suena peninsular.",
         rules=[
-            "Periodo no terminado (hoy, esta semana) → pretérito perfecto.",
+            'Acción terminada, aunque sea de hoy o de esta semana → indefinido: "Hoy comí tacos".',
             "Periodo terminado (ayer, la semana pasada) → pretérito indefinido.",
-            '"Ya" y "todavía no" van frecuentemente con perfecto para expresar acciones completadas o pendientes.',
+            '"Ya" va normalmente con indefinido ("Ya terminé"); "todavía no" admite perfecto ("Todavía no he terminado").',
             '"Nunca" y "alguna vez" con perfecto para experiencias vitales.',
         ],
         examples=[
             GrammarExample(
-                text="Esta semana he ido al gimnasio tres veces.",
+                text="Esta semana fui al gimnasio tres veces.",
                 translation=None,
             ),
             GrammarExample(
-                text="¿Alguna vez has probado el ceviche?",
+                text="¿Alguna vez has probado el mole poblano?",
                 translation=None,
             ),
             GrammarExample(
@@ -390,9 +390,9 @@ B1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         ],
         common_mistakes=[
             GrammarMistake(
-                wrong="Hoy fui al médico.",
-                correct="Hoy he ido al médico.",
-                note='Con "hoy" (periodo no terminado) en España se prefiere el perfecto. En América se usa también el indefinido.',
+                wrong="Ayer he ido al médico.",
+                correct="Ayer fui al médico.",
+                note='Con "ayer" siempre va indefinido. En México también se dice "Hoy fui al médico" para algo que ya terminó.',
             ),
         ],
         related=["preterito-perfecto", "pluscuamperfecto", "marcadores-temporales"],
@@ -403,7 +403,7 @@ B1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="B1",
         category="Voz pasiva",
         summary="Construir oraciones pasivas: ser + participio (+ por + agente).",
-        explanation='La **voz pasiva** en español se forma con el verbo **ser + participio**. A diferencia del perfecto, aquí el participio **sí concuerda en género y número** con el sujeto paciente.\n\n| Voz activa | Voz pasiva |\n|-----------|-----------|\n| El chef preparó la cena. | La cena **fue preparada** por el chef. |\n| Los alumnos entregaron los trabajos. | Los trabajos **fueron entregados** por los alumnos. |\n| Cervantes escribió el Quijote. | El Quijote **fue escrito** por Cervantes. |\n\nLa voz pasiva es mucho menos frecuente en español que en inglés. Se prefiere:\n- La **pasiva refleja** con "se": *Se venden pisos.*\n- La **voz activa** con cambio de orden: *El Quijote lo escribió Cervantes.*\n\nLa pasiva con "ser" es más propia de registros formales, periodísticos y académicos.',
+        explanation='La **voz pasiva** en español se forma con el verbo **ser + participio**. A diferencia del perfecto, aquí el participio **sí concuerda en género y número** con el sujeto paciente.\n\n| Voz activa | Voz pasiva |\n|-----------|-----------|\n| El chef preparó la cena. | La cena **fue preparada** por el chef. |\n| Los alumnos entregaron los trabajos. | Los trabajos **fueron entregados** por los alumnos. |\n| Cervantes escribió el Quijote. | El Quijote **fue escrito** por Cervantes. |\n\nLa voz pasiva es mucho menos frecuente en español que en inglés. Se prefiere:\n- La **pasiva refleja** con "se": *Se venden departamentos.*\n- La **voz activa** con cambio de orden: *El Quijote lo escribió Cervantes.*\n\nLa pasiva con "ser" es más propia de registros formales, periodísticos y académicos.',
         structure="sujeto paciente + ser (conjugado) + participio (concuerda) + (por + agente)",
         rules=[
             'El verbo "ser" se conjuga en el tiempo que corresponda.',
@@ -466,7 +466,7 @@ B1_GRAMMAR_TOPICS: list[GrammarTopic] = [
                 text="Se come muy bien en este restaurante.",
                 translation=None,
             ),
-            GrammarExample(text="Se necesita camarero.", translation=None),
+            GrammarExample(text="Se necesita mesero.", translation=None),
             GrammarExample(
                 text="Se busca a los criminales.",
                 translation=None,
@@ -474,9 +474,9 @@ B1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         ],
         common_mistakes=[
             GrammarMistake(
-                wrong="Se vende coches aquí.",
-                correct="Se venden coches aquí.",
-                note='Con "coches" (plural), en pasiva refleja el verbo debe concordar: "se venden".',
+                wrong="Se vende carros aquí.",
+                correct="Se venden carros aquí.",
+                note='Con "carros" (plural), en pasiva refleja el verbo debe concordar: "se venden".',
             ),
             GrammarMistake(
                 wrong="Se busca los documentos.",
@@ -491,8 +491,8 @@ B1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         title="Pasiva refleja (se + verbo)",
         level="B1",
         category="Voz pasiva",
-        summary='Se venden pisos, se alquilan coches — la pasiva con "se" más natural del español.',
-        explanation="La **pasiva refleja** es la forma pasiva más común en español. Se construye con **se + verbo en tercera persona** y el verbo **concuerda en número** con el sujeto paciente (el objeto de la acción).\n\n- *Se vende piso.* (singular: un piso)\n- *Se venden pisos.* (plural: varios pisos)\n\nA diferencia del se impersonal (siempre singular), en la pasiva refleja el verbo puede ir en plural:\n- *Se alquila apartamento.* → un apartamento\n- *Se alquilan apartamentos.* → varios apartamentos\n\n**Diferencias con la voz pasiva con ser**:\n- Ser + participio → más formal, menos frecuente, suele mencionar agente.\n- Se + verbo → más natural y frecuente, no menciona agente.",
+        summary='Se venden departamentos, se rentan carros — la pasiva con "se" más natural del español.',
+        explanation="La **pasiva refleja** es la forma pasiva más común en español. Se construye con **se + verbo en tercera persona** y el verbo **concuerda en número** con el sujeto paciente (el objeto de la acción).\n\n- *Se vende departamento.* (singular: un departamento)\n- *Se venden departamentos.* (plural: varios departamentos)\n\nA diferencia del se impersonal (siempre singular), en la pasiva refleja el verbo puede ir en plural:\n- *Se renta casa.* → una casa\n- *Se rentan casas.* → varias casas\n\n**Diferencias con la voz pasiva con ser**:\n- Ser + participio → más formal, menos frecuente, suele mencionar agente.\n- Se + verbo → más natural y frecuente, no menciona agente.",
         structure="se + verbo en 3ª persona (concuerda con el sujeto paciente)",
         rules=[
             "El verbo concuerda con el sujeto paciente en número: se vende / se venden.",
@@ -502,7 +502,7 @@ B1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         ],
         examples=[
             GrammarExample(text="Se venden flores frescas.", translation=None),
-            GrammarExample(text="Se alquila habitación.", translation=None),
+            GrammarExample(text="Se renta cuarto.", translation=None),
             GrammarExample(text="Se necesitan voluntarios.", translation=None),
             GrammarExample(
                 text="Aquí se hablan varios idiomas.",
@@ -516,8 +516,8 @@ B1_GRAMMAR_TOPICS: list[GrammarTopic] = [
                 note="El verbo debe concordar en número con el sujeto (flores, plural).",
             ),
             GrammarMistake(
-                wrong="Se alquila apartamentos.",
-                correct="Se alquilan apartamentos.",
+                wrong="Se renta departamentos.",
+                correct="Se rentan departamentos.",
                 note="En la pasiva refleja hay concordancia de número.",
             ),
         ],
@@ -543,7 +543,7 @@ B1_GRAMMAR_TOPICS: list[GrammarTopic] = [
                 translation=None,
             ),
             GrammarExample(
-                text="El coche que compré es eléctrico.",
+                text="El carro que compré es eléctrico.",
                 translation=None,
             ),
             GrammarExample(
@@ -659,8 +659,8 @@ B1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="B1",
         category="Condicionales",
         summary="Habría hablado, habrías comido — hipótesis sobre el pasado, consejos no seguidos.",
-        explanation="El **condicional compuesto** se forma con el condicional simple de **haber + participio**. Expresa:\n\n- **Consecuencia no realizada de una condición irreal pasada**:\n  *Si hubiera estudiado, **habría aprobado**.*\n\n- **Conjetura o probabilidad sobre el pasado**:\n  *No sé qué pasó. Se **habría enfadado**.* (Probablemente se enfadó.)\n\n- **Consejo o reproche sobre algo que ya no se puede cambiar**:\n  *Deberías haberme avisado. / **Habrías debido** llamar antes.*\n\n- **Futuro del pasado en estilo indirecto sobre acciones anteriores**:\n  *Dijo que cuando llegáramos ya **habría terminado**.*",
-        structure="haber (condicional simple: habría/habrías/habría/habríamos/habríais/habrían) + participio",
+        explanation="El **condicional compuesto** se forma con el condicional simple de **haber + participio**. Expresa:\n\n- **Consecuencia no realizada de una condición irreal pasada**:\n  *Si hubiera estudiado, **habría aprobado**.*\n\n- **Conjetura o probabilidad sobre el pasado**:\n  *No sé qué pasó. Se **habría enojado**.* (Probablemente se enojó.)\n\n- **Consejo o reproche sobre algo que ya no se puede cambiar**:\n  *Deberías haberme avisado. / **Habrías debido** llamar antes.*\n\n- **Futuro del pasado en estilo indirecto sobre acciones anteriores**:\n  *Dijo que cuando llegáramos ya **habría terminado**.*",
+        structure="haber (condicional simple: habría/habrías/habría/habríamos/habrían) + participio",
         rules=[
             "Condicional simple de haber + participio invariable.",
             "Expresa la apódosis de condicionales irreales de pasado.",
@@ -765,7 +765,7 @@ B1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         ],
         examples=[
             GrammarExample(
-                text="Estará en el trabajo, no contesta el móvil.",
+                text="Estará en el trabajo, no contesta el celular.",
                 translation=None,
             ),
             GrammarExample(
@@ -804,7 +804,7 @@ B1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         ],
         examples=[
             GrammarExample(
-                text="Me dijo que había estado en Madrid el verano anterior.",
+                text="Me dijo que había estado en Guadalajara el verano anterior.",
                 translation=None,
             ),
             GrammarExample(
@@ -841,11 +841,11 @@ B1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="B1",
         category="Preposiciones",
         summary="Distinción entre las preposiciones por y para según expresen causa, finalidad, destinatario, medio, dirección y otros contextos.",
-        explanation='**Por** y **para** son dos preposiciones que en español se confunden con frecuencia porque en muchos idiomas se traducen por una sola palabra.\n\n### Usos principales de POR\n\n- **Causa o motivo:** *Llegué tarde por el tráfico.*\n- **Medio o canal:** *Te llamo por teléfono.*\n- **Lugar aproximado:** *El libro está por aquí.*\n- **Tiempo aproximado:** *Llegaré por la tarde.*\n- **Intercambio o precio:** *Lo compré por diez euros.*\n- **Agente en voz pasiva:** *Don Quijote fue escrito por Cervantes.*\n- **Frecuencia:** *Voy al gimnasio dos veces por semana.*\n- **Sustitución:** *Vino mi hermano por mí.*\n\n### Usos principales de PARA\n\n- **Finalidad o propósito:** *Estudio para aprender.*\n- **Destinatario:** *El regalo es para ti.*\n- **Dirección:** *Salgo para Madrid.*\n- **Plazo límite:** *Lo necesito para el lunes.*\n- **Opinión:** *Para mí, es la mejor opción.*\n- **Comparación con lo esperado:** *Para ser principiante, habla muy bien.*\n\n### Truco práctico\n\nSustituye mentalmente **por** con "a causa de" o "a través de" y **para** con "con el fin de" o "destinado a".',
+        explanation='**Por** y **para** son dos preposiciones que en español se confunden con frecuencia porque en muchos idiomas se traducen por una sola palabra.\n\n### Usos principales de POR\n\n- **Causa o motivo:** *Llegué tarde por el tráfico.*\n- **Medio o canal:** *Te llamo por teléfono.*\n- **Lugar aproximado:** *El libro está por aquí.*\n- **Tiempo aproximado:** *Llegaré por la tarde.*\n- **Intercambio o precio:** *Lo compré por cien pesos.*\n- **Agente en voz pasiva:** *Don Quijote fue escrito por Cervantes.*\n- **Frecuencia:** *Voy al gimnasio dos veces por semana.*\n- **Sustitución:** *Vino mi hermano por mí.*\n\n### Usos principales de PARA\n\n- **Finalidad o propósito:** *Estudio para aprender.*\n- **Destinatario:** *El regalo es para ti.*\n- **Dirección:** *Salgo para Monterrey.*\n- **Plazo límite:** *Lo necesito para el lunes.*\n- **Opinión:** *Para mí, es la mejor opción.*\n- **Comparación con lo esperado:** *Para ser principiante, habla muy bien.*\n\n### Truco práctico\n\nSustituye mentalmente **por** con "a causa de" o "a través de" y **para** con "con el fin de" o "destinado a".',
         structure="POR: causa/motivo · medio/canal · lugar aproximado · tiempo aproximado · intercambio · agente (voz pasiva) · opinión\nPARA: finalidad/propósito · destinatario · dirección · plazo límite · opinión · comparación",
         rules=[
             '"Por" expresa la causa o el motivo de una acción: "Lo hice por necesidad, no por gusto".',
-            '"Para" expresa la finalidad o el propósito: "Ahorro para comprarme un coche".',
+            '"Para" expresa la finalidad o el propósito: "Ahorro para comprarme un carro".',
             '"Por" indica el medio: "Te lo envío por correo electrónico".',
             '"Para" indica el destinatario: "He preparado la cena para todos".',
             'En la voz pasiva, el agente se introduce con "por": "La ley fue aprobada por el Congreso".',
@@ -897,7 +897,7 @@ B1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="B1",
         category="Oraciones",
         summary="Diferencias de significado en pares como tu/tú, el/él, mas/más, se/sé, de/dé.",
-        explanation="La **tilde diacrítica** diferencia palabras que se escriben igual pero tienen función distinta.\n\nPares de alta frecuencia:\n- **tu / tú**: *tu casa* (posesivo) vs *tú vienes* (pronombre).\n- **el / él**: *el libro* (artículo) vs *él habla* (pronombre).\n- **mi / mí**: *mi coche* vs *para mí*.\n- **de / dé**: *vas de azul* vs *quiero que me dé tiempo*.\n- **se / sé**: *se fue* (pronombre) vs *sé la respuesta* (verbo saber).\n- **mas / más**: *mas no pude* (conjunción formal) vs *más tarde* (cantidad).\n- **si / sí**: *si vienes* (condición) vs *sí, claro* (afirmación).\n- **aun / aún**: *aun cansado* (= incluso) vs *aún no llega* (= todavía).\n\nAdemás, los interrogativos y exclamativos llevan tilde en preguntas directas e indirectas: **qué, quién, cuál, cómo, cuándo, cuánto, dónde**.",
+        explanation="La **tilde diacrítica** diferencia palabras que se escriben igual pero tienen función distinta.\n\nPares de alta frecuencia:\n- **tu / tú**: *tu casa* (posesivo) vs *tú vienes* (pronombre).\n- **el / él**: *el libro* (artículo) vs *él habla* (pronombre).\n- **mi / mí**: *mi carro* vs *para mí*.\n- **de / dé**: *vas de azul* vs *quiero que me dé tiempo*.\n- **se / sé**: *se fue* (pronombre) vs *sé la respuesta* (verbo saber).\n- **mas / más**: *mas no pude* (conjunción formal) vs *más tarde* (cantidad).\n- **si / sí**: *si vienes* (condición) vs *sí, claro* (afirmación).\n- **aun / aún**: *aun cansado* (= incluso) vs *aún no llega* (= todavía).\n\nAdemás, los interrogativos y exclamativos llevan tilde en preguntas directas e indirectas: **qué, quién, cuál, cómo, cuándo, cuánto, dónde**.",
         structure="palabra sin tilde (funcion gramatical) · palabra con tilde (valor diacritico)",
         rules=[
             "La tilde diacrítica distingue funciones gramaticales y significado.",

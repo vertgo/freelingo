@@ -1,7 +1,10 @@
+import asyncio
 import io
 
 import httpx
 import openai
+from google import genai
+from google.genai import types as genai_types
 
 from app.core.app_logger import get_logger
 
@@ -15,7 +18,8 @@ class WhisperSTTService:
     async def health(self) -> None:
         """Raise if Whisper ASR is unreachable."""
         async with httpx.AsyncClient() as client:
-            r = await client.get(f"{self.base_url}/", timeout=5.0)
+            # The ASR webservice redirects / to its docs page.
+            r = await client.get(f"{self.base_url}/", timeout=5.0, follow_redirects=True)
             r.raise_for_status()
 
     async def transcribe(
@@ -85,4 +89,47 @@ class OpenAISTTService:
             language,
             text,
         )
+        return text
+
+
+class GeminiSTTService:
+    def __init__(self, api_key: str, model: str, timeout: float = 60.0) -> None:
+        self._client = genai.Client(api_key=api_key)
+        self.model = model
+        self.timeout = timeout
+
+    async def health(self) -> None:
+        """Raise if the Gemini API is unreachable or the key is rejected."""
+        await self._client.aio.models.get(model=self.model)
+
+    async def transcribe(
+        self,
+        audio_bytes: bytes,
+        filename: str = "audio.wav",
+        mime_type: str = "audio/wav",
+        *,
+        language: str,
+    ) -> str:
+        """Transcribe audio with Gemini's dedicated transcription model.
+
+        The model detects the language itself and rejects developer instructions,
+        so ``language`` is only logged.
+        """
+        response = await asyncio.wait_for(
+            self._client.aio.models.generate_content(
+                model=self.model,
+                contents=[genai_types.Part.from_bytes(data=audio_bytes, mime_type=mime_type)],
+            ),
+            timeout=self.timeout,
+        )
+        pieces: list[str] = []
+        for candidate in response.candidates or []:
+            for part in (candidate.content.parts if candidate.content else None) or []:
+                transcription = getattr(part, "audio_transcription", None)
+                if transcription is not None and transcription.text:
+                    pieces.append(transcription.text)
+                elif part.text:
+                    pieces.append(part.text)
+        text = " ".join(p.strip() for p in pieces if p.strip())
+        logger.info("[stt-gemini] Transcribed model=%s lang=%s: %r", self.model, language, text)
         return text

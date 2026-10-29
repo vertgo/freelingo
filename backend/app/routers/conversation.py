@@ -33,12 +33,14 @@ from app.services.freemium_service import (
     check_voice_quota,
     is_freemium_trial_active,
 )
+from app.services.gemini_live_pipeline import GeminiLivePipeline
 from app.services.language_helpers import lesson_practice_title, voice_session_title
 from app.services.lesson_voice_practice import load_lesson_voice_practice
 from app.services.llm_adapter import llm_adapter
 from app.services.memory_service import get_user_memories
 from app.services.quota_service import check_all_quotas
 from app.services.subscription_service import is_subscribed
+from app.services.tts_service import GEMINI_VOICES
 from app.utils.db import db_session
 from app.utils.redis import redis_client as _redis_client
 
@@ -144,6 +146,10 @@ async def conversation_warmup(
     if not allowed:
         return JSONResponse({"detail": "subscription_required"}, status_code=402)
 
+    if settings.VOICE_PROVIDER == "gemini_live":
+        # Gemini Live connects per session; there is no separate STT/TTS to pre-heat.
+        return JSONResponse({"status": "ready"})
+
     tts_service = getattr(request.app.state, "tts_service", None)
     stt_service = getattr(request.app.state, "stt_service", None)
 
@@ -212,7 +218,10 @@ async def conversation_ws(
         client_conversation_id_raw = auth_msg.get(
             "conversation_id"
         )  # optional: reserved for future API use
-        if settings.TTS_PROVIDER == "openai":
+        if settings.VOICE_PROVIDER == "gemini_live" or settings.TTS_PROVIDER == "gemini":
+            if voice_pref not in GEMINI_VOICES:
+                voice_pref = ""
+        elif settings.TTS_PROVIDER == "openai":
             _VALID_VOICES = frozenset(
                 {
                     "alloy",
@@ -305,7 +314,9 @@ async def conversation_ws(
         # --- Guard: TTS and STT must be enabled ---
         tts_service = getattr(websocket.app.state, "tts_service", None)
         stt_service = getattr(websocket.app.state, "stt_service", None)
-        if tts_service is None or stt_service is None:
+        if settings.VOICE_PROVIDER != "gemini_live" and (
+            tts_service is None or stt_service is None
+        ):
             logger.warning("[conversation] TTS or STT disabled — rejecting WS for user %s", user_id)
             await websocket.send_json(
                 {
@@ -536,10 +547,18 @@ async def conversation_ws(
         except Exception:
             pass
 
-        pipeline = ConversationPipeline(
-            llm=llm_adapter,
-            tts=tts_service,
-            stt=stt_service,
+        if settings.VOICE_PROVIDER == "gemini_live":
+            pipeline_cls = GeminiLivePipeline
+            pipeline_services = {
+                "api_key": settings.GEMINI_API_KEY,
+                "model": settings.GEMINI_LIVE_MODEL,
+                "live_voice": voice_pref or settings.GEMINI_LIVE_VOICE,
+            }
+        else:
+            pipeline_cls = ConversationPipeline
+            pipeline_services = {"llm": llm_adapter, "tts": tts_service, "stt": stt_service}
+        pipeline = pipeline_cls(
+            **pipeline_services,
             cefr_level=cefr_level,
             native_language=native_language,
             target_language=target_language,

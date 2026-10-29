@@ -700,3 +700,16 @@ def test_lesson_generation_prompt_lets_review_lessons_recycle_unit_material() ->
     assert "Recycling the words and structures above is the point of a review lesson" in review
     assert "Prefer words that are not in the already introduced list" not in review
     assert "Do NOT reuse any example sentence listed above" in review
+
+
+def test_mexican_spanish_variant_overlay(monkeypatch):
+    from app.services.prompts.common import get_language_prompt_overlay
+
+    monkeypatch.setattr("app.core.config.settings.SPANISH_VARIANT", "mx")
+    overlay = get_language_prompt_overlay("es-ES")
+    assert "Mexican Spanish" in overlay
+    assert "never teach or use vosotros" in overlay
+    assert "Peninsular" not in overlay
+
+    monkeypatch.setattr("app.core.config.settings.SPANISH_VARIANT", "es")
+    assert "Peninsular Spanish" in get_language_prompt_overlay("es")

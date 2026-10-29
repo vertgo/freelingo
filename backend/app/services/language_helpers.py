@@ -8,6 +8,8 @@ from __future__ import annotations
 
 from datetime import UTC, datetime
 
+from app.core.config import settings
+
 _LANGUAGE_INFO: dict[str, dict[str, str]] = {
     "en-US": {
         "name": "English (US)",
@@ -50,6 +52,22 @@ _LANGUAGE_INFO: dict[str, dict[str, str]] = {
         "flag": "🇨🇳",
     },
 }
+
+
+# Same es-ES code and static course data; taught and labelled as Mexican Spanish.
+_MEXICAN_SPANISH_INFO = {
+    "name": "Spanish (Mexico)",
+    "self_name": "Español (México)",
+    "iso639": "es",
+    "flag": "🇲🇽",
+}
+
+
+def _language_info(target_language: str) -> dict[str, str] | None:
+    if target_language == "es-ES" and settings.SPANISH_VARIANT == "mx":
+        return _MEXICAN_SPANISH_INFO
+    return _LANGUAGE_INFO.get(target_language)
+
 
 _LANGUAGE_CAPABILITIES: dict[str, dict[str, str | bool]] = {
     "en-US": {
@@ -386,25 +404,25 @@ _MONTH_NAMES: dict[str, list[str]] = {
 
 def get_language_name(target_language: str) -> str:
     """'it-IT' → 'Italian', 'en-US' → 'English (US)'"""
-    info = _LANGUAGE_INFO.get(target_language)
+    info = _language_info(target_language)
     return info["name"] if info else target_language
 
 
 def get_language_self_name(target_language: str) -> str:
     """'it-IT' → 'Italiano', 'es-ES' → 'Español'"""
-    info = _LANGUAGE_INFO.get(target_language)
+    info = _language_info(target_language)
     return info["self_name"] if info else target_language
 
 
 def get_iso639(target_language: str) -> str:
     """'en-US' → 'en', 'it-IT' → 'it'"""
-    info = _LANGUAGE_INFO.get(target_language)
+    info = _language_info(target_language)
     return info["iso639"] if info else target_language.split("-")[0].lower()
 
 
 def get_language_flag(target_language: str) -> str:
     """'es-ES' → '🇪🇸', 'it-IT' → '🇮🇹'"""
-    info = _LANGUAGE_INFO.get(target_language)
+    info = _language_info(target_language)
     return info["flag"] if info else ""
 
 

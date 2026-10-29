@@ -9,8 +9,8 @@ A1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="A1",
         category="Tiempos verbales",
         summary="Usos básicos del verbo ser: identidad, origen, características permanentes.",
-        explanation="El verbo **ser** es uno de los dos verbos copulativos principales del español. Se usa para expresar:\n\n- **Identidad**: *Yo soy Ana.*\n- **Origen o nacionalidad**: *Él es de México. / Somos españoles.*\n- **Características permanentes**: *La casa es grande. / Mi hermana es alta.*\n- **Profesión**: *Ella es médica.*\n- **Posesión**: *El libro es de Juan.*\n- **Hora y fecha**: *Son las tres. / Hoy es lunes.*\n- **Material**: *La mesa es de madera.*\n\nA diferencia del inglés, el español **no** usa el pronombre obligatoriamente: *Soy profesor* es más natural que *Yo soy profesor*.",
-        structure="yo soy · tú eres · él/ella/usted es · nosotros/as somos · vosotros/as sois · ellos/ellas/ustedes son",
+        explanation="El verbo **ser** es uno de los dos verbos copulativos principales del español. Se usa para expresar:\n\n- **Identidad**: *Yo soy Ana.*\n- **Origen o nacionalidad**: *Él es de México. / Somos mexicanos.*\n- **Características permanentes**: *La casa es grande. / Mi hermana es alta.*\n- **Profesión**: *Ella es médica.*\n- **Posesión**: *El libro es de Juan.*\n- **Hora y fecha**: *Son las tres. / Hoy es lunes.*\n- **Material**: *La mesa es de madera.*\n\nA diferencia del inglés, el español **no** usa el pronombre obligatoriamente: *Soy profesor* es más natural que *Yo soy profesor*.",
+        structure="yo soy · tú eres · él/ella/usted es · nosotros/as somos · ellos/ellas/ustedes son",
         rules=[
             "El pronombre sujeto se omite con frecuencia porque la terminación del verbo indica la persona.",
             '"Ser" expresa características esenciales, permanentes o inherentes.',
@@ -26,8 +26,8 @@ A1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         ],
         common_mistakes=[
             GrammarMistake(
-                wrong="Estoy de Madrid.",
-                correct="Soy de Madrid.",
+                wrong="Estoy de Monterrey.",
+                correct="Soy de Monterrey.",
                 note='"Ser de" indica origen. "Estar" no se usa para procedencia.',
             ),
             GrammarMistake(
@@ -44,24 +44,26 @@ A1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="A1",
         category="Pronombres",
         summary="Los pronombres personales que realizan la acción del verbo.",
-        explanation="Los **pronombres de sujeto** indican quién realiza la acción. En español es muy frecuente **omitirlos** porque la conjugación verbal ya identifica a la persona.\n\n| Singular | Plural |\n|----------|--------|\n| yo | nosotros / nosotras |\n| tú (informal) · usted (formal) | vosotros/as (España) · ustedes (América / formal) |\n| él · ella | ellos · ellas |\n\nEn América Latina **ustedes** sustituye completamente a **vosotros/as** tanto en contextos formales como informales. En España, vosotros/as es informal y ustedes es formal. El pronombre **ello** es neutro y se usa raramente para ideas abstractas.",
-        structure="yo · tú · él/ella/usted · nosotros/as · vosotros/as · ellos/ellas/ustedes",
+        explanation="Los **pronombres de sujeto** indican quién realiza la acción. En español es muy frecuente **omitirlos** porque la conjugación verbal ya identifica a la persona.\n\n| Singular | Plural |\n|----------|--------|\n| yo | nosotros / nosotras |\n| tú (informal) · usted (formal) | ustedes (informal y formal) |\n| él · ella | ellos · ellas |\n\nEn México (y en toda América Latina) **ustedes** es el único plural de segunda persona: se usa con amigos, familia y desconocidos por igual. En España se usa vosotros como plural informal. El pronombre **ello** es neutro y se usa raramente para ideas abstractas.",
+        structure="yo · tú · él/ella/usted · nosotros/as · ellos/ellas/ustedes",
         rules=[
             "Los pronombres de sujeto se omiten normalmente. Solo se usan para énfasis, contraste o ambigüedad.",
             '"Usted" es formal; "tú" es informal. En Argentina/Uruguay se usa "vos" en lugar de "tú".',
-            '"Nosotros/as" y "vosotros/as" tienen forma femenina cuando todo el grupo es femenino.',
-            'En América Latina "ustedes" reemplaza a "vosotros/as" en todos los contextos.',
+            '"Nosotros/as" tiene forma femenina cuando todo el grupo es femenino.',
+            'En México "ustedes" es el plural de "tú" y de "usted": sirve en todos los contextos.',
             '"Ello" es el pronombre neutro y casi no se usa en español coloquial.',
         ],
         examples=[
-            GrammarExample(text="Yo vivo en Barcelona.", translation=None, note="énfasis"),
+            GrammarExample(
+                text="Yo vivo en la Ciudad de México.", translation=None, note="énfasis"
+            ),
             GrammarExample(text="¿Tú qué opinas?", translation=None, note="contraste"),
             GrammarExample(
                 text="Ustedes son muy amables.",
                 translation=None,
-                note="América Latina",
+                note="formal",
             ),
-            GrammarExample(text="Vosotros tenéis razón.", translation=None, note="España"),
+            GrammarExample(text="Ustedes tienen razón, amigos.", translation=None, note="informal"),
         ],
         common_mistakes=[
             GrammarMistake(
@@ -70,8 +72,8 @@ A1_GRAMMAR_TOPICS: list[GrammarTopic] = [
                 note='Sin tilde, "es" es verbo. Con tilde, "él" es pronombre. En contexto suele estar claro.',
             ),
             GrammarMistake(
-                wrong="Tú eres de España?",
-                correct="¿Tú eres de España?",
+                wrong="Tú eres de Guadalajara?",
+                correct="¿Tú eres de Guadalajara?",
                 note="No olvidar el signo de apertura de interrogación (¿).",
             ),
         ],
@@ -83,7 +85,7 @@ A1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="A1",
         category="Artículos",
         summary="el, la, los, las — cómo y cuándo usar el artículo determinado.",
-        explanation="Los **artículos definidos** (el, la, los, las) acompañan a un sustantivo conocido por el hablante y el oyente, o que ha sido mencionado antes.\n\nSe usan para:\n- **Referirse a algo específico**: *El coche de Juan es rojo.*\n- **Generalizaciones**: *Los perros son leales.*\n- **Sustantivar otras palabras**: *Lo importante es participar.*\n\nEl artículo neutro **lo** se usa con adjetivos o adverbios para formar sustantivos abstractos: *lo bueno, lo malo, lo hecho*.\n\nContracciones obligatorias: **a + el → al** (*Voy al parque*) y **de + el → del** (*La casa del profesor*).",
+        explanation="Los **artículos definidos** (el, la, los, las) acompañan a un sustantivo conocido por el hablante y el oyente, o que ha sido mencionado antes.\n\nSe usan para:\n- **Referirse a algo específico**: *El carro de Juan es rojo.*\n- **Generalizaciones**: *Los perros son leales.*\n- **Sustantivar otras palabras**: *Lo importante es participar.*\n\nEl artículo neutro **lo** se usa con adjetivos o adverbios para formar sustantivos abstractos: *lo bueno, lo malo, lo hecho*.\n\nContracciones obligatorias: **a + el → al** (*Voy al parque*) y **de + el → del** (*La casa del profesor*).",
         structure="el (masc. sing.) · la (fem. sing.) · los (masc. pl.) · las (fem. pl.)",
         rules=[
             "Concuerdan en género y número con el sustantivo que acompañan.",
@@ -126,7 +128,7 @@ A1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="A1",
         category="Tiempos verbales",
         summary="Expresar procedencia, nacionalidad y origen con el verbo ser.",
-        explanation="Para expresar el **origen** y la **nacionalidad** se usa el verbo **ser** con dos estructuras:\n\n1. **Ser + de + lugar** (ciudad, país, región): *Soy de Colombia. / Somos de Barcelona.*\n2. **Ser + adjetivo de nacionalidad**: *Es mexicana. / Son franceses.*\n\nLos adjetivos de nacionalidad **concuerdan en género y número** con el sujeto:\n- *Juan es español. / María es española.*\n- *Ellos son italianos. / Ellas son italianas.*\n\n**No** se usa artículo con la profesión ni con la nacionalidad, salvo que el sustantivo esté modificado: *Es un español muy simpático.*",
+        explanation="Para expresar el **origen** y la **nacionalidad** se usa el verbo **ser** con dos estructuras:\n\n1. **Ser + de + lugar** (ciudad, país, región): *Soy de Colombia. / Somos de Oaxaca.*\n2. **Ser + adjetivo de nacionalidad**: *Es mexicana. / Son franceses.*\n\nLos adjetivos de nacionalidad **concuerdan en género y número** con el sujeto:\n- *Juan es mexicano. / María es mexicana.*\n- *Ellos son italianos. / Ellas son italianas.*\n\n**No** se usa artículo con la profesión ni con la nacionalidad, salvo que el sustantivo esté modificado: *Es un mexicano muy simpático.*",
         structure="ser + de + lugar · ser + adjetivo de nacionalidad",
         rules=[
             '"Ser de + lugar" para origen geográfico. No se usa "estar" para este sentido.',
@@ -147,8 +149,8 @@ A1_GRAMMAR_TOPICS: list[GrammarTopic] = [
                 note='"Estar de" no indica origen. "Soy de" es la fórmula correcta.',
             ),
             GrammarMistake(
-                wrong="Soy Española.",
-                correct="Soy española.",
+                wrong="Soy Mexicana.",
+                correct="Soy mexicana.",
                 note="Los adjetivos de nacionalidad van en minúscula.",
             ),
         ],
@@ -170,7 +172,7 @@ A1_GRAMMAR_TOPICS: list[GrammarTopic] = [
             'El artículo determina el género en casos ambiguos: "el mar" / "la mar" (poético).',
         ],
         examples=[
-            GrammarExample(text="El coche rojo.", translation=None),
+            GrammarExample(text="El carro rojo.", translation=None),
             GrammarExample(text="La canción es bonita.", translation=None),
             GrammarExample(
                 text="El problema es grave.",
@@ -216,7 +218,7 @@ A1_GRAMMAR_TOPICS: list[GrammarTopic] = [
             'No existe artículo indefinido neutro como el definido "lo".',
         ],
         examples=[
-            GrammarExample(text="Necesito un bolígrafo.", translation=None),
+            GrammarExample(text="Necesito una pluma.", translation=None),
             GrammarExample(text="Hay una farmacia cerca.", translation=None),
             GrammarExample(text="Tiene unas ideas muy buenas.", translation=None),
             GrammarExample(
@@ -245,8 +247,8 @@ A1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="A1",
         category="Tiempos verbales",
         summary="Expresar posesión, edad y sensaciones con el verbo tener.",
-        explanation="El verbo **tener** es irregular (cambio vocálico e -> ie) y es uno de los más usados en español. Además de la posesión, expresa:\n\n- **Posesión**: *Tengo un coche nuevo.*\n- **Edad**: *Tengo 25 años.* (NO ~~Soy 25 años~~)\n- **Sensaciones físicas**: *Tengo hambre / sed / frío / calor / sueño.*\n- **Estados**: *Tengo miedo / prisa / suerte / razón.*\n\nEl español usa **tener + sustantivo** en casos donde en otras lenguas se emplea una estructura equivalente a 'ser/estar + adjetivo': *Tengo hambre. Tengo frío.*",
-        structure="yo tengo · tú tienes · él tiene · nosotros tenemos · vosotros tenéis · ellos tienen",
+        explanation="El verbo **tener** es irregular (cambio vocálico e -> ie) y es uno de los más usados en español. Además de la posesión, expresa:\n\n- **Posesión**: *Tengo un carro nuevo.*\n- **Edad**: *Tengo 25 años.* (NO ~~Soy 25 años~~)\n- **Sensaciones físicas**: *Tengo hambre / sed / frío / calor / sueño.*\n- **Estados**: *Tengo miedo / prisa / suerte / razón.*\n\nEl español usa **tener + sustantivo** en casos donde en otras lenguas se emplea una estructura equivalente a 'ser/estar + adjetivo': *Tengo hambre. Tengo frío.*",
+        structure="yo tengo · tú tienes · él tiene · nosotros tenemos · ellos/ustedes tienen",
         rules=[
             "Es verbo irregular con diptongación e→ie en las formas tónicas (tú tienes, ellos tienen).",
             'La primera persona es irregular: "yo tengo" (no ~~tieno~~).',
@@ -278,12 +280,12 @@ A1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         title="Adjetivos posesivos",
         level="A1",
         category="Pronombres",
-        summary="mi, tu, su, nuestro, vuestro — indicar posesión antes del sustantivo.",
-        explanation="Los **adjetivos posesivos** se colocan **delante del sustantivo** y concuerdan en **número** con la cosa poseída. Solo *nuestro* y *vuestro* concuerdan también en **género**.\n\n| Poseedor | Singular | Plural |\n|----------|----------|--------|\n| yo | mi | mis |\n| tú | tu | tus |\n| él/ella/usted | su | sus |\n| nosotros/as | nuestro/a | nuestros/as |\n| vosotros/as | vuestro/a | vuestros/as |\n| ellos/ellas/ustedes | su | sus |\n\nAtención: **su/sus** puede significar *de él, de ella, de usted, de ellos, de ellas, de ustedes*. En contextos ambiguos se usa **de + pronombre**: *su libro → el libro de él/ella*.",
-        structure="mi(s) · tu(s) · su(s) · nuestro/a(s) · vuestro/a(s)",
+        summary="mi, tu, su, nuestro — indicar posesión antes del sustantivo.",
+        explanation="Los **adjetivos posesivos** se colocan **delante del sustantivo** y concuerdan en **número** con la cosa poseída. Solo *nuestro* concuerda también en **género**.\n\n| Poseedor | Singular | Plural |\n|----------|----------|--------|\n| yo | mi | mis |\n| tú | tu | tus |\n| él/ella/usted | su | sus |\n| nosotros/as | nuestro/a | nuestros/as |\n| ellos/ellas/ustedes | su | sus |\n\nAtención: **su/sus** puede significar *de él, de ella, de usted, de ellos, de ellas, de ustedes*. En contextos ambiguos se usa **de + pronombre**: *su libro → el libro de él/ella*.",
+        structure="mi(s) · tu(s) · su(s) · nuestro/a(s)",
         rules=[
             "Concuerdan en número (singular/plural) con el objeto poseído, no con el poseedor.",
-            '"Nuestro" y "vuestro" también concuerdan en género (nuestro/nuestra).',
+            '"Nuestro" también concuerda en género (nuestro/nuestra).',
             'No se usan artículos con los posesivos: "mi libro" (no ~~el mi libro~~).',
             '"Su/sus" es ambiguo; cuando sea necesario, aclarar con "de + pronombre".',
         ],
@@ -351,8 +353,8 @@ A1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="A1",
         category="Tiempos verbales",
         summary="Conjugación de los verbos regulares en presente: -ar, -er, -ir.",
-        explanation="En español hay tres conjugaciones regulares según la terminación del infinitivo: **-ar**, **-er**, **-ir**. El presente de indicativo se usa para acciones habituales, hechos generales y descripciones.\n\n| Persona | -ar (hablar) | -er (comer) | -ir (vivir) |\n|--------|-------------|------------|-------------|\n| yo | hablo | como | vivo |\n| tú | hablas | comes | vives |\n| él/ella/usted | habla | come | vive |\n| nosotros/as | hablamos | comemos | vivimos |\n| vosotros/as | habláis | coméis | vivís |\n| ellos/ellas/ustedes | hablan | comen | viven |\n\nSe usa también para pedir cosas en presente: *¿Me pasas la sal?* y para hablar del futuro cercano: *Mañana te llamo.*",
-        structure="raíz + -o/-as/-a/-amos/-áis/-an (AR) · -o/-es/-e/-emos/-éis/-en (ER) · -o/-es/-e/-imos/-ís/-en (IR)",
+        explanation="En español hay tres conjugaciones regulares según la terminación del infinitivo: **-ar**, **-er**, **-ir**. El presente de indicativo se usa para acciones habituales, hechos generales y descripciones.\n\n| Persona | -ar (hablar) | -er (comer) | -ir (vivir) |\n|--------|-------------|------------|-------------|\n| yo | hablo | como | vivo |\n| tú | hablas | comes | vives |\n| él/ella/usted | habla | come | vive |\n| nosotros/as | hablamos | comemos | vivimos |\n| ellos/ellas/ustedes | hablan | comen | viven |\n\nSe usa también para pedir cosas en presente: *¿Me pasas la sal?* y para hablar del futuro cercano: *Mañana te llamo.*",
+        structure="raíz + -o/-as/-a/-amos/-an (AR) · -o/-es/-e/-emos/-en (ER) · -o/-es/-e/-imos/-en (IR)",
         rules=[
             'Las terminaciones son distintas para cada conjugación, salvo "yo" y "él/ella/usted" en -er e -ir que coinciden (-o/-e).',
             'La "o" de la primera persona singular es idéntica en las tres conjugaciones.',
@@ -388,10 +390,10 @@ A1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="A1",
         category="Verbos",
         summary="Acciones que el sujeto realiza sobre sí mismo: levantarse, ducharse, vestirse.",
-        explanation="Un verbo reflexivo indica que el sujeto realiza y recibe la acción. Se conjugan con los **pronombres reflexivos** que se colocan **delante del verbo** conjugado.\n\n| Pronombre | Ejemplo con *levantarse* |\n|-----------|--------------------------|\n| me | (yo) me levanto |\n| te | (tú) te levantas |\n| se | (él/ella/usted) se levanta |\n| nos | (nosotros) nos levantamos |\n| os | (vosotros) os levantáis |\n| se | (ellos/ellas/ustedes) se levantan |\n\nMuchos verbos cambian de significado al usarse como reflexivos: *llamar* (llamar a alguien) frente a *llamarse* (decir el propio nombre); *ir* (desplazarse) frente a *irse* (marcharse).",
-        structure="pronombre reflexivo (me/te/se/nos/os/se) + verbo conjugado",
+        explanation="Un verbo reflexivo indica que el sujeto realiza y recibe la acción. Se conjugan con los **pronombres reflexivos** que se colocan **delante del verbo** conjugado.\n\n| Pronombre | Ejemplo con *levantarse* |\n|-----------|--------------------------|\n| me | (yo) me levanto |\n| te | (tú) te levantas |\n| se | (él/ella/usted) se levanta |\n| nos | (nosotros) nos levantamos |\n| se | (ellos/ellas/ustedes) se levantan |\n\nMuchos verbos cambian de significado al usarse como reflexivos: *llamar* (llamar a alguien) frente a *llamarse* (decir el propio nombre); *ir* (desplazarse) frente a *irse* (marcharse).",
+        structure="pronombre reflexivo (me/te/se/nos/se) + verbo conjugado",
         rules=[
-            "El pronombre reflexivo concuerda con el sujeto: me, te, se, nos, os, se.",
+            "El pronombre reflexivo concuerda con el sujeto: me, te, se, nos, se.",
             "El pronombre va antes del verbo conjugado, salvo en imperativo afirmativo e infinitivo.",
             'En infinitivo y gerundio, el pronombre puede ir al final soldado a la palabra: "levantarme", "levantándose".',
             'No todos los verbos con "se" son reflexivos; algunos son pronominales (quejarse, arrepentirse) sin valor reflexivo real.',
@@ -459,8 +461,8 @@ A1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="A1",
         category="Verbos",
         summary="Expresar gustos y preferencias con la estructura me gusta / me gustan.",
-        explanation='El verbo **gustar** tiene una estructura diferente a la del inglés. Literalmente significa "ser agradable para alguien". El sujeto gramatical es la cosa que gusta, no la persona.\n\n| Pronombre OI | Significado |\n|-------------|-------------|\n| me | a mí |\n| te | a ti |\n| le | a él / a ella / a usted |\n| nos | a nosotros/as |\n| os | a vosotros/as |\n| les | a ellos / a ellas / a ustedes |\n\n**Gusta** (singular): cuando lo que gusta es un sustantivo singular o un infinitivo.\n- *Me gusta el chocolate. / Me gusta bailar.*\n\n**Gustan** (plural): cuando lo que gusta es un sustantivo plural.\n- *Me gustan los perros.*\n\nPara enfatizar o aclarar: **a + pronombre tónico**: *A mí me gusta, a ti te gusta.*',
-        structure="pronombre de OI (me/te/le/nos/os/les) + gusta/gustan + sujeto",
+        explanation='El verbo **gustar** tiene una estructura diferente a la del inglés. Literalmente significa "ser agradable para alguien". El sujeto gramatical es la cosa que gusta, no la persona.\n\n| Pronombre OI | Significado |\n|-------------|-------------|\n| me | a mí |\n| te | a ti |\n| le | a él / a ella / a usted |\n| nos | a nosotros/as |\n| les | a ellos / a ellas / a ustedes |\n\n**Gusta** (singular): cuando lo que gusta es un sustantivo singular o un infinitivo.\n- *Me gusta el chocolate. / Me gusta bailar.*\n\n**Gustan** (plural): cuando lo que gusta es un sustantivo plural.\n- *Me gustan los perros.*\n\nPara enfatizar o aclarar: **a + pronombre tónico**: *A mí me gusta, a ti te gusta.*',
+        structure="pronombre de OI (me/te/le/nos/les) + gusta/gustan + sujeto",
         rules=[
             "El verbo concuerda con la cosa que gusta (sujeto real), no con la persona.",
             'Nunca se dice "~~yo gusto~~" con el significado de "me gusta".',
@@ -576,9 +578,9 @@ A1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         category="Tiempos verbales",
         summary="Usos de estar: ubicación, estados temporales, el presente continuo.",
         explanation="El verbo **estar** es el segundo verbo copulativo del español y se usa para:\n\n- **Ubicación espacial** de personas y cosas: *Estoy en casa. / El banco está en la plaza.*\n- **Estados temporales o cambiantes**: *Estoy cansado. / La sopa está fría.*\n- **Presente continuo**: *estar + gerundio* → *Estoy estudiando. / Está lloviendo.*\n- **Estado civil temporal**: *Estoy soltero/casado.* (aunque también se admite *soy soltero* como estado civil permanente).\n\nNo se usa **estar** para el origen (→ *ser*) ni para eventos (→ *ser*). La elección entre ser y estar depende de si la cualidad se percibe como permanente o temporal.",
-        structure="yo estoy · tú estás · él/ella/usted está · nosotros estamos · vosotros estáis · ellos/ellas/ustedes están",
+        structure="yo estoy · tú estás · él/ella/usted está · nosotros estamos · ellos/ellas/ustedes están",
         rules=[
-            'Estar para ubicación: "Estoy en casa", "Madrid está en España".',
+            'Estar para ubicación: "Estoy en casa", "Monterrey está en México".',
             'Estar para estados temporales: "Estoy enfermo", "Está nublado".',
             '"Estar + gerundio" forma el presente continuo.',
             "Nunca usar estar para origen o nacionalidad.",
@@ -596,8 +598,8 @@ A1_GRAMMAR_TOPICS: list[GrammarTopic] = [
                 note='Para ubicación se usa "estar", no "ser".',
             ),
             GrammarMistake(
-                wrong="La fiesta está en el salón.",
-                correct="La fiesta es en el salón.",
+                wrong="La fiesta está en la sala.",
+                correct="La fiesta es en la sala.",
                 note='Para eventos se usa "ser", no "estar".',
             ),
         ],
@@ -622,7 +624,7 @@ A1_GRAMMAR_TOPICS: list[GrammarTopic] = [
                 text="Hay una farmacia en la esquina.",
                 translation=None,
             ),
-            GrammarExample(text="¿Hay leche en la nevera?", translation=None),
+            GrammarExample(text="¿Hay leche en el refri?", translation=None),
             GrammarExample(text="No hay muchas opciones.", translation=None),
             GrammarExample(
                 text="En el parque hay niños jugando.",
@@ -631,8 +633,8 @@ A1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         ],
         common_mistakes=[
             GrammarMistake(
-                wrong="Hayn muchos coches.",
-                correct="Hay muchos coches.",
+                wrong="Hayn muchos carros.",
+                correct="Hay muchos carros.",
                 note='"Hay" es invariable; no existe la forma "hayn".',
             ),
             GrammarMistake(
@@ -668,7 +670,7 @@ A1_GRAMMAR_TOPICS: list[GrammarTopic] = [
                 translation=None,
             ),
             GrammarExample(
-                text="Las llaves están dentro del bolso.",
+                text="Las llaves están dentro de la bolsa.",
                 translation=None,
             ),
         ],
@@ -687,7 +689,7 @@ A1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="A1",
         category="Tiempos verbales",
         summary="Expresar planes e intenciones futuras con la perífrasis ir a + infinitivo.",
-        explanation='La perífrasis **ir a + infinitivo** es la forma más común para hablar del **futuro cercano** o expresar **planes e intenciones**.\n\n| Persona | Ir a + infinitivo (viajar) |\n|---------|----------------------------|\n| yo | voy a viajar |\n| tú | vas a viajar |\n| él/ella/usted | va a viajar |\n| nosotros/as | vamos a viajar |\n| vosotros/as | vais a viajar |\n| ellos/ellas/ustedes | van a viajar |\n\nSe diferencia del futuro simple (*viajaré*) en que "ir a + infinitivo" es más coloquial y expresa una intención más inmediata o un plan ya decidido.',
+        explanation='La perífrasis **ir a + infinitivo** es la forma más común para hablar del **futuro cercano** o expresar **planes e intenciones**.\n\n| Persona | Ir a + infinitivo (viajar) |\n|---------|----------------------------|\n| yo | voy a viajar |\n| tú | vas a viajar |\n| él/ella/usted | va a viajar |\n| nosotros/as | vamos a viajar |\n| ellos/ellas/ustedes | van a viajar |\n\nSe diferencia del futuro simple (*viajaré*) en que "ir a + infinitivo" es más coloquial y expresa una intención más inmediata o un plan ya decidido.',
         structure="ir (conjugado) + a + infinitivo",
         rules=[
             'El verbo "ir" se conjuga en presente, seguido de "a" + infinitivo.',
@@ -727,11 +729,11 @@ A1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="A1",
         category="Verbos",
         summary="Expresar deseos (querer) y capacidad o permiso (poder).",
-        explanation="**Querer** (cambio e→ie) y **poder** (cambio o→ue) son verbos irregulares con diptongación que se usan frecuentemente seguidos de **infinitivo**.\n\n**Querer**:\n- yo quiero · tú quieres · él quiere · nosotros queremos · vosotros queréis · ellos quieren\n- Significa deseo o intención: *Quiero aprender español. / ¿Quieres un café?*\n\n**Poder**:\n- yo puedo · tú puedes · él puede · nosotros podemos · vosotros podéis · ellos pueden\n- Significa capacidad o permiso: *Puedo nadar. / ¿Puedo entrar?*\n\nAmbos funcionan como verbos modales: van seguidos directamente de infinitivo, **sin preposición**.",
+        explanation="**Querer** (cambio e→ie) y **poder** (cambio o→ue) son verbos irregulares con diptongación que se usan frecuentemente seguidos de **infinitivo**.\n\n**Querer**:\n- yo quiero · tú quieres · él quiere · nosotros queremos · ellos/ustedes quieren\n- Significa deseo o intención: *Quiero aprender español. / ¿Quieres un café?*\n\n**Poder**:\n- yo puedo · tú puedes · él puede · nosotros podemos · ellos/ustedes pueden\n- Significa capacidad o permiso: *Puedo nadar. / ¿Puedo entrar?*\n\nAmbos funcionan como verbos modales: van seguidos directamente de infinitivo, **sin preposición**.",
         structure="querer/poder (conjugado) + infinitivo",
         rules=[
-            'Querer: diptongación e→ie en formas tónicas (tú quieres, ellos quieren). "Nosotros" y "vosotros" no diptongan.',
-            'Poder: diptongación o→ue en formas tónicas (tú puedes, ellos pueden). "Nosotros" y "vosotros" no diptongan.',
+            'Querer: diptongación e→ie en formas tónicas (tú quieres, ellos quieren). "Nosotros" no diptonga.',
+            'Poder: diptongación o→ue en formas tónicas (tú puedes, ellos pueden). "Nosotros" no diptonga.',
             'Ambos rigen infinitivo sin preposición: "Quiero salir", "Puedo ayudarte".',
             '"Querer" también puede ir con sustantivo: "Quiero agua".',
         ],
@@ -798,7 +800,7 @@ A1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="A1",
         category="Adjetivos y adverbios",
         summary="Uso de adjetivos y pronombres demostrativos para señalar objetos según su distancia respecto al hablante.",
-        explanation="Los **demostrativos** sirven para indicar la distancia entre el hablante y aquello que señala.\n\n- **Este/esta/estos/estas** → algo cercano al hablante: *Este bolígrafo es mío.*\n- **Ese/esa/esos/esas** → algo cercano al oyente o a distancia media: *Esa silla de ahí está rota.*\n- **Aquel/aquella/aquellos/aquellas** → algo lejano para ambos: *Aquel edificio de allí es el museo.*\n\nLas formas **neutras** (esto, eso, aquello) se usan cuando no se menciona el objeto concreto o para referirse a ideas:\n- *¿Qué es esto?*\n- *Eso que dices no es cierto.*\n\n**Como adjetivos**, van delante del sustantivo y **concuerdan en género y número**: *este coche, esta casa, estos libros, estas flores.*\n\n**Como pronombres**, sustituyen al sustantivo: *—¿Qué camiseta quieres? —Esta.*\n\nDesde la reforma de la RAE de 2010, los pronombres demostrativos **no llevan tilde**, incluso en casos de ambigüedad.",
+        explanation="Los **demostrativos** sirven para indicar la distancia entre el hablante y aquello que señala.\n\n- **Este/esta/estos/estas** → algo cercano al hablante: *Este celular es mío.*\n- **Ese/esa/esos/esas** → algo cercano al oyente o a distancia media: *Esa silla de ahí está rota.*\n- **Aquel/aquella/aquellos/aquellas** → algo lejano para ambos: *Aquel edificio de allí es el museo.*\n\nLas formas **neutras** (esto, eso, aquello) se usan cuando no se menciona el objeto concreto o para referirse a ideas:\n- *¿Qué es esto?*\n- *Eso que dices no es cierto.*\n\n**Como adjetivos**, van delante del sustantivo y **concuerdan en género y número**: *este carro, esta casa, estos libros, estas flores.*\n\n**Como pronombres**, sustituyen al sustantivo: *—¿Qué camiseta quieres? —Esta.*\n\nDesde la reforma de la RAE de 2010, los pronombres demostrativos **no llevan tilde**, incluso en casos de ambigüedad.",
         structure="este/esta/estos/estas (cerca) · ese/esa/esos/esas (distancia media) · aquel/aquella/aquellos/aquellas (lejos) · esto/eso/aquello (neutro)",
         rules=[
             '"Este/esta" señala lo que está cerca del hablante (aquí).',
@@ -842,8 +844,8 @@ A1_GRAMMAR_TOPICS: list[GrammarTopic] = [
                 note='Usa la forma neutra "esto" para referirse a una situación o idea, no "este".',
             ),
             GrammarMistake(
-                wrong="Éste es mi coche.",
-                correct="Este es mi coche.",
+                wrong="Éste es mi carro.",
+                correct="Este es mi carro.",
                 note="Desde 2010, la RAE recomienda no tildar los pronombres demostrativos.",
             ),
         ],

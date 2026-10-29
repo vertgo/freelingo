@@ -152,7 +152,7 @@ C1_CATEGORIES: list[PhrasebookCategory] = [
             ),
             PhrasebookEntry(
                 text="\u00bfMe permite que le d\u00e9 mi tarjeta?",
-                context="Ofrecer la tarjeta de visita",
+                context="Ofrecer la tarjeta de presentaci\u00f3n",
                 register="formal",
             ),
             PhrasebookEntry(
@@ -166,7 +166,7 @@ C1_CATEGORIES: list[PhrasebookCategory] = [
                 register="formal",
             ),
             PhrasebookEntry(
-                text="Ha sido un placer conocerte.",
+                text="Fue un placer conocerte.",
                 context="Despedirse cordialmente (informal)",
                 register="informal",
             ),
@@ -176,17 +176,17 @@ C1_CATEGORIES: list[PhrasebookCategory] = [
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="\u00bfEst\u00e1is en LinkedIn?",
+                text="\u00bfEst\u00e1n en LinkedIn?",
                 context="Preguntar por la presencia en redes",
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="Me interesa mucho lo que est\u00e1is haciendo en [\u00e1rea].",
+                text="Me interesa mucho lo que est\u00e1n haciendo en [\u00e1rea].",
                 context="Mostrar inter\u00e9s genuino",
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="\u00bfOs importar\u00eda si os env\u00edo un correo para seguir en contacto?",
+                text="\u00bfLes importar\u00eda si les env\u00edo un correo para seguir en contacto?",
                 context="Proponer mantener el contacto",
                 register="formal",
             ),
@@ -229,7 +229,7 @@ C1_CATEGORIES: list[PhrasebookCategory] = [
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="Le propongo que aparquemos este asunto por ahora.",
+                text="Le propongo que dejemos este asunto en pausa por ahora.",
                 context="Sugerir posponer la discusi\u00f3n",
                 register="formal",
             ),

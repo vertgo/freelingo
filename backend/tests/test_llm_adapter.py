@@ -304,6 +304,18 @@ class TestLLMAdapterInit:
         assert adapter.model == "deepseek-chat"
         assert adapter.client is not None
 
+    def test_codex_provider(self, monkeypatch):
+        monkeypatch.setattr("app.core.config.settings.LLM_PROVIDER", "codex")
+        monkeypatch.setattr("app.core.config.settings.CODEX_BRIDGE_URL", "http://bridge:11535")
+        monkeypatch.setattr("app.core.config.settings.CODEX_MODEL", "codex")
+
+        from app.services.llm_adapter import LLMAdapter
+
+        adapter = LLMAdapter()
+        assert adapter.provider == "codex"
+        assert adapter.model == "codex"
+        assert str(adapter.client.base_url).rstrip("/") == "http://bridge:11535/v1"
+
     def test_anthropic_provider(self, monkeypatch):
         monkeypatch.setattr("app.core.config.settings.LLM_PROVIDER", "anthropic")
         monkeypatch.setattr("app.core.config.settings.ANTHROPIC_API_KEY", "sk-ant-test")
@@ -1169,6 +1181,82 @@ class TestDeepSeekProvider:
         ):
             result = await adapter.chat([{"role": "user", "content": "Hi"}])
             assert result == "DeepSeek says hi"
+
+
+class TestGeminiProvider:
+    def _adapter(self, monkeypatch):
+        monkeypatch.setattr("app.core.config.settings.LLM_PROVIDER", "gemini")
+        monkeypatch.setattr("app.core.config.settings.GEMINI_API_KEY", "g-key")
+        monkeypatch.setattr("app.core.config.settings.GEMINI_MODEL", "gemini-3.8-flash")
+        monkeypatch.setattr("app.core.config.settings.GEMINI_FALLBACK_MODELS", ["gemini-3.5-flash"])
+        monkeypatch.setattr("app.core.config.settings.GEMINI_REASONING_EFFORT", "low")
+
+        from app.services.llm_adapter import LLMAdapter
+
+        return LLMAdapter()
+
+    @staticmethod
+    def _response(text):
+        resp = MagicMock()
+        resp.choices = [MagicMock()]
+        resp.choices[0].message.content = text
+        return resp
+
+    def test_uses_openai_compatible_endpoint(self, monkeypatch):
+        adapter = self._adapter(monkeypatch)
+        assert adapter.model == "gemini-3.8-flash"
+        assert "generativelanguage.googleapis.com" in str(adapter.client.base_url)
+
+    @pytest.mark.asyncio
+    async def test_passes_reasoning_effort(self, monkeypatch):
+        adapter = self._adapter(monkeypatch)
+        with patch.object(
+            adapter.client.chat.completions,
+            "create",
+            new_callable=AsyncMock,
+            return_value=self._response("Hola"),
+        ) as create:
+            assert await adapter.chat([{"role": "user", "content": "Hi"}]) == "Hola"
+        assert create.await_args.kwargs["reasoning_effort"] == "low"
+        assert create.await_args.kwargs["model"] == "gemini-3.8-flash"
+
+    @pytest.mark.asyncio
+    async def test_system_messages_are_merged_and_get_a_user_turn(self, monkeypatch):
+        adapter = self._adapter(monkeypatch)
+        with patch.object(
+            adapter.client.chat.completions,
+            "create",
+            new_callable=AsyncMock,
+            return_value=self._response("{}"),
+        ) as create:
+            await adapter.chat(
+                [
+                    {"role": "system", "content": "Generate a lesson."},
+                    {"role": "system", "content": "Return JSON only."},
+                ]
+            )
+        messages = create.await_args.kwargs["messages"]
+        assert messages[0] == {
+            "role": "system",
+            "content": "Generate a lesson.\n\nReturn JSON only.",
+        }
+        assert [m["role"] for m in messages] == ["system", "user"]
+
+    @pytest.mark.asyncio
+    async def test_falls_back_when_model_is_overloaded(self, monkeypatch):
+        adapter = self._adapter(monkeypatch)
+        overloaded = Exception("503 This model is currently experiencing high demand.")
+        with patch.object(
+            adapter.client.chat.completions,
+            "create",
+            new_callable=AsyncMock,
+            side_effect=[overloaded, self._response("Hola")],
+        ) as create:
+            assert await adapter.chat([{"role": "user", "content": "Hi"}]) == "Hola"
+        assert [c.kwargs["model"] for c in create.await_args_list] == [
+            "gemini-3.8-flash",
+            "gemini-3.5-flash",
+        ]
 
 
 # ---------------------------------------------------------------------------

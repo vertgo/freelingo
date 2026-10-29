@@ -9,7 +9,7 @@ import tempfile
 from pathlib import Path
 
 from app.core.config import settings
-from app.services.tts_service import KokoroTTSService, OpenAITTSService
+from app.services.tts_service import GeminiTTSService, KokoroTTSService, OpenAITTSService
 
 OPENAI_VOICES = frozenset(
     {"alloy", "ash", "coral", "echo", "fable", "nova", "onyx", "sage", "shimmer"}
@@ -17,13 +17,13 @@ OPENAI_VOICES = frozenset(
 
 
 async def get_tour_audio(
-    service: KokoroTTSService | OpenAITTSService,
+    service: KokoroTTSService | OpenAITTSService | GeminiTTSService,
     *,
     locale: str,
     text: str,
     voice: str | None,
 ) -> Path:
-    is_openai = isinstance(service, OpenAITTSService)
+    is_openai = isinstance(service, (OpenAITTSService, GeminiTTSService))
     effective_voice = (voice or service.voice) if is_openai else service.voice
     if is_openai:
         key = service.get_cache_key(text, effective_voice, locale)

@@ -23,7 +23,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Estado anímico de pena o aflicción",
                 example="La tristeza se reflejaba en su mirada.",
-                ipa="/tɾisˈteθa/",
+                ipa="/tɾisˈtesa/",
             ),
             VocabularyEntry(
                 word="miedo",
@@ -55,7 +55,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Sentimiento de incomodidad o pudor",
                 example="Me da vergüenza hablar en público.",
-                ipa="/beɾˈɣwenθa/",
+                ipa="/beɾˈɣwensa/",
             ),
             VocabularyEntry(
                 word="ilusión",
@@ -134,7 +134,7 @@ B1_SETS: list[VocabularySet] = [
                 frequency_rank=154,
                 pos="noun",
                 definition="Objetivo que se quiere alcanzar",
-                example="Me he fijado una meta para este año.",
+                example="Me fijé una meta para este año.",
                 ipa="/ˈmeta/",
             ),
             VocabularyEntry(
@@ -151,7 +151,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Deseo intenso de lograr éxito",
                 example="Tiene la ambición de montar su propia empresa.",
-                ipa="/ambiˈθjon/",
+                ipa="/ambiˈsjon/",
             ),
             VocabularyEntry(
                 word="ojalá",
@@ -222,7 +222,7 @@ B1_SETS: list[VocabularySet] = [
                 frequency_rank=475,
                 pos="noun",
                 definition="Dinero que se cobra por trabajar",
-                example="Me han subido el sueldo este mes.",
+                example="Me subieron el sueldo este mes.",
                 ipa="/ˈsweldo/",
             ),
             VocabularyEntry(
@@ -247,15 +247,15 @@ B1_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Pedir formalmente algo",
                 example="He solicitado un aumento de sueldo.",
-                ipa="/soliθiˈtaɾ/",
+                ipa="/solisiˈtaɾ/",
             ),
             VocabularyEntry(
                 word="ascenso",
                 frequency_rank=478,
                 pos="noun",
                 definition="Subida de categoría profesional",
-                example="Me han dado un ascenso.",
-                ipa="/asˈθenso/",
+                example="Me dieron un ascenso.",
+                ipa="/asˈsenso/",
             ),
             VocabularyEntry(
                 word="renunciar",
@@ -263,7 +263,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Dejar voluntariamente un puesto",
                 example="Renunció a su cargo por motivos personales.",
-                ipa="/renunˈθjaɾ/",
+                ipa="/renunˈsjaɾ/",
             ),
         ],
     ),
@@ -282,20 +282,20 @@ B1_SETS: list[VocabularySet] = [
                 ipa="/kaˈreɾa/",
             ),
             VocabularyEntry(
-                word="asignatura",
+                word="materia",
                 frequency_rank=481,
                 pos="noun",
-                definition="Materia de estudio",
-                example="Mi asignatura favorita es Historia.",
-                ipa="/asiɣnaˈtuɾa/",
+                definition="Asignatura; campo de estudio en la escuela",
+                example="Mi materia favorita es Historia.",
+                ipa="/maˈteɾja/",
             ),
             VocabularyEntry(
-                word="matricularse",
+                word="inscribirse",
                 frequency_rank=482,
                 pos="verb",
-                definition="Inscribirse en un curso",
-                example="Me he matriculado en un curso de inglés.",
-                ipa="/matɾikuˈlaɾse/",
+                definition="Registrarse en un curso o una escuela",
+                example="Me inscribí en un curso de inglés.",
+                ipa="/inskɾiˈβiɾse/",
             ),
             VocabularyEntry(
                 word="beca",
@@ -318,16 +318,16 @@ B1_SETS: list[VocabularySet] = [
                 frequency_rank=484,
                 pos="verb",
                 definition="Superar un examen con éxito",
-                example="Aprobé todas las asignaturas.",
+                example="Pasé todas las materias.",
                 ipa="/apɾoˈβaɾ/",
             ),
             VocabularyEntry(
-                word="suspender",
+                word="reprobar",
                 frequency_rank=485,
                 pos="verb",
                 definition="No superar un examen",
-                example="Suspendí matemáticas y tengo que repetir.",
-                ipa="/suspenˈdeɾ/",
+                example="Reprobé matemáticas y tengo que presentar el extraordinario.",
+                ipa="/repɾoˈβaɾ/",
             ),
             VocabularyEntry(
                 word="apuntes",
@@ -343,7 +343,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Proceso de adquirir conocimientos",
                 example="La formación continua es fundamental.",
-                ipa="/foɾmaˈθjon/",
+                ipa="/foɾmaˈsjon/",
             ),
             VocabularyEntry(
                 word="investigar",
@@ -367,7 +367,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Experiencia personal significativa",
                 example="Aquella vivencia me marcó para siempre.",
-                ipa="/biˈβenθja/",
+                ipa="/biˈβensja/",
             ),
             VocabularyEntry(
                 word="recuerdo",
@@ -423,7 +423,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Suceso importante",
                 example="Fue un acontecimiento histórico.",
-                ipa="/akon̪teθiˈmjento/",
+                ipa="/akon̪tesiˈmjento/",
             ),
             VocabularyEntry(
                 word="aprendizaje",
@@ -431,7 +431,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Proceso de adquirir conocimiento",
                 example="El viaje fue un gran aprendizaje.",
-                ipa="/apɾendiˈθaxe/",
+                ipa="/apɾendiˈsaxe/",
             ),
             VocabularyEntry(
                 word="cambio",
@@ -479,7 +479,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Empleo de energía para lograr algo",
                 example="Con esfuerzo y dedicación lo conseguirás.",
-                ipa="/esˈfweɾθo/",
+                ipa="/esˈfweɾso/",
             ),
             VocabularyEntry(
                 word="orgullo",
@@ -487,7 +487,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Satisfacción por un logro propio o ajeno",
                 example="Siente orgullo de lo que ha conseguido.",
-                ipa="/oɾˈɣuʎo/",
+                ipa="/oɾˈɣuʝo/",
             ),
             VocabularyEntry(
                 word="reconocimiento",
@@ -495,7 +495,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Aprecio público de un mérito",
                 example="Recibió un reconocimiento por su labor.",
-                ipa="/rekonoθiˈmjento/",
+                ipa="/rekonosiˈmjento/",
             ),
             VocabularyEntry(
                 word="destacar",
@@ -511,7 +511,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Acción de vencer dificultades",
                 example="Su historia es un ejemplo de superación.",
-                ipa="/supeɾaˈθjon/",
+                ipa="/supeɾaˈsjon/",
             ),
             VocabularyEntry(
                 word="alcanzar",
@@ -519,7 +519,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Llegar a conseguir algo",
                 example="Alcanzó todas las metas que se propuso.",
-                ipa="/alkanˈθaɾ/",
+                ipa="/alkanˈsaɾ/",
             ),
             VocabularyEntry(
                 word="progresar",
@@ -599,7 +599,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Suceso de relevancia",
                 example="El terremoto fue un acontecimiento devastador.",
-                ipa="/akon̪teθiˈmjento/",
+                ipa="/akon̪tesiˈmjento/",
             ),
             VocabularyEntry(
                 word="rumor",
@@ -631,7 +631,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Conjunto de ciudadanos de un país",
                 example="La ciudadanía exige más transparencia.",
-                ipa="/θjudaðaˈnia/",
+                ipa="/sjudaðaˈnia/",
             ),
             VocabularyEntry(
                 word="derecho",
@@ -655,7 +655,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Vida en común con otros",
                 example="La convivencia en el barrio es excelente.",
-                ipa="/kombiˈβenθja/",
+                ipa="/kombiˈβensja/",
             ),
             VocabularyEntry(
                 word="desigualdad",
@@ -679,7 +679,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Protesta colectiva en la calle",
                 example="Hubo una manifestación por el clima.",
-                ipa="/manifestaˈθjon/",
+                ipa="/manifestaˈsjon/",
             ),
             VocabularyEntry(
                 word="gobierno",
@@ -791,7 +791,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Tener semejanza con alguien",
                 example="Te pareces mucho a tu madre.",
-                ipa="/paɾeˈθeɾse/",
+                ipa="/paɾeˈseɾse/",
             ),
         ],
     ),
@@ -807,7 +807,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Persona de trato superficial",
                 example="Es solo un conocido del trabajo.",
-                ipa="/konoˈθiðo/",
+                ipa="/konoˈsiðo/",
             ),
             VocabularyEntry(
                 word="colega",
@@ -831,7 +831,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Persona que vive cerca",
                 example="Mis vecinos son muy silenciosos.",
-                ipa="/beˈθino/",
+                ipa="/beˈsino/",
             ),
             VocabularyEntry(
                 word="amistad",
@@ -847,7 +847,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Seguridad en una persona",
                 example="Tengo plena confianza en ella.",
-                ipa="/komˈfjanθa/",
+                ipa="/komˈfjansa/",
             ),
             VocabularyEntry(
                 word="discutir",
@@ -863,7 +863,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Restablecer una relación tras un conflicto",
                 example="Se reconciliaron después de meses sin hablarse.",
-                ipa="/rekonθiˈljaɾse/",
+                ipa="/rekonsiˈljaɾse/",
             ),
             VocabularyEntry(
                 word="apoyar",
@@ -943,7 +943,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Anular una reserva",
                 example="Tuvimos que cancelar el viaje.",
-                ipa="/kanθeˈlaɾ/",
+                ipa="/kanseˈlaɾ/",
             ),
             VocabularyEntry(
                 word="turista",
@@ -991,7 +991,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="adjective",
                 definition="Absolutamente necesario",
                 example="El pasaporte es imprescindible para viajar.",
-                ipa="/impɾesθinˈdiβle/",
+                ipa="/impɾesinˈdiβle/",
             ),
             VocabularyEntry(
                 word="disponible",
@@ -1079,7 +1079,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Tener una opinión o impresión",
                 example="Me parece una buena idea.",
-                ipa="/paɾeˈθeɾ/",
+                ipa="/paɾeˈseɾ/",
             ),
             VocabularyEntry(
                 word="criterio",
@@ -1103,7 +1103,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Estar de acuerdo",
                 example="Coincido contigo en ese punto.",
-                ipa="/koinθiˈðiɾ/",
+                ipa="/koinsiˈðiɾ/",
             ),
             VocabularyEntry(
                 word="discrepar",
@@ -1127,7 +1127,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Persuadir con razones",
                 example="Me convenció con sus argumentos.",
-                ipa="/kombenˈθeɾ/",
+                ipa="/kombenˈseɾ/",
             ),
             VocabularyEntry(
                 word="rechazar",
@@ -1135,7 +1135,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="No aceptar una propuesta u opinión",
                 example="Rechazó la oferta amablemente.",
-                ipa="/reʧaˈθaɾ/",
+                ipa="/reʧaˈsaɾ/",
             ),
             VocabularyEntry(
                 word="debatir",
@@ -1167,7 +1167,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Prueba que demuestra algo",
                 example="No hay evidencia que respalde esa teoría.",
-                ipa="/eβiˈðenθja/",
+                ipa="/eβiˈðensja/",
             ),
             VocabularyEntry(
                 word="réplica",
@@ -1263,7 +1263,7 @@ B1_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Capacidad de hablar con soltura",
                 example="He ganado fluidez hablando español.",
-                ipa="/flwiˈðeθ/",
+                ipa="/flwiˈðes/",
             ),
             VocabularyEntry(
                 word="comprensión",

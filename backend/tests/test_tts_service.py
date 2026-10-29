@@ -1,6 +1,6 @@
 import hashlib
 from types import SimpleNamespace
-from unittest.mock import AsyncMock
+from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
@@ -9,7 +9,12 @@ from app.data.phrasebook import get_phrasebook_categories
 from app.main import app
 from app.models.conversation import Conversation
 from app.routers import tts as tts_router
-from app.services.tts_service import OpenAITTSService
+from app.services.tts_service import (
+    GeminiTTSService,
+    OpenAITTSService,
+    kokoro_voice_for,
+    pcm16_to_wav,
+)
 from tests.conftest import make_study_plan
 
 
@@ -330,3 +335,58 @@ async def test_chat_tts_rejects_content_without_speakable_text(
 
     assert response.status_code == 422
     service._client.audio.speech.create.assert_not_awaited()
+
+
+@pytest.mark.parametrize(
+    ("language", "expected"),
+    [
+        ("es-ES", "ef_dora"),
+        ("en-GB", "bf_emma"),
+        ("en-US", "af_heart"),
+        ("de-DE", "af_heart"),
+        (None, "af_heart"),
+    ],
+)
+def test_kokoro_voice_follows_language(language, expected):
+    assert kokoro_voice_for(language, "af_heart") == expected
+
+
+def _gemini_tts_response(data: bytes, mime_type: str):
+    part = MagicMock()
+    part.inline_data.data = data
+    part.inline_data.mime_type = mime_type
+    response = MagicMock()
+    response.candidates = [MagicMock()]
+    response.candidates[0].content.parts = [part]
+    return response
+
+
+@pytest.mark.asyncio
+async def test_gemini_tts_asks_for_mexican_accent_and_returns_mp3(monkeypatch):
+    monkeypatch.setattr("app.core.config.settings.SPANISH_VARIANT", "mx")
+    with patch("app.services.tts_service.genai.Client"):
+        service = GeminiTTSService(api_key="k", model="gemini-3.8-flash-tts", voice="Kore")
+    generate = AsyncMock(
+        return_value=_gemini_tts_response(b"\x00\x00" * 10, "audio/L16;rate=24000")
+    )
+    service._client.aio.models.generate_content = generate
+    encode = AsyncMock(return_value=b"ID3mp3")
+    with patch("app.services.tts_service.wav_to_mp3", encode):
+        audio = await service.synthesize("¿Me pasas el celular?", "nova", language="es-ES")
+
+    assert audio == b"ID3mp3"
+    prompt = generate.await_args.kwargs["contents"]
+    assert "Mexican Spanish" in prompt
+    assert prompt.endswith("¿Me pasas el celular?")
+    voice = generate.await_args.kwargs["config"].speech_config.voice_config
+    assert voice.prebuilt_voice_config.voice_name == "Kore"  # non-Gemini voices fall back
+    assert encode.await_args.args[0] == pcm16_to_wav(b"\x00\x00" * 10, 24000)
+
+
+def test_gemini_tts_cache_key_depends_on_instructions(monkeypatch):
+    with patch("app.services.tts_service.genai.Client"):
+        service = GeminiTTSService(api_key="k", model="m", voice="Kore")
+    monkeypatch.setattr("app.core.config.settings.SPANISH_VARIANT", "es")
+    spain = service.get_cache_key("Hola", language="es-ES")
+    monkeypatch.setattr("app.core.config.settings.SPANISH_VARIANT", "mx")
+    assert service.get_cache_key("Hola", language="es-ES") != spain

@@ -110,8 +110,8 @@ A1_CATEGORIES: list[PhrasebookCategory] = [
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="\u00bfPuedes repetir, por favor?",
-                context="Cuando no has entendido",
+                text="\u00bfMande? \u00bfPuedes repetir, por favor?",
+                context="Cuando no entendiste algo (\u00bfmande? es cort\u00e9s y muy mexicano)",
                 register="neutral",
             ),
             PhrasebookEntry(
@@ -221,7 +221,7 @@ A1_CATEGORIES: list[PhrasebookCategory] = [
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="Cuesta [cantidad] euros.",
+                text="Cuesta [cantidad] pesos.",
                 context="Decir un precio",
                 register="neutral",
             ),
@@ -231,7 +231,7 @@ A1_CATEGORIES: list[PhrasebookCategory] = [
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="Son [cantidad] euros con [c\u00e9ntimos].",
+                text="Son [cantidad] pesos con [centavos].",
                 context="Dar un precio exacto",
                 register="neutral",
             ),
@@ -267,8 +267,8 @@ A1_CATEGORIES: list[PhrasebookCategory] = [
                 text="Me lo llevo.", context="Decidir comprar algo", register="neutral"
             ),
             PhrasebookEntry(
-                text="Solo estoy mirando, gracias.",
-                context="Decir al dependiente que solo miras",
+                text="Nada m\u00e1s estoy viendo, gracias.",
+                context="Decir al vendedor que solo miras",
                 register="neutral",
             ),
             PhrasebookEntry(
@@ -345,7 +345,7 @@ A1_CATEGORIES: list[PhrasebookCategory] = [
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="Sigue todo recto.",
+                text="Sigue derecho.",
                 context="Dar una indicaci\u00f3n",
                 register="neutral",
             ),
@@ -385,7 +385,7 @@ A1_CATEGORIES: list[PhrasebookCategory] = [
                 register="neutral",
             ),
             PhrasebookEntry(
-                text="Est\u00e1 a cinco minutos andando.",
+                text="Est\u00e1 a cinco minutos caminando.",
                 context="Indicar distancia en tiempo",
                 register="neutral",
             ),

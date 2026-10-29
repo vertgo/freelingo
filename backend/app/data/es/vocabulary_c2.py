@@ -191,7 +191,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Conjunto de normas de composición literaria",
                 example="La preceptiva clásica exigía las tres unidades.",
-                ipa="/pɾeθepˈtiβa/",
+                ipa="/pɾesepˈtiβa/",
             ),
             VocabularyEntry(
                 word="solecismo",
@@ -199,7 +199,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Error gramatical o sintáctico",
                 example="Cometió un solecismo en la redacción.",
-                ipa="/soleˈθismo/",
+                ipa="/soleˈsismo/",
             ),
             VocabularyEntry(
                 word="barbarismo",
@@ -263,7 +263,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="adjective",
                 definition="Que busca excesivo refinamiento formal",
                 example="Tiene un lenguaje muy preciosista.",
-                ipa="/pɾeθjoˈsista/",
+                ipa="/pɾesjoˈsista/",
             ),
         ],
     ),
@@ -279,7 +279,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Correspondencia de significado entre lenguas",
                 example="Busca la equivalencia más precisa.",
-                ipa="/ekiβaˈlenθja/",
+                ipa="/ekiβaˈlensja/",
             ),
             VocabularyEntry(
                 word="intraducible",
@@ -287,7 +287,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="adjective",
                 definition="Que no puede traducirse exactamente",
                 example="Saudade es prácticamente intraducible.",
-                ipa="/intɾaðuˈθiβle/",
+                ipa="/intɾaðuˈsiβle/",
             ),
             VocabularyEntry(
                 word="calco",
@@ -303,7 +303,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Detalle sutil de significado",
                 example="La traducción pierde muchos matices.",
-                ipa="/maˈtiθ/",
+                ipa="/maˈtis/",
             ),
             VocabularyEntry(
                 word="transliterar",
@@ -335,7 +335,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Ajuste cultural de una traducción",
                 example="Hicieron una adaptación para el público hispano.",
-                ipa="/aðaptaˈθjon/",
+                ipa="/aðaptaˈsjon/",
             ),
             VocabularyEntry(
                 word="giro",
@@ -351,7 +351,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Acción de trasladar un texto a otra lengua",
                 example="La traslación de poesía es especialmente compleja.",
-                ipa="/tɾaslaˈθjon/",
+                ipa="/tɾaslaˈsjon/",
             ),
         ],
     ),
@@ -383,7 +383,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="adjective",
                 definition="Que busca poner de acuerdo",
                 example="Adoptó un tono conciliador.",
-                ipa="/konθiljaˈðoɾ/",
+                ipa="/konsiljaˈðoɾ/",
             ),
             VocabularyEntry(
                 word="terciar",
@@ -391,7 +391,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Intervenir para mediar en una discusión",
                 example="Terció en la disputa para calmarlos.",
-                ipa="/teɾˈθjaɾ/",
+                ipa="/teɾˈsjaɾ/",
             ),
             VocabularyEntry(
                 word="zanjarse",
@@ -399,7 +399,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Darse por resuelto un asunto",
                 example="La cuestión se zanjó por consenso.",
-                ipa="/θanˈxaɾse/",
+                ipa="/sanˈxaɾse/",
             ),
             VocabularyEntry(
                 word="consensuar",
@@ -431,7 +431,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Acuerdo alcanzado tras negociación",
                 example="Llegaron a una avenencia.",
-                ipa="/aβeˈnenθja/",
+                ipa="/aβeˈnensja/",
             ),
             VocabularyEntry(
                 word="mediador",
@@ -487,7 +487,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Lengua romance hablada en Al-Ándalus",
                 example="Las jarchas están escritas en mozárabe.",
-                ipa="/moˈθaɾaβe/",
+                ipa="/moˈsaɾaβe/",
             ),
             VocabularyEntry(
                 word="Alfonso X",
@@ -495,7 +495,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Rey que impulsó la normalización del castellano",
                 example="Alfonso X el Sabio fijó la prosa castellana.",
-                ipa="/alˈfonso ˈðjeθ/",
+                ipa="/alˈfonso ˈðjes/",
             ),
             VocabularyEntry(
                 word="Nebrija",
@@ -551,7 +551,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Mezcla de culturas",
                 example="El mestizaje define la cultura hispanoamericana.",
-                ipa="/mestiˈθaxe/",
+                ipa="/mestiˈsaxe/",
             ),
             VocabularyEntry(
                 word="casticismo",
@@ -559,7 +559,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Defensa de lo genuinamente español",
                 example="El casticismo es un concepto del siglo XVIII.",
-                ipa="/kastiˈθismo/",
+                ipa="/kastiˈsismo/",
             ),
             VocabularyEntry(
                 word="Generación del 98",
@@ -567,7 +567,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="phrase",
                 definition="Grupo de escritores tras el desastre de 1898",
                 example="Unamuno pertenece a la Generación del 98.",
-                ipa="/xeneɾaˈθjon del noˈβenta i ˈoʧo/",
+                ipa="/xeneɾaˈsjon del noˈβenta i ˈoʧo/",
             ),
             VocabularyEntry(
                 word="Siglo de Oro",
@@ -594,12 +594,12 @@ C2_SETS: list[VocabularySet] = [
                 ipa="/kiˈxote/",
             ),
             VocabularyEntry(
-                word="flamenco",
+                word="mariachi",
                 frequency_rank=997,
                 pos="noun",
-                definition="Expresión artística andaluza",
-                example="El flamenco es patrimonio inmaterial.",
-                ipa="/flaˈmenko/",
+                definition="Música y agrupación tradicional mexicana",
+                example="El mariachi es patrimonio inmaterial de la humanidad.",
+                ipa="/maˈɾjatʃi/",
             ),
             VocabularyEntry(
                 word="iberoamérica",
@@ -615,7 +615,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="adjective",
                 definition="Relativo a Cervantes o a su obra",
                 example="El humor cervantino es inconfundible.",
-                ipa="/θeɾβanˈtino/",
+                ipa="/seɾβanˈtino/",
             ),
         ],
     ),
@@ -655,7 +655,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Encadenar elementos de forma armoniosa",
                 example="Engarzó las citas con elegancia.",
-                ipa="/enɡaɾˈθaɾ/",
+                ipa="/enɡaɾˈsaɾ/",
             ),
             VocabularyEntry(
                 word="pulir",
@@ -671,7 +671,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Versión preliminar de una obra",
                 example="Presentó un esbozo del capítulo.",
-                ipa="/esˈβoθo/",
+                ipa="/esˈβoso/",
             ),
             VocabularyEntry(
                 word="artificio",
@@ -679,7 +679,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Recurso elaborado y no natural",
                 example="Abusa de artificios retóricos.",
-                ipa="/aɾtiˈfiθjo/",
+                ipa="/aɾtiˈfisjo/",
             ),
             VocabularyEntry(
                 word="inusitado",
@@ -719,7 +719,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Proceso de preparar un texto para publicar",
                 example="La edición estuvo a cargo de un especialista.",
-                ipa="/eðiˈθjon/",
+                ipa="/eðiˈsjon/",
             ),
             VocabularyEntry(
                 word="imprenta",
@@ -791,7 +791,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Publicación hecha por el propio autor",
                 example="Optó por la autoedición al no encontrar editorial.",
-                ipa="/awtoeðiˈθjon/",
+                ipa="/awtoeðiˈsjon/",
             ),
         ],
     ),
@@ -815,7 +815,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Momento de máximo esplendor",
                 example="Alcanzó el cenit de su producción literaria.",
-                ipa="/θeˈnit/",
+                ipa="/seˈnit/",
             ),
             VocabularyEntry(
                 word="paradigmático",
@@ -863,7 +863,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Importancia que va más allá de lo inmediato",
                 example="Su obra tiene una trascendencia universal.",
-                ipa="/tɾasθenˈdenθja/",
+                ipa="/tɾasenˈdensja/",
             ),
             VocabularyEntry(
                 word="sapiencia",
@@ -871,7 +871,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Sabiduría profunda",
                 example="Escribe con la sapiencia de los años.",
-                ipa="/saˈpjenθja/",
+                ipa="/saˈpjensja/",
             ),
             VocabularyEntry(
                 word="erudición",
@@ -879,7 +879,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Conocimiento amplio y profundo",
                 example="Su erudición abarca múltiples disciplinas.",
-                ipa="/eɾuðiˈθjon/",
+                ipa="/eɾuðiˈsjon/",
             ),
         ],
     ),
@@ -895,7 +895,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Transformación urbana que desplaza a residentes originales",
                 example="La gentrificación ha cambiado el barrio por completo.",
-                ipa="/xentɾifikaˈθjon/",
+                ipa="/xentɾifikaˈsjon/",
             ),
             VocabularyEntry(
                 word="precarización",
@@ -903,7 +903,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Proceso de deterioro de las condiciones laborales",
                 example="La precarización afecta a los jóvenes trabajadores.",
-                ipa="/pɾekaɾiθaˈθjon/",
+                ipa="/pɾekaɾisaˈsjon/",
             ),
             VocabularyEntry(
                 word="sostenibilidad",
@@ -943,7 +943,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Capacidad de adaptarse a situaciones adversas",
                 example="La resiliencia comunitaria es fundamental.",
-                ipa="/resilˈjenθja/",
+                ipa="/resilˈjensja/",
             ),
             VocabularyEntry(
                 word="transversal",
@@ -999,7 +999,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Hacer visible o dar reconocimiento a algo",
                 example="El movimiento busca visibilizar las desigualdades.",
-                ipa="/bisibiliˈθaɾ/",
+                ipa="/bisibiliˈsaɾ/",
             ),
             VocabularyEntry(
                 word="empoderar",
@@ -1135,7 +1135,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Falta de armonía o coherencia",
                 example="Hay disonancia entre la teoría y la práctica.",
-                ipa="/disoˈnanθja/",
+                ipa="/disoˈnansja/",
             ),
             VocabularyEntry(
                 word="consenso",
@@ -1151,7 +1151,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Exposición razonada sobre un tema",
                 example="Su disertación fue brillante y bien documentada.",
-                ipa="/diseɾtaˈθjon/",
+                ipa="/diseɾtaˈsjon/",
             ),
             VocabularyEntry(
                 word="escrutinio",
@@ -1207,7 +1207,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="adjective",
                 definition="Que tiene varios centros normativos y no uno solo",
                 example="El español es una lengua policéntrica.",
-                ipa="/poliˈθentɾiko/",
+                ipa="/poliˈsentɾiko/",
             ),
             VocabularyEntry(
                 word="hispanohablante",
@@ -1255,7 +1255,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Ortodoxia basada en las normas de las academias de la lengua",
                 example="El academicismo a veces choca con el uso popular.",
-                ipa="/akaðemiˈθismo/",
+                ipa="/akaðemiˈsismo/",
             ),
             VocabularyEntry(
                 word="demolingüística",
@@ -1271,7 +1271,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Estatus jurídico de una lengua que es oficial junto con otra",
                 example="La cooficialidad del catalán está recogida en el Estatuto.",
-                ipa="/koofiθjaliˈðað/",
+                ipa="/koofisjaliˈðað/",
             ),
             VocabularyEntry(
                 word="normalización",
@@ -1279,7 +1279,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Proceso de dotar a una lengua de presencia plena en todos los ámbitos",
                 example="La normalización lingüística busca el uso pleno en la administración.",
-                ipa="/noɾmaliθaˈθjon/",
+                ipa="/noɾmalisaˈsjon/",
             ),
             VocabularyEntry(
                 word="iberófono",
@@ -1303,7 +1303,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Persona que milita en causas sociales a través de internet",
                 example="Los ciberactivistas difundieron la noticia en minutos.",
-                ipa="/θiβeɾaktiˈbista/",
+                ipa="/siβeɾaktiˈbista/",
             ),
             VocabularyEntry(
                 word="hiperconectividad",
@@ -1319,7 +1319,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Sobrecarga de información que dificulta el análisis crítico",
                 example="La infoxicación es uno de los males de la era digital.",
-                ipa="/infoksiθaˈθjon/",
+                ipa="/infoksisaˈsjon/",
             ),
             VocabularyEntry(
                 word="algoritmización",
@@ -1327,7 +1327,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Proceso de someter decisiones a criterios algorítmicos",
                 example="La algoritmización del contenido condiciona lo que leemos.",
-                ipa="/alɡoɾitmiθaˈθjon/",
+                ipa="/alɡoɾitmisaˈsjon/",
             ),
             VocabularyEntry(
                 word="posverdad",
@@ -1359,7 +1359,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Difundirse masivamente y con rapidez en internet",
                 example="El vídeo se viralizó en cuestión de horas.",
-                ipa="/biɾaliˈθaɾse/",
+                ipa="/biɾaliˈsaɾse/",
             ),
             VocabularyEntry(
                 word="hacker",
@@ -1375,7 +1375,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Difusión intencionada de información falsa",
                 example="La desinformación es una amenaza para la democracia.",
-                ipa="/desinfoɾmaˈθjon/",
+                ipa="/desinfoɾmaˈsjon/",
             ),
             VocabularyEntry(
                 word="criptomoneda",
@@ -1391,7 +1391,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="noun",
                 definition="Acoso psicológico ejercido a través de medios digitales",
                 example="El ciberacoso afecta especialmente a los adolescentes.",
-                ipa="/θiβeɾaˈkoso/",
+                ipa="/siβeɾaˈkoso/",
             ),
         ],
     ),
@@ -1455,7 +1455,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="adjective",
                 definition="Descrito con todo detalle",
                 example="Presentó un análisis pormenorizado de los datos.",
-                ipa="/poɾmenoɾiˈθaðo/",
+                ipa="/poɾmenoɾiˈsaðo/",
             ),
             VocabularyEntry(
                 word="conmensurable",
@@ -1487,7 +1487,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Estar por debajo de algo como fundamento",
                 example="A toda lengua subyace una estructura profunda.",
-                ipa="/suβʝaˈθeɾ/",
+                ipa="/suβʝaˈseɾ/",
             ),
             VocabularyEntry(
                 word="discernir",
@@ -1495,7 +1495,7 @@ C2_SETS: list[VocabularySet] = [
                 pos="verb",
                 definition="Distinguir lo esencial de lo accesorio con juicio",
                 example="El lector C2 discierne la ironía sin marcas explícitas.",
-                ipa="/disθeɾˈniɾ/",
+                ipa="/diseɾˈniɾ/",
             ),
         ],
     ),

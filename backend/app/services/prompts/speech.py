@@ -1,5 +1,7 @@
 """Pronunciation instructions for instruction-capable speech models."""
 
+from app.core.config import settings
+
 _SPEECH_LANGUAGES = {
     "en": "British English",
     "en-US": "American English",
@@ -98,6 +100,15 @@ _PRONUNCIATION_GUIDANCE = {
 }
 
 
+_MEXICAN_SPANISH = "Mexican Spanish from Mexico City"
+_MEXICAN_SPANISH_GUIDANCE = (
+    "Use clear, pure Spanish a, e, i, o, u vowels, without English diphthongization or schwa. "
+    "Use Spanish tapped and trilled r as appropriate. Use Mexican seseo: pronounce z and c "
+    "before e or i as s, never as the Spain th sound. Keep a natural Central Mexican accent, "
+    "intonation, syllable timing and word stress."
+)
+
+
 def build_speech_instructions(language: str | None = None) -> str:
     instructions = (
         "Read the supplied text exactly as written; do not translate, paraphrase, add words, "
@@ -114,6 +125,9 @@ def build_speech_instructions(language: str | None = None) -> str:
     if language:
         language_key = language if language in _SPEECH_LANGUAGES else language.split("-")[0]
         spoken_language = _SPEECH_LANGUAGES.get(language_key)
+        guidance = _PRONUNCIATION_GUIDANCE.get(language_key, "")
+        if language_key == "es" and settings.SPANISH_VARIANT == "mx":
+            spoken_language, guidance = _MEXICAN_SPANISH, _MEXICAN_SPANISH_GUIDANCE
         if spoken_language:
             instructions += (
                 f" The primary language is {spoken_language}; use its native pronunciation "
@@ -121,7 +135,7 @@ def build_speech_instructions(language: str | None = None) -> str:
             )
             instructions += (
                 " Apply these articulation details only to passages in that language: "
-                + _PRONUNCIATION_GUIDANCE[language_key]
+                + guidance
                 + " Keep them subtle and natural, as in everyday native conversation."
             )
     return instructions

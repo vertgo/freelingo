@@ -160,7 +160,7 @@ C1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="C1",
         category="Voz pasiva",
         summary="Usos avanzados de la pasiva refleja en registros formales y académicos.",
-        explanation='La **pasiva refleja** con "se" es la forma pasiva predominante en español. En niveles avanzados se dominan sus matices:\n\n**Pasiva refleja vs. impersonal con se**:\n- *Se vende piso.* → pasiva refleja (sujeto: piso; concuerda).\n- *Se vende pisos.* → impersonal (verbo en singular; menos frecuente).\n\n**Con verbos de percepción y comunicación**:\n- *Se oyeron disparos.* / *Se comenta que dimitirá.*\n\n**En textos académicos y científicos**:\n- *Se analizaron los datos. / Se observó un aumento.*\n\n**Diferencias dialectales**:\n- En algunas zonas de América se prefiere la impersonal con "se" + verbo en singular incluso con complemento plural: *Se vende casas* (frecuente en carteles, aunque la norma culta prefiere *Se venden casas*).\n\n**Pasiva refleja con verbos pronominales**:\n- No se puede usar si el verbo ya lleva "se" pronominal: *~~Se se arrepintió~~* → Impersonal con "uno": *Uno se arrepiente*.',
+        explanation='La **pasiva refleja** con "se" es la forma pasiva predominante en español. En niveles avanzados se dominan sus matices:\n\n**Pasiva refleja vs. impersonal con se**:\n- *Se vende departamento.* → pasiva refleja (sujeto: departamento; concuerda).\n- *Se vende departamentos.* → impersonal (verbo en singular; menos frecuente).\n\n**Con verbos de percepción y comunicación**:\n- *Se oyeron disparos.* / *Se comenta que dimitirá.*\n\n**En textos académicos y científicos**:\n- *Se analizaron los datos. / Se observó un aumento.*\n\n**Diferencias dialectales**:\n- En algunas zonas de América se prefiere la impersonal con "se" + verbo en singular incluso con complemento plural: *Se vende casas* (frecuente en carteles, aunque la norma culta prefiere *Se venden casas*).\n\n**Pasiva refleja con verbos pronominales**:\n- No se puede usar si el verbo ya lleva "se" pronominal: *~~Se se arrepintió~~* → Impersonal con "uno": *Uno se arrepiente*.',
         rules=[
             "En la pasiva refleja el verbo concuerda con el sujeto paciente.",
             'En textos académicos se prefiere la pasiva refleja a la pasiva con "ser".',
@@ -277,7 +277,7 @@ C1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="C1",
         category="Avanzado",
         summary="Formar nuevas palabras con prefijos y sufijos: aumentar, disminuir o matizar el significado.",
-        explanation="La **derivación** es el mecanismo por el cual se forman nuevas palabras añadiendo prefijos y sufijos a una raíz.\n\n**Prefijos productivos**:\n- *re-* (repetición): rehacer, releer, reescribir\n- *des-* (negación, inversión): deshacer, desconectar, desconfiar\n- *in-/im-/i-* (negación): incapaz, imposible, ilegal\n- *pre-* (anterioridad): predecir, prejuzgar, precocinar\n- *sobre-* (exceso): sobrevalorar, sobrecargar, sobrevolar\n- *sub-* (debajo, inferior): subestimar, subterráneo, subtítulo\n- *inter-* (entre): internacional, intercambiar, interconectar\n- *multi-/pluri-* (muchos): multinacional, pluriempleo\n- *anti-* (oposición): antinatural, antivirus, antirrobo\n\n**Sufijos productivos**:\n- *-ble* (capacidad): comible, lavable, creíble\n- *-dor/-dora* (agente): trabajador, escritora, conductor\n- *-ería* (lugar, actividad): panadería, carnicería\n- *-azo* (golpe, aumentativo): portazo, golazo, cochazo\n- *-ito/-illo* (diminutivo): poquito, chiquillo, mesita",
+        explanation="La **derivación** es el mecanismo por el cual se forman nuevas palabras añadiendo prefijos y sufijos a una raíz.\n\n**Prefijos productivos**:\n- *re-* (repetición): rehacer, releer, reescribir\n- *des-* (negación, inversión): deshacer, desconectar, desconfiar\n- *in-/im-/i-* (negación): incapaz, imposible, ilegal\n- *pre-* (anterioridad): predecir, prejuzgar, precocinar\n- *sobre-* (exceso): sobrevalorar, sobrecargar, sobrevolar\n- *sub-* (debajo, inferior): subestimar, subterráneo, subtítulo\n- *inter-* (entre): internacional, intercambiar, interconectar\n- *multi-/pluri-* (muchos): multinacional, pluriempleo\n- *anti-* (oposición): antinatural, antivirus, antirrobo\n\n**Sufijos productivos**:\n- *-ble* (capacidad): comible, lavable, creíble\n- *-dor/-dora* (agente): trabajador, escritora, conductor\n- *-ería* (lugar, actividad): panadería, carnicería\n- *-azo* (golpe, aumentativo): portazo, golazo, carrazo\n- *-ito/-illo* (diminutivo): poquito, chiquillo, mesita",
         rules=[
             'Un mismo prefijo puede tener varios significados: "re-" puede ser repetición o intensificación.',
             "La derivación permite crear palabras que no están en el diccionario pero son comprensibles.",
@@ -334,7 +334,7 @@ C1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="C1",
         category="Avanzado",
         summary="Expresar lo contrario de lo que se piensa con intención humorística o crítica.",
-        explanation="La **ironía** consiste en decir lo contrario de lo que se quiere comunicar, esperando que el receptor lo interprete correctamente por el contexto o la entonación.\n\n**Marcas de ironía en español**:\n- Entonación particular (en oral).\n- Uso de cuantificadores exagerados: *¡Qué listo eres!* (cuando ha hecho algo torpe).\n- Adjetivos elogiosos en contexto negativo: *¡Menudo negocio has montado!*\n- Diminutivos irónicos: *¡Vaya problemita tenemos!*\n- Combinación de formalidad excesiva con crítica: *Su excelentísima majestad ha decidido no fregar los platos.*\n\n**Tipos de ironía**:\n- **Ironía verbal**: lo dicho es lo contrario de lo significado.\n- **Ironía situacional**: el resultado contradice lo esperado.\n- **Sarcasmo**: ironía con intención hiriente.\n\nEn español, la ironía es muy frecuente en la conversación cotidiana y en el humor.",
+        explanation="La **ironía** consiste en decir lo contrario de lo que se quiere comunicar, esperando que el receptor lo interprete correctamente por el contexto o la entonación.\n\n**Marcas de ironía en español**:\n- Entonación particular (en oral).\n- Uso de cuantificadores exagerados: *¡Qué listo eres!* (cuando ha hecho algo torpe).\n- Adjetivos elogiosos en contexto negativo: *¡Qué negociazo armaste!*\n- Diminutivos irónicos: *¡Vaya problemita tenemos!*\n- Combinación de formalidad excesiva con crítica: *Su excelentísima majestad decidió no lavar los trastes.*\n\n**Tipos de ironía**:\n- **Ironía verbal**: lo dicho es lo contrario de lo significado.\n- **Ironía situacional**: el resultado contradice lo esperado.\n- **Sarcasmo**: ironía con intención hiriente.\n\nEn español, la ironía es muy frecuente en la conversación cotidiana y en el humor.",
         rules=[
             "La ironía depende del contraste entre lo dicho y el contexto.",
             "En la escritura, la ironía se marca con comillas, signos de exclamación o elección léxica.",
@@ -367,7 +367,7 @@ C1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="C1",
         category="Avanzado",
         summary="Ironía mordaz con intención de herir, burlarse o criticar duramente.",
-        explanation='El **sarcasmo** es una forma de ironía más agresiva y directa que busca ridiculizar, humillar o criticar de forma mordaz.\n\n**Características del sarcasmo**:\n- Intención manifiesta de herir o burlarse.\n- Tono de voz más cortante que la ironía.\n- Suele incluir hipérboles o comparaciones hirientes.\n\n**Ejemplos**:\n- *"Eres un genio"* (después de que alguien cometa un error evidente).\n- *"No te esfuerces demasiado"* (cuando alguien no está haciendo nada).\n- *"Qué sorpresa, has llegado tarde otra vez"* (falso asombro).\n\n**Diferencia con la ironía**:\n- La ironía puede ser humorística o incluso afectuosa.\n- El sarcasmo siempre tiene una carga negativa y busca provocar.\n\nEn el ámbito hispanohablante el sarcasmo varía culturalmente: es muy frecuente en España, mientras que en algunos países latinoamericanos puede considerarse más agresivo.',
+        explanation='El **sarcasmo** es una forma de ironía más agresiva y directa que busca ridiculizar, humillar o criticar de forma mordaz.\n\n**Características del sarcasmo**:\n- Intención manifiesta de herir o burlarse.\n- Tono de voz más cortante que la ironía.\n- Suele incluir hipérboles o comparaciones hirientes.\n\n**Ejemplos**:\n- *"Eres un genio"* (después de que alguien cometa un error evidente).\n- *"No te esfuerces demasiado"* (cuando alguien no está haciendo nada).\n- *"Qué sorpresa, llegaste tarde otra vez"* (falso asombro).\n\n**Diferencia con la ironía**:\n- La ironía puede ser humorística o incluso afectuosa.\n- El sarcasmo siempre tiene una carga negativa y busca provocar.\n\nEn el ámbito hispanohablante el sarcasmo varía culturalmente: es muy frecuente en España, mientras que en algunos países latinoamericanos puede considerarse más agresivo.',
         rules=[
             "El sarcasmo se apoya en la exageración y el falso elogio.",
             "La entonación es crucial para distinguir sarcasmo de elogio sincero.",
@@ -395,7 +395,7 @@ C1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         level="C1",
         category="Avanzado",
         summary="Ambigüedad intencionada: palabras o frases con más de una interpretación.",
-        explanation="El **doble sentido** consiste en usar palabras o expresiones que admiten dos interpretaciones, generalmente una inocente y otra maliciosa, humorística o crítica.\n\n**Mecanismos del doble sentido**:\n\n**Homonimia y polisemia**:\n- *Banco* (asiento / entidad financiera): *Me senté en el banco a esperar.*\n- *Gato* (animal / herramienta para elevar coches).\n\n**Ambigüedad sintáctica**:\n- *Vi a tu hermano con prismáticos.* (¿Quién llevaba los prismáticos?)\n\n**Juegos de palabras (calambur)**:\n- *Entre el clavel y la rosa, su majestad escoja.* (es coja / escoja)\n\n**Contextos marcados**:\n- El doble sentido es habitual en chistes, publicidad y humor.\n- En literatura (Cervantes, Quevedo) el doble sentido es recurso erudito.\n\nEn niveles C1 se espera comprender y, con cuidado, usar el doble sentido respetando el contexto y la relación con el interlocutor.",
+        explanation="El **doble sentido** consiste en usar palabras o expresiones que admiten dos interpretaciones, generalmente una inocente y otra maliciosa, humorística o crítica.\n\n**Mecanismos del doble sentido**:\n\n**Homonimia y polisemia**:\n- *Banco* (asiento / entidad financiera): *Me senté en el banco a esperar.*\n- *Gato* (animal / herramienta para levantar carros).\n\n**Ambigüedad sintáctica**:\n- *Vi a tu hermano con prismáticos.* (¿Quién llevaba los prismáticos?)\n\n**Juegos de palabras (calambur)**:\n- *Entre el clavel y la rosa, su majestad escoja.* (es coja / escoja)\n\n**Contextos marcados**:\n- El doble sentido es habitual en chistes, publicidad y humor.\n- En literatura (Cervantes, Quevedo) el doble sentido es recurso erudito.\n\nEn niveles C1 se espera comprender y, con cuidado, usar el doble sentido respetando el contexto y la relación con el interlocutor.",
         rules=[
             "El doble sentido depende del contexto y de la complicidad entre hablantes.",
             "La ambigüedad puede ser léxica (una palabra) o sintáctica (estructura de la oración).",
@@ -495,7 +495,7 @@ C1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         ],
         examples=[
             GrammarExample(
-                text="Y los niños corren, y los perros ladran, y los coches pitan, y el mundo sigue girando.",
+                text="Y los niños corren, y los perros ladran, y los carros pitan, y el mundo sigue girando.",
                 translation=None,
                 note="polisíndeton",
             ),
@@ -555,15 +555,15 @@ C1_GRAMMAR_TOPICS: list[GrammarTopic] = [
         explanation="El español es una lengua pluricéntrica: no hay una sola norma correcta. Cada región tiene sus particularidades.\n\n**Variación léxica** (mismo concepto, distinta palabra):\n| Concepto | España | México | Argentina |\n|----------|--------|--------|-----------|\n| coche | coche | carro | auto |\n| ordenador | ordenador | computadora | computadora |\n| móvil | móvil | celular | celular |\n| zumo | zumo | jugo | jugo |\n| patata | patata | papa | papa |\n| conducir | conducir | manejar | manejar |\n| coger | coger (tomar) | NO usar (obsceno) | NO usar (obsceno) |\n\n**Variación gramatical**:\n- *Leísmo* en España: *Le vi* por *Lo vi*.\n- *Voseo* en Argentina/Uruguay/Centroamérica.\n- Perfecto vs. indefinido: *Hoy he ido* (España) vs. *Hoy fui* (América).\n\n**Variación pragmática**:\n- *Tú* vs. *usted*: en Colombia se usa *usted* incluso entre amigos.\n- Tratamiento informal: *güey* (México), *tío/tía* (España), *che* (Argentina), *pana* (Venezuela).",
         rules=[
             'No existe una variedad "correcta" del español; cada norma culta es válida.',
-            "Al aprender español conviene elegir una variedad meta y ser consciente de las demás.",
+            "Al aprender español conviene elegir una variedad meta (en este curso, la de México) y ser consciente de las demás.",
             "El contexto determina qué variedad usar: en entornos internacionales se tiende a un español neutro.",
             "Muchas palabras son comprensibles en todos los países aunque no sean las locales.",
         ],
         examples=[
             GrammarExample(
-                text="Voy a coger el autobús.",
+                text="Voy a tomar el camión.",
                 translation=None,
-                note="normal en España; evitar en Latinoamérica",
+                note='México; en España: "coger el autobús" (en México, evitar "coger")',
             ),
             GrammarExample(
                 text="Manejo hasta tu casa en media hora.",

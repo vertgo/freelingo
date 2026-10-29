@@ -37,7 +37,7 @@ from app.services.resource_native_help import (
     native_help_lock_key,
     upsert_native_help,
 )
-from app.services.tts_service import OpenAITTSService
+from app.services.tts_service import GeminiTTSService, OpenAITTSService
 
 router = APIRouter(prefix="/api/phrasebook", tags=["phrasebook"])
 logger = get_logger(__name__)
@@ -248,7 +248,9 @@ async def get_phrase_audio(
         f"{language}:{category_id}:{phrase_index}:{phrase.text}".encode()
     ).hexdigest()[:16]
     tts_service = getattr(request.app.state, "tts_service", None)
-    if isinstance(tts_service, OpenAITTSService) and tts_service.get_instructions(language):
+    if isinstance(
+        tts_service, (OpenAITTSService, GeminiTTSService)
+    ) and tts_service.get_instructions(language):
         cache_key = tts_service.get_cache_key(phrase.text, language=language)
     audio_dir = os.path.join(settings.AUDIO_STORAGE_PATH, "phrasebook", iso)
     cache_path = os.path.join(audio_dir, f"{cache_key}.mp3")

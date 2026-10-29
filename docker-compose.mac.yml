@@ -1,0 +1,30 @@
+# Apple Silicon / CPU-only add-on for docker-compose.dev.yml:
+#   docker-compose -f docker-compose.dev.yml -f docker-compose.mac.yml --env-file .env up -d --build
+# Adds CPU speech services (Kokoro TTS, faster-whisper STT) and lets the backend reach
+# host services such as Ollama or scripts/codex_bridge.py via host.docker.internal.
+services:
+  backend:
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      kokoro:
+        condition: service_started
+      whisper:
+        condition: service_started
+
+  kokoro:
+    image: ghcr.io/remsky/kokoro-fastapi-cpu:latest
+    container_name: freelingo-kokoro
+    restart: unless-stopped
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  whisper:
+    image: onerahmet/openai-whisper-asr-webservice:latest
+    container_name: freelingo-whisper
+    restart: unless-stopped
+    environment:
+      - ASR_MODEL=${STT_MODEL:-small}
+      - ASR_ENGINE=${STT_ENGINE:-faster_whisper}
+    volumes:
+      - ${DATA_PATH}/whisper-cache:/root/.cache
