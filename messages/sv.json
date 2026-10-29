@@ -1977,5 +1977,33 @@
     "label": "Underhåll",
     "title": "Underhåll pågår",
     "description": "Det här avsnittet är tillfälligt otillgängligt medan vi utför underhåll. Kom tillbaka senare."
+  },
+  "aiStatus": {
+    "services": {
+      "llm": "Lektioner och AI-handledaren",
+      "tts": "Ljuduppspelning",
+      "stt": "Taligenkänning",
+      "voice": "Röstsamtal"
+    },
+    "title": "{service} fungerar inte just nu",
+    "reasons": {
+      "quota": "AI-leverantörens användningskvot eller hastighetsgräns har nåtts.",
+      "auth": "AI-leverantören avvisade den här serverns API-nyckel.",
+      "overloaded": "AI-leverantören är överbelastad.",
+      "timeout": "AI-leverantören tog för lång tid att svara.",
+      "unreachable": "Den här servern kunde inte nå AI-leverantören.",
+      "unknown": "AI-leverantören returnerade ett fel."
+    },
+    "userHint": "Försök igen om några minuter. Om det fortsätter, meddela den som driver den här servern.",
+    "adminHints": {
+      "quota": "Kontrollera fakturering och hastighetsgränser för leverantörens API-nyckel.",
+      "auth": "Kontrollera leverantörens API-nyckel i serverns .env och starta sedan om backend.",
+      "overloaded": "Oftast tillfälligt; reservmodeller provas automatiskt.",
+      "timeout": "Oftast tillfälligt. Om det kvarstår, kontrollera leverantörens statussida.",
+      "unreachable": "Kontrollera serverns nätverksanslutning.",
+      "unknown": "Se backend-loggarna för detaljer."
+    },
+    "detailLabel": "Meddelande från leverantören:",
+    "dismiss": "Stäng"
   }
 }

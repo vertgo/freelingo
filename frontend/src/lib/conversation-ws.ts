@@ -67,6 +67,8 @@ export interface ErrorMessage {
   type: 'error'
   code: string
   message?: string
+  /** Provider failure reason; see lib/ai-errors. */
+  ai_error?: string
   turn_id?: number
 }
 

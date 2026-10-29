@@ -6,6 +6,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server'
+import { aiErrorHeaders } from '@/lib/ai-errors'
 
 const BACKEND_URL = process.env.BACKEND_URL || 'http://backend:8000'
 
@@ -35,7 +36,10 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
   if (!backendRes.ok) {
     const errorText = await backendRes.text()
-    return new NextResponse(errorText, { status: backendRes.status })
+    return new NextResponse(errorText, {
+      status: backendRes.status,
+      headers: aiErrorHeaders(backendRes),
+    })
   }
 
   const bufferStart = performance.now()

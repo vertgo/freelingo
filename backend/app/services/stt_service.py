@@ -7,6 +7,7 @@ from google import genai
 from google.genai import types as genai_types
 
 from app.core.app_logger import get_logger
+from app.services.ai_errors import reports_ai_failure
 
 logger = get_logger(__name__)
 
@@ -22,6 +23,7 @@ class WhisperSTTService:
             r = await client.get(f"{self.base_url}/", timeout=5.0, follow_redirects=True)
             r.raise_for_status()
 
+    @reports_ai_failure("stt")
     async def transcribe(
         self,
         audio_bytes: bytes,
@@ -66,6 +68,7 @@ class OpenAISTTService:
         """Raise if OpenAI STT is unreachable (lightweight models list call)."""
         await self._client.models.list()
 
+    @reports_ai_failure("stt")
     async def transcribe(
         self,
         audio_bytes: bytes,
@@ -102,6 +105,7 @@ class GeminiSTTService:
         """Raise if the Gemini API is unreachable or the key is rejected."""
         await self._client.aio.models.get(model=self.model)
 
+    @reports_ai_failure("stt")
     async def transcribe(
         self,
         audio_bytes: bytes,

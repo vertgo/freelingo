@@ -10,6 +10,7 @@ from google.genai import errors as genai_errors
 from google.genai import types as genai_types
 
 from app.core.app_logger import get_logger
+from app.services.ai_errors import reports_ai_failure
 from app.services.prompts.speech import build_speech_instructions
 
 logger = get_logger(__name__)
@@ -46,6 +47,7 @@ class KokoroTTSService:
             r = await client.get(f"{self.base_url}/v1/models", timeout=5.0)
             r.raise_for_status()
 
+    @reports_ai_failure("tts")
     async def synthesize(
         self, text: str, voice: str | None = None, language: str | None = None
     ) -> bytes:
@@ -106,6 +108,7 @@ class OpenAITTSService:
             identity["instructions"] = instructions
         return hashlib.sha256(json.dumps(identity, sort_keys=True).encode()).hexdigest()
 
+    @reports_ai_failure("tts")
     async def synthesize(
         self, text: str, voice: str | None = None, language: str | None = None
     ) -> bytes:
@@ -259,6 +262,7 @@ class GeminiTTSService:
         }
         return hashlib.sha256(json.dumps(identity, sort_keys=True).encode()).hexdigest()
 
+    @reports_ai_failure("tts")
     async def synthesize(
         self, text: str, voice: str | None = None, language: str | None = None
     ) -> bytes:

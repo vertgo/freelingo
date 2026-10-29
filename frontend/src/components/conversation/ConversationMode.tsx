@@ -32,7 +32,14 @@ import {
 import { shouldShowVoiceReviewPrompt } from '@/lib/review-prompt-triggers'
 import { MemorySavedToast } from '@/components/memory/MemorySavedToast'
 import { useTransientToast } from '@/hooks/useTransientToast'
+import { reportAIError, type AIService } from '@/lib/ai-errors'
 import LinguAvatar from '@/components/lingu/LinguAvatar'
+
+const AI_SERVICE_BY_WS_CODE: Record<string, AIService> = {
+  stt_failed: 'stt',
+  llm_failed: 'llm',
+  tts_failed: 'tts',
+}
 
 interface TranscriptEntry {
   id: number
@@ -946,6 +953,10 @@ export default function ConversationMode({
                 tts_failed: t('errorSpeech'),
               }
               setErrorMsg(errorMessages[msg.code] ?? tCommon('errorMessage'))
+              reportAIError(
+                msg.ai_error,
+                AI_SERVICE_BY_WS_CODE[msg.code] ?? 'voice'
+              )
               setStatus('error')
               assistantTurnActiveRef.current = false
               if (

@@ -19,6 +19,7 @@ import {
 } from '@/components/ui/page-loading-boundary'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
 import { AuthAvatarImage } from '@/components/AuthAvatarImage'
+import { AIStatusBanner } from '@/components/AIStatusBanner'
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -639,6 +640,7 @@ function AppLayoutContent({ children }: { children: React.ReactNode }) {
             )}
           </div>
         )}
+        {user && <AIStatusBanner />}
         <PageLoadingViewport>{children}</PageLoadingViewport>
       </main>
 

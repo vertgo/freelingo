@@ -54,6 +54,7 @@ from app.routers import (
 )
 from app.routers import config as config_router
 from app.routers import health as health_router
+from app.services.ai_errors import AI_ERROR_HEADER, AI_SERVICE_HEADER, AIErrorMiddleware
 from app.services.stt_service import GeminiSTTService, OpenAISTTService, WhisperSTTService
 from app.services.tts_service import GeminiTTSService, KokoroTTSService, OpenAITTSService
 
@@ -133,6 +134,7 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allow_headers=["*"],
+    expose_headers=[AI_ERROR_HEADER, AI_SERVICE_HEADER],
 )
 
 
@@ -150,6 +152,7 @@ async def security_headers_middleware(request: Request, call_next) -> Response:
 
 
 app.add_middleware(AnalyticsMiddleware)
+app.add_middleware(AIErrorMiddleware)
 
 
 app.include_router(auth.router)

@@ -1977,5 +1977,33 @@
     "label": "Održavanje",
     "title": "Održavanje u tijeku",
     "description": "Ovaj je odjeljak privremeno nedostupan zbog održavanja. Vrati se poslije."
+  },
+  "aiStatus": {
+    "services": {
+      "llm": "Lekcije i AI tutor",
+      "tts": "Reprodukcija zvuka",
+      "stt": "Prepoznavanje govora",
+      "voice": "Glasovni razgovor"
+    },
+    "title": "{service} trenutačno ne radi",
+    "reasons": {
+      "quota": "Dosegnuta je kvota korištenja ili ograničenje zahtjeva AI pružatelja.",
+      "auth": "AI pružatelj odbio je API ključ ovog poslužitelja.",
+      "overloaded": "AI pružatelj je preopterećen.",
+      "timeout": "AI pružatelju je trebalo predugo da odgovori.",
+      "unreachable": "Ovaj poslužitelj nije mogao doći do AI pružatelja.",
+      "unknown": "AI pružatelj vratio je pogrešku."
+    },
+    "userHint": "Pokušaj ponovno za nekoliko minuta. Ako se nastavi događati, javi osobi koja vodi ovaj poslužitelj.",
+    "adminHints": {
+      "quota": "Provjeri naplatu i ograničenja zahtjeva za API ključ pružatelja.",
+      "auth": "Provjeri API ključ pružatelja u .env datoteci poslužitelja, a zatim ponovno pokreni backend.",
+      "overloaded": "Obično privremeno; zamjenski modeli isprobavaju se automatski.",
+      "timeout": "Obično privremeno. Ako potraje, provjeri statusnu stranicu pružatelja.",
+      "unreachable": "Provjeri mrežnu vezu poslužitelja.",
+      "unknown": "Pojedinosti potraži u zapisima backenda."
+    },
+    "detailLabel": "Poruka pružatelja:",
+    "dismiss": "Zatvori"
   }
 }

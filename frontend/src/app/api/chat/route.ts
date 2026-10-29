@@ -9,6 +9,7 @@
  */
 
 import { NextRequest } from 'next/server'
+import { aiErrorHeaders } from '@/lib/ai-errors'
 
 const BACKEND_URL = process.env.BACKEND_URL || 'http://backend:8000'
 
@@ -35,7 +36,10 @@ export async function POST(request: NextRequest) {
 
   if (!backendRes.ok || !backendRes.body) {
     const errorText = await backendRes.text()
-    return new Response(errorText, { status: backendRes.status })
+    return new Response(errorText, {
+      status: backendRes.status,
+      headers: aiErrorHeaders(backendRes),
+    })
   }
 
   return new Response(backendRes.body, {

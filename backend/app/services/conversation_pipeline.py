@@ -9,6 +9,7 @@ from typing import TYPE_CHECKING
 
 from app.core.app_logger import get_logger
 from app.models.user import User
+from app.services.ai_errors import classify_ai_error
 from app.services.language_helpers import (
     get_iso639,
     get_language_name,
@@ -605,6 +606,7 @@ class ConversationPipeline:
                     "type": "error",
                     "code": "stt_failed",
                     "message": str(exc),
+                    "ai_error": classify_ai_error(exc),
                     "turn_id": turn_id,
                 },
             )
@@ -765,6 +767,7 @@ class ConversationPipeline:
                     "type": "error",
                     "code": "llm_failed",
                     "message": str(exc),
+                    "ai_error": classify_ai_error(exc),
                     "turn_id": turn_id,
                 },
             )
@@ -787,6 +790,7 @@ class ConversationPipeline:
                     "type": "error",
                     "code": "tts_failed",
                     "message": str(exc),
+                    "ai_error": classify_ai_error(exc),
                     "turn_id": turn_id,
                 },
             )

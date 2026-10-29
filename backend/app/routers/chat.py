@@ -27,6 +27,7 @@ from app.schemas.chat import (
     ConversationCreate,
     ConversationResponse,
 )
+from app.services.ai_errors import classify_ai_error
 from app.services.language_helpers import get_language_name, get_native_language_name
 from app.services.learning_analytics import record_lingu_practice
 from app.services.llm_adapter import (
@@ -52,6 +53,11 @@ from app.utils.db import db_session
 router = APIRouter(prefix="/api/chat", tags=["chat"])
 
 logger = get_logger(__name__)
+
+
+def _sse_error(message: str, exc: BaseException) -> str:
+    payload = {"error": message, "ai_error": classify_ai_error(exc)}
+    return f"data: {json.dumps(payload)}\n\n"
 
 
 def _build_tutor_system_prompt(
@@ -474,23 +480,23 @@ async def chat(
 
             await maybe_record_freemium_usage(current_user, "chat")
 
-        except LLMTimeoutError:
+        except LLMTimeoutError as exc:
             logger.warning(
                 "LLM timeout for user %s conversation %s",
                 current_user.id,
                 conversation_id,
             )
-            yield f"data: {json.dumps({'error': 'The AI model took too long. Please try again.'})}\n\n"
-        except LLMUnavailableError:
+            yield _sse_error("The AI model took too long. Please try again.", exc)
+        except LLMUnavailableError as exc:
             logger.error("LLM unavailable for user %s", current_user.id)
-            yield f"data: {json.dumps({'error': 'The AI service is currently unavailable.'})}\n\n"
-        except LLMError:
+            yield _sse_error("The AI service is currently unavailable.", exc)
+        except LLMError as exc:
             logger.exception(
                 "LLM error for user %s conversation %s",
                 current_user.id,
                 conversation_id,
             )
-            yield f"data: {json.dumps({'error': 'Something went wrong. Please try again.'})}\n\n"
+            yield _sse_error("Something went wrong. Please try again.", exc)
         finally:
             if isinstance(stream, LLMStream) and (
                 stream.prompt_tokens is not None or stream.completion_tokens is not None

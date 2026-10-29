@@ -13,6 +13,7 @@ from pydantic import BaseModel
 
 from app.core.app_logger import get_logger
 from app.core.config import settings
+from app.services.ai_errors import record_ai_failure, record_ai_success
 from app.services.prompts.common import (
     ANTHROPIC_SYSTEM_ONLY_TRIGGER,
     JSON_ONLY_INSTRUCTION,
@@ -161,6 +162,17 @@ ToolExecutor = Callable[[LLMToolCall], Awaitable[LLMToolResult]]
 async def _safe_stream_events(stream: object, provider: str) -> AsyncGenerator:
     """Normalize exceptions raised after a provider stream has started."""
     try:
+        async for event in _normalized_stream_events(stream, provider):
+            yield event
+    except LLMToolsUnsupportedError:
+        raise
+    except LLMError as exc:
+        record_ai_failure("llm", exc)
+        raise
+
+
+async def _normalized_stream_events(stream: object, provider: str) -> AsyncGenerator:
+    try:
         async for event in stream:  # type: ignore[union-attr]
             yield event
     except LLMError:
@@ -212,6 +224,14 @@ class LLMStream:
         return self._iterate()
 
     async def _iterate(self):
+        try:
+            async for chunk in self._chunks():
+                yield chunk
+        except Exception as exc:
+            record_ai_failure("llm", exc)
+            raise
+
+    async def _chunks(self):
         async for chunk in self._stream:  # type: ignore[union-attr]
             # Defensively capture usage from every chunk (the final one for
             # OpenAI-compatible streams, or any event for other providers).
@@ -692,19 +712,24 @@ class LLMAdapter:
         self, fn, *args, tools_requested: bool = False, max_retries: int = MAX_RETRIES, **kwargs
     ):
         last_error = None
+        last_cause: BaseException | None = None
         for attempt in range(max_retries + 1):
             try:
-                return await fn(*args, **kwargs)
+                result = await fn(*args, **kwargs)
+                record_ai_success("llm")
+                return result
             except LLMError as e:
                 if tools_requested and _is_tools_unsupported_error(e):
                     raise LLMToolsUnsupportedError(f"{self.provider} does not support tools") from e
                 # Already a typed LLM error raised by a provider-specific
                 # handler (e.g. _anthropic_chat). Preserve the type instead of
                 # re-wrapping into a generic LLMError.
-                last_error = e
-            except TimeoutError, APITimeoutError:
+                last_error = last_cause = e
+            except (TimeoutError, APITimeoutError) as e:
                 last_error = LLMTimeoutError(f"{self.provider} request timed out")
+                last_cause = e
             except Exception as e:
+                last_cause = e
                 if tools_requested and _is_tools_unsupported_error(e):
                     raise LLMToolsUnsupportedError(f"{self.provider} does not support tools") from e
                 error_msg = str(e)
@@ -722,6 +747,7 @@ class LLMAdapter:
             if attempt < max_retries:
                 await asyncio.sleep(RETRY_DELAY_SECONDS * (attempt + 1))
 
+        record_ai_failure("llm", last_cause)
         raise last_error
 
     async def chat(
@@ -939,6 +965,7 @@ class LLMAdapter:
             async with asyncio.timeout_at(deadline):
                 return await self._structured_via_json(messages, schema, deadline=deadline)
         except TimeoutError as exc:
+            record_ai_failure("llm", exc, code="timeout")
             raise LLMTimeoutError("Structured generation deadline reached") from exc
 
     async def _structured_via_json(

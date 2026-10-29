@@ -23,6 +23,7 @@ from google import genai
 from google.genai import types
 
 from app.core.app_logger import get_logger
+from app.services.ai_errors import record_ai_failure, record_ai_success
 from app.services.conversation_pipeline import (
     ConversationPipeline,
     _build_conversation_system_prompt,
@@ -165,6 +166,7 @@ class GeminiLivePipeline(ConversationPipeline):
                 )
                 self._session = session
                 self._session_ready.set()
+                record_ai_success("voice")
                 if first:
                     first = False
                     await self._send_opening(session)
@@ -435,10 +437,16 @@ class GeminiLivePipeline(ConversationPipeline):
             if self._session_task in done and self._session_task.exception() is not None:
                 exc = self._session_task.exception()
                 logger.error("[gemini-live] session failed: %s", self._fmt_exc(exc))
+                reason = record_ai_failure("voice", exc)
                 try:
                     await self._send_json(
                         ws,
-                        {"type": "error", "code": "internal_error", "message": str(exc)},
+                        {
+                            "type": "error",
+                            "code": "internal_error",
+                            "message": str(exc),
+                            "ai_error": reason,
+                        },
                     )
                     await self._close_ws(ws, code=1011)
                 except Exception:

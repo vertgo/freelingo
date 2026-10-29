@@ -125,6 +125,29 @@ There is no universal HTTP mapping for every LLM exception.
 caller. Logging must avoid credentials, private memories, full personal prompts, and unnecessary raw
 learner content.
 
+## Failure reasons shown to users
+
+`app/services/ai_errors.py` reduces every LLM, TTS, STT, and Gemini Live failure to a reason code:
+`quota` (429 / resource exhausted / rate limit), `auth` (rejected or invalid API key), `overloaded`
+(5xx / high demand), `timeout`, `unreachable`, or `unknown`. It follows the exception's cause chain,
+so normalized `LLMError`s keep the provider's reason. Codes are recorded where failures become final:
+after adapter retries are exhausted, when a stream fails, on structured-output deadlines, in the
+`synthesize`/`transcribe` methods of every TTS/STT service (`reports_ai_failure`), and when a Gemini
+Live session fails.
+
+- **HTTP:** `AIErrorMiddleware` adds `X-AI-Error` and `X-AI-Service` (`llm`, `tts`, `stt`, `voice`)
+  to any 4xx/5xx response produced after a recorded failure. When an endpoint lets the provider
+  exception escape, the middleware answers 503 with `{"detail", "ai_error"}` instead of a bare 500.
+  CORS exposes both headers, and the frontend's TTS, STT, chat, and tour route handlers forward them.
+- **Streams and sockets:** chat SSE error events and voice WebSocket `error` messages carry `ai_error`.
+- **Last failure:** the most recent failure is stored in Redis (`ai:last_failure`, 7 days) and is
+  cleared by the next success of the same service in that process. `GET /api/ai-status` returns it
+  for 15 minutes (the raw provider message only to admins), and `GET /api/admin/health` includes it
+  as `last_ai_failure`. This also surfaces failures from background generation.
+- **Frontend:** `apiFetch` reports tagged responses, and `AIStatusBanner` in the app layout explains
+  the failing feature and reason, with operator hints for admins and a retry hint for learners. It
+  re-checks `/api/ai-status` on navigation, and dismissal lasts until a newer failure.
+
 ## Provider differences
 
 Anthropic extracts system messages into its separate system parameter, requires a configured output

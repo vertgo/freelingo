@@ -1977,5 +1977,33 @@
     "label": "Bakım",
     "title": "Bakımda",
     "description": "Bakım çalışması yaptığımız için bu bölüm geçici olarak kullanılamıyor. Lütfen daha sonra tekrar kontrol edin."
+  },
+  "aiStatus": {
+    "services": {
+      "llm": "Dersler ve yapay zekâ öğretmeni",
+      "tts": "Ses oynatma",
+      "stt": "Konuşma tanıma",
+      "voice": "Sesli sohbet"
+    },
+    "title": "{service} şu anda çalışmıyor",
+    "reasons": {
+      "quota": "Yapay zekâ sağlayıcısının kullanım kotasına veya istek sınırına ulaşıldı.",
+      "auth": "Yapay zekâ sağlayıcısı bu sunucunun API anahtarını reddetti.",
+      "overloaded": "Yapay zekâ sağlayıcısı aşırı yüklü.",
+      "timeout": "Yapay zekâ sağlayıcısının yanıt vermesi çok uzun sürdü.",
+      "unreachable": "Bu sunucu yapay zekâ sağlayıcısına ulaşamadı.",
+      "unknown": "Yapay zekâ sağlayıcısı bir hata döndürdü."
+    },
+    "userHint": "Lütfen birkaç dakika sonra tekrar deneyin. Sorun devam ederse bu sunucuyu yöneten kişiye haber verin.",
+    "adminHints": {
+      "quota": "Sağlayıcı API anahtarının faturalandırmasını ve istek sınırlarını kontrol edin.",
+      "auth": "Sunucunun .env dosyasındaki sağlayıcı API anahtarını kontrol edin, ardından backend'i yeniden başlatın.",
+      "overloaded": "Genellikle geçicidir; yedek modeller otomatik olarak denenir.",
+      "timeout": "Genellikle geçicidir. Devam ederse sağlayıcının durum sayfasını kontrol edin.",
+      "unreachable": "Sunucunun ağ bağlantısını kontrol edin.",
+      "unknown": "Ayrıntılar için backend günlüklerine bakın."
+    },
+    "detailLabel": "Sağlayıcı mesajı:",
+    "dismiss": "Kapat"
   }
 }

@@ -1977,5 +1977,33 @@
     "label": "Mantenimiento",
     "title": "En mantenimiento",
     "description": "Esta sección no está disponible temporalmente por tareas de mantenimiento. Vuelve más tarde."
+  },
+  "aiStatus": {
+    "services": {
+      "llm": "Las lecciones y el tutor de IA",
+      "tts": "La reproducción de audio",
+      "stt": "El reconocimiento de voz",
+      "voice": "La conversación por voz"
+    },
+    "title": "{service} no funciona en este momento",
+    "reasons": {
+      "quota": "Se alcanzó la cuota de uso o el límite de solicitudes del proveedor de IA.",
+      "auth": "El proveedor de IA rechazó la clave de API de este servidor.",
+      "overloaded": "El proveedor de IA está sobrecargado.",
+      "timeout": "El proveedor de IA tardó demasiado en responder.",
+      "unreachable": "Este servidor no pudo conectarse con el proveedor de IA.",
+      "unknown": "El proveedor de IA devolvió un error."
+    },
+    "userHint": "Inténtalo de nuevo en unos minutos. Si sigue pasando, avísale a quien administra este servidor.",
+    "adminHints": {
+      "quota": "Revisa la facturación y los límites de solicitudes de la clave de API del proveedor.",
+      "auth": "Revisa la clave de API del proveedor en el .env del servidor y luego reinicia el backend.",
+      "overloaded": "Suele ser temporal; se prueban modelos alternativos automáticamente.",
+      "timeout": "Suele ser temporal. Si continúa, revisa la página de estado del proveedor.",
+      "unreachable": "Revisa la conexión de red del servidor.",
+      "unknown": "Consulta los registros del backend para más detalles."
+    },
+    "detailLabel": "Mensaje del proveedor:",
+    "dismiss": "Cerrar"
   }
 }

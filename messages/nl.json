@@ -1977,5 +1977,33 @@
     "label": "Onderhoud",
     "title": "In onderhoud",
     "description": "Dit gedeelte is tijdelijk niet beschikbaar vanwege onderhoud. Probeer het later opnieuw."
+  },
+  "aiStatus": {
+    "services": {
+      "llm": "Lessen en de AI-tutor",
+      "tts": "Audio afspelen",
+      "stt": "Spraakherkenning",
+      "voice": "Spraakgesprek"
+    },
+    "title": "{service} werkt op dit moment niet",
+    "reasons": {
+      "quota": "Het gebruiksquotum of de snelheidslimiet van de AI-aanbieder is bereikt.",
+      "auth": "De AI-aanbieder heeft de API-sleutel van deze server geweigerd.",
+      "overloaded": "De AI-aanbieder is overbelast.",
+      "timeout": "De AI-aanbieder deed er te lang over om te reageren.",
+      "unreachable": "Deze server kon de AI-aanbieder niet bereiken.",
+      "unknown": "De AI-aanbieder gaf een fout terug."
+    },
+    "userHint": "Probeer het over een paar minuten opnieuw. Blijft het gebeuren, laat het dan weten aan wie deze server beheert.",
+    "adminHints": {
+      "quota": "Controleer de facturering en snelheidslimieten van de API-sleutel van de aanbieder.",
+      "auth": "Controleer de API-sleutel van de aanbieder in de .env van de server en herstart daarna de backend.",
+      "overloaded": "Meestal tijdelijk; terugvalmodellen worden automatisch geprobeerd.",
+      "timeout": "Meestal tijdelijk. Houdt het aan, controleer dan de statuspagina van de aanbieder.",
+      "unreachable": "Controleer de netwerkverbinding van de server.",
+      "unknown": "Bekijk de backend-logs voor details."
+    },
+    "detailLabel": "Bericht van aanbieder:",
+    "dismiss": "Sluiten"
   }
 }

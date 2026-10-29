@@ -1977,5 +1977,33 @@
     "label": "Wartung",
     "title": "Wartungsarbeiten",
     "description": "Dieser Bereich ist wegen Wartungsarbeiten vorübergehend nicht verfügbar. Bitte versuche es später erneut."
+  },
+  "aiStatus": {
+    "services": {
+      "llm": "Lektionen und der KI-Tutor",
+      "tts": "Audiowiedergabe",
+      "stt": "Spracherkennung",
+      "voice": "Sprachgespräch"
+    },
+    "title": "{service} funktioniert gerade nicht",
+    "reasons": {
+      "quota": "Das Nutzungskontingent oder Ratenlimit des KI-Anbieters wurde erreicht.",
+      "auth": "Der KI-Anbieter hat den API-Schlüssel dieses Servers abgelehnt.",
+      "overloaded": "Der KI-Anbieter ist überlastet.",
+      "timeout": "Der KI-Anbieter hat zu lange für eine Antwort gebraucht.",
+      "unreachable": "Dieser Server konnte den KI-Anbieter nicht erreichen.",
+      "unknown": "Der KI-Anbieter hat einen Fehler zurückgegeben."
+    },
+    "userHint": "Versuchen Sie es in ein paar Minuten erneut. Wenn das Problem weiterhin besteht, informieren Sie die Person, die diesen Server betreibt.",
+    "adminHints": {
+      "quota": "Prüfen Sie Abrechnung und Ratenlimits für den API-Schlüssel des Anbieters.",
+      "auth": "Prüfen Sie den API-Schlüssel des Anbieters in der .env des Servers und starten Sie dann das Backend neu.",
+      "overloaded": "Meist vorübergehend; Ausweichmodelle werden automatisch versucht.",
+      "timeout": "Meist vorübergehend. Wenn es anhält, prüfen Sie die Statusseite des Anbieters.",
+      "unreachable": "Prüfen Sie die Netzwerkverbindung des Servers.",
+      "unknown": "Details finden Sie in den Backend-Logs."
+    },
+    "detailLabel": "Meldung des Anbieters:",
+    "dismiss": "Schließen"
   }
 }

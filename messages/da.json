@@ -1977,5 +1977,33 @@
     "label": "Vedligeholdelse",
     "title": "Vedligeholdelse i gang",
     "description": "Dette afsnit er midlertidigt utilgængeligt, mens vi udfører vedligeholdelse. Kom tilbage senere."
+  },
+  "aiStatus": {
+    "services": {
+      "llm": "Lektioner og AI-tutoren",
+      "tts": "Lydafspilning",
+      "stt": "Talegenkendelse",
+      "voice": "Stemmesamtale"
+    },
+    "title": "{service} virker ikke lige nu",
+    "reasons": {
+      "quota": "AI-udbyderens forbrugskvote eller hastighedsgrænse er nået.",
+      "auth": "AI-udbyderen afviste denne servers API-nøgle.",
+      "overloaded": "AI-udbyderen er overbelastet.",
+      "timeout": "AI-udbyderen var for længe om at svare.",
+      "unreachable": "Denne server kunne ikke nå AI-udbyderen.",
+      "unknown": "AI-udbyderen returnerede en fejl."
+    },
+    "userHint": "Prøv igen om et par minutter. Hvis det bliver ved, så giv besked til den, der driver denne server.",
+    "adminHints": {
+      "quota": "Tjek fakturering og hastighedsgrænser for udbyderens API-nøgle.",
+      "auth": "Tjek udbyderens API-nøgle i serverens .env, og genstart derefter backend.",
+      "overloaded": "Som regel midlertidigt; reservemodeller prøves automatisk.",
+      "timeout": "Som regel midlertidigt. Hvis det fortsætter, så tjek udbyderens statusside.",
+      "unreachable": "Tjek serverens netværksforbindelse.",
+      "unknown": "Se backend-loggene for detaljer."
+    },
+    "detailLabel": "Besked fra udbyderen:",
+    "dismiss": "Luk"
   }
 }

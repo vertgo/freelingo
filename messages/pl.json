@@ -1977,5 +1977,33 @@
     "label": "Konserwacja",
     "title": "W trakcie konserwacji",
     "description": "Ta sekcja jest tymczasowo niedostępna z powodu prac konserwacyjnych. Spróbuj ponownie później."
+  },
+  "aiStatus": {
+    "services": {
+      "llm": "Lekcje i korepetytor AI",
+      "tts": "Odtwarzanie dźwięku",
+      "stt": "Rozpoznawanie mowy",
+      "voice": "Rozmowa głosowa"
+    },
+    "title": "{service} nie działa w tej chwili",
+    "reasons": {
+      "quota": "Osiągnięto limit użycia lub limit zapytań dostawcy AI.",
+      "auth": "Dostawca AI odrzucił klucz API tego serwera.",
+      "overloaded": "Dostawca AI jest przeciążony.",
+      "timeout": "Dostawca AI zbyt długo nie odpowiadał.",
+      "unreachable": "Ten serwer nie mógł połączyć się z dostawcą AI.",
+      "unknown": "Dostawca AI zwrócił błąd."
+    },
+    "userHint": "Spróbuj ponownie za kilka minut. Jeśli problem się powtarza, daj znać osobie, która zarządza tym serwerem.",
+    "adminHints": {
+      "quota": "Sprawdź rozliczenia i limity zapytań dla klucza API dostawcy.",
+      "auth": "Sprawdź klucz API dostawcy w pliku .env serwera, a następnie uruchom ponownie backend.",
+      "overloaded": "Zwykle tymczasowe; modele zapasowe są próbowane automatycznie.",
+      "timeout": "Zwykle tymczasowe. Jeśli się utrzymuje, sprawdź stronę statusu dostawcy.",
+      "unreachable": "Sprawdź połączenie sieciowe serwera.",
+      "unknown": "Szczegóły znajdziesz w logach backendu."
+    },
+    "detailLabel": "Komunikat dostawcy:",
+    "dismiss": "Zamknij"
   }
 }

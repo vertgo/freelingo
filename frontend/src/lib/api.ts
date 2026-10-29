@@ -1,3 +1,4 @@
+import { reportAIErrorFromResponse } from '@/lib/ai-errors'
 import { useAuthStore } from '@/store/auth'
 import { useLoadingStore } from '@/store/loading'
 
@@ -106,7 +107,9 @@ export async function apiFetch(
   const { inc, dec } = useLoadingStore.getState()
   inc()
   try {
-    return await _apiFetch(url, options)
+    const res = await _apiFetch(url, options)
+    reportAIErrorFromResponse(res)
+    return res
   } finally {
     dec()
   }

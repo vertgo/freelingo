@@ -1977,5 +1977,33 @@
     "label": "Întreținere",
     "title": "În mentenanță",
     "description": "Această secțiune este temporar indisponibilă pentru lucrări de întreținere. Încearcă din nou mai târziu."
+  },
+  "aiStatus": {
+    "services": {
+      "llm": "Lecțiile și tutorele AI",
+      "tts": "Redarea audio",
+      "stt": "Recunoașterea vocală",
+      "voice": "Conversația vocală"
+    },
+    "title": "{service} nu funcționează momentan",
+    "reasons": {
+      "quota": "A fost atinsă cota de utilizare sau limita de cereri a furnizorului AI.",
+      "auth": "Furnizorul AI a respins cheia API a acestui server.",
+      "overloaded": "Furnizorul AI este suprasolicitat.",
+      "timeout": "Furnizorul AI a răspuns prea greu.",
+      "unreachable": "Acest server nu a putut contacta furnizorul AI.",
+      "unknown": "Furnizorul AI a returnat o eroare."
+    },
+    "userHint": "Încearcă din nou în câteva minute. Dacă problema persistă, anunță persoana care administrează acest server.",
+    "adminHints": {
+      "quota": "Verifică facturarea și limitele de cereri pentru cheia API a furnizorului.",
+      "auth": "Verifică cheia API a furnizorului în fișierul .env al serverului, apoi repornește backend-ul.",
+      "overloaded": "De obicei e temporar; modelele de rezervă sunt încercate automat.",
+      "timeout": "De obicei e temporar. Dacă persistă, verifică pagina de stare a furnizorului.",
+      "unreachable": "Verifică conexiunea la rețea a serverului.",
+      "unknown": "Consultă jurnalele backend-ului pentru detalii."
+    },
+    "detailLabel": "Mesajul furnizorului:",
+    "dismiss": "Închide"
   }
 }

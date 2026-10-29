@@ -17,6 +17,7 @@ in `rate-limiting.instructions.md`.
 ## Health — `/health`
 
 - **GET `/health`** — Rate limit: 60/min. Public liveness check. Returns `{"status":"ok"}` only and does not expose DB, Redis, TTS, or STT dependency details.
+- **GET `/api/ai-status`** — Rate limit: 60/min. Authenticated. Returns `{"failure": {service, code, at, detail?} | null}`: the most recent AI provider failure from the last 15 minutes, with the raw provider `detail` only for admins. See `llm-error-handling.instructions.md`.
 
 ---
 
@@ -109,7 +110,7 @@ source IDs remain private; failed attempts never reveal the solution.
 Requires `role="admin"`. All endpoints return 403 for non-admin users.
 
 - **GET `/stats`** — Rate limit: 60/min. Aggregated admin overview metrics: total/active/inactive users, active/trialing/past_due subscriptions, total feedback, pending feedback, pending bug reports, and reviews pending approval.
-- **GET `/health`** — Rate limit: 60/min. Private admin diagnostic health check. Returns DB, Redis, TTS, and STT dependency status as `{"status":"ok"|"degraded","checks":{...}}`; returns HTTP 503 when any dependency check fails.
+- **GET `/health`** — Rate limit: 60/min. Private admin diagnostic health check. Returns DB, Redis, TTS, and STT dependency status plus the last recorded AI provider failure as `{"status":"ok"|"degraded","checks":{...},"last_ai_failure":{...}|null}`; returns HTTP 503 when any dependency check fails.
 - **GET `/users`** — Rate limit: 60/min. Lists users (paginated). Query params: `skip` (default 0), `limit` (default 10, max 100), `q` (search by username or email), `subscription` (`none`, `trialing`, `active`, `past_due`, `canceled`, `incomplete`, `incomplete_expired`, `unpaid`, `paused`), `role` (`user`, `admin`), and `is_active` (`true`, `false`). Returns `{items, total, skip, limit}`.
 - **POST `/users`** — Rate limit: 60/min. Creates user directly (bypasses `ALLOW_REGISTRATION`). Body requires `username`, `email`, `password`, `display_name`, `native_language`, `target_language`, and optional `role`; sends verification email if `EMAIL_ENABLED=true`.
 - **GET `/users/{id}`** — Rate limit: 60/min. User detail, including admin-only Stripe identifiers (`stripe_customer_id`, `stripe_subscription_id`) and subscription state.

@@ -1977,5 +1977,33 @@
     "label": "Maintenance",
     "title": "En maintenance",
     "description": "Cette section est temporairement indisponible pour cause de maintenance. Veuillez réessayer plus tard."
+  },
+  "aiStatus": {
+    "services": {
+      "llm": "Les leçons et le tuteur IA",
+      "tts": "La lecture audio",
+      "stt": "La reconnaissance vocale",
+      "voice": "La conversation vocale"
+    },
+    "title": "{service} ne fonctionne pas pour le moment",
+    "reasons": {
+      "quota": "Le quota d'utilisation ou la limite de requêtes du fournisseur d'IA a été atteint.",
+      "auth": "Le fournisseur d'IA a refusé la clé API de ce serveur.",
+      "overloaded": "Le fournisseur d'IA est surchargé.",
+      "timeout": "Le fournisseur d'IA a mis trop de temps à répondre.",
+      "unreachable": "Ce serveur n'a pas pu joindre le fournisseur d'IA.",
+      "unknown": "Le fournisseur d'IA a renvoyé une erreur."
+    },
+    "userHint": "Veuillez réessayer dans quelques minutes. Si le problème persiste, prévenez la personne qui gère ce serveur.",
+    "adminHints": {
+      "quota": "Vérifiez la facturation et les limites de requêtes de la clé API du fournisseur.",
+      "auth": "Vérifiez la clé API du fournisseur dans le fichier .env du serveur, puis redémarrez le backend.",
+      "overloaded": "Généralement temporaire ; des modèles de secours sont essayés automatiquement.",
+      "timeout": "Généralement temporaire. Si cela persiste, consultez la page d'état du fournisseur.",
+      "unreachable": "Vérifiez la connexion réseau du serveur.",
+      "unknown": "Consultez les journaux du backend pour plus de détails."
+    },
+    "detailLabel": "Message du fournisseur :",
+    "dismiss": "Fermer"
   }
 }

@@ -65,6 +65,19 @@ async def setup_db(test_engine):
         await conn.run_sync(Base.metadata.drop_all)
 
 
+@pytest.fixture(autouse=True)
+def _no_ai_failure_persistence(monkeypatch):
+    """Keep provider-failure bookkeeping out of the real Redis during tests."""
+    from app.services import ai_errors
+
+    async def _noop(*_args):
+        return None
+
+    monkeypatch.setattr(ai_errors, "_persist", _noop)
+    monkeypatch.setattr(ai_errors, "_clear", _noop)
+    ai_errors._failing_services.clear()
+
+
 @pytest_asyncio.fixture(autouse=True)
 async def clear_sessions():
     # Sessions are now stored in Redis (per-test mock_redis starts empty).

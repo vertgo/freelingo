@@ -1977,5 +1977,33 @@
     "label": "Maintenance",
     "title": "Under Maintenance",
     "description": "This section is temporarily unavailable while we perform maintenance. Please check back later."
+  },
+  "aiStatus": {
+    "services": {
+      "llm": "Lessons and the AI tutor",
+      "tts": "Audio playback",
+      "stt": "Speech recognition",
+      "voice": "Voice conversation"
+    },
+    "title": "{service} isn't working right now",
+    "reasons": {
+      "quota": "The AI provider's usage quota or rate limit has been reached.",
+      "auth": "The AI provider rejected this server's API key.",
+      "overloaded": "The AI provider is overloaded.",
+      "timeout": "The AI provider took too long to respond.",
+      "unreachable": "This server couldn't reach the AI provider.",
+      "unknown": "The AI provider returned an error."
+    },
+    "userHint": "Try again in a few minutes. If it keeps happening, let whoever runs this server know.",
+    "adminHints": {
+      "quota": "Check billing and rate limits for the provider API key.",
+      "auth": "Check the provider API key in the server's .env, then restart the backend.",
+      "overloaded": "Usually temporary; fallback models are tried automatically.",
+      "timeout": "Usually temporary. If it persists, check the provider's status page.",
+      "unreachable": "Check the server's network connection.",
+      "unknown": "See the backend logs for details."
+    },
+    "detailLabel": "Provider message:",
+    "dismiss": "Dismiss"
   }
 }

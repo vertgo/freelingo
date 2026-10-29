@@ -23,6 +23,7 @@ import { AuthAvatarImage } from '@/components/AuthAvatarImage'
 import { MemorySavedToast } from '@/components/memory/MemorySavedToast'
 import { useTransientToast } from '@/hooks/useTransientToast'
 import { readSseData } from '@/lib/sse'
+import { reportAIError } from '@/lib/ai-errors'
 import LinguAvatar from '@/components/lingu/LinguAvatar'
 
 interface Message {
@@ -43,6 +44,7 @@ interface ChatSseEvent {
   token?: string
   response_reset?: boolean
   error?: string
+  ai_error?: string
   done?: boolean
   memory_updated?: boolean
 }
@@ -295,6 +297,7 @@ export default function ChatPage() {
         if (data.error) {
           streamCompleted = true
           setError(t('errorMessage'))
+          reportAIError(data.ai_error, 'llm')
         }
         if (data.done) {
           streamCompleted = true

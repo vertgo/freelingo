@@ -1977,5 +1977,33 @@
     "label": "Huolto",
     "title": "Huolto käynnissä",
     "description": "Tämä osio on väliaikaisesti poissa käytöstä huollon vuoksi. Palaa myöhemmin."
+  },
+  "aiStatus": {
+    "services": {
+      "llm": "Oppitunnit ja tekoälytutor",
+      "tts": "Äänen toisto",
+      "stt": "Puheentunnistus",
+      "voice": "Puhekeskustelu"
+    },
+    "title": "{service} ei toimi juuri nyt",
+    "reasons": {
+      "quota": "Tekoälypalveluntarjoajan käyttökiintiö tai pyyntöraja on täynnä.",
+      "auth": "Tekoälypalveluntarjoaja hylkäsi tämän palvelimen API-avaimen.",
+      "overloaded": "Tekoälypalveluntarjoaja on ylikuormittunut.",
+      "timeout": "Tekoälypalveluntarjoajan vastaus kesti liian kauan.",
+      "unreachable": "Tämä palvelin ei saanut yhteyttä tekoälypalveluntarjoajaan.",
+      "unknown": "Tekoälypalveluntarjoaja palautti virheen."
+    },
+    "userHint": "Yritä uudelleen muutaman minuutin kuluttua. Jos ongelma jatkuu, kerro asiasta tämän palvelimen ylläpitäjälle.",
+    "adminHints": {
+      "quota": "Tarkista palveluntarjoajan API-avaimen laskutus ja pyyntörajat.",
+      "auth": "Tarkista palveluntarjoajan API-avain palvelimen .env-tiedostosta ja käynnistä taustapalvelu uudelleen.",
+      "overloaded": "Yleensä tilapäistä; varamalleja kokeillaan automaattisesti.",
+      "timeout": "Yleensä tilapäistä. Jos ongelma jatkuu, tarkista palveluntarjoajan tilasivu.",
+      "unreachable": "Tarkista palvelimen verkkoyhteys.",
+      "unknown": "Katso lisätietoja taustapalvelun lokeista."
+    },
+    "detailLabel": "Palveluntarjoajan viesti:",
+    "dismiss": "Sulje"
   }
 }

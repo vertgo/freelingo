@@ -32,7 +32,12 @@ export async function POST(
     })
     const body = await response.arrayBuffer()
     const outgoing = new Headers({ 'Cache-Control': 'no-store' })
-    for (const name of ['content-type', 'retry-after']) {
+    for (const name of [
+      'content-type',
+      'retry-after',
+      'x-ai-error',
+      'x-ai-service',
+    ]) {
       const value = response.headers.get(name)
       if (value) outgoing.set(name, value)
     }
