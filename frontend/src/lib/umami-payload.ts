@@ -20,6 +20,7 @@ const PUBLIC_PATHS = [
   '/reading',
   '/flashcards',
   '/flashcards/vocabulary',
+  '/focus',
   '/grammar',
   '/vocabulary',
   '/phrasebook',

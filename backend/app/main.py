@@ -36,6 +36,7 @@ from app.routers import (
     dashboard_banner,
     feedback,
     flashcards,
+    focus_areas,
     freemium,
     games,
     grammar,
@@ -184,6 +185,7 @@ app.include_router(phrasebook.router)
 app.include_router(languages.router)
 app.include_router(health_router.router)
 app.include_router(vocabulary.router)
+app.include_router(focus_areas.router)
 
 if settings.STRIPE_ENABLED:
     import stripe as _stripe

@@ -28,6 +28,12 @@ from app.schemas.chat import (
     ConversationResponse,
 )
 from app.services.ai_errors import classify_ai_error
+from app.services.focus_service import (
+    CHAT_REVIEW_EVERY,
+    load_focus_context,
+    schedule_review,
+    schedule_sweep,
+)
 from app.services.language_helpers import get_language_name, get_native_language_name
 from app.services.learning_analytics import record_lingu_practice
 from app.services.llm_adapter import (
@@ -278,6 +284,7 @@ async def chat(
         db.add(conv)
         await db.commit()
         await db.refresh(conv)
+        schedule_sweep(current_user.id, target_language)
 
     conversation_id = conv.id
 
@@ -333,6 +340,7 @@ async def chat(
     except Exception:
         logger.exception("Failed to load memories for chat user %s — ignored", current_user.id)
         memory_context = ""
+    memory_context += await load_focus_context(current_user.id, target_language)
 
     target_language_name = get_language_name(target_language)
     native_language_name = get_native_language_name(current_user.native_language)
@@ -474,6 +482,7 @@ async def chat(
             )
 
             yield f"data: {json.dumps({'done': True})}\n\n"
+            schedule_review(conversation_id, min_student_messages=CHAT_REVIEW_EVERY)
 
             # Record freemium chat usage (best-effort)
             from app.services.freemium_service import maybe_record_freemium_usage

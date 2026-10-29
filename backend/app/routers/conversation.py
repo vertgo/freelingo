@@ -29,6 +29,7 @@ from app.services.assessment_voice_trial import (
     validate_assessment_voice_trial_token,
 )
 from app.services.conversation_pipeline import ConversationPipeline
+from app.services.focus_service import load_focus_context, schedule_review
 from app.services.freemium_service import (
     check_voice_quota,
     is_freemium_trial_active,
@@ -577,6 +578,7 @@ async def conversation_ws(
             study_plan_id=study_plan_id_for_conv,
             lesson_practice_context=lesson_practice.context if lesson_practice else "",
             user_agent=websocket.headers.get("user-agent", ""),
+            focus_context=await load_focus_context(user_id, target_language),
         )
         pipeline._redis = redis
         pipeline._freemium_voice = freemium_ok
@@ -590,3 +592,5 @@ async def conversation_ws(
         finally:
             await pipeline.cleanup()
             logger.info("[conversation] Session ended — user=%s", user_id)
+            if conversation_id is not None:
+                schedule_review(conversation_id)

@@ -4,6 +4,7 @@ from app.models.conversation import Conversation
 from app.models.dashboard_banner import DashboardBanner
 from app.models.feedback import FeedbackComment, FeedbackEntry, FeedbackReadState, FeedbackVote
 from app.models.flashcard import Flashcard, FlashcardReviewReceipt
+from app.models.focus_area import FocusArea
 from app.models.game import GameAdmission, GameRequest, GameSession
 from app.models.lesson import Exercise, Lesson
 from app.models.listening import ListeningAttempt, ListeningExercise
@@ -28,6 +29,7 @@ __all__ = [
     "FeedbackReadState",
     "FeedbackVote",
     "Flashcard",
+    "FocusArea",
     "FlashcardReviewReceipt",
     "GameAdmission",
     "GameRequest",

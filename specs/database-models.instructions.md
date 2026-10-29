@@ -493,6 +493,15 @@ Global cache for native-language study help generated for static learning resour
 - Phrasebook native help keeps target-language phrases unchanged while generating native-language usage tips, register notes, phrase notes, traps, and glossary support.
 - Vocabulary native help keeps target-language words and example phrases unchanged while generating native-language study tips, word notes, traps, glossary support, and practice prompts.
 
+## FocusArea (`focus_areas`)
+
+A recurring learner mistake; see `focus-areas.instructions.md`. Columns: `user_id` (cascade),
+`target_language`, `concept` (native-language label), `concept_key` (normalized, unique per user and
+language via `uq_focus_area_concept`), `category`, `explanation`, `examples` (JSON, max 5, newest first),
+`occurrences`, `correct_streak`, `status` (`active` | `mastered` | `dismissed`), `first_seen_at`,
+`last_seen_at`, `mastered_at`. `conversations.focus_reviewed_through_id` records the last reviewed
+`chat_history.id`.
+
 ## Memory (`memories`)
 
 Global user-specific context persisted by Lingu or manually by the user. Memories are shared across learning languages. `study_plan_id` is nullable creation provenance only and never scopes retrieval; deleting its study plan preserves the row through `SET NULL`.

@@ -262,7 +262,8 @@
     "contact": "Contact",
     "feedback": "Feedback",
     "reviews": "Reviews",
-    "switchLanguage": "Switch language"
+    "switchLanguage": "Switch language",
+    "focus": "Focus areas"
   },
   "auth": {
     "login": {
@@ -2044,5 +2045,46 @@
     "removed": "Key removed. This server's key is used again.",
     "removeFailed": "Couldn't remove the key. Try again.",
     "privacy": "Your key is encrypted and stored on this server, used only for your own requests, and never sent back to the browser. If your key stops working you'll see an error rather than a silent switch to the server's key."
+  },
+  "focus": {
+    "eyebrow": "Practice",
+    "title": "Focus areas",
+    "description": "Mistakes you keep making in conversations with the tutor, found automatically after voice sessions and every few chat messages. The tutor also works your top ones into future conversations.",
+    "empty": "Nothing yet. Have a few conversations with the tutor, by text or voice, and any mistakes you repeat will show up here.",
+    "allMastered": "You've mastered every focus area so far. New ones will show up here if a mistake comes back.",
+    "goChat": "Chat with the tutor",
+    "goVoice": "Start a voice conversation",
+    "activeLabel": "Active focus areas",
+    "masteredSection": "Mastered ({count})",
+    "masteredLabel": "Mastered",
+    "seen": "{count, plural, one {Seen once} other {Seen # times}} · last {date}",
+    "streak": "{count} of {total} correct uses in a row toward mastering this",
+    "practice": "Practice",
+    "makeFlashcards": "Make flashcards",
+    "markMastered": "Mark as mastered",
+    "reopen": "Practise again",
+    "dismiss": "Dismiss",
+    "flashcardsCreated": "{count, plural, one {Added # flashcard.} other {Added # flashcards.}}",
+    "flashcardsNone": "Those flashcards were already in your deck.",
+    "flashcardsError": "Couldn't make flashcards. Try again.",
+    "openFlashcards": "Open flashcards",
+    "updateError": "Couldn't update this focus area. Try again.",
+    "loadError": "Couldn't load your focus areas.",
+    "retry": "Try again",
+    "drillLoading": "Writing a drill for you…",
+    "drillError": "Couldn't create a drill right now.",
+    "drillProgress": "Question {current} of {total}",
+    "drillAnswer": "Your answer",
+    "check": "Check",
+    "hint": "Hint",
+    "correct": "Correct!",
+    "correctAccents": "Correct, but check the accents: {answer}",
+    "wrong": "Not quite. The answer is: {answer}",
+    "next": "Next",
+    "finish": "Finish",
+    "drillScore": "You got {score} of {total} right.",
+    "drillPassed": "Nice! That counts as a correct use toward mastering this.",
+    "drillNotPassed": "Keep at it. Get at least {needed} of {total} right for it to count toward mastering this.",
+    "close": "Close"
   }
 }

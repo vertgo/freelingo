@@ -78,6 +78,14 @@ def _no_ai_failure_persistence(monkeypatch):
     ai_errors._failing_services.clear()
 
 
+@pytest.fixture(autouse=True)
+def _no_background_focus_reviews(monkeypatch):
+    """Focus-area reviews run on the app's own engine; keep them out of unrelated tests."""
+    from app.services import focus_service
+
+    monkeypatch.setattr(focus_service, "_spawn", lambda coro: coro.close())
+
+
 @pytest_asyncio.fixture(autouse=True)
 async def clear_sessions():
     # Sessions are now stored in Redis (per-test mock_redis starts empty).

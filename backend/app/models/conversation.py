@@ -30,6 +30,8 @@ class Conversation(Base):
         index=True,
     )
     target_language: Mapped[str | None] = mapped_column(String(10), nullable=True, index=True)
+    # Last chat_history id already reviewed for recurring mistakes (focus areas).
+    focus_reviewed_through_id: Mapped[int | None] = mapped_column(Integer, nullable=True)
 
     def __repr__(self) -> str:
         return f"<Conversation(id={self.id}, user_id={self.user_id}, source={self.source}, target_language={self.target_language})>"

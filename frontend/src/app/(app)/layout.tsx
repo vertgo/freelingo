@@ -40,6 +40,7 @@ function AppLayoutContent({ children }: { children: React.ReactNode }) {
     { href: '/plan', label: tNav('myPlan') },
     { href: '/progress', label: tNav('progress') },
     { href: '/flashcards', label: tNav('flashcards') },
+    { href: '/focus', label: tNav('focus') },
     { href: '/chat', label: tNav('tutor') },
     { href: '/listening', label: tNav('listening') },
     { href: '/reading', label: tNav('reading') },

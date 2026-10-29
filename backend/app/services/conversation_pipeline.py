@@ -97,6 +97,7 @@ class ConversationPipeline:
         study_plan_id: int | None = None,
         lesson_practice_context: str = "",
         user_agent: str = "",
+        focus_context: str = "",
     ) -> None:
         self.llm = llm
         self.tts = tts
@@ -127,7 +128,9 @@ class ConversationPipeline:
             if _ctx_parts
             else ""
         )
-        self._memory_context = build_memory_context(memories or [])
+        # Recurring mistakes (focus areas) ride along with the memory context.
+        self._focus_context = focus_context
+        self._memory_context = build_memory_context(memories or []) + focus_context
         target_language_name = get_language_name(target_language)
         language_prompt_overlay = get_language_prompt_overlay(target_language)
         self._prompt_args = {
@@ -244,7 +247,7 @@ class ConversationPipeline:
                     self._prompt_args["native_language"] = get_native_language_name(
                         user.native_language
                     )
-            self._memory_context = build_memory_context(memories)
+            self._memory_context = build_memory_context(memories) + self._focus_context
             self.system_prompt = _build_conversation_system_prompt(
                 **self._prompt_args,
                 memory_context=self._memory_context,

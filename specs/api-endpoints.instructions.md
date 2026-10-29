@@ -444,6 +444,19 @@ User review endpoints. Admin moderation endpoints live under `/api/admin/reviews
 - **GET `/public`** — Rate limit: 60/min. Public. Returns approved landing reviews only (`is_approved=true` and `rating >= 4`) with a non-null, non-empty comment, ordered newest-first. The comment filter is applied before the limit. Query param: `limit` (default 50, max 50). The landing carousel requests 50 reviews. Response omits `user_id` and `is_approved`.
 - **GET `/public/summary`** — Rate limit: 60/min. Public. Returns `{total, average_rating}` over all approved ratings, including one- to three-star ratings and ratings without comments. No collection limit or language filter. Without approved ratings, returns `{total: 0, average_rating: null}`. The landing uses this aggregate independently of the carousel for its average and rating count, with five-minute revalidation.
 
+## Focus areas — `/api/focus-areas`
+
+See `focus-areas.instructions.md`. All endpoints are authenticated and owner-scoped (404 otherwise).
+
+- **GET ``** — Rate limit: 60/min. Non-dismissed focus areas for the active language, most frequent first: `{id, concept, category, explanation, examples[{said, correction}], occurrences, correct_streak, mastery_streak, status, first_seen_at, last_seen_at, mastered_at}`. Also starts a background catch-up review of recent conversations.
+- **PATCH `/{id}`** — Rate limit: 60/min. Body `{status: "active" | "mastered" | "dismissed"}`.
+- **DELETE `/{id}`** — Rate limit: 60/min. 204.
+- **POST `/{id}/drill`** — Rate limit: 20/min. Requires an active study plan. Returns `{items: [{sentence, answer, accepted, hint, translation}]}`; LLM errors map to 504/503/502.
+- **POST `/{id}/practice`** — Rate limit: 30/min. Body `{correct, total}`; ≥ 80% counts as one correct use.
+- **POST `/{id}/flashcards`** — Rate limit: 20/min. Requires an active study plan in the area's language (409 otherwise). Returns `{created}`.
+
+---
+
 ## Memories — `/api/memories`
 
 All endpoints require `get_current_user` only. Memory management is not subscription-gated or maintenance-gated so every authenticated user can inspect and control stored personal context.
