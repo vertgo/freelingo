@@ -179,7 +179,8 @@ describe('dashboard tour', () => {
       'data-animation',
       'reposo'
     )
-    expect(URL.revokeObjectURL).toHaveBeenCalledWith('blob:tour-audio')
+    // Kept for an instant replay; released when the step changes.
+    expect(URL.revokeObjectURL).not.toHaveBeenCalled()
   })
 
   it('stops playback when changing steps and does not autoplay the next one', async () => {

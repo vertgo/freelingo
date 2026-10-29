@@ -565,7 +565,7 @@ describe('AudioPlayer', () => {
 
   // ───────────── AUDIO ENDED ─────────────
 
-  it('revokes object URL and returns to idle when audio ends', async () => {
+  it('keeps the audio for replay and returns to idle when audio ends', async () => {
     fetchMock.mockResolvedValueOnce(makeOkResponse())
 
     render(<AudioPlayer text="Hello" />)
@@ -582,8 +582,22 @@ describe('AudioPlayer', () => {
       currentAudioMock!.onended!()
     })
 
-    expect(revokeCalls).toContain('blob:fake-url-1')
+    expect(revokeCalls).not.toContain('blob:fake-url-1')
     expect(screen.getByText(PLAY)).toBeDefined()
+  })
+
+  it('releases the kept audio on unmount', async () => {
+    fetchMock.mockResolvedValueOnce(makeOkResponse())
+    const { unmount } = render(<AudioPlayer text="Hello" />)
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button'))
+    })
+    await waitFor(() => expect(screen.getByText(PAUSE)).toBeDefined())
+    await act(async () => {
+      currentAudioMock!.onended!()
+    })
+    unmount()
+    expect(revokeCalls).toContain('blob:fake-url-1')
   })
 
   // ───────────── ERROR: HTTP ─────────────
@@ -726,8 +740,10 @@ describe('AudioPlayer', () => {
         expect(retryAudio.pause).toHaveBeenCalledTimes(1)
         expect(audioConstructor).toHaveBeenCalledTimes(2)
         expect(fetchMock).toHaveBeenCalledTimes(2)
-        expect(revokeCalls).toEqual(['blob:fake-url-1', 'blob:fake-url-2'])
+        // The failed audio is dropped; the working retry is kept until unmount.
+        expect(revokeCalls).toEqual(['blob:fake-url-1'])
         unmount()
+        expect(revokeCalls).toEqual(['blob:fake-url-1', 'blob:fake-url-2'])
         expect(vi.getTimerCount()).toBe(0)
       } finally {
         vi.useRealTimers()
@@ -921,7 +937,7 @@ describe('AudioPlayer', () => {
 
   // ───────────── RE-PLAY ─────────────
 
-  it('can re-play after audio ends', async () => {
+  it('replays from the kept audio without another request', async () => {
     fetchMock.mockResolvedValue(makeOkResponse())
 
     render(<AudioPlayer text="Hello" />)
@@ -942,7 +958,7 @@ describe('AudioPlayer', () => {
     await waitFor(() => {
       expect(screen.getByText(PLAY)).toBeDefined()
     })
-    expect(revokeCalls).toContain('blob:fake-url-1')
+    expect(revokeCalls).not.toContain('blob:fake-url-1')
 
     // Second play
     await act(async () => {
@@ -951,7 +967,8 @@ describe('AudioPlayer', () => {
     await waitFor(() => {
       expect(screen.getByText(PAUSE)).toBeDefined()
     })
-    expect(fetchMock).toHaveBeenCalledTimes(2)
+    expect(fetchMock).toHaveBeenCalledTimes(1)
+    expect(URL.createObjectURL).toHaveBeenCalledTimes(1)
   })
 
   it('can re-play after error recovery', async () => {
@@ -1008,7 +1025,7 @@ describe('AudioPlayer', () => {
     )
   })
 
-  it('clears audioRef on pause so a fresh Audio is created next play', async () => {
+  it('creates a fresh Audio from the kept audio after a pause', async () => {
     fetchMock.mockResolvedValue(makeOkResponse())
 
     render(<AudioPlayer text="Hello" />)
@@ -1028,13 +1045,15 @@ describe('AudioPlayer', () => {
     })
     expect(screen.getByText(PLAY)).toBeDefined()
 
-    // Play again — should trigger a new fetch
+    // Play again — a new Audio element, but no new request
+    const firstAudio = currentAudioMock
     await act(async () => {
       fireEvent.click(btn)
     })
     await waitFor(() => {
       expect(screen.getByText(PAUSE)).toBeDefined()
     })
-    expect(fetchMock).toHaveBeenCalledTimes(2)
+    expect(currentAudioMock).not.toBe(firstAudio)
+    expect(fetchMock).toHaveBeenCalledTimes(1)
   })
 })

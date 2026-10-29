@@ -65,16 +65,22 @@ export function AudioPlayer({
   // Resolve voice: explicit prop > user localStorage preference > backend default
   const resolvedVoice = voice ?? storedVoice()
 
-  const releaseAudio = useCallback(() => {
+  // Stops playback but keeps the fetched audio so replays skip the request.
+  const stopAudio = useCallback(() => {
     if (audioRef.current) {
       audioRef.current.onended = null
       audioRef.current.onerror = null
       audioRef.current.pause()
       audioRef.current = null
     }
+  }, [])
+
+  // Also drops the cached audio: on errors, unmount, or when the text changes.
+  const releaseAudio = useCallback(() => {
+    stopAudio()
     if (urlRef.current) URL.revokeObjectURL(urlRef.current)
     urlRef.current = null
-  }, [])
+  }, [stopAudio])
 
   useEffect(() => {
     setState('idle')
@@ -105,7 +111,7 @@ export function AudioPlayer({
 
     if (state === 'playing') {
       controllerRef.current?.abort()
-      releaseAudio()
+      stopAudio()
       setState('idle')
       return
     }
@@ -134,55 +140,69 @@ export function AudioPlayer({
       }, 2000)
     }
     try {
-      const traceId = `tts-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`
       const t0 = performance.now()
+      const cachedUrl = urlRef.current
+      let url: string
+      let fetched: {
+        res: Response
+        blob: Blob
+        fetchMs: number
+        blobMs: number
+        traceId: string
+      } | null = null
+      if (cachedUrl) {
+        clearTimeout(timeoutId)
+        url = cachedUrl
+      } else {
+        const traceId = `tts-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`
+        const fetchStart = performance.now()
+        const res = await apiFetch(
+          audioUrl ?? '/api/tts',
+          audioMethod === 'GET'
+            ? {
+                cache: 'no-store',
+                signal: controller.signal,
+              }
+            : {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'X-TTS-Trace-ID': traceId,
+                },
+                body: JSON.stringify({
+                  text,
+                  voice: resolvedVoice,
+                  study_plan_id: studyPlanId,
+                  conversation_id: conversationId,
+                }),
+                signal: controller.signal,
+              }
+        )
+        const fetchMs = performance.now() - fetchStart
+        if (!res.ok) throw new Error(`TTS error ${res.status}`)
 
-      const fetchStart = performance.now()
-      const res = await apiFetch(
-        audioUrl ?? '/api/tts',
-        audioMethod === 'GET'
-          ? {
-              cache: 'no-store',
-              signal: controller.signal,
-            }
-          : {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'X-TTS-Trace-ID': traceId,
-              },
-              body: JSON.stringify({
-                text,
-                voice: resolvedVoice,
-                study_plan_id: studyPlanId,
-                conversation_id: conversationId,
-              }),
-              signal: controller.signal,
-            }
-      )
-      const fetchMs = performance.now() - fetchStart
-      if (!res.ok) throw new Error(`TTS error ${res.status}`)
+        const blobStart = performance.now()
+        const blob = await res.blob()
+        clearTimeout(timeoutId)
+        if (
+          controller.signal.aborted ||
+          controllerRef.current !== controller ||
+          useAuthStore.getState().sessionVersion !== analyticsSession
+        )
+          return
+        const blobMs = performance.now() - blobStart
 
-      const blobStart = performance.now()
-      const blob = await res.blob()
-      clearTimeout(timeoutId)
-      if (
-        controller.signal.aborted ||
-        controllerRef.current !== controller ||
-        useAuthStore.getState().sessionVersion !== analyticsSession
-      )
-        return
-      const blobMs = performance.now() - blobStart
-
-      const url = URL.createObjectURL(blob)
-      urlRef.current = url
+        url = URL.createObjectURL(blob)
+        urlRef.current = url
+        fetched = { res, blob, fetchMs, blobMs, traceId }
+      }
       const audio = new Audio(url)
       audioRef.current = audio
 
       audio.onended = () => {
         if (controllerRef.current !== controller || controller.signal.aborted)
           return
-        releaseAudio()
+        stopAudio()
         setState('idle')
       }
       audio.onerror = showError
@@ -206,6 +226,8 @@ export function AudioPlayer({
         })
       const playMs = performance.now() - playStart
       const totalMs = performance.now() - t0
+      if (!fetched) return
+      const { res, blob, fetchMs, blobMs, traceId } = fetched
 
       const backendSynthMs = res.headers.get('X-TTS-Backend-Synth-Ms')
       const backendTotalMs = res.headers.get('X-TTS-Backend-Total-Ms')
