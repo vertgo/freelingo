@@ -172,7 +172,7 @@ describe('TargetLanguageSelector', () => {
 
     expect(srcs).toContain('/flags/usa.jpg')
     expect(srcs).toContain('/flags/uk.jpg')
-    expect(srcs).toContain('/flags/spain.jpg')
+    expect(srcs).toContain('/flags/mexico.jpg')
     expect(srcs).toContain('/flags/italy.jpg')
     expect(srcs).toContain('/flags/portugal.jpg')
     expect(srcs).toContain('/flags/france.jpg')
