@@ -354,3 +354,120 @@ async def test_flashcards_from_focus_area_skip_duplicates(client, test_user, db_
         .all()
     )
     assert sources == ["focus"]
+
+
+async def _lesson_with_answers(db_session, user_id, answers):
+    from app.models.lesson import Exercise, Lesson
+
+    plan = await make_study_plan(db_session, user_id=user_id, target_language=LANG, cefr_level="A1")
+    lesson = Lesson(
+        study_plan_id=plan.id,
+        title="Presentarse",
+        lesson_type="grammar",
+        cefr_level="A1",
+        week_number=1,
+        day_number=1,
+        is_completed=True,
+        content={"grammar_refs": ["ser"]},
+    )
+    db_session.add(lesson)
+    await db_session.flush()
+    for exercise_type, question, correct, answer, score in answers:
+        db_session.add(
+            Exercise(
+                lesson_id=lesson.id,
+                exercise_type=exercise_type,
+                question=question,
+                correct_answer=correct,
+                user_answer=answer,
+                score=score,
+                feedback="Origin uses ser.",
+            )
+        )
+    await db_session.commit()
+    return lesson
+
+
+@pytest.mark.asyncio
+async def test_review_lesson_sends_only_wrong_answers_and_records_mistakes(
+    db_session, test_user, use_test_db
+):
+    user, _ = test_user
+    existing = FocusArea(
+        user_id=user.id,
+        target_language=LANG,
+        concept="Ser vs. estar",
+        concept_key="ser vs. estar",
+        category="grammar",
+        explanation="",
+        examples=[],
+        occurrences=1,
+        correct_streak=2,
+        status="active",
+        first_seen_at=focus_service._now(),
+        last_seen_at=focus_service._now(),
+    )
+    db_session.add(existing)
+    lesson = await _lesson_with_answers(
+        db_session,
+        user.id,
+        [
+            ("multiple_choice", "Yo ___ de Puebla.", "soy", "estoy", 0.0),
+            ("fill_blank", "Ella ___ maestra.", "es", "es", 1.0),
+            ("pronunciation", "Repite: hola", "hola", "ola", 0.3),
+            ("fill_blank", "Tú ___ de México.", "eres", "   ", 0.0),
+        ],
+    )
+    await db_session.refresh(existing)
+    review = _review(mistakes=[_mistake(existing_id=existing.id)], correct_uses=[existing.id])
+    structured = AsyncMock(return_value=review)
+    with patch.object(focus_service.llm_adapter, "structured_output", structured):
+        assert await focus_service.review_lesson(lesson.id) == 1
+
+    system, items = (m["content"] for m in structured.await_args.args[0])
+    assert '"Presentarse"' in system and "ser" in system
+    assert items.count("<exercise>") == 1
+    assert "student_answer: estoy" in items and "correct_answer: soy" in items
+    await db_session.refresh(existing)
+    assert existing.occurrences == 2
+    # A mistake resets the streak, and lessons never count as correct uses.
+    assert existing.correct_streak == 0
+
+
+@pytest.mark.asyncio
+async def test_review_lesson_skips_lessons_without_mistakes(db_session, test_user, use_test_db):
+    user, _ = test_user
+    lesson = await _lesson_with_answers(
+        db_session, user.id, [("fill_blank", "Ella ___ maestra.", "es", "es", 1.0)]
+    )
+    structured = AsyncMock()
+    with patch.object(focus_service.llm_adapter, "structured_output", structured):
+        assert await focus_service.review_lesson(lesson.id) == 0
+    structured.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_completing_a_lesson_schedules_one_review(client, test_user, db_session):
+    from app.models.lesson import Lesson
+    from app.routers import lessons as lessons_router
+
+    user, headers = test_user
+    plan = await make_study_plan(db_session, user_id=user.id, target_language=LANG, cefr_level="A1")
+    lesson = Lesson(
+        study_plan_id=plan.id,
+        title="Presentarse",
+        lesson_type="grammar",
+        cefr_level="A1",
+        week_number=1,
+        day_number=1,
+        content={},
+    )
+    db_session.add(lesson)
+    await db_session.commit()
+
+    scheduled = []
+    with patch.object(lessons_router, "schedule_lesson_review", scheduled.append):
+        for _ in range(2):
+            response = await client.post(f"/api/lessons/{lesson.id}/complete", headers=headers)
+            assert response.status_code == 200
+    assert scheduled == [lesson.id]

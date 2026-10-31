@@ -1,13 +1,13 @@
 ---
-description: "Current-state specification for focus areas: recurring learner mistakes found by reviewing conversations, tutor prompt injection, drills, flashcards, and mastery."
-applyTo: "backend/app/models/focus_area.py, backend/app/schemas/focus.py, backend/app/services/focus_service.py, backend/app/services/prompts/focus.py, backend/app/routers/{focus_areas,chat,conversation}.py, backend/app/services/conversation_pipeline.py, frontend/src/app/(app)/focus/**, frontend/src/components/focus/**, frontend/src/lib/focus-areas.ts, messages/*.json"
+description: "Current-state specification for focus areas: recurring learner mistakes found by reviewing conversations and lesson answers, tutor prompt injection, drills, flashcards, and mastery."
+applyTo: "backend/app/models/focus_area.py, backend/app/schemas/focus.py, backend/app/services/focus_service.py, backend/app/services/prompts/focus.py, backend/app/routers/{focus_areas,chat,conversation,lessons}.py, backend/app/services/conversation_pipeline.py, frontend/src/app/(app)/focus/**, frontend/src/components/focus/**, frontend/src/lib/focus-areas.ts, messages/*.json"
 ---
 
 # Focus Areas
 
 ## Purpose
 
-A focus area is a mistake the learner keeps making in conversation with the tutor (any concept:
+A focus area is a mistake the learner keeps making in conversation with the tutor or in lessons (any concept:
 conjugation, mood, agreement, prepositions, word choice, false friends...). They are found
 automatically, shown on `/focus`, fed back into tutor conversations, and practised with drills and
 flashcards. They are scoped per user and target language.
@@ -19,11 +19,21 @@ flashcards. They are scoped per user and target language.
 `REVIEW_SYSTEM_PROMPT` and gets `ConversationReview` (`mistakes`, `correct_uses`). The prompt includes
 the language overlay (so e.g. Mexican usage is not flagged), the learner's existing focus areas (so
 repeats reuse their id), and, for voice transcripts, a rule to ignore spelling and STT artifacts.
+Both review prompts group mistakes by the broad concept ("Ser vs. estar"), not by sub-rule, so
+lesson and conversation mistakes land on the same area.
+
+`focus_service.review_lesson` reviews a completed lesson's wrong answers the same way with
+`LESSON_REVIEW_SYSTEM_PROMPT`: answered exercises scoring below 0.8 (`LESSON_MISTAKE_SCORE`), at
+most 12, excluding pronunciation exercises (speech-recognition errors) and blank answers. Each is
+sent with its question, correct answer, the student's answer, feedback and corrections, plus the
+lesson title and grammar refs. Its `correct_uses` are discarded: recognising a form in an exercise
+does not count toward mastery.
 
 Reviews run in the background (the per-request API key context is inherited):
 
 - **Voice:** when the conversation WebSocket closes, if the session has at least 2 new student messages.
 - **Text chat:** after a reply, once 6 student messages are unreviewed (`CHAT_REVIEW_EVERY`).
+- **Lessons:** when `POST /api/lessons/{id}/complete` first completes a lesson (not on repeat calls).
 - **Catch-up sweep:** starting a new chat or opening `GET /api/focus-areas` reviews the 3 most recent
   conversations that still have at least 2 unreviewed student messages.
 

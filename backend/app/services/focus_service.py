@@ -1,8 +1,9 @@
-"""Focus areas: recurring mistakes found by reviewing the learner's conversations.
+"""Focus areas: recurring mistakes found by reviewing the learner's conversations and lessons.
 
 After a voice session ends, or once a text chat has enough new messages, the
 new part of the transcript is sent to the LLM, which reports mistakes grouped
-by concept. Repeats of the same concept are merged and counted. The learner's
+by concept. When a lesson is completed, its wrong answers are reviewed the same
+way. Repeats of the same concept are merged and counted. The learner's
 top focus areas go back into the tutor prompt, and they can practise each one
 with a drill or turn it into flashcards. A focus area is marked mastered after
 MASTERY_STREAK correct uses (in conversation or drills) without the mistake.
@@ -11,6 +12,7 @@ MASTERY_STREAK correct uses (in conversation or drills) without the mistake.
 from __future__ import annotations
 
 import asyncio
+import json
 import re
 from datetime import UTC, datetime
 from html import escape
@@ -24,6 +26,7 @@ from app.core.app_logger import get_logger
 from app.models.chat_history import ChatHistory
 from app.models.conversation import Conversation
 from app.models.focus_area import FocusArea
+from app.models.lesson import Exercise, Lesson
 from app.models.study_plan import StudyPlan
 from app.models.user import User
 from app.services.language_helpers import get_language_name, get_native_language_name
@@ -31,6 +34,7 @@ from app.services.llm_adapter import llm_adapter
 from app.services.prompts import focus as prompts
 from app.services.prompts.common import get_language_prompt_overlay
 from app.utils.db import db_session
+from app.utils.lesson_exercises import normalized_exercise_text
 
 logger = get_logger(__name__)
 
@@ -46,12 +50,18 @@ MASTERY_STREAK = 3
 PROMPT_FOCUS_AREAS = 3
 EXISTING_FOR_REVIEW = 25
 SWEEP_CONVERSATIONS = 3
+# Lesson exercises scoring below this count as mistakes for review.
+LESSON_MISTAKE_SCORE = 0.8
+MAX_LESSON_EXERCISES = 12
+# Speech-recognition errors aren't language mistakes.
+SKIP_LESSON_EXERCISE_TYPES = frozenset({"pronunciation"})
 DRILL_LENGTH = 5
 DRILL_PASS_RATIO = 0.8
 
 Category = Literal["grammar", "vocabulary", "word_order", "other"]
 
 _in_flight: set[int] = set()
+_lessons_in_flight: set[int] = set()
 _background_tasks: set[asyncio.Task] = set()
 
 
@@ -312,6 +322,114 @@ async def _review(conversation_id: int, min_student_messages: int) -> int:
         correct_uses=len(review.correct_uses),
     )
     return recorded
+
+
+def schedule_lesson_review(lesson_id: int) -> None:
+    """Review a just-completed lesson's wrong answers in the background."""
+    if lesson_id in _lessons_in_flight:
+        return
+    _spawn(review_lesson(lesson_id))
+
+
+async def review_lesson(lesson_id: int) -> int:
+    """Merge mistakes from a lesson's wrong answers into focus areas; returns mistakes recorded.
+
+    Correct answers never count toward mastery: recognising a form among options is weaker
+    evidence than producing it in conversation or a drill.
+    """
+    if lesson_id in _lessons_in_flight:
+        return 0
+    _lessons_in_flight.add(lesson_id)
+    try:
+        return await _review_lesson(lesson_id)
+    except Exception:
+        logger.exception("focus_lesson_review_failed", lesson_id=lesson_id)
+        return 0
+    finally:
+        _lessons_in_flight.discard(lesson_id)
+
+
+async def _review_lesson(lesson_id: int) -> int:
+    async with db_session() as db:
+        lesson = await db.get(Lesson, lesson_id)
+        if lesson is None:
+            return 0
+        plan = await db.get(StudyPlan, lesson.study_plan_id)
+        user = await db.get(User, plan.user_id) if plan is not None else None
+        if plan is None or user is None:
+            return 0
+        exercises = (
+            (
+                await db.execute(
+                    select(Exercise)
+                    .where(
+                        Exercise.lesson_id == lesson_id,
+                        Exercise.user_answer.is_not(None),
+                        Exercise.score < LESSON_MISTAKE_SCORE,
+                        Exercise.exercise_type.not_in(SKIP_LESSON_EXERCISE_TYPES),
+                    )
+                    .order_by(Exercise.id)
+                    .limit(MAX_LESSON_EXERCISES)
+                )
+            )
+            .scalars()
+            .all()
+        )
+        exercises = [e for e in exercises if (e.user_answer or "").strip()]
+        if not exercises:
+            return 0
+        existing = (await get_focus_areas(db, user.id, plan.target_language))[:EXISTING_FOR_REVIEW]
+        existing_text = (
+            "\n".join(f"{a.id}: {a.concept} — {a.explanation}" for a in existing) or "(none yet)"
+        )
+        grammar_points = ", ".join(
+            slug for slug in (lesson.content or {}).get("grammar_refs", []) if isinstance(slug, str)
+        )
+        user_id, target_language, native_language = (
+            user.id,
+            plan.target_language,
+            user.native_language,
+        )
+        system = prompts.LESSON_REVIEW_SYSTEM_PROMPT.format(
+            target_language_name=get_language_name(target_language),
+            cefr_level=plan.cefr_level,
+            native_language_name=get_native_language_name(native_language),
+            lesson_title=escape(lesson.title, quote=False),
+            grammar_points=grammar_points or "(not specified)",
+            language_prompt_overlay=get_language_prompt_overlay(target_language),
+            existing=existing_text,
+        )
+        items = "\n".join(_format_exercise(e) for e in exercises)
+
+    review = await llm_adapter.structured_output(
+        [{"role": "system", "content": system}, {"role": "user", "content": items}],
+        ConversationReview,
+    )
+    review.correct_uses = []
+
+    async with db_session() as db:
+        recorded = await apply_review(db, user_id, target_language, review)
+        await db.commit()
+    logger.info("focus_lesson_review_done", lesson_id=lesson_id, mistakes=recorded)
+    return recorded
+
+
+def _format_exercise(exercise: Exercise) -> str:
+    question, _ = normalized_exercise_text(exercise)
+    fields = [
+        ("type", exercise.exercise_type),
+        ("question", question),
+        ("correct_answer", exercise.correct_answer),
+        ("student_answer", exercise.user_answer),
+        ("feedback", exercise.feedback),
+        ("corrections", json.dumps(exercise.corrections, ensure_ascii=False)),
+    ]
+    body = "\n".join(
+        f"{name}: {escape(str(value)[:MAX_MESSAGE_CHARS], quote=False)}"
+        for name, value in fields
+        if value and value not in ("null", "[]")
+    )
+    return f"<exercise>\n{body}\n</exercise>"
 
 
 def _format_messages(messages: list[ChatHistory]) -> str:
