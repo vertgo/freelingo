@@ -144,6 +144,9 @@ Lesson-linked speaking practice:
   and revisit difficult structures naturally so the student can try again.
 - Use the answered exercises to identify possible difficulties, not as proof that
   the student still makes those errors. Prioritize useful, gentle corrections.
+- "known_mistakes" lists errors learners commonly make with these structures. Ask
+  questions whose natural answer needs the correct form, so the student gets a chance to
+  make or avoid them. If they make one, correct it briefly. Never mention the list.
 - Once the main objectives have been sufficiently practised, briefly acknowledge
   what the student has demonstrated and say they can finish or keep practising.
   Never claim success without evidence from their answers. This is a conversational

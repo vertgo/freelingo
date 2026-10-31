@@ -104,6 +104,7 @@ Language-specific guidance:
 - Prefer the preterite (indefinido) for completed past actions, as is usual in Mexico, even where Spain would use the present perfect.
 - When curriculum text names a Spain-only form, teach the Mexican equivalent and mention the Spain form only as a note.
 - Pay close attention to accents, gender, number agreement, and natural Mexican phrasing.
+- Always write full Spanish spelling in every Spanish string, including exercise options and answers: written accents (á, é, í, ó, ú), ñ, ü, and opening ¿ and ¡. Never drop them; a missing accent is a spelling mistake.
 """.strip()
 
 _LANGUAGE_PROMPT_OVERLAY_ALIASES: dict[str, str] = {

@@ -70,7 +70,7 @@ evaluation, flashcard, comprehension, and assessment prompts. Target-language me
 language helpers rather than client labels. With `SPANISH_VARIANT=mx`, `es-ES` receives the Mexican
 Spanish overlay instead (`ustedes` for all plural address, no `vosotros` except when comparing
 variants, Mexican vocabulary, preterite for completed past actions, Mexican equivalents of Spain-only
-curriculum forms), and speech instructions request Mexico City Spanish with seseo.
+curriculum forms, full Spanish spelling with accents, ñ, ¿ and ¡ in every string), and speech instructions request Mexico City Spanish with seseo.
 
 `MEMORY_SYSTEM_INSTRUCTION_BASE` and `get_memory_system_instruction()` advertise the native
 `save_user_memory` tool only when the request actually offers that tool. No-tools fallbacks may retain
@@ -89,7 +89,9 @@ Lesson-linked voice sessions additionally receive `lesson_practice_context`. The
 bounded, escaped JSON reference from an owned completed lesson and its answered exercises; the client
 supplies only the lesson ID. The prompt treats it as non-authoritative data inside `lesson_practice`
 delimiters. It asks Lingu to open with a relevant question, provide hints and gentle corrections, and
-revisit difficult structures. Lingu may acknowledge sufficient practice and offer to finish or
+revisit difficult structures. The context includes up to 6 curated `known_mistakes` for the lesson's
+grammar refs, then its unit's other grammar points; Lingu creates natural chances to use those forms
+and corrects them briefly, without mentioning the list. Lingu may acknowledge sufficient practice and offer to finish or
 continue, but cannot end the session or impose a new duration. The context remains in prompt arguments
 through greeting, memory refresh, and tool-free fallback, independently of the bounded turn history.
 
@@ -99,6 +101,13 @@ Lesson generation receives CEFR level, language overlay, unit/topic, declared le
 grammar/vocabulary references, native language, and a bounded summary of prior sibling lessons. The
 summary includes a bounded deduplicated vocabulary sample gathered from siblings; it is not a complete
 transcript of prior content.
+
+It also receives the curated `common_mistakes` of the unit's grammar topics (`get_known_mistakes` in
+`app/data/grammar.py`: up to 3 per topic, round-robin across topics, 10 in total) inside
+`KNOWN_MISTAKES` delimiters. The prompt asks for at least two grammar exercises that a student making
+one of those mistakes would get wrong (the mistaken form as a distractor, or the blank on the
+contested form), and bases `common_traps` on them before inventing others. No block is added when the
+unit's topics have no curated mistakes.
 
 The lesson type selects explanation focus and exercise mix. Generated structures are validated through
 Pydantic. Separate builders cover invalid-exercise replacement, missing lesson/exercise native

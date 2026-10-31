@@ -9,6 +9,8 @@ from html import escape
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.data.curriculum import get_curriculum_units
+from app.data.grammar import get_known_mistakes
 from app.models.lesson import Exercise, Lesson
 from app.models.study_plan import StudyPlan
 from app.models.user_language import UserLanguage
@@ -45,6 +47,16 @@ def _bounded_data(value: object, depth: int = 0, budget: list[int] | None = None
 
 def _items(value: object) -> list:
     return value if isinstance(value, list) else []
+
+
+def _grammar_slugs(lesson: Lesson, plan: StudyPlan, content: dict) -> list[str]:
+    """The lesson's own grammar refs first, then the rest of its curriculum unit."""
+    slugs = [slug for slug in _items(content.get("grammar_refs")) if isinstance(slug, str)]
+    for unit in get_curriculum_units(plan.cefr_level, plan.target_language):
+        if unit.id == lesson.unit_id:
+            slugs.extend(unit.grammar_points)
+            break
+    return slugs
 
 
 async def get_lesson_practice_source(
@@ -118,6 +130,9 @@ async def load_lesson_voice_practice(
         "explanation": _bounded_data(content.get("explanation")),
         "vocabulary": _bounded_data(content.get("vocabulary")),
         "grammar_refs": _bounded_data(content.get("grammar_refs")),
+        "known_mistakes": get_known_mistakes(
+            _grammar_slugs(lesson, plan, content), plan.target_language, per_topic=2, limit=6
+        ),
         "answered_exercises": answered_exercises,
     }
     context = escape(json.dumps(data, ensure_ascii=False))

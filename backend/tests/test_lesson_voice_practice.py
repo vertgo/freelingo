@@ -499,3 +499,20 @@ def test_practice_title_fits_storage_and_has_localized_prefix(locale):
     assert title.endswith("A")
     if locale != "en":
         assert not title.startswith("Practice:")
+
+
+async def test_lesson_practice_context_includes_curated_mistakes(
+    db_session, test_user, practice_lesson
+):
+    from app.data.grammar import get_grammar_topic
+
+    user, _ = test_user
+    lesson, _ = practice_lesson
+    lesson.content = {**lesson.content, "grammar_refs": ["passe-compose-avoir"]}
+    await db_session.commit()
+
+    practice = await load_lesson_voice_practice(db_session, user.id, lesson.id)
+    data = json.loads(unescape(practice.context))
+    expected = get_grammar_topic("passe-compose-avoir", "fr-FR").common_mistakes[0]
+    assert data["known_mistakes"][0]["wrong"] == expected.wrong
+    assert data["known_mistakes"][0]["correct"] == expected.correct
