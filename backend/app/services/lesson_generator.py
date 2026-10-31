@@ -4,6 +4,7 @@ from typing import Any
 
 from app.data.curriculum import get_curriculum
 from app.data.grammar import get_known_mistakes
+from app.data.vocabulary import get_unit_vocabulary
 from app.schemas.lessons import (
     ExerciseContent,
     FillBlankEvaluation,
@@ -185,6 +186,7 @@ async def generate_lesson(
         language_prompt_overlay=language_prompt_overlay,
         previous_lessons_summary=build_previous_lessons_summary(previous_lessons or []),
         known_mistakes=get_known_mistakes(grammar_points or [], target_language),
+        unit_vocabulary=get_unit_vocabulary(vocabulary_set_ids or [], target_language),
     )
 
     lesson = await llm_adapter.structured_output(

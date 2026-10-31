@@ -102,6 +102,11 @@ grammar/vocabulary references, native language, and a bounded summary of prior s
 summary includes a bounded deduplicated vocabulary sample gathered from siblings; it is not a complete
 transcript of prior content.
 
+It receives the unit's curated word lists (`get_unit_vocabulary` in `app/data/vocabulary.py`:
+each set's topic and words, at most 120 words) inside `UNIT_VOCABULARY` delimiters, and builds the
+lesson's vocabulary mainly from them, replacing words the language variant doesn't use with the
+local equivalent. Without word lists the model only saw set IDs and guessed their contents.
+
 It also receives the curated `common_mistakes` of the unit's grammar topics (`get_known_mistakes` in
 `app/data/grammar.py`: up to 3 per topic, round-robin across topics, 10 in total) inside
 `KNOWN_MISTAKES` delimiters. The prompt asks for at least two grammar exercises that a student making

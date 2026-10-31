@@ -20,6 +20,7 @@ Effort and payoff are estimates, not measurements. Items keep their IDs when the
 | Learners can use their own Gemini API key | `user-api-keys` |
 | Focus areas: recurring conversation mistakes → drills, flashcards, tutor context | `focus-areas` |
 | R3: curated common mistakes drive lesson exercises, traps and lesson-linked voice practice; Mexican overlay requires full Spanish spelling | `known-mistakes` |
+| R4: lesson generation gets the unit's actual word lists instead of set IDs | `vocab-word-lists` |
 
 ## Now
 
@@ -27,7 +28,6 @@ These reuse data the app already has, so each is a small change.
 
 | ID | Change | Effort | Payoff | Notes |
 | --- | --- | --- | --- | --- |
-| R4 | Pass the actual vocabulary word lists to lesson generation, not set IDs | Small | Medium | `generate_lesson` sends IDs like `saludos_a1` (`services/lesson_generator.py:166`), so the model guesses what a set contains. |
 | R2 | Feed lesson exercise errors into focus areas | Small | High | Exercises already store corrections. Send only the wrong answers through the existing review/merge logic, so one-off misses don't create concepts. |
 | R5 | Mexican Spanish touch-ups: a tú/usted rule and short spoken-style guidance (fillers, "¿mande?", "órale") | Small | Medium | The MX overlay (`services/prompts/common.py`) has the ustedes rule only. Speech-recognition locale isn't an issue: Gemini detects the language itself. Also fix docstrings that still say es-ES. |
 

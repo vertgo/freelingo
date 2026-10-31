@@ -59,3 +59,19 @@ def get_vocabulary_by_level(
     """Return all vocabulary sets for a specific CEFR level."""
     sets = _resolve_sets(target_language)
     return [s for s in sets if s.level == level]
+
+
+def get_unit_vocabulary(
+    set_ids: list[str], target_language: str = "en-GB", limit: int = 120
+) -> list[tuple[str, list[str]]]:
+    """Return ``(topic, words)`` for each known set, keeping at most ``limit`` words in total."""
+    remaining = limit
+    result: list[tuple[str, list[str]]] = []
+    for set_id in dict.fromkeys(set_ids):
+        vocab_set = get_vocabulary_set(set_id, target_language)
+        if vocab_set is None or not vocab_set.words or remaining <= 0:
+            continue
+        words = [entry.word for entry in vocab_set.words[:remaining]]
+        remaining -= len(words)
+        result.append((vocab_set.topic, words))
+    return result
