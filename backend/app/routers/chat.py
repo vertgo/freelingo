@@ -52,7 +52,10 @@ from app.services.memory_service import (
     get_user_memories,
 )
 from app.services.progress_rewards import reward_conversation
-from app.services.prompts.common import get_language_prompt_overlay
+from app.services.prompts.common import (
+    get_conversation_style_overlay,
+    get_language_prompt_overlay,
+)
 from app.services.prompts.tutor import build_tutor_system_prompt
 from app.utils.db import db_session
 
@@ -344,7 +347,14 @@ async def chat(
 
     target_language_name = get_language_name(target_language)
     native_language_name = get_native_language_name(current_user.native_language)
-    language_prompt_overlay = get_language_prompt_overlay(target_language)
+    language_prompt_overlay = "\n".join(
+        part
+        for part in (
+            get_language_prompt_overlay(target_language),
+            get_conversation_style_overlay(target_language),
+        )
+        if part
+    )
 
     system_prompt = _build_tutor_system_prompt(
         student_name=current_user.display_name,

@@ -101,6 +101,8 @@ Language-specific guidance:
 - Use Mexican Spanish consistently, as spoken in Mexico.
 - Use ustedes for all plural address; never teach or use vosotros forms unless explicitly comparing variants.
 - Prefer Mexican vocabulary and idiom such as carro, computadora, celular, manejar, jugo, platicar, and ahorita.
+- Address the student with tú. In role-plays and example dialogues, use usted where people in Mexico would: officials, doctors, landlords, older strangers, and staff serving customers. Mexicans use usted more often than Spain does; teach when to switch.
+- Everyday Mexican colloquial Spanish (¿mande?, órale, ándale, sale, ahorita, ¿qué onda?, padre, chido, no manches, ¿neta?, ¿a poco?) is correct and worth learning. Use it where it fits naturally, and say it is colloquial when explaining it.
 - Prefer the preterite (indefinido) for completed past actions, as is usual in Mexico, even where Spain would use the present perfect.
 - When curriculum text names a Spain-only form, teach the Mexican equivalent and mention the Spain form only as a note.
 - Pay close attention to accents, gender, number agreement, and natural Mexican phrasing.
@@ -125,6 +127,22 @@ def get_language_prompt_overlay(target_language: str) -> str:
     if canonical_language == "es-ES" and settings.SPANISH_VARIANT == "mx":
         return _MEXICAN_SPANISH_OVERLAY
     return _LANGUAGE_PROMPT_OVERLAYS.get(canonical_language, "")
+
+
+_MEXICAN_CONVERSATION_STYLE = """
+Conversation style (the student lives in Mexico):
+- Talk like a friendly person from Mexico, not a textbook. Use natural spoken Mexican Spanish: fillers such as "este…", "pues" and "o sea", "¿mande?" when you didn't catch something, diminutives (un ratito, un cafecito), and everyday expressions like órale, sale, ¿qué onda?, qué padre, no manches, ¿neta?
+- Match the amount of slang to the level: at A1–A2 use a little and gloss a new expression in a few words of the student's native language; from B1 on, use it freely.
+- Avoid vulgar words yourself. If the student asks about one they heard (güey, no mames, chingar…), explain briefly what it means and when it is rude or friendly.
+""".strip()
+
+
+def get_conversation_style_overlay(target_language: str) -> str:
+    """Return spoken-style guidance for chat and voice tutoring (empty for most languages)."""
+    canonical_language = _LANGUAGE_PROMPT_OVERLAY_ALIASES.get(target_language, target_language)
+    if canonical_language == "es-ES" and settings.SPANISH_VARIANT == "mx":
+        return _MEXICAN_CONVERSATION_STYLE
+    return ""
 
 
 MEMORY_SYSTEM_INSTRUCTION_BASE = """

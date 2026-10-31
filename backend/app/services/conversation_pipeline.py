@@ -30,7 +30,10 @@ from app.services.memory_service import (
     execute_save_user_memory,
     get_user_memories,
 )
-from app.services.prompts.common import get_language_prompt_overlay
+from app.services.prompts.common import (
+    get_conversation_style_overlay,
+    get_language_prompt_overlay,
+)
 from app.services.prompts.tutor import build_conversation_system_prompt
 from app.services.quota_service import record_session_seconds
 from app.utils.db import db_session
@@ -132,7 +135,14 @@ class ConversationPipeline:
         self._focus_context = focus_context
         self._memory_context = build_memory_context(memories or []) + focus_context
         target_language_name = get_language_name(target_language)
-        language_prompt_overlay = get_language_prompt_overlay(target_language)
+        language_prompt_overlay = "\n".join(
+            part
+            for part in (
+                get_language_prompt_overlay(target_language),
+                get_conversation_style_overlay(target_language),
+            )
+            if part
+        )
         self._prompt_args = {
             "student_name": student_name,
             "cefr_level": cefr_level,

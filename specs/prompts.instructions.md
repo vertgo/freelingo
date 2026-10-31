@@ -19,6 +19,11 @@ considered when changing prompt-safety assumptions.
 
 - `common.py`: plain-text output policy, JSON-only/retry fragments, Anthropic system-only trigger,
   Lingu name, memory-tool policy, and language overlays.
+  With `SPANISH_VARIANT=mx` the Mexican overlay (every surface) sets tú with the learner, usted
+  where people in Mexico would use it, and treats everyday Mexican colloquialisms as correct.
+  `get_conversation_style_overlay` adds spoken-Mexican style (fillers, slang scaled by level,
+  vulgar words explained only when asked) to text chat and voice prompts only; it is empty for
+  other languages and variants.
 - `tutor.py`: text and voice tutor system prompts, including the written-chat formatting policy.
 - `speech.py`: native-pronunciation instructions for all `gpt-4o-mini-tts` synthesis, including its
   snapshots. The TTS adapter gates support; legacy/unknown models receive no instructions. Supplied

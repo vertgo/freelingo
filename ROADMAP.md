@@ -22,18 +22,11 @@ Effort and payoff are estimates, not measurements. Items keep their IDs when the
 | R3: curated common mistakes drive lesson exercises, traps and lesson-linked voice practice; Mexican overlay requires full Spanish spelling | `known-mistakes` |
 | R4: lesson generation gets the unit's actual word lists instead of set IDs | `vocab-word-lists` |
 | R2: wrong lesson answers feed focus areas (same review and merge; lessons never count toward mastery) | `lesson-focus-areas` |
-
-## Now
-
-These reuse data the app already has, so each is a small change.
-
-| ID | Change | Effort | Payoff | Notes |
-| --- | --- | --- | --- | --- |
-| R5 | Mexican Spanish touch-ups: a tú/usted rule and short spoken-style guidance (fillers, "¿mande?", "órale") | Small | Medium | The MX overlay (`services/prompts/common.py`) has the ustedes rule only. Speech-recognition locale isn't an issue: Gemini detects the language itself. Also fix docstrings that still say es-ES. |
+| R5: Mexican register and spoken style: tú with the learner, usted where Mexicans use it, everyday slang accepted everywhere; chat and voice talk like a Mexican friend (slang scaled by level) | `mexican-spoken-style` |
 
 ## Next
 
-Do these after using the Now items for a week or two.
+Do these after using the app for a week or two.
 
 | ID | Change | Effort | Payoff | Notes |
 | --- | --- | --- | --- | --- |

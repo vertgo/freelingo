@@ -713,3 +713,26 @@ def test_mexican_spanish_variant_overlay(monkeypatch):
 
     monkeypatch.setattr("app.core.config.settings.SPANISH_VARIANT", "es")
     assert "Peninsular Spanish" in get_language_prompt_overlay("es")
+
+
+def test_mexican_overlay_covers_usted_and_colloquial_spanish(monkeypatch):
+    from app.services.prompts.common import get_language_prompt_overlay
+
+    monkeypatch.setattr("app.core.config.settings.SPANISH_VARIANT", "mx")
+    overlay = get_language_prompt_overlay("es-ES")
+    assert "Address the student with tú" in overlay
+    assert "use usted where people in Mexico would" in overlay
+    assert "¿mande?" in overlay
+
+
+def test_conversation_style_overlay_is_mexican_only(monkeypatch):
+    from app.services.prompts.common import get_conversation_style_overlay
+
+    monkeypatch.setattr("app.core.config.settings.SPANISH_VARIANT", "mx")
+    style = get_conversation_style_overlay("es-ES")
+    assert "Talk like a friendly person from Mexico" in style
+    assert get_conversation_style_overlay("es") == style
+    assert get_conversation_style_overlay("fr-FR") == ""
+
+    monkeypatch.setattr("app.core.config.settings.SPANISH_VARIANT", "es")
+    assert get_conversation_style_overlay("es-ES") == ""
