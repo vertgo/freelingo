@@ -852,7 +852,18 @@
     "exitConfirmTitle": "Ieșiți din lecție?",
     "exitConfirmMessage": "Progresul dvs. la această lecție va fi pierdut.",
     "dayComplete": "Ziua finalizată!",
-    "dayCompleteMsg": "Ai finalizat această zi din plan. Continuă când îți este convenabil."
+    "dayCompleteMsg": "Ai finalizat această zi din plan. Continuă când îți este convenabil.",
+    "readAloud": {
+      "play": "Redă lecția",
+      "controls": "Redarea lecției",
+      "pause": "Pauză",
+      "resume": "Reia",
+      "previous": "Partea anterioară",
+      "next": "Partea următoare",
+      "stop": "Oprește",
+      "progress": "{current} / {total}",
+      "error": "Această parte nu a putut fi redată. Apasă redare pentru a încerca din nou."
+    }
   },
   "flashcards": {
     "title": "Carduri flash",

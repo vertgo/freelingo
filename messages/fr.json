@@ -852,7 +852,18 @@
     "exitConfirmTitle": "Quitter la leçon ?",
     "exitConfirmMessage": "Votre progression sur cette leçon sera perdue.",
     "dayComplete": "Journée terminée !",
-    "dayCompleteMsg": "Vous avez terminé cette journée du plan. Poursuivez quand cela vous convient."
+    "dayCompleteMsg": "Vous avez terminé cette journée du plan. Poursuivez quand cela vous convient.",
+    "readAloud": {
+      "play": "Écouter la leçon",
+      "controls": "Lecture de la leçon",
+      "pause": "Pause",
+      "resume": "Reprendre",
+      "previous": "Partie précédente",
+      "next": "Partie suivante",
+      "stop": "Arrêter",
+      "progress": "{current} / {total}",
+      "error": "Impossible de lire cette partie. Appuie sur lecture pour réessayer."
+    }
   },
   "flashcards": {
     "title": "Fiches",

@@ -1,6 +1,13 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type MouseEvent,
+} from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useLocale, useTranslations } from 'next-intl'
@@ -14,6 +21,9 @@ import { AudioPlayer } from '@/components/ui/AudioPlayer'
 import { VoiceRecorder } from '@/components/ui/VoiceRecorder'
 import { ConfirmDialog } from '@/components/ui/confirm-dialog'
 import { LessonVoicePracticeButton } from '@/components/lesson/LessonVoicePracticeButton'
+import { LessonReadAloud } from '@/components/lesson/LessonReadAloud'
+import { useLessonReader } from '@/hooks/useLessonReader'
+import { buildLessonReadAloud } from '@/lib/lesson-read-aloud'
 import { WordTooltip, useWordSave } from '@/components/ui/WordTooltip'
 import { PageLoading } from '@/components/ui/page-loading'
 import { FreemiumQuotaBanner } from '@/components/billing/FreemiumQuotaBanner'
@@ -167,6 +177,48 @@ export default function LessonPage() {
   const completingLessonRef = useRef(false)
   const [completingLesson, setCompletingLesson] = useState(false)
   const isReview = lesson?.is_completed ?? false
+
+  const lessonExplanation = lesson?.content?.explanation
+  const lessonVocabulary = lesson?.content?.vocabulary
+  const readAloudParts = useMemo(
+    () =>
+      buildLessonReadAloud({
+        title: lesson?.title,
+        explanation: lessonExplanation as Record<string, unknown> | undefined,
+        vocabulary: lessonVocabulary,
+      }),
+    [lesson?.title, lessonExplanation, lessonVocabulary]
+  )
+  const reader = useLessonReader(readAloudParts, lesson?.study_plan_id)
+  const readingKey = reader.activeKey
+
+  // Keep the part being read on screen.
+  useEffect(() => {
+    if (!readingKey) return
+    const reduceMotion = window.matchMedia?.(
+      '(prefers-reduced-motion: reduce)'
+    ).matches
+    document.querySelector(`[data-read-key="${readingKey}"]`)?.scrollIntoView({
+      block: 'nearest',
+      behavior: reduceMotion ? 'auto' : 'smooth',
+    })
+  }, [readingKey])
+
+  // While the lesson is being read, tapping a block jumps to it. Selecting
+  // words (to save them) and the block's own buttons never jump.
+  const readAloudProps = (key: string) => ({
+    'data-read-key': key,
+    onClick: (event: MouseEvent<HTMLElement>) => {
+      if (reader.status === 'idle') return
+      if ((event.target as HTMLElement).closest('button')) return
+      if (window.getSelection()?.toString()) return
+      reader.playBlock(key)
+    },
+    className: cn(
+      'transition-colors',
+      readingKey === key && 'bg-fl-accent/10 outline-fl-accent/40 outline'
+    ),
+  })
 
   const loadLesson = useCallback(async () => {
     setLoading(true)
@@ -623,16 +675,29 @@ export default function LessonPage() {
             </div>
           </div>
           <div className="px-6 py-5">
-            <p className="text-fl-fg font-mono text-base font-bold tracking-wide">
+            <p
+              {...readAloudProps('title')}
+              className={cn(
+                'text-fl-fg font-mono text-base font-bold tracking-wide',
+                readAloudProps('title').className
+              )}
+            >
               {lesson?.title}
             </p>
+            <div className="mt-3">
+              <LessonReadAloud reader={reader} />
+            </div>
             {explanation && (
               <div className="mt-4 max-w-[70ch] space-y-3">
                 {explanation.text != null && (
                   <TargetLanguageText
                     as="p"
                     languageCode={targetLanguageCode}
-                    className="text-fl-muted-1 word-selectable cursor-text select-text"
+                    {...readAloudProps('explanation')}
+                    className={cn(
+                      'text-fl-muted-1 word-selectable cursor-text select-text',
+                      readAloudProps('explanation').className
+                    )}
                     onPointerUp={() =>
                       handleTextSelection(
                         String(explanation.text),
@@ -646,7 +711,14 @@ export default function LessonPage() {
                 {(explanation.key_points as string[])?.length > 0 && (
                   <ul className="border-fl-border space-y-1 border-t pt-3">
                     {(explanation.key_points as string[]).map((kp, i) => (
-                      <li key={i} className="text-fl-muted-1">
+                      <li
+                        key={i}
+                        {...readAloudProps(`key-point-${i}`)}
+                        className={cn(
+                          'text-fl-muted-1',
+                          readAloudProps(`key-point-${i}`).className
+                        )}
+                      >
                         <span className="text-fl-muted-2 mr-2">·</span>
                         <TargetLanguageText languageCode={targetLanguageCode}>
                           {kp}
@@ -667,7 +739,14 @@ export default function LessonPage() {
                         note: string
                       }[]
                     ).map((ex, i) => (
-                      <div key={i} className="flex items-start gap-3">
+                      <div
+                        key={i}
+                        {...readAloudProps(`example-${i}`)}
+                        className={cn(
+                          'flex items-start gap-3',
+                          readAloudProps(`example-${i}`).className
+                        )}
+                      >
                         <span className="text-fl-muted-3 mt-0.5">·</span>
                         <div className="min-w-0 flex-1">
                           <div className="flex flex-wrap items-center gap-2">
@@ -1280,7 +1359,14 @@ export default function LessonPage() {
               </p>
               <div className="space-y-3">
                 {vocabItems.map((item, idx) => (
-                  <div key={idx} className="border-fl-border border px-4 py-3">
+                  <div
+                    key={idx}
+                    {...readAloudProps(`vocab-${idx}`)}
+                    className={cn(
+                      'border-fl-border border px-4 py-3',
+                      readAloudProps(`vocab-${idx}`).className
+                    )}
+                  >
                     <div className="mb-2 flex flex-wrap items-start justify-between gap-3">
                       <div className="min-w-0 flex-1">
                         {item.word && (

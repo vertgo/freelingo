@@ -852,7 +852,18 @@
     "exitConfirmTitle": "Exit lesson?",
     "exitConfirmMessage": "Your progress on this lesson will be lost.",
     "dayComplete": "Day complete!",
-    "dayCompleteMsg": "You have completed this day of your plan. Continue whenever it suits you."
+    "dayCompleteMsg": "You have completed this day of your plan. Continue whenever it suits you.",
+    "readAloud": {
+      "play": "Play lesson",
+      "controls": "Lesson playback",
+      "pause": "Pause",
+      "resume": "Resume",
+      "previous": "Previous part",
+      "next": "Next part",
+      "stop": "Stop",
+      "progress": "{current} / {total}",
+      "error": "Couldn't play this part. Press play to try again."
+    }
   },
   "flashcards": {
     "title": "Flashcards",

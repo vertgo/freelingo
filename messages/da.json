@@ -852,7 +852,18 @@
     "exitConfirmTitle": "Forlad lektionen?",
     "exitConfirmMessage": "Dine fremskridt i denne lektion går tabt.",
     "dayComplete": "Dagen er klaret!",
-    "dayCompleteMsg": "Du har gennemført denne dag i din plan. Fortsæt, når det passer dig."
+    "dayCompleteMsg": "Du har gennemført denne dag i din plan. Fortsæt, når det passer dig.",
+    "readAloud": {
+      "play": "Afspil lektion",
+      "controls": "Afspilning af lektion",
+      "pause": "Pause",
+      "resume": "Fortsæt",
+      "previous": "Forrige del",
+      "next": "Næste del",
+      "stop": "Stop",
+      "progress": "{current} / {total}",
+      "error": "Denne del kunne ikke afspilles. Tryk på afspil for at prøve igen."
+    }
   },
   "flashcards": {
     "title": "Flashcards",

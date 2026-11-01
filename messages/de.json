@@ -852,7 +852,18 @@
     "exitConfirmTitle": "Lektion beenden?",
     "exitConfirmMessage": "Dein Fortschritt in dieser Lektion geht verloren.",
     "dayComplete": "Tag abgeschlossen!",
-    "dayCompleteMsg": "Du hast diesen Tag im Lernplan abgeschlossen. Mach weiter, wann es dir passt."
+    "dayCompleteMsg": "Du hast diesen Tag im Lernplan abgeschlossen. Mach weiter, wann es dir passt.",
+    "readAloud": {
+      "play": "Lektion abspielen",
+      "controls": "Lektionswiedergabe",
+      "pause": "Pause",
+      "resume": "Fortsetzen",
+      "previous": "Vorheriger Teil",
+      "next": "Nächster Teil",
+      "stop": "Stopp",
+      "progress": "{current} / {total}",
+      "error": "Dieser Teil konnte nicht abgespielt werden. Tippe auf Abspielen, um es erneut zu versuchen."
+    }
   },
   "flashcards": {
     "title": "Karteikarten",

@@ -852,7 +852,18 @@
     "exitConfirmTitle": "Dersten çıkılsın mı?",
     "exitConfirmMessage": "Bu dersteki ilerlemeniz kaybolacak.",
     "dayComplete": "Gün tamamlandı!",
-    "dayCompleteMsg": "Planınızın bu gününü tamamladınız. Size uygun olan herhangi bir zamanda devam edin."
+    "dayCompleteMsg": "Planınızın bu gününü tamamladınız. Size uygun olan herhangi bir zamanda devam edin.",
+    "readAloud": {
+      "play": "Dersi dinle",
+      "controls": "Ders oynatma",
+      "pause": "Duraklat",
+      "resume": "Devam et",
+      "previous": "Önceki bölüm",
+      "next": "Sonraki bölüm",
+      "stop": "Durdur",
+      "progress": "{current} / {total}",
+      "error": "Bu bölüm oynatılamadı. Tekrar denemek için oynat'a bas."
+    }
   },
   "flashcards": {
     "title": "Bilgi Kartları",

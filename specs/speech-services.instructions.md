@@ -1,6 +1,6 @@
 ---
 description: "Current-state specification for text-to-speech and speech-to-text providers, backend gateways, plan-derived recognition language, persistent audio, and reusable frontend audio components."
-applyTo: "backend/app/services/{tts_service,stt_service,chat_markdown,gemini_live_pipeline}.py, backend/app/routers/{tts,stt}.py, backend/app/schemas/tts_stt.py, backend/app/core/config.py, backend/app/main.py, frontend/src/components/ui/{AudioPlayer,VoiceRecorder,exercise-audio-player}.tsx, frontend/src/app/api/{tts,stt}/**, docker-compose*.yml, .env.example"
+applyTo: "backend/app/services/{tts_service,stt_service,chat_markdown,gemini_live_pipeline}.py, backend/app/routers/{tts,stt}.py, backend/app/schemas/tts_stt.py, backend/app/core/config.py, backend/app/main.py, frontend/src/components/ui/{AudioPlayer,VoiceRecorder,exercise-audio-player}.tsx, frontend/src/components/lesson/LessonReadAloud.tsx, frontend/src/hooks/useLessonReader.ts, frontend/src/lib/{audio-playback,lesson-read-aloud}.ts, frontend/src/app/api/{tts,stt}/**, docker-compose*.yml, .env.example"
 ---
 
 # Speech Services
@@ -290,6 +290,18 @@ The player keeps its fetched Blob URL after playback ends or is stopped, so repl
 content plays from memory without another TTS request. Errors, unmount, account-session changes, and
 changes of text, URL, method, resolved voice, or resource context release it. Only one player sounds
 at a time: starting one stops the previously active player and aborts its pending request.
+`lib/audio-playback.ts` owns this rule and the stored-voice lookup, shared by `AudioPlayer` and the
+lesson reader.
+
+The lesson reader (`useLessonReader`, controlled by `LessonReadAloud`) plays a lesson's
+target-language content in order through the same POST `/api/tts` with the lesson's `studyPlanId`.
+`lib/lesson-read-aloud.ts` builds the parts: title, explanation text, key points, example sentences,
+then each vocabulary word, definition and example. Native-language fields (native explanation,
+translations, notes) are never read. Long text is split at sentence ends into chunks of at most 400
+characters. Each chunk is fetched once per lesson content and kept for replays; the next chunk is
+prefetched while the current one plays, and each fetch has a 15-second timeout. A failed chunk shows
+an error and retries on play. Stopping, starting another player, or changing lesson content stops
+playback, aborts pending requests and releases the Blob URLs.
 
 The dashboard tour posts its displayed i18n text and voice to its locale/step audio URL with this
 player. Optional playback-state notifications coordinate Lingu's speaking animation; they do not

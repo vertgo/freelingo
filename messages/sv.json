@@ -852,7 +852,18 @@
     "exitConfirmTitle": "Lämna lektionen?",
     "exitConfirmMessage": "Dina framsteg i den här lektionen går förlorade.",
     "dayComplete": "Dagen är klar!",
-    "dayCompleteMsg": "Du har slutfört den här dagen i din plan. Fortsätt när det passar dig."
+    "dayCompleteMsg": "Du har slutfört den här dagen i din plan. Fortsätt när det passar dig.",
+    "readAloud": {
+      "play": "Spela upp lektionen",
+      "controls": "Uppspelning av lektionen",
+      "pause": "Pausa",
+      "resume": "Fortsätt",
+      "previous": "Föregående del",
+      "next": "Nästa del",
+      "stop": "Stoppa",
+      "progress": "{current} / {total}",
+      "error": "Den här delen kunde inte spelas upp. Tryck på spela upp för att försöka igen."
+    }
   },
   "flashcards": {
     "title": "Gloskort",

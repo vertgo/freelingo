@@ -852,7 +852,18 @@
     "exitConfirmTitle": "Les afsluiten?",
     "exitConfirmMessage": "Je voortgang in deze les gaat verloren.",
     "dayComplete": "Dag voltooid!",
-    "dayCompleteMsg": "Je hebt deze dag van je plan afgerond. Ga verder wanneer het jou uitkomt."
+    "dayCompleteMsg": "Je hebt deze dag van je plan afgerond. Ga verder wanneer het jou uitkomt.",
+    "readAloud": {
+      "play": "Les afspelen",
+      "controls": "Lesweergave",
+      "pause": "Pauzeren",
+      "resume": "Hervatten",
+      "previous": "Vorig deel",
+      "next": "Volgend deel",
+      "stop": "Stoppen",
+      "progress": "{current} / {total}",
+      "error": "Dit deel kon niet worden afgespeeld. Druk op afspelen om het opnieuw te proberen."
+    }
   },
   "flashcards": {
     "title": "Flashcards",

@@ -852,7 +852,18 @@
     "exitConfirmTitle": "¿Salir de la lección?",
     "exitConfirmMessage": "Perderás el progreso de esta lección.",
     "dayComplete": "¡Día completado!",
-    "dayCompleteMsg": "Has completado este día del plan. Continúa cuando te venga bien."
+    "dayCompleteMsg": "Has completado este día del plan. Continúa cuando te venga bien.",
+    "readAloud": {
+      "play": "Escuchar la lección",
+      "controls": "Reproducción de la lección",
+      "pause": "Pausar",
+      "resume": "Reanudar",
+      "previous": "Parte anterior",
+      "next": "Parte siguiente",
+      "stop": "Detener",
+      "progress": "{current} / {total}",
+      "error": "No se pudo reproducir esta parte. Pulsa reproducir para intentarlo de nuevo."
+    }
   },
   "flashcards": {
     "title": "Tarjetas",

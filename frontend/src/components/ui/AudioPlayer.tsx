@@ -7,6 +7,11 @@ import { useAuthStore } from '@/store/auth'
 import { getLogger } from '@/lib/logger'
 import { trackBrowserEvent } from '@/lib/analytics'
 import { apiFetch } from '@/lib/api'
+import {
+  claimAudioPlayback,
+  releaseAudioPlayback,
+  storedVoice,
+} from '@/lib/audio-playback'
 
 const TTS_TIMEOUT_MS = 15_000
 const ttsLogger = getLogger('tts')
@@ -28,19 +33,6 @@ interface AudioPlayerProps {
 }
 
 export type PlayerState = 'idle' | 'loading' | 'playing' | 'error'
-
-// Only one player sounds at a time: starting one stops whichever was active.
-let stopActivePlayer: (() => void) | null = null
-
-function storedVoice() {
-  try {
-    return typeof window !== 'undefined'
-      ? (localStorage.getItem('tts_voice') ?? undefined)
-      : undefined
-  } catch {
-    return undefined
-  }
-}
 
 export function AudioPlayer({
   text,
@@ -90,7 +82,7 @@ export function AudioPlayer({
   useEffect(() => {
     setState('idle')
     return () => {
-      if (stopActivePlayer === stopSelfRef.current) stopActivePlayer = null
+      releaseAudioPlayback(stopSelfRef.current)
       controllerRef.current?.abort()
       controllerRef.current = null
       if (timeoutRef.current) clearTimeout(timeoutRef.current)
@@ -129,10 +121,9 @@ export function AudioPlayer({
       stopAudio()
       setState('idle')
     }
-    if (stopActivePlayer && stopActivePlayer !== stopSelfRef.current)
-      stopActivePlayer()
+    releaseAudioPlayback(stopSelfRef.current)
     stopSelfRef.current = stopSelf
-    stopActivePlayer = stopSelf
+    claimAudioPlayback(stopSelf)
 
     setState('loading')
     if (recoveryRef.current) clearTimeout(recoveryRef.current)

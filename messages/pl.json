@@ -852,7 +852,18 @@
     "exitConfirmTitle": "Wyjść z lekcji?",
     "exitConfirmMessage": "Twój postęp w tej lekcji zostanie utracony.",
     "dayComplete": "Dzień ukończony!",
-    "dayCompleteMsg": "Ten dzień planu jest już ukończony. Kontynuuj, kiedy Ci pasuje."
+    "dayCompleteMsg": "Ten dzień planu jest już ukończony. Kontynuuj, kiedy Ci pasuje.",
+    "readAloud": {
+      "play": "Odtwórz lekcję",
+      "controls": "Odtwarzanie lekcji",
+      "pause": "Pauza",
+      "resume": "Wznów",
+      "previous": "Poprzednia część",
+      "next": "Następna część",
+      "stop": "Zatrzymaj",
+      "progress": "{current} / {total}",
+      "error": "Nie udało się odtworzyć tej części. Naciśnij odtwórz, aby spróbować ponownie."
+    }
   },
   "flashcards": {
     "title": "Fiszki",

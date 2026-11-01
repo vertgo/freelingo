@@ -852,7 +852,18 @@
     "exitConfirmTitle": "Izaći iz lekcije?",
     "exitConfirmMessage": "Izgubit ćeš napredak u ovoj lekciji.",
     "dayComplete": "Dan je dovršen!",
-    "dayCompleteMsg": "Dovršio si ovaj dan svojeg plana. Nastavi kad god ti odgovara."
+    "dayCompleteMsg": "Dovršio si ovaj dan svojeg plana. Nastavi kad god ti odgovara.",
+    "readAloud": {
+      "play": "Reproduciraj lekciju",
+      "controls": "Reprodukcija lekcije",
+      "pause": "Pauza",
+      "resume": "Nastavi",
+      "previous": "Prethodni dio",
+      "next": "Sljedeći dio",
+      "stop": "Zaustavi",
+      "progress": "{current} / {total}",
+      "error": "Ovaj dio nije moguće reproducirati. Pritisni reprodukciju za ponovni pokušaj."
+    }
   },
   "flashcards": {
     "title": "Kartice",

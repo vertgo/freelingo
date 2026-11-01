@@ -852,7 +852,18 @@
     "exitConfirmTitle": "Sair da lição?",
     "exitConfirmMessage": "O seu progresso nesta lição será perdido.",
     "dayComplete": "Dia concluído!",
-    "dayCompleteMsg": "Você concluiu este dia do plano. Continue quando for conveniente."
+    "dayCompleteMsg": "Você concluiu este dia do plano. Continue quando for conveniente.",
+    "readAloud": {
+      "play": "Ouvir a lição",
+      "controls": "Reprodução da lição",
+      "pause": "Pausar",
+      "resume": "Retomar",
+      "previous": "Parte anterior",
+      "next": "Parte seguinte",
+      "stop": "Parar",
+      "progress": "{current} / {total}",
+      "error": "Não foi possível reproduzir esta parte. Carrega em reproduzir para tentar novamente."
+    }
   },
   "flashcards": {
     "title": "Cartões",

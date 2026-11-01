@@ -852,7 +852,18 @@
     "exitConfirmTitle": "Poistutaanko oppitunnilta?",
     "exitConfirmMessage": "Tämän oppitunnin edistyminen menetetään.",
     "dayComplete": "Päivä valmis!",
-    "dayCompleteMsg": "Olet suorittanut tämän päivän suunnitelmastasi. Jatka, kun sinulle sopii."
+    "dayCompleteMsg": "Olet suorittanut tämän päivän suunnitelmastasi. Jatka, kun sinulle sopii.",
+    "readAloud": {
+      "play": "Toista oppitunti",
+      "controls": "Oppitunnin toisto",
+      "pause": "Tauko",
+      "resume": "Jatka",
+      "previous": "Edellinen osa",
+      "next": "Seuraava osa",
+      "stop": "Pysäytä",
+      "progress": "{current} / {total}",
+      "error": "Tätä osaa ei voitu toistaa. Yritä uudelleen painamalla toista."
+    }
   },
   "flashcards": {
     "title": "Muistikortit",

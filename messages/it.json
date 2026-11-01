@@ -852,7 +852,18 @@
     "exitConfirmTitle": "Uscire dalla lezione?",
     "exitConfirmMessage": "Il tuo progresso in questa lezione andrà perso.",
     "dayComplete": "Giornata completata!",
-    "dayCompleteMsg": "Hai completato questo giorno del piano. Prosegui quando ti fa comodo."
+    "dayCompleteMsg": "Hai completato questo giorno del piano. Prosegui quando ti fa comodo.",
+    "readAloud": {
+      "play": "Ascolta la lezione",
+      "controls": "Riproduzione della lezione",
+      "pause": "Pausa",
+      "resume": "Riprendi",
+      "previous": "Parte precedente",
+      "next": "Parte successiva",
+      "stop": "Interrompi",
+      "progress": "{current} / {total}",
+      "error": "Impossibile riprodurre questa parte. Premi riproduci per riprovare."
+    }
   },
   "flashcards": {
     "title": "Schede",
