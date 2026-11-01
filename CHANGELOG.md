@@ -4,6 +4,25 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.11.0] - Unreleased
+
+### Added
+
+- Gemini providers from one Google AI Studio key: `LLM_PROVIDER=gemini` with fallback models on overload, `TTS_PROVIDER=gemini` with fallback TTS models on quota or overload errors (`GEMINI_TTS_FALLBACK_MODELS`), `STT_PROVIDER=gemini`, and `VOICE_PROVIDER=gemini_live` for speech-to-speech voice conversation with barge-in, session resumption and the memory tool.
+- Mexican Spanish variant (`SPANISH_VARIANT=mx`): Spanish is labelled "Spanish (Mexico)" with a Mexico flag, the Spanish course data uses Mexican vocabulary, IPA, places and `ustedes`, and prompts and speech follow Mexican usage and pronunciation.
+- Codex CLI bridge LLM provider (`LLM_PROVIDER=codex`) and per-language Kokoro voices.
+- "Choose my level" in the placement assessment and "Change level" on the existing-plan screen let learners pick A1–C2 without the placement quiz.
+- Learners can use their own Gemini API key from Settings → Account. It is verified, stored encrypted, and used for their LLM, TTS, STT and voice requests without falling back to the server key; `ALLOW_USER_API_KEYS=false` disables it.
+- Focus areas: recurring mistakes from chat, voice conversations and first lesson completions are grouped by concept and counted. A Focus areas page lists them with examples, each can be practised with a generated drill or turned into flashcards, and the top areas are worked into tutor conversations. Three correct uses in a row in conversation or drills mark an area mastered.
+- Play lesson reads a lesson's target-language content aloud (title, explanation, key points, examples and vocabulary), with pause, skip and stop controls and the current part highlighted. Native-language text is never read.
+
+### Changed
+
+- AI provider failures (quota, invalid key, overload, timeout, unreachable) are classified, reported to the browser and shown in an in-app banner instead of failing silently; the last failure is available from `/api/ai-status` and the admin health check.
+- Lesson generation receives the unit's curated common mistakes and actual vocabulary word lists, so exercises and common traps target predictable errors and lessons use the unit's intended words. Lesson-linked voice practice also receives the curated mistakes.
+- In Mexican Spanish, lessons always use full Spanish spelling (accents, ñ, ¿, ¡), the tutor uses tú with the learner and usted where people in Mexico would, everyday Mexican colloquialisms are treated as correct, and chat and voice conversations use natural spoken Mexican Spanish scaled to the learner's level.
+- Replaying audio for the same text plays from memory instead of requesting speech again, and only one audio source plays at a time.
+
 ## [1.10.60] - 2026-10-24
 
 ### Security
