@@ -31,7 +31,7 @@ const lesson = {
 }
 
 describe('buildLessonReadAloud', () => {
-  it('reads the target-language content in page order', () => {
+  it('reads the lesson box in page order and skips vocabulary', () => {
     expect(buildLessonReadAloud(lesson)).toEqual([
       { key: 'title', text: 'Ser y estar' },
       {
@@ -40,9 +40,6 @@ describe('buildLessonReadAloud', () => {
       },
       { key: 'key-point-0', text: 'Soy de Monterrey.' },
       { key: 'example-0', text: 'Estoy cansado.' },
-      { key: 'vocab-0', text: 'carro' },
-      { key: 'vocab-0', text: 'Vehículo de cuatro ruedas.' },
-      { key: 'vocab-0', text: 'Mi carro es rojo.' },
     ])
   })
 
@@ -74,7 +71,15 @@ describe('chunkText', () => {
 })
 
 describe('block navigation', () => {
-  const parts = buildLessonReadAloud(lesson)
+  const parts = [
+    { key: 'title', text: 'Ser y estar' },
+    { key: 'explanation', text: 'Usamos ser para el origen.' },
+    { key: 'explanation', text: 'Usamos estar para los estados.' },
+    { key: 'key-point-0', text: 'Soy de Monterrey.' },
+    { key: 'example-0', text: 'Estoy cansado.' },
+    { key: 'example-0', text: 'Estamos en casa.' },
+    { key: 'example-0', text: 'Está nublado.' },
+  ]
 
   it('skips forward a whole block', () => {
     expect(nextBlockStart(parts, -1)).toBe(0)

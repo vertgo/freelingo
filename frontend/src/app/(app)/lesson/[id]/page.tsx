@@ -179,15 +179,13 @@ export default function LessonPage() {
   const isReview = lesson?.is_completed ?? false
 
   const lessonExplanation = lesson?.content?.explanation
-  const lessonVocabulary = lesson?.content?.vocabulary
   const readAloudParts = useMemo(
     () =>
       buildLessonReadAloud({
         title: lesson?.title,
         explanation: lessonExplanation as Record<string, unknown> | undefined,
-        vocabulary: lessonVocabulary,
       }),
-    [lesson?.title, lessonExplanation, lessonVocabulary]
+    [lesson?.title, lessonExplanation]
   )
   const reader = useLessonReader(readAloudParts, lesson?.study_plan_id)
   const readingKey = reader.activeKey
@@ -1359,14 +1357,7 @@ export default function LessonPage() {
               </p>
               <div className="space-y-3">
                 {vocabItems.map((item, idx) => (
-                  <div
-                    key={idx}
-                    {...readAloudProps(`vocab-${idx}`)}
-                    className={cn(
-                      'border-fl-border border px-4 py-3',
-                      readAloudProps(`vocab-${idx}`).className
-                    )}
-                  >
+                  <div key={idx} className="border-fl-border border px-4 py-3">
                     <div className="mb-2 flex flex-wrap items-start justify-between gap-3">
                       <div className="min-w-0 flex-1">
                         {item.word && (

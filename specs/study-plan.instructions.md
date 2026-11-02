@@ -246,9 +246,10 @@ Every response-body publication, error, navigation, and loading completion is
 discarded after unmount or context/session replacement. Plan-load failures offer retry; a successful
 null plan remains distinct from a request failure.
 
-The lesson page offers Play lesson under the title, which reads the lesson's target-language content
-aloud (see `speech-services.instructions.md`). Its controls are previous, pause/resume, next, stop and
-a block counter; previous and next move a whole block (a vocabulary card counts as one). The block
+The lesson page offers Play lesson under the title, which reads the lesson box's target-language
+content aloud (see `speech-services.instructions.md`); vocabulary cards keep their own play buttons.
+Its controls are previous, pause/resume, next, stop and a block counter; previous and next move a
+whole block. The block
 being read is highlighted and scrolled into view. While playback is active, tapping a block jumps
 to it, except when the tap selects text or hits a button inside the block.
 

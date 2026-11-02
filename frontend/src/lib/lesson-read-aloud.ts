@@ -1,7 +1,8 @@
 /**
  * Turns a lesson's target-language content into the ordered parts that
- * "Play lesson" reads aloud. Native-language fields (native explanation,
- * translations, notes) are never included, so playback stays immersive.
+ * "Play lesson" reads aloud: the lesson box only (title, explanation, key
+ * points, examples). Vocabulary cards have their own play buttons.
+ * Native-language fields are never included, so playback stays immersive.
  */
 
 export interface ReadAloudPart {
@@ -14,7 +15,6 @@ export interface ReadAloudPart {
 interface LessonReadAloudSource {
   title?: string | null
   explanation?: Record<string, unknown> | null
-  vocabulary?: unknown
 }
 
 // Short chunks start playing sooner and stay well under the TTS text limit.
@@ -64,13 +64,6 @@ export function buildLessonReadAloud(
   examples.forEach((example, i) =>
     add(`example-${i}`, (example as { sentence?: unknown })?.sentence)
   )
-  const vocabulary = Array.isArray(lesson.vocabulary) ? lesson.vocabulary : []
-  vocabulary.forEach((item, i) => {
-    const entry = (item ?? {}) as Record<string, unknown>
-    add(`vocab-${i}`, entry.word)
-    add(`vocab-${i}`, entry.definition)
-    add(`vocab-${i}`, entry.example)
-  })
   return parts
 }
 

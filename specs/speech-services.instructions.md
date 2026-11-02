@@ -295,9 +295,9 @@ lesson reader.
 
 The lesson reader (`useLessonReader`, controlled by `LessonReadAloud`) plays a lesson's
 target-language content in order through the same POST `/api/tts` with the lesson's `studyPlanId`.
-`lib/lesson-read-aloud.ts` builds the parts: title, explanation text, key points, example sentences,
-then each vocabulary word, definition and example. Native-language fields (native explanation,
-translations, notes) are never read. Long text is split at sentence ends into chunks of at most 400
+`lib/lesson-read-aloud.ts` builds the parts from the lesson box only: title, explanation text, key
+points and example sentences. Vocabulary cards are not part of playback; each plays through its own
+`AudioPlayer`. Native-language fields (native explanation, translations, notes) are never read. Long text is split at sentence ends into chunks of at most 400
 characters. Each chunk is fetched once per lesson content and kept for replays; the next chunk is
 prefetched while the current one plays, and each fetch has a 15-second timeout. A failed chunk shows
 an error and retries on play. Stopping, starting another player, or changing lesson content stops
