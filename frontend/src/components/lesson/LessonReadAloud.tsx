@@ -10,6 +10,7 @@ import {
   Square,
 } from 'lucide-react'
 import type { useLessonReader } from '@/hooks/useLessonReader'
+import { PlaybackSpeed } from '@/components/ui/PlaybackSpeed'
 
 type LessonReader = ReturnType<typeof useLessonReader>
 
@@ -23,14 +24,17 @@ export function LessonReadAloud({ reader }: { reader: LessonReader }) {
 
   if (reader.status === 'idle') {
     return (
-      <button
-        type="button"
-        onClick={() => void reader.play(0)}
-        className={buttonClass}
-      >
-        <Play className="size-4" aria-hidden="true" />
-        {t('play')}
-      </button>
+      <div className="flex flex-wrap items-center gap-2">
+        <button
+          type="button"
+          onClick={() => void reader.play(0)}
+          className={buttonClass}
+        >
+          <Play className="size-4" aria-hidden="true" />
+          {t('play')}
+        </button>
+        <PlaybackSpeed />
+      </div>
     )
   }
 
@@ -87,6 +91,7 @@ export function LessonReadAloud({ reader }: { reader: LessonReader }) {
       >
         <Square className="size-4" aria-hidden="true" />
       </button>
+      <PlaybackSpeed />
       <span
         className="text-fl-hint text-fl-muted-2 font-mono tracking-widest"
         aria-live="polite"

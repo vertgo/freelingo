@@ -1450,7 +1450,8 @@
     "listen": "Dinle",
     "stop": "Durdur",
     "ariaListen": "Telaffuzu dinle",
-    "ariaStop": "Sesi durdur"
+    "ariaStop": "Sesi durdur",
+    "speed": "Oynatma hızı"
   },
   "languages": {
     "en": "İngilizce",

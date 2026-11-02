@@ -1450,7 +1450,8 @@
     "listen": "Poslušaj",
     "stop": "Zaustavi",
     "ariaListen": "Poslušaj izgovor",
-    "ariaStop": "Zaustavi zvuk"
+    "ariaStop": "Zaustavi zvuk",
+    "speed": "Brzina reprodukcije"
   },
   "languages": {
     "en": "Engleski",

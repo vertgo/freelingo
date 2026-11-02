@@ -291,7 +291,8 @@ The Listening page keeps transient state locally. Its states are `loading`, `idl
 - Starting practice from history creates a replay with blank answers.
 
 `ExerciseAudioPlayer` fetches the protected MP3 through `apiFetch`, creates a Blob URL, and provides
-play, pause, progress, click-to-seek, browser-derived duration, and an error state. Listening does not
+play, pause, progress, click-to-seek, browser-derived duration, the shared playback-speed chip (see
+`speech-services.instructions.md`), and an error state. Listening does not
 require audio playback before answers can be submitted.
 
 Question prompts, revealed transcripts, and history transcripts support the shared single-selection

@@ -1450,7 +1450,8 @@
     "listen": "Kuuntele",
     "stop": "Pysäytä",
     "ariaListen": "Kuuntele ääntämistä",
-    "ariaStop": "Pysäytä ääni"
+    "ariaStop": "Pysäytä ääni",
+    "speed": "Toistonopeus"
   },
   "languages": {
     "en": "Englanti",

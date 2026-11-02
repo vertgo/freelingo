@@ -1450,7 +1450,8 @@
     "listen": "Lyssna",
     "stop": "Stoppa",
     "ariaListen": "Lyssna på uttal",
-    "ariaStop": "Stoppa ljudet"
+    "ariaStop": "Stoppa ljudet",
+    "speed": "Uppspelningshastighet"
   },
   "languages": {
     "en": "Engelska",

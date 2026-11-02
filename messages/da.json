@@ -1450,7 +1450,8 @@
     "listen": "Lyt",
     "stop": "Stop",
     "ariaListen": "Lyt til udtalen",
-    "ariaStop": "Stop lyd"
+    "ariaStop": "Stop lyd",
+    "speed": "Afspilningshastighed"
   },
   "languages": {
     "en": "Engelsk",

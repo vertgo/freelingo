@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 - Learners can use their own Gemini API key from Settings → Account. It is verified, stored encrypted, and used for their LLM, TTS, STT and voice requests without falling back to the server key; `ALLOW_USER_API_KEYS=false` disables it.
 - Focus areas: recurring mistakes from chat, voice conversations and first lesson completions are grouped by concept and counted. A Focus areas page lists them with examples, each can be practised with a generated drill or turned into flashcards, and the top areas are worked into tutor conversations. Three correct uses in a row in conversation or drills mark an area mastered.
 - Play lesson reads a lesson's target-language content aloud (title, explanation, key points and examples; vocabulary cards keep their own play buttons), with pause, skip and stop controls and the current part highlighted. Native-language text is never read.
+- Playback speed from 50% to 200% in 5% steps for lesson, vocabulary, example and listening audio, set from a small speed chip beside Play lesson and in the listening player that opens a slider when clicked. The choice is remembered in the browser and keeps the voice's pitch.
 
 ### Changed
 

@@ -1,6 +1,6 @@
 ---
 description: "Current-state specification for text-to-speech and speech-to-text providers, backend gateways, plan-derived recognition language, persistent audio, and reusable frontend audio components."
-applyTo: "backend/app/services/{tts_service,stt_service,chat_markdown,gemini_live_pipeline}.py, backend/app/routers/{tts,stt}.py, backend/app/schemas/tts_stt.py, backend/app/core/config.py, backend/app/main.py, frontend/src/components/ui/{AudioPlayer,VoiceRecorder,exercise-audio-player}.tsx, frontend/src/components/lesson/LessonReadAloud.tsx, frontend/src/hooks/useLessonReader.ts, frontend/src/lib/{audio-playback,lesson-read-aloud}.ts, frontend/src/app/api/{tts,stt}/**, docker-compose*.yml, .env.example"
+applyTo: "backend/app/services/{tts_service,stt_service,chat_markdown,gemini_live_pipeline}.py, backend/app/routers/{tts,stt}.py, backend/app/schemas/tts_stt.py, backend/app/core/config.py, backend/app/main.py, frontend/src/components/ui/{AudioPlayer,VoiceRecorder,exercise-audio-player,PlaybackSpeed}.tsx, frontend/src/components/lesson/LessonReadAloud.tsx, frontend/src/hooks/{useLessonReader,usePlaybackRate}.ts, frontend/src/lib/{audio-playback,lesson-read-aloud}.ts, frontend/src/app/api/{tts,stt}/**, docker-compose*.yml, .env.example"
 ---
 
 # Speech Services
@@ -302,6 +302,14 @@ characters. Each chunk is fetched once per lesson content and kept for replays; 
 prefetched while the current one plays, and each fetch has a 15-second timeout. A failed chunk shows
 an error and retries on play. Stopping, starting another player, or changing lesson content stops
 playback, aborts pending requests and releases the Blob URLs.
+
+Playback speed is one browser-local setting (`localStorage` key `tts_playback_rate`, default 1) from
+50% to 200% in 5% steps, applied by `applyPlaybackRate` in `lib/audio-playback.ts` to `AudioPlayer`,
+the lesson reader and `ExerciseAudioPlayer` with pitch preserved. It changes playback only; the same
+audio is requested and cached. `PlaybackSpeed` shows the current speed as a small chip beside Play
+lesson and in the listening player; clicking it opens the slider, and Escape or a click outside
+closes it. A change applies immediately to the audio that is playing. The voice tutor's streamed
+audio is not affected.
 
 The dashboard tour posts its displayed i18n text and voice to its locale/step audio URL with this
 player. Optional playback-state notifications coordinate Lingu's speaking animation; they do not

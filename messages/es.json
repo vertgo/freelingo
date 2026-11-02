@@ -1450,7 +1450,8 @@
     "listen": "Escuchar",
     "stop": "Detener",
     "ariaListen": "Escuchar pronunciación",
-    "ariaStop": "Detener audio"
+    "ariaStop": "Detener audio",
+    "speed": "Velocidad de reproducción"
   },
   "languages": {
     "en": "Inglés",

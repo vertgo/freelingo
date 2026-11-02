@@ -1450,7 +1450,8 @@
     "listen": "Ascultă",
     "stop": "Oprește",
     "ariaListen": "Ascultă pronunția",
-    "ariaStop": "Oprește audio"
+    "ariaStop": "Oprește audio",
+    "speed": "Viteza de redare"
   },
   "languages": {
     "en": "Engleză",

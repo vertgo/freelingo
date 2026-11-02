@@ -8,6 +8,7 @@ import { getLogger } from '@/lib/logger'
 import { trackBrowserEvent } from '@/lib/analytics'
 import { apiFetch } from '@/lib/api'
 import {
+  applyPlaybackRate,
   claimAudioPlayback,
   releaseAudioPlayback,
   storedVoice,
@@ -206,6 +207,7 @@ export function AudioPlayer({
         fetched = { res, blob, fetchMs, blobMs, traceId }
       }
       const audio = new Audio(url)
+      applyPlaybackRate(audio)
       audioRef.current = audio
 
       audio.onended = () => {

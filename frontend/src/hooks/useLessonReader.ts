@@ -8,6 +8,7 @@ import {
   type ReadAloudPart,
 } from '@/lib/lesson-read-aloud'
 import {
+  applyPlaybackRate,
   claimAudioPlayback,
   releaseAudioPlayback,
   storedVoice,
@@ -99,6 +100,7 @@ export function useLessonReader(parts: ReadAloudPart[], studyPlanId?: number) {
         const url = await fetchUrl(all[start].text)
         if (generation !== generationRef.current) return
         const audio = new Audio(url)
+        applyPlaybackRate(audio)
         audioRef.current = audio
         audio.onended = () => {
           if (generation === generationRef.current)
@@ -132,6 +134,7 @@ export function useLessonReader(parts: ReadAloudPart[], studyPlanId?: number) {
     const audio = audioRef.current
     if (status === 'paused' && audio) {
       claimAudioPlayback(stopHandleRef.current)
+      applyPlaybackRate(audio)
       void audio.play().then(
         () => setStatus('playing'),
         () => setStatus('error')

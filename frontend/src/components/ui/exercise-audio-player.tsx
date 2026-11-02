@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { apiFetch } from '@/lib/api'
+import { applyPlaybackRate } from '@/lib/audio-playback'
+import { PlaybackSpeed } from '@/components/ui/PlaybackSpeed'
 
 interface ExerciseAudioPlayerProps {
   exerciseId: number
@@ -33,6 +35,7 @@ export function ExerciseAudioPlayer({
     }
 
     if (state === 'paused' && audioRef.current) {
+      applyPlaybackRate(audioRef.current)
       try {
         await audioRef.current.play()
         setState('playing')
@@ -51,6 +54,7 @@ export function ExerciseAudioPlayer({
       blobUrlRef.current = url
 
       const audio = new Audio(url)
+      applyPlaybackRate(audio)
       audioRef.current = audio
 
       audio.addEventListener('loadedmetadata', () => {
@@ -129,6 +133,7 @@ export function ExerciseAudioPlayer({
             {Math.ceil(duration)}s
           </span>
         )}
+        <PlaybackSpeed className="shrink-0" />
       </div>
       {state === 'error' && (
         <p className="text-fl-label font-mono text-red-500">

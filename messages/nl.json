@@ -1450,7 +1450,8 @@
     "listen": "Luisteren",
     "stop": "Stoppen",
     "ariaListen": "Luister naar uitspraak",
-    "ariaStop": "Audio stoppen"
+    "ariaStop": "Audio stoppen",
+    "speed": "Afspeelsnelheid"
   },
   "languages": {
     "en": "Engels",
